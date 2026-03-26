@@ -1,0 +1,28 @@
+###############################################################################
+# B4.sub — HTCondor submit for OMTF HECIN dataset B4
+# B4: Noise-only PU200 (no hard-scatter muon) — pure MinBias DIGI
+# This is a DIGI-only job: no GEN,SIM step, reads MinBias from DBS directly.
+# Target: 200000 events, 2000 events/job, 100 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = B4 $(ProcId) 2000
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B4_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B4_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B4.log
+
+# B4 uses a single DIGI config (no separate GEN config)
+transfer_input_files = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/configs/B4_cfg.py
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 15000000
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+
+queue 100

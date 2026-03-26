@@ -1,0 +1,25 @@
+###############################################################################
+# test_one_job.sub — Test one job to verify the fixed script
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = S1 0 0 100  # Dataset, ProcId, SkipEvents, NumEvents
+
+output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/test_one.out
+error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/test_one.err
+log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/test_one.log
+
+# Files live on AFS
+should_transfer_files = NO
+
+# Single-threaded
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "tomorrow"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue 1

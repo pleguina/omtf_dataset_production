@@ -1,0 +1,32 @@
+###############################################################################
+# S4_testset_large.sub — Re-run S4 testset with 10k events
+#
+# S4 (tri-muon same sector) has ~4.5% geometric yield, so 1000 events → only
+# ~45 candidates. 10k events → ~450 candidates (still cheap, ~15 min job).
+#
+# Output: EOS /eos/user/p/pleguina/omtf_hecin_datasets/testset/S4/
+#         omtf_hits_S4_0.root  (overwrites the 1000-event version)
+#
+# Submit:  condor_submit condor/S4_testset_large.sub
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job_testset.sh
+arguments       = S4 0 10000
+
+output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/testset_S4_large.out
+error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/testset_S4_large.err
+log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/testset_S4_large.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 10000000
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue 1

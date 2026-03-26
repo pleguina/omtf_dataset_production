@@ -1,0 +1,52 @@
+# ─── Generated ROOT output files ────────────────────────────────────────────
+*.root
+
+# ─── Analysis outputs (plots, reports) ───────────────────────────────────────
+*.pdf
+analysis/*.txt
+
+# ─── HTCondor logs ───────────────────────────────────────────────────────────
+logs/
+
+# ─── Smoke-test runtime artifacts ────────────────────────────────────────────
+smoke_results/*.root
+smoke_results/*.log
+smoke_results/*_cfg.py
+smoke_results/__pycache__/
+smoke_results/customize_omtf_dumper.py
+smoke_results/DetailedSingleEv_1.xml
+
+# ─── Python virtual environment ──────────────────────────────────────────────
+venv_cmssw_root/
+venv*/
+.venv*/
+
+# ─── Python caches ───────────────────────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ─── Jupyter notebook execution outputs ──────────────────────────────────────
+# Keep clean (un-executed) notebooks; ignore executed copies
+*_executed.ipynb
+.ipynb_checkpoints/
+
+# ─── Built CMSSW release areas ───────────────────────────────────────────────
+CMSSW_*/
+# (keep fragments/ which live outside any CMSSW area)
+
+# ─── Large reference documents (auto-generated / internal) ─────────────────
+OMTF_GNN_Topology_Analysis.md
+DATASET_GENERATION_GUIDE.md
+
+# ─── Editor / OS junk ────────────────────────────────────────────────────────
+.DS_Store
+*.swp
+*.swo
+*~
+.vscode/
+
+# ─── VOMS proxy ──────────────────────────────────────────────────────────────
+private/
+x509_proxy

@@ -1,0 +1,26 @@
+###############################################################################
+# S4.sub — HTCondor submit for OMTF HECIN dataset S4
+# Target: 100000 events, 20000 events/job, 5 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = S4 $(ProcId) 20000
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S4_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S4_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S4.log
+
+transfer_input_files = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/configs/S4_cfg.py
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 10000000
+
++JobFlavour     = "tomorrow"
+
+# Use CMS submit infrastructure
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+
+queue 5

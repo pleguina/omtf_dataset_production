@@ -1,0 +1,72 @@
+###############################################################################
+# testset.sub — Submit 1000-event testset for all OMTF HECIN datasets
+#
+# One job per dataset, 1000 events, output: OMTF TFileService ROOT file only.
+# EOS destination: /eos/cms/store/user/<user>/omtf_hecin_datasets/testset/<DS>/
+#                  omtf_hits_<DS>_0.root
+#
+# BEFORE SUBMITTING:
+#   1. Valid proxy:     voms-proxy-init --voms cms --valid 96:00
+#   2. Build CMSSW:     cd CMSSW_14_2_0_pre2/src && scram b -j8 L1Trigger/L1TMuonOverlapPhase1
+#   3. For S2/S5/B4:    run scripts/generate_missing_configs.sh, then uncomment
+#                       those rows in the queue block at the bottom.
+#
+# Submit:   condor_submit condor/testset.sub
+# Monitor:  condor_q -format "%s " ClusterId -format "%s " ProcId \
+#             -format "%s\n" Args | grep omtf
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job_testset.sh
+arguments       = $(Dataset) 0 1000
+
+output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/testset_$(Dataset).out
+error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/testset_$(Dataset).err
+log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/testset.log
+
+# Files live on AFS 
+should_transfer_files = NO
+
+
+# Single-threaded (MT TFileService race fix)
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+# ── Datasets with configs ready — submit now ─────────────────────────────────
+# GEN+SIM+DIGI+L1 in one step, no pileup:
+queue Dataset in (
+  S1
+  S3
+  S4
+)
+
+# GEN+SIM+DIGI+L1 in one step, PU200 (premixed MinBias, reads from DBS):
+queue Dataset in (
+  B1
+  B2
+  B3
+)
+
+# ── Datasets pending config generation ───────────────────────────────────────
+# Run scripts/generate_missing_configs.sh first, then uncomment:
+#
+# S2 — single displaced muon, flat d0 [0,50cm], no PU
+# S5 — two displaced muons, flat d0 [0,30cm], no PU
+queue Dataset in (
+  S2
+  S5
+)
+#
+# B4 — noise-only PU200 (DIGI-only, reads MinBias from DBS as "signal")
+#      Note: B4 uses a different cmsRun workflow (no GEN,SIM step).
+#      Requires B4_cfg.py from generate_missing_configs.sh.
+# queue Dataset in (
+#   B4
+# )

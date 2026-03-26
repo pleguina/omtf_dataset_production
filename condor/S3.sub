@@ -1,0 +1,26 @@
+###############################################################################
+# S3.sub — HTCondor submit for OMTF HECIN dataset S3
+# Target: 250000 events, 20000 events/job, 13 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = S3 $(ProcId) 20000
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S3_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S3_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S3.log
+
+transfer_input_files = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/configs/S3_cfg.py
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 10000000
+
++JobFlavour     = "tomorrow"
+
+# Use CMS submit infrastructure
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+
+queue 13

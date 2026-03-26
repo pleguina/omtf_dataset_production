@@ -1,0 +1,26 @@
+###############################################################################
+# S5.sub — HTCondor submit for OMTF HECIN dataset S5
+# S5: Two displaced muons in same processor window, flat vertex disk 30 cm
+# Target: 150000 events, 2000 events/job, 75 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = S5 $(ProcId) 2000
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S5_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S5_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S5.log
+
+transfer_input_files = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/configs/S5_cfg.py
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 10000000
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+
+queue 75

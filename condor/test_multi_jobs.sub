@@ -1,0 +1,28 @@
+###############################################################################
+# test_multi_jobs.sub — multi-job smoke test for run_job.sh
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = $(Dataset) $(ProcId) $(SkipEvents) $(NumEvents)
+
+output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/test_multi_$(Dataset)_$(ProcId).out
+error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/test_multi_$(Dataset)_$(ProcId).err
+log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/test_multi.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour      = "tomorrow"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+# 3 parallel jobs, small event count
+queue Dataset, ProcId, SkipEvents, NumEvents from (
+S1 100 0 100
+S1 101 100 100
+S1 102 200 100
+)

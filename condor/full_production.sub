@@ -1,0 +1,96 @@
+###############################################################################
+# full_production.sub — Submit full production with parallel jobs per dataset
+#
+# Splits each dataset into multiple smaller jobs to maximize HTCondor parallelism.
+# Each job: 50,000 events (except S4: 50,000 each for 3 jobs total).
+# Total jobs: 8 datasets × ~10 jobs = ~80 jobs (run in parallel).
+#
+# BEFORE SUBMITTING:
+#   1. Valid proxy:     voms-proxy-init --voms cms --valid 96:00
+#   2. Build CMSSW:     cd CMSSW_14_2_0_pre2/src && scram b -j8 L1Trigger/L1TMuonOverlapPhase1
+#   3. Check EOS space: eos quota
+#
+# Submit:   condor_submit condor/full_production.sub
+# Monitor:  condor_q -format "%s " ClusterId -format "%s " ProcId \
+#             -format "%s\n" Args | grep omtf
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = $(Dataset) $(ProcId) $(SkipEvents) $(NumEvents)
+
+output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).out
+error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).err
+log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full.log
+
+# Files live on AFS
+should_transfer_files = NO
+
+# Single-threaded (ROOT MT issues)
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "nextweek"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+# ── Queue: All jobs in one statement ─────────────────────────────────────
+queue Dataset, ProcId, SkipEvents, NumEvents from (
+# S1: 500k events -> 10 jobs
+S1 0 0 50000
+S1 1 50000 50000
+S1 2 100000 50000
+S1 3 150000 50000
+S1 4 200000 50000
+S1 5 250000 50000
+S1 6 300000 50000
+S1 7 350000 50000
+S1 8 400000 50000
+S1 9 450000 50000
+# S2: 500k events -> 10 jobs
+S2 0 0 50000
+S2 1 50000 50000
+S2 2 100000 50000
+S2 3 150000 50000
+S2 4 200000 50000
+S2 5 250000 50000
+S2 6 300000 50000
+S2 7 350000 50000
+S2 8 400000 50000
+S2 9 450000 50000
+# S3: 500k events -> 10 jobs
+S3 0 0 50000
+S3 1 50000 50000
+S3 2 100000 50000
+S3 3 150000 50000
+S3 4 200000 50000
+S3 5 250000 50000
+S3 6 300000 50000
+S3 7 350000 50000
+S3 8 400000 50000
+S3 9 450000 50000
+# S4: 150k events -> 3 jobs
+S4 0 0 50000
+S4 1 50000 50000
+S4 2 100000 50000
+# S5: 150k events -> 3 jobs
+S5 0 0 50000
+S5 1 50000 50000
+S5 2 100000 50000
+# B1: 200k events -> 4 jobs
+B1 0 0 50000
+B1 1 50000 50000
+B1 2 100000 50000
+B1 3 150000 50000
+# B2: 200k events -> 4 jobs
+B2 0 0 50000
+B2 1 50000 50000
+B2 2 100000 50000
+B2 3 150000 50000
+# B3: 200k events -> 4 jobs
+B3 0 0 50000
+B3 1 50000 50000
+B3 2 100000 50000
+B3 3 150000 50000
+)
