@@ -1,0 +1,34 @@
+###############################################################################
+# B_resubmit.sub — Resubmit the 4 failed jobs from batch 8680857
+#
+# Failed jobs (exit codes 85/92 = transient EOS/XRootD network failures):
+#   8680857.000  B1_0  (exit 92 - Network unreachable)
+#   8680857.006  B2_2  (exit 92 - Network unreachable)
+#   8680857.008  B3_0  (exit 85 - XRootD connection error)
+#   8680857.011  B3_3  (exit 85 - XRootD connection error)
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = $(Dataset) $(ProcId) $(SkipEvents) $(NumEvents)
+
+output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).out
+error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).err
+log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B_resubmit.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 5000000
+
++JobFlavour     = "nextweek"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue Dataset, ProcId, SkipEvents, NumEvents from (
+B1 0 0 50000
+B2 2 100000 50000
+B3 0 0 50000
+B3 3 150000 50000
+)

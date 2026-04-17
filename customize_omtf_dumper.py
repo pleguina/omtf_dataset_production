@@ -95,21 +95,12 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
     from L1Trigger.L1MuNano.omtfNanoTables_cff import (
         OMTFTrackTable,
         genMuonNanoTable,
-        genParticlePropagator,
         MuonStubTpsTable,
         MuonStubKmtfTable,
         p2OmtfNanoTablesTask,
     )
 
-    # SteppingHelixPropagator ESProducers required by GenParticlePropagator.
-    # PropagateToMuonSetup uses the named Along/Any/Opposite variants, not the
-    # generic SteppingHelixPropagator_cfi (which only provides ComponentName='SteppingHelixPropagator').
-    process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAlong_cfi")
-    process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorAny_cfi")
-    process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorOpposite_cfi")
-
     # Register table producers on the process
-    process.genParticlePropagator = genParticlePropagator
     process.OMTFTrackTable   = OMTFTrackTable
     process.genMuonNanoTable = genMuonNanoTable
     process.MuonStubTpsTable  = MuonStubTpsTable
@@ -118,7 +109,6 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
     # Dedicated Path so the producers are scheduled before the output EndPath.
     # Using a cms.Task inside a cms.Path is the standard NanoAOD pattern.
     process.p2OmtfNanoTablesTask = cms.Task(
-        process.genParticlePropagator,
         process.OMTFTrackTable,
         process.genMuonNanoTable,
         process.MuonStubTpsTable,

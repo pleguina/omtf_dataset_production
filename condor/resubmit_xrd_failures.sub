@@ -1,0 +1,31 @@
+###############################################################################
+# resubmit_xrd_failures.sub — Resubmit 6 jobs that failed with XRootD exit 85
+# from cluster 8747842. Missing outputs: B1_2, B1_54, B2_315, B3_156, B3_367, B3_382
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = $(Dataset) $(ProcId) $(SkipEvents) $(NumEvents)
+
+output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).out
+error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).err
+log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/resubmit_xrd_failures.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "nextweek"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue Dataset, ProcId, SkipEvents, NumEvents from (
+  B1,   2,    1000, 500
+  B1,  54,   27000, 500
+  B2, 315,  157500, 500
+  B3, 156,   78000, 500
+  B3, 367,  183500, 500
+  B3, 382,  191000, 500
+)

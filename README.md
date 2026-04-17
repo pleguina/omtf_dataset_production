@@ -139,6 +139,8 @@ logs/             # HTCondor job logs (git-ignored)
 smoke_results/    # Per-dataset smoke-test ROOT files and logs (git-ignored)
 ```
 
+For the ROOT tree and branch map produced by the dumper, see [scripts/ROOT_BRANCHES.md](scripts/ROOT_BRANCHES.md).
+
 ---
 
 ## Quick start

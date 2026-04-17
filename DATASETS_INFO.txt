@@ -1,0 +1,294 @@
+OMTF HECIN DATASETS SUMMARY
+===========================
+
+This file summarizes the current dataset definitions used for the OMTF HECIN
+production campaign.
+
+Current CMSSW / geometry:
+- CMSSW_14_2_0_pre2
+- Era: Phase2C17I13M9
+- Geometry: Extended2026D110
+- Conditions: 140X_mcRun4_realistic_v4
+
+Current full production layout:
+- 2 ROOT outputs per job:
+  - omtf_hits_<DATASET>_<PROCID>.root
+  - omtf_nano_<DATASET>_<PROCID>.root
+- 500 events per Condor job
+- Current submit totals:
+  - S1: 500000
+  - S2: 500000
+  - S3: 500000
+  - S4: 150000
+  - S5: 150000
+  - B1: 200000
+  - B2: 200000
+  - B3: 200000
+  - B4: 200000
+
+Naming convention:
+- S* = signal-like samples without pileup
+- B* = background/realistic-occupancy samples with PU200
+
+======================================================================
+S1
+----------------------------------------------------------------------
+Name:
+- Single prompt muon
+
+Physics content:
+- One prompt muon per event
+- No pileup
+
+Generator characteristics:
+- Gun: FlatRandomOneOverPtGunProducer
+- Spectrum: flat in 1/pT
+- pT range: 2 to 200 GeV
+- eta range: -1.24 to +1.24
+- phi range: full 2pi
+- Particle IDs: mu+ / mu-
+- Displacement: prompt
+
+Purpose:
+- Baseline single-muon regression sample
+- Charge, curvature and phi0 learning in clean conditions
+- Single-cluster OC convergence
+
+Current production size:
+- 500000 events
+
+======================================================================
+S2
+----------------------------------------------------------------------
+Name:
+- Single displaced muon
+
+Physics content:
+- One displaced muon per event
+- No pileup
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT (PtSpectrum = flatOneOverPt)
+- pT range: 2 to 200 GeV
+- eta range: -1.24 to +1.24
+- phi range: full 2pi
+- Particle IDs: muon with random charge convention through the gun setup
+- Transverse displacement dxy: 0 to 50 cm
+
+Purpose:
+- Train displaced-track behavior
+- Learn d0/dxy-sensitive patterns and displaced phi bending
+- Clean displaced reference sample without PU contamination
+
+Current production size:
+- 500000 events
+
+======================================================================
+S3
+----------------------------------------------------------------------
+Name:
+- Two prompt muons in the same processor window
+
+Physics content:
+- Two prompt muons per event
+- No pileup
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 2 to 100 GeV
+- eta range: 0.82 to 1.24
+- phi range: -pi/3 to +pi/3
+- Particle IDs: mu+ and mu-
+- Displacement: prompt
+
+Purpose:
+- Multi-track repulsive OC loss
+- Resolve close-by prompt dimuons inside one OMTF processor region
+
+Current production size:
+- 500000 events
+
+======================================================================
+S4
+----------------------------------------------------------------------
+Name:
+- Three prompt muons in the same processor window
+
+Physics content:
+- Three prompt muons per event
+- No pileup
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 5 to 80 GeV
+- eta range: 0.82 to 1.24
+- phi range: -pi/6 to +pi/6
+- Particle IDs: three muons in a trimuon configuration
+- Displacement: prompt
+
+Purpose:
+- Stress-test cluster separation with 3 nearby muons
+- Ghost-buster / ambiguity handling sample
+
+Current production size:
+- 150000 events
+
+======================================================================
+S5
+----------------------------------------------------------------------
+Name:
+- Two displaced muons
+
+Physics content:
+- Two displaced muons per event
+- No pileup
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 2 to 200 GeV
+- eta range: -1.24 to +1.24
+- phi range: full 2pi
+- Particle IDs: mu+ and mu-
+- Transverse displacement dxy: 0 to 30 cm
+
+Purpose:
+- Multi-track displaced sample
+- Test whether the model separates multiple displaced tracks simultaneously
+
+Current production size:
+- 150000 events
+
+======================================================================
+B1
+----------------------------------------------------------------------
+Name:
+- Single prompt muon + PU200
+
+Physics content:
+- One prompt muon embedded in realistic pileup
+- Average pileup: 200
+
+Generator characteristics:
+- Gun: FlatRandomOneOverPtGunProducer
+- Spectrum: flat in 1/pT
+- pT range: 2 to 200 GeV
+- eta range: -1.24 to +1.24
+- phi range: full 2pi
+- Particle IDs: mu+ / mu-
+- Displacement: prompt
+- Pileup input: Phase2Spring24GS MinBias
+
+Purpose:
+- Prompt reference under realistic occupancy
+- Noise classification and beta-threshold calibration with true signal present
+
+Current production size:
+- 200000 events
+
+======================================================================
+B2
+----------------------------------------------------------------------
+Name:
+- Single displaced muon + PU200
+
+Physics content:
+- One displaced muon embedded in realistic pileup
+- Average pileup: 200
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 2 to 200 GeV
+- eta range: -1.24 to +1.24
+- phi range: full 2pi
+- Particle IDs: displaced muon with gun random-charge configuration
+- Transverse displacement dxy: 0 to 50 cm
+- Pileup input: Phase2Spring24GS MinBias
+
+Purpose:
+- Hardest single-track sample for displaced reconstruction in realistic occupancy
+- Key displaced benchmark with background contamination
+
+Current production size:
+- 200000 events
+
+======================================================================
+B3
+----------------------------------------------------------------------
+Name:
+- Two prompt muons + PU200
+
+Physics content:
+- Two prompt muons in realistic pileup
+- Average pileup: 200
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 2 to 100 GeV
+- eta range: 0.82 to 1.24
+- phi range: -pi/6 to +pi/6
+- Particle IDs: mu+ and mu-
+- Displacement: prompt
+- Pileup input: Phase2Spring24GS MinBias
+
+Purpose:
+- Repulsive OC training under realistic occupancy
+- Prompt dimuon disambiguation in the presence of heavy background
+
+Current production size:
+- 200000 events
+
+======================================================================
+B4
+----------------------------------------------------------------------
+Name:
+- Noise-only PU200
+
+Physics content:
+- No hard-scatter muon signal
+- Pure pileup occupancy
+- Average pileup: 200
+
+Generator characteristics:
+- Gun: FlatRandomOneOverPtGunProducer used with invisible neutrino gun setup
+- Particle ID: 14 (muon neutrino)
+- eta range: -1.24 to +1.24
+- phi range: full 2pi
+- No detector muon hits from the hard-scatter object
+- Pileup input: Phase2Spring24GS MinBias
+
+Purpose:
+- Zero-track background sample
+- Needed to set beta operating point and noise rejection threshold
+- Pure fake/noise occupancy reference
+
+Current production size:
+- 200000 events
+
+======================================================================
+Not in current full_production.sub
+----------------------------------------------------------------------
+S6:
+- Synthetic training-time sample, not produced in CMSSW
+- Muon events with injected hard-negative stubs at PyG dataset creation stage
+
+D1:
+- LLP exotic stress-test sample
+- Useful for final validation, not part of the standard 9-dataset production
+
+Notes
+----------------------------------------------------------------------
+- All samples are designed for the OMTF overlap acceptance, roughly |eta| in
+  the 0.8 to 1.24 band for the overlap-focused multi-muon samples.
+- The prompt single-muon and displaced single-muon samples use full phi to
+  avoid imposing processor-window bias.
+- The same-window samples restrict phi intentionally to ensure multiple muons
+  occupy the same OMTF processor region.
+- The NanoAOD output contains OMTF candidates, propagated gen muons, and GMT
+  stub tables; the omtf_hits output contains the OMTF-region input stub data
+  needed for ML training and full replacement studies.

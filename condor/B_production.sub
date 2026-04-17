@@ -1,0 +1,39 @@
+###############################################################################
+# B_production.sub — Resubmit B1/B2/B3 background datasets (PU200)
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = $(Dataset) $(ProcId) $(SkipEvents) $(NumEvents)
+
+output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).out
+error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).err
+log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B_production.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 5000000
+
++JobFlavour     = "nextweek"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue Dataset, ProcId, SkipEvents, NumEvents from (
+# B1: 200k events -> 4 jobs
+B1 0 0 50000
+B1 1 50000 50000
+B1 2 100000 50000
+B1 3 150000 50000
+# B2: 200k events -> 4 jobs
+B2 0 0 50000
+B2 1 50000 50000
+B2 2 100000 50000
+B2 3 150000 50000
+# B3: 200k events -> 4 jobs
+B3 0 0 50000
+B3 1 50000 50000
+B3 2 100000 50000
+B3 3 150000 50000
+)

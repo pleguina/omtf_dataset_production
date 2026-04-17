@@ -21,8 +21,12 @@ CONFDIR="${BASEDIR}/configs"
 EOS_BASE="/eos/user/${USER:0:1}/${USER}/omtf_hecin_datasets/prod"
 
 OMTF_OUTPUT="omtf_hits_${DATASET}_${PROCID}.root"
+NANO_OUTPUT="omtf_nano_${DATASET}_${PROCID}.root"
 POOL_OUTFILE="${DATASET}_${PROCID}.root"
 SEED=$((PROCID * 7919 + 13))
+
+# Guaranteed cleanup — runs on any exit (success, failure, or signal)
+trap 'rm -f "${SCRATCH:-/dev/null}"/*.root "${SCRATCH:-/dev/null}"/*.py 2>/dev/null || true' EXIT
 
 echo "=== OMTF HECIN Production: ${DATASET} / ProcId ${PROCID} / ${NEVENTS} events (skip=${SKIPEVENTS}) ==="
 date
@@ -48,6 +52,7 @@ cp "${CONFDIR}/customize_omtf_dumper.py" ./
 export PATCH_NEVENTS="${NEVENTS}"
 export PATCH_POOL_OUTFILE="${POOL_OUTFILE}"
 export PATCH_OMTF_OUTPUT="${OMTF_OUTPUT}"
+export PATCH_NANO_OUTPUT="${NANO_OUTPUT}"
 export PATCH_SEED="${SEED}"
 export PATCH_DATASET="${DATASET}"
 export PATCH_PROCID="${PROCID}"
@@ -58,6 +63,7 @@ import re, os
 nevents = int(os.environ["PATCH_NEVENTS"])
 pool_out = os.environ["PATCH_POOL_OUTFILE"]
 omtf_out = os.environ["PATCH_OMTF_OUTPUT"]
+nano_out = os.environ["PATCH_NANO_OUTPUT"]
 seed = int(os.environ["PATCH_SEED"])
 dataset = os.environ["PATCH_DATASET"]
 procid = os.environ["PATCH_PROCID"]
@@ -85,7 +91,7 @@ cfg = cfg.replace(
 # Override pool output filename
 cfg = cfg.replace(f"file:{dataset}.root", f"file:{pool_out}")
 
-# Append per-job seed + OMTF output override
+# Append per-job seed + OMTF output override + NanoAOD output override
 cfg += f"""
 # === Production per-job overrides ===
 if not hasattr(process, 'RandomNumberGeneratorService'):
@@ -98,28 +104,49 @@ if hasattr(process.RandomNumberGeneratorService, 'VtxSmeared'):
 if hasattr(process.RandomNumberGeneratorService, 'g4SimHits'):
     process.RandomNumberGeneratorService.g4SimHits.initialSeed = cms.untracked.uint32({seed + 2000000})
 process.TFileService.fileName = cms.string('{omtf_out}')
+if hasattr(process, 'NANOOMTFoutput'):
+    process.NANOOMTFoutput.fileName = cms.untracked.string('{nano_out}')
 """
 
 with open("job_cfg.py", "w") as f:
     f.write(cfg)
 
-print(f"Config patched: {dataset}/{procid}, {nevents} events, OMTF -> {omtf_out}")
+print(f"Config patched: {dataset}/{procid}, {nevents} events, OMTF -> {omtf_out}, NanoAOD -> {nano_out}")
 PYEOF
 
-# --- 4. Run cmsRun ---
-echo "Starting cmsRun..."
-date
-cmsRun job_cfg.py
-RC=$?
-echo "cmsRun finished with exit code ${RC}"
-date
+# --- 4. Run cmsRun (with retry for transient XRootD/EOS network failures) ---
+# Exit codes 85 (XRootD connection error) and 92 (network unreachable) are
+# transient EOS issues — retry up to 3 times with a 5-minute cooldown.
+MAX_ATTEMPTS=3
+ATTEMPT=0
+RC=0
+while true; do
+    ATTEMPT=$(( ATTEMPT + 1 ))
+    echo "Starting cmsRun (attempt ${ATTEMPT}/${MAX_ATTEMPTS})..."
+    date
+    # Remove any partial output from a previous attempt before retrying
+    rm -f "${OMTF_OUTPUT}" "${POOL_OUTFILE}"
+    RC=0; cmsRun job_cfg.py || RC=$?
+    echo "cmsRun finished with exit code ${RC}"
+    date
+    if [ ${RC} -eq 0 ]; then
+        break
+    fi
+    if [ ${ATTEMPT} -ge ${MAX_ATTEMPTS} ]; then
+        echo "ERROR: cmsRun failed for ${DATASET}/${PROCID} after ${MAX_ATTEMPTS} attempts (last exit code ${RC})"
+        exit ${RC}
+    fi
+    # Only retry on known transient XRootD/EOS network error codes
+    if [ ${RC} -eq 85 ] || [ ${RC} -eq 92 ]; then
+        echo "WARNING: Transient network error (${RC}), retrying in 5 minutes..."
+        sleep 300
+    else
+        echo "ERROR: cmsRun failed with non-transient exit code ${RC}, not retrying"
+        exit ${RC}
+    fi
+done
 
-if [ ${RC} -ne 0 ]; then
-    echo "ERROR: cmsRun failed for ${DATASET}/${PROCID}"
-    exit ${RC}
-fi
-
-# --- 5. Copy OMTF output to EOS ---
+# --- 5. Copy outputs to EOS ---
 EOS_DIR="${EOS_BASE}/${DATASET}"
 
 if [ ! -f "${OMTF_OUTPUT}" ]; then
@@ -128,16 +155,25 @@ if [ ! -f "${OMTF_OUTPUT}" ]; then
     exit 1
 fi
 
-echo "Copying ${OMTF_OUTPUT} ($(du -sh "${OMTF_OUTPUT}" | cut -f1)) to EOS: ${EOS_DIR}/"
 eos mkdir -p "${EOS_DIR}" 2>/dev/null || true
+
+echo "Copying ${OMTF_OUTPUT} ($(du -sh "${OMTF_OUTPUT}" | cut -f1)) to EOS: ${EOS_DIR}/"
 xrdcp --force "${OMTF_OUTPUT}" "root://eosuser.cern.ch/${EOS_DIR}/${OMTF_OUTPUT}"
 echo "Upload complete: ${EOS_DIR}/${OMTF_OUTPUT}"
+
+# Copy NanoAOD output if produced
+if [ -f "${NANO_OUTPUT}" ]; then
+    echo "Copying ${NANO_OUTPUT} ($(du -sh "${NANO_OUTPUT}" | cut -f1)) to EOS: ${EOS_DIR}/"
+    xrdcp --force "${NANO_OUTPUT}" "root://eosuser.cern.ch/${EOS_DIR}/${NANO_OUTPUT}"
+    echo "Upload complete: ${EOS_DIR}/${NANO_OUTPUT}"
+else
+    echo "WARNING: NanoAOD output ${NANO_OUTPUT} not found — skipping (check if L1Trigger/L1MuNano is compiled)"
+fi
 
 # Optional RAWSIM copy disabled by default (very large)
 # if [ -f "${POOL_OUTFILE}" ]; then
 #     xrdcp --force "${POOL_OUTFILE}" "root://eosuser.cern.ch/${EOS_DIR}/${POOL_OUTFILE}"
 # fi
 
-rm -f "${SCRATCH}"/*.root "${SCRATCH}"/*.py 2>/dev/null || true
 echo "=== Production job ${DATASET}/${PROCID} complete ==="
 date
