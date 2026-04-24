@@ -30,9 +30,7 @@ $$
 \phi_{\text{global, rad}} = \bigl(\phi_{\text{hw}} + \text{phiZero}(\text{proc})\bigr) \cdot \frac{2\pi}{5400}
 $$
 
-- A naive `phiHw × 2π/5400` (ignoring phiZero) is **wrong for cross-collection comparison**.
-
-> **⚠ Cross-collection comparison caveat**: OMTF `phiHw` branches (`reg_stub_phiHw`, `hits_phiHw`, `omtfPhi`) are in the processor's local frame; KMTF/TPS `coord1`/`offlineCoord1` are in **global** CMS phi (code-verified: `DataFormats/L1TMuonPhase2/interface/MuonStub.h` private member comment: `coord1_ // global position angle in units of 30 degrees/2048`). Direct comparison without adding `phiZero(proc)` introduces a systematic shift of 0.26 rad (proc 0), 2.36 rad (proc 1), or 4.45 rad (proc 2). For a single OMTF processor (proc 0), this gives the 0.07–0.26 rad mismatch range seen with low-pT muons near the window edges. Correct matching procedure: compute `phi_global = (phiHw + phiZero(proc)) × 2π/5400`, then compare with `offlineCoord1` [rad] or with `coord1 × π/(6×2048)` after wrapping to $[-\pi, +\pi]$.
+- A naive `phiHw × 2π/5400` (ignoring phiZero) gives a wrong global phi.
 
 ### B) GMT phi scale (regional muon candidate hwPhi)
 
@@ -44,7 +42,7 @@ $$
 \phi_{\text{rad}} = \phi_{\text{hw,gmt}} \cdot \frac{2\pi}{576}
 $$
 
-- Local vs global note: `hwPhi` is regional (processor-local). Use processor index to build global phi code, then convert to rad.
+- Local vs global note: `hwPhi` is processor-local. Global phi = `(hwPhi + proc × 96) mod 576` bins.
 
 ### C) OMTF eta hw scale
 
@@ -66,31 +64,41 @@ $$
 $$
 
 - In your Phase-2 config, `dtPhiBUnitsRad = 1024`, so the effective scale is about $1024$ units/rad.
-- Therefore `phiBHw` is not directly comparable to `phiHw` without model-dependent conversion.
+- Therefore `phiBHw` is a bending proxy, not an absolute position angle.
 
 ### E) GMT hybrid stubs (KMTF/TPS) scale
 
-- **TPS vs KMTF scale relation (important): in this Nano setup, they use the same coordinate definitions and numeric scales.**
-- Reason: both tables are produced with the same `_stubVars` schema in `omtfNanoTables_cff.py`; only input collection differs (`l1tStubsGmt:tps` vs `l1tStubsGmt:kmtf`).
-- CMSSW proof:
-	- `L1Trigger/L1MuNano/python/omtfNanoTables_cff.py`: both `MuonStubTpsTable` and `MuonStubKmtfTable` set `variables = _stubVars` and differ only by `src` (`tps` vs `kmtf`).
-	- `L1Trigger/L1MuNano/plugins/L1MuNanoPlugins.cc`: both are read through the same plugin type `SimpleMuonStubFlatTableProducer = SimpleFlatTableProducer<l1t::MuonStub>`.
-- What differs in practice is mostly detector/region content (TPS endcap-oriented vs KMTF barrel-oriented), occupancy, and the physical meaning prevalence of some fields (e.g. bending-related terms are mainly barrel-relevant), not the LSB definitions.
+Both Nano tables share identical branch names (`_stubVars` schema, `omtfNanoTables_cff.py`) and the same `l1t::MuonStub` C++ type, but the **integer quantization differs** because the two stub producers (`L1TPhase2GMTBarrelStubProcessor` vs `L1TPhase2GMTEndcapStubProcessor`) use different LSBs. Source: `L1Trigger/Phase2L1GMT/python/gmtStubs_cfi.py` and both `.cc` files.
 
-- `MuonStub{Kmtf,Tps}_coord1`: phi in units of $30^\circ/2048 = (\pi/6)/2048$ rad per count.
-- `MuonStub{Kmtf,Tps}_coord2`: bending angle integer (barrel-relevant); not same quantity as absolute phi.
-- `MuonStub{Kmtf,Tps}_eta1/eta2`: eta LSB $= 3.0/512$.
-- `offlineCoord1/2`, `offlineEta1/2` are already physical units (rad or eta).
+**`coord1` integer scales (code-verified):**
+
+| Collection | Producer file | `coord1` formula | LSB [rad/count] | Dynamic range |
+|---|---|---|---|---|
+| KMTF (barrel) | `L1TPhase2GMTBarrelStubProcessor.cc` | `ap_int<18>` from sector+phiBend, `globalPhi = phi × π/2¹⁷` | `phiLSB = 2.3968450e-05` (≈ π/131072) | ±131071 (18-bit signed) |
+| TPS (endcap) | `L1TPhase2GMTEndcapStubProcessor.cc` | `int(gp.phi() / coord1LSB_)` | `coord1LSB = 0.00076660156 × 8 ≈ 6.133e-3` | ±512 for [−π, +π] |
+
+Ratio KMTF/TPS LSB: ~256. **The integer `coord1` values are not interchangeable.**
+
+**`coord2` integer scales:**
+- KMTF: `coord2 = phiS.phiBend()` — raw DT phiBend hardware integer; `offline_coord2 = phiBend × 0.49e-3 rad`.
+- TPS: `coord2 = int(rpc_phi / coord1LSB_)` (same 6.133e-3 LSB as `coord1`) for RPC-matched stubs; 0 for CSC-only stubs.
+
+**`eta1`/`eta2` integer scales — same for both:**
+- Both producers: `etaLSB = 7.68334e-04 × 32 ≈ 0.02459` (from cfi `eta1LSB = cms.double(7.68334e-04*32)` for both Barrel and Endcap PSet).
+- Note: the `DataFormats/L1TMuonPhase2/interface/MuonStub.h` comment says `3.0/512` — that is a stale comment; the actual Phase2L1GMT implementation uses `0.02459`.
+
+**`offlineCoord1/2`, `offlineEta1/2`:**
+- `offlineCoord1` = global phi in radians (KMTF: `phi × π/131072`; TPS: `gp.phi().value()` directly).
+- `offlineEta1/2` = physical eta (integer × 0.02459).
 
 ### Quick same-scale checklist
 
-- Same eta scale: `reg_stub_etaHw`, `omtfHwEta`, Nano `omtf_hwEta`.
-- Same OMTF phi scale (processor-local): `reg_stub_phiHw`, `hits_phiHw`, `omtfRefHitPhi`, `omtfPhi` (all in processor's local frame; add phiZero(proc) to get global OMTF bins).
+- Same eta scale: `reg_stub_etaHw`, `omtfHwEta`, Nano `omtf_hwEta` (LSB 0.010875).
+- Same OMTF phi scale (processor-local): `reg_stub_phiHw`, `hits_phiHw`, `omtfRefHitPhi`, `omtfPhi` (5400 bins/2π, local frame; add phiZero(proc) to get global bins).
 - Same DT bending scale: `reg_stub_phiBHw`, `hits_phiBHw`.
-- Same TPS/KMTF stub scales: `MuonStubKmtf_*` and `MuonStubTps_*` share the same LSB/unit conventions branch-by-branch.
-- Different scales by construction:
-	- OMTF phi (`*_phiHw` in 5400 bins) vs Nano `omtf_hwPhi` (576-bin GMT regional scale).
-	- Any absolute phi (`phiHw`, `coord1`) vs bending proxy (`phiBHw`, `coord2`).
+- Same eta integer scale: `MuonStubKmtf_eta1/eta2` and `MuonStubTps_eta1/eta2` (LSB ≈ 0.02459).
+- Different `coord1` integer scales: `MuonStubKmtf_coord1` (LSB 2.40e-5 rad) vs `MuonStubTps_coord1` (LSB 6.13e-3 rad).
+- `MuonStub{Kmtf,Tps}_offlineCoord1`: both in radians.
 
 ---
 
@@ -245,10 +253,10 @@ These are the OMTF candidates **after ghost busting**, as sent to the GMT.
 | `MuonStubKmtf_isBarrel` | `Bool_t` | True if DT/RPC barrel |
 | `MuonStubKmtf_isEndcap` | `Bool_t` | True if CSC/RPC endcap |
 | `MuonStubKmtf_bxNum` | `Short_t` | BX offset |
-| `MuonStubKmtf_coord1` | `Short_t` | Primary coordinate `coord1`: global phi in units of 30°/2048 |
-| `MuonStubKmtf_coord2` | `Short_t` | Secondary coordinate `coord2`: bending-angle integer (barrel-relevant), not absolute phi |
-| `MuonStubKmtf_eta1` | `Short_t` | First eta measurement HW (LSB = 3.0/512) |
-| `MuonStubKmtf_eta2` | `Short_t` | Second eta measurement HW (LSB = 3.0/512) |
+| `MuonStubKmtf_coord1` | `Short_t` | Global phi integer, **KMTF barrel scale**: LSB = `phiLSB = 2.3968450e-05 rad` (≈ π/131072); `phi_rad = coord1 × 2.3968450e-05`. NOT same scale as TPS `coord1` |
+| `MuonStubKmtf_coord2` | `Short_t` | DT phiBend integer (raw hardware units); `offline_coord2 = coord2 × 0.49e-3 rad`; not an absolute phi |
+| `MuonStubKmtf_eta1` | `Short_t` | First eta measurement HW; LSB ≈ 0.02459 (= 7.68334e-04 × 32); NOT 3.0/512 (stale header comment) |
+| `MuonStubKmtf_eta2` | `Short_t` | Second eta measurement HW; same LSB as `eta1` ≈ 0.02459 |
 | `MuonStubKmtf_etaQuality` | `Short_t` | Eta quality |
 | `MuonStubKmtf_etaRegion` | `Short_t` | Eta region index |
 | `MuonStubKmtf_phiRegion` | `Short_t` | Phi region index |
@@ -259,15 +267,25 @@ These are the OMTF candidates **after ghost busting**, as sent to the GMT.
 | `MuonStubKmtf_id` | `Short_t` | Stub ID |
 | `MuonStubKmtf_addr` | `Int_t` | Address |
 | `MuonStubKmtf_kmtf_addr` | `Int_t` | KMTF-specific address |
-| `MuonStubKmtf_offlineCoord1` | `Float_t` | Offline-calibrated version of `coord1`, i.e. the same trigger-primitive coordinate expressed with geometry corrections applied |
-| `MuonStubKmtf_offlineCoord2` | `Float_t` | Offline-calibrated version of `coord2` (the companion coordinate or bending term, depending on detector technology) |
-| `MuonStubKmtf_offlineEta1` | `Float_t` | Offline-calibrated version of the first eta measurement |
-| `MuonStubKmtf_offlineEta2` | `Float_t` | Offline-calibrated version of the second eta measurement |
+| `MuonStubKmtf_offlineCoord1` | `Float_t` | Global phi [rad]: `coord1 × π/131072` — directly comparable to `MuonStubTps_offlineCoord1` |
+| `MuonStubKmtf_offlineCoord2` | `Float_t` | DT phiBend in rad (`coord2 × 0.49e-3`) |
+| `MuonStubKmtf_offlineEta1` | `Float_t` | Physical η (`eta1 × 0.02459`) |
+| `MuonStubKmtf_offlineEta2` | `Float_t` | Physical η (`eta2 × 0.02459`) |
 
 ### Muon stubs — TPS format (`nMuonStubTps` entries per event)
 
-Same schema as KMTF above with `MuonStubTps_` prefix.  TPS stubs are the
-raw trigger primitive segments before KMTF processing.
+Same branch names as KMTF (`MuonStubTps_` prefix) but **`coord1`/`coord2` are on a different integer scale** (see Section E). Key differences:
+
+| Branch | Scale / notes |
+|---|---|
+| `MuonStubTps_coord1` | Global phi, **TPS endcap scale**: LSB = `coord1LSB = 6.133e-3 rad` (= 0.00076660156 × 8); `phi_rad = coord1 × 6.133e-3`. NOT same as KMTF |
+| `MuonStubTps_coord2` | Second phi coordinate (RPC-matched or RPC-only stubs, same 6.133e-3 LSB); 0 for CSC-only stubs |
+| `MuonStubTps_eta1/eta2` | Same LSB ≈ 0.02459 as KMTF — directly comparable |
+| `MuonStubTps_offlineCoord1` | Global phi [rad] — directly comparable to `MuonStubKmtf_offlineCoord1` |
+| `MuonStubTps_offlineCoord2` | Second phi [rad] |
+| `MuonStubTps_offlineEta1/2` | Physical η — directly comparable to KMTF |
+
+TPS stubs are endcap-oriented (CSC + endcap RPC), produced by the TPS (Track-based Pair Selector) algorithm before matching with tracks.
 
 ---
 
