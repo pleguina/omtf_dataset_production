@@ -8,6 +8,92 @@ The notes below stay brief for obvious bookkeeping fields and add extra physics 
 
 ---
 
+## Coordinate systems and scale compatibility (verified in CMSSW)
+
+This section is code-checked against CMSSW sources, not inferred from names.
+
+### A) OMTF internal phi scale (stubs / pattern matching)
+
+- Used by: `reg_stub_phiHw`, `hits_phiHw`, `omtfRefHitPhi`, and OMTF internal candidate phi code (`omtfPhi` in `OMTFHitsTree`).
+- Full range: 5400 bins over $2\pi$ (from OMTF config XML `nPhiBins=5400`).
+- **Frame: PROCESSOR-LOCAL (not global CMS phi)**  
+  Code proof: `OMTFinputMaker.cc` calls `angleConverter.getProcessorPhi(getProcessorPhiZero(config, iProcessor), ...)`,
+  which subtracts the processor's `phiZero` from the global chamber offset before storing. `DataROOTDumper2AllInput.cc` line 122 writes the result directly to the tree without re-adding `phiZero`.  
+  `getProcessorPhiZero(proc) = nPhiBins/nProcessors × proc + nPhiBins/24 = 1800 × proc + 225`  
+  Processor zero-phi offsets (5400-bin scale, nProcessors=3):  
+  - proc 0: phiZero = 225 bins ≈ +0.262 rad (≈ +15°)  
+  - proc 1: phiZero = 2025 bins ≈ +2.356 rad (≈ +135°)  
+  - proc 2: phiZero = 3825 bins ≈ +4.451 rad (≈ +255°)
+- To get **global** phi in radians from `phiHw`:
+
+$$
+\phi_{\text{global, rad}} = \bigl(\phi_{\text{hw}} + \text{phiZero}(\text{proc})\bigr) \cdot \frac{2\pi}{5400}
+$$
+
+- A naive `phiHw × 2π/5400` (ignoring phiZero) is **wrong for cross-collection comparison**.
+
+> **⚠ Cross-collection comparison caveat**: OMTF `phiHw` branches (`reg_stub_phiHw`, `hits_phiHw`, `omtfPhi`) are in the processor's local frame; KMTF/TPS `coord1`/`offlineCoord1` are in **global** CMS phi (code-verified: `DataFormats/L1TMuonPhase2/interface/MuonStub.h` private member comment: `coord1_ // global position angle in units of 30 degrees/2048`). Direct comparison without adding `phiZero(proc)` introduces a systematic shift of 0.26 rad (proc 0), 2.36 rad (proc 1), or 4.45 rad (proc 2). For a single OMTF processor (proc 0), this gives the 0.07–0.26 rad mismatch range seen with low-pT muons near the window edges. Correct matching procedure: compute `phi_global = (phiHw + phiZero(proc)) × 2π/5400`, then compare with `offlineCoord1` [rad] or with `coord1 × π/(6×2048)` after wrapping to $[-\pi, +\pi]$.
+
+### B) GMT phi scale (regional muon candidate hwPhi)
+
+- Used by: Nano `omtf_hwPhi` (`RegionalMuonCand::hwPhi()` scale).
+- Full range: 576 bins over $2\pi$ (`phiGmtUnit = 2\pi/576`).
+- Convert to radians:
+
+$$
+\phi_{\text{rad}} = \phi_{\text{hw,gmt}} \cdot \frac{2\pi}{576}
+$$
+
+- Local vs global note: `hwPhi` is regional (processor-local). Use processor index to build global phi code, then convert to rad.
+
+### C) OMTF eta hw scale
+
+- Used by: `reg_stub_etaHw`, `hits` packed eta byte, `omtfHwEta`, Nano `omtf_hwEta`.
+- LSB is identical across those OMTF quantities:
+
+$$
+\eta \approx \eta_{\text{hw}} \cdot 0.010875
+$$
+
+### D) DT bending (`phiB`) scale
+
+- Used by: `reg_stub_phiBHw`, `hits_phiBHw`.
+- Not an absolute phi; this is a local bending-angle proxy.
+- In Phase-2 input conversion:
+
+$$
+\phi B_{\text{hw}} = \phi B_{\text{digi}} \cdot \frac{\texttt{dtPhiBUnitsRad}}{2048}
+$$
+
+- In your Phase-2 config, `dtPhiBUnitsRad = 1024`, so the effective scale is about $1024$ units/rad.
+- Therefore `phiBHw` is not directly comparable to `phiHw` without model-dependent conversion.
+
+### E) GMT hybrid stubs (KMTF/TPS) scale
+
+- **TPS vs KMTF scale relation (important): in this Nano setup, they use the same coordinate definitions and numeric scales.**
+- Reason: both tables are produced with the same `_stubVars` schema in `omtfNanoTables_cff.py`; only input collection differs (`l1tStubsGmt:tps` vs `l1tStubsGmt:kmtf`).
+- CMSSW proof:
+	- `L1Trigger/L1MuNano/python/omtfNanoTables_cff.py`: both `MuonStubTpsTable` and `MuonStubKmtfTable` set `variables = _stubVars` and differ only by `src` (`tps` vs `kmtf`).
+	- `L1Trigger/L1MuNano/plugins/L1MuNanoPlugins.cc`: both are read through the same plugin type `SimpleMuonStubFlatTableProducer = SimpleFlatTableProducer<l1t::MuonStub>`.
+- What differs in practice is mostly detector/region content (TPS endcap-oriented vs KMTF barrel-oriented), occupancy, and the physical meaning prevalence of some fields (e.g. bending-related terms are mainly barrel-relevant), not the LSB definitions.
+
+- `MuonStub{Kmtf,Tps}_coord1`: phi in units of $30^\circ/2048 = (\pi/6)/2048$ rad per count.
+- `MuonStub{Kmtf,Tps}_coord2`: bending angle integer (barrel-relevant); not same quantity as absolute phi.
+- `MuonStub{Kmtf,Tps}_eta1/eta2`: eta LSB $= 3.0/512$.
+- `offlineCoord1/2`, `offlineEta1/2` are already physical units (rad or eta).
+
+### Quick same-scale checklist
+
+- Same eta scale: `reg_stub_etaHw`, `omtfHwEta`, Nano `omtf_hwEta`.
+- Same OMTF phi scale (processor-local): `reg_stub_phiHw`, `hits_phiHw`, `omtfRefHitPhi`, `omtfPhi` (all in processor's local frame; add phiZero(proc) to get global OMTF bins).
+- Same DT bending scale: `reg_stub_phiBHw`, `hits_phiBHw`.
+- Same TPS/KMTF stub scales: `MuonStubKmtf_*` and `MuonStubTps_*` share the same LSB/unit conventions branch-by-branch.
+- Different scales by construction:
+	- OMTF phi (`*_phiHw` in 5400 bins) vs Nano `omtf_hwPhi` (576-bin GMT regional scale).
+	- Any absolute phi (`phiHw`, `coord1`) vs bending proxy (`phiBHw`, `coord2`).
+
+---
+
 ## omtf_hits_<SAMPLE>_<N>.root
 
 Contains two trees inside directory `simOmtfPhase2Digis/`.
@@ -24,8 +110,8 @@ Contains two trees inside directory `simOmtfPhase2Digis/`.
 | `reg_iProcessor` | `UChar_t` | OMTF processor index 0–11 (120° sector) |
 | `reg_mtfType` | `Char_t` | Processor type (OMTF=1, BMTF=2, EMTF=3) |
 | `reg_stub_layer` | `vector<signed char>` | Logic layer index 0–17 per stub |
-| `reg_stub_phiHw` | `vector<short>` | Absolute trigger phi of the stub in OMTF hardware bins (5400 bins / 2π) |
-| `reg_stub_phiBHw` | `vector<short>` | DT bending-angle proxy in hardware units; this is the local curvature input used by the trigger, and it is 0 for CSC/RPC stubs |
+| `reg_stub_phiHw` | `vector<short>` | Trigger phi of the stub in OMTF hardware bins (5400 bins / 2π), **in the processor's local frame** (phiZero subtracted; see Section A). Same local scale as `hits_phiHw`/`omtfRefHitPhi`. To get global phi add `phiZero(proc) = 1800×proc+225` before converting to radians. Not the same as Nano `omtf_hwPhi` (576-bin global GMT scale) |
+| `reg_stub_phiBHw` | `vector<short>` | DT bending-angle proxy in hardware units; local curvature input (not an absolute phi), 0 for CSC/RPC stubs |
 | `reg_stub_etaHw` | `vector<signed char>` | Coarse trigger eta code for the stub; physical eta = etaHw × 0.010875 |
 | `reg_stub_r` | `vector<short>` | Radial distance in cm |
 | `reg_stub_quality` | `vector<signed char>` | Stub quality word from the muon trigger primitive, on the 0–15 hardware scale |
@@ -66,10 +152,10 @@ All `reg_stub_*` vectors have the same length for a given entry (one element per
 |--------|-----------|-------------|
 | `omtfPt` | `Float_t` | OMTF assigned pT [GeV] (after LUT pT assignment) |
 | `omtfUPt` | `Float_t` | OMTF pT estimate before the final curvature / quality constraint is applied [GeV] |
-| `omtfEta` | `Float_t` | OMTF candidate η |
-| `omtfPhi` | `Float_t` | OMTF candidate φ |
+| `omtfEta` | `Float_t` | OMTF candidate η converted from hw (`hwEta × 0.010875`) |
+| `omtfPhi` | `Float_t` | OMTF candidate phi code in OMTF bins (stored as float for ROOT I/O), **processor-local frame** (`getPhi()` returns the uncorrected local code; same frame as `reg_stub_phiHw`). To get global phi in radians: `(omtfPhi + phiZero(omtfProcessor)) × 2π/5400`. Not radians, not global |
 | `omtfCharge` | `Char_t` | OMTF charge (±1) |
-| `omtfHwEta` | `Short_t` | OMTF candidate η after trigger quantization to hardware units |
+| `omtfHwEta` | `Short_t` | OMTF candidate η hardware code (LSB 0.010875; same eta scale as `reg_stub_etaHw`) |
 | `omtfProcessor` | `Char_t` | OMTF processor index |
 | `omtfScore` | `Short_t` | Pattern matcher score (higher = better match) |
 | `omtfQuality` | `Char_t` | OMTF quality word |
@@ -84,7 +170,7 @@ All `reg_stub_*` vectors have the same length for a given entry (one element per
 | Branch | ROOT type | Description |
 |--------|-----------|-------------|
 | `hits` | `vector<unsigned long>` | Packed uint64: bits 0–7=layer, 8–15=quality, 16–23=etaHw, 24–31=valid, 32–47=deltaR, 48–63=phiDist |
-| `hits_phiHw` | `vector<short>` | Absolute phi HW (same stub, unpacked convenience branch) |
+| `hits_phiHw` | `vector<short>` | Stub phi HW in OMTF 5400-bin scale, **processor-local frame** (same local scale as `reg_stub_phiHw`; add `phiZero(omtfProcessor)` to globalize) |
 | `hits_phiBHw` | `vector<short>` | DT bending angle HW (0 for non-DT) |
 | `hits_r` | `vector<short>` | Radial distance cm |
 | `hits_type` | `vector<signed char>` | MuonStub::Type |
@@ -109,7 +195,7 @@ Standard CMS NanoAOD format; main tree: `Events` (one entry per event).
 |--------|-----------|-------------|
 | `run` | `UInt_t` | Run number |
 | `luminosityBlock` | `UInt_t` | Lumi block |
-| `event` | `ULong64_t` | Event number (matches OMTFAllInputTree `reg_eventNum`) |
+| `event` | `ULong64_t` | Event number (matches OMTFAllInputTree `reg_eventNum` after uint32 cast/modulo) |
 | `bunchCrossing` | `UInt_t` | BX number |
 | `orbitNumber` | `UInt_t` | Orbit number |
 
@@ -143,8 +229,8 @@ These are the OMTF candidates **after ghost busting**, as sent to the GMT.
 | `nomtf` | `Int_t` | Number of OMTF candidates |
 | `omtf_hwPt` | `Short_t` | Final GMT-facing pT code in hardware units |
 | `omtf_hwPtUnc` | `Short_t` | Unconstrained pT code before the final trigger constraint is imposed |
-| `omtf_hwEta` | `Short_t` | Quantized OMTF η code used by the trigger |
-| `omtf_hwPhi` | `Short_t` | Quantized OMTF φ code used by the trigger |
+| `omtf_hwEta` | `Short_t` | Quantized OMTF η code used by the trigger (LSB 0.010875) |
+| `omtf_hwPhi` | `Short_t` | Quantized OMTF regional phi code in GMT scale (576 bins / 2π); use processor index to globalize |
 | `omtf_hwQual` | `Short_t` | Quality word |
 | `omtf_hwDXY` | `Short_t` | Hardware displacement class, i.e. the trigger's coarse encoding of transverse impact parameter / $d_{xy}$ |
 | `omtf_Q` | `Short_t` | Charge |
@@ -159,10 +245,10 @@ These are the OMTF candidates **after ghost busting**, as sent to the GMT.
 | `MuonStubKmtf_isBarrel` | `Bool_t` | True if DT/RPC barrel |
 | `MuonStubKmtf_isEndcap` | `Bool_t` | True if CSC/RPC endcap |
 | `MuonStubKmtf_bxNum` | `Short_t` | BX offset |
-| `MuonStubKmtf_coord1` | `Short_t` | Primary coordinate (phi HW) |
-| `MuonStubKmtf_coord2` | `Short_t` | Secondary coordinate (phiB HW for DT) |
-| `MuonStubKmtf_eta1` | `Short_t` | First eta measurement HW |
-| `MuonStubKmtf_eta2` | `Short_t` | Second eta measurement HW |
+| `MuonStubKmtf_coord1` | `Short_t` | Primary coordinate `coord1`: global phi in units of 30°/2048 |
+| `MuonStubKmtf_coord2` | `Short_t` | Secondary coordinate `coord2`: bending-angle integer (barrel-relevant), not absolute phi |
+| `MuonStubKmtf_eta1` | `Short_t` | First eta measurement HW (LSB = 3.0/512) |
+| `MuonStubKmtf_eta2` | `Short_t` | Second eta measurement HW (LSB = 3.0/512) |
 | `MuonStubKmtf_etaQuality` | `Short_t` | Eta quality |
 | `MuonStubKmtf_etaRegion` | `Short_t` | Eta region index |
 | `MuonStubKmtf_phiRegion` | `Short_t` | Phi region index |
