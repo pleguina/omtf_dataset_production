@@ -72,10 +72,10 @@ Both Nano tables share identical branch names (`_stubVars` schema, `omtfNanoTabl
 
 **`coord1` integer scales (code-verified):**
 
-| Collection | Producer file | `coord1` formula | LSB [rad/count] | Dynamic range |
-|---|---|---|---|---|
-| KMTF (barrel) | `L1TPhase2GMTBarrelStubProcessor.cc` | `ap_int<18>` from sector+phiBend, `globalPhi = phi × π/2¹⁷` | `phiLSB = 2.3968450e-05` (≈ π/131072) | ±131071 (18-bit signed) |
-| TPS (endcap) | `L1TPhase2GMTEndcapStubProcessor.cc` | `int(gp.phi() / coord1LSB_)` | `coord1LSB = 0.00076660156 × 8 ≈ 6.133e-3` | ±512 for [−π, +π] |
+| Collection | Producer file | `coord1` formula | Internal precision | LSB [rad/count] | NanoAOD storage | Note |
+|---|---|---|---|---|---|---|
+| KMTF (barrel) | `L1TPhase2GMTBarrelStubProcessor.cc` | `ap_int<18>` from sector+phiBend, `globalPhi = phi × π/2¹⁷` | 18-bit signed (±131071) | `phiLSB = 2.3968450e-05` (≈ π/131072) | `int16` (Short_t) | **Truncation: values for sector ≥1 exceed ±32767 — high 2 bits lost. `coord1` integer is NOT reliably decodable to global phi without `phiRegion`. Use `offlineCoord1` (float) for phi.** |
+| TPS (endcap) | `L1TPhase2GMTEndcapStubProcessor.cc` | `int(gp.phi() / coord1LSB_)` | full `int` | `coord1LSB = 0.00076660156 × 8 ≈ 6.133e-3` | `int16` (Short_t) | Range ±512 for [−π, +π]; fits Short_t cleanly |
 
 Ratio KMTF/TPS LSB: ~256. **The integer `coord1` values are not interchangeable.**
 
@@ -97,7 +97,7 @@ Ratio KMTF/TPS LSB: ~256. **The integer `coord1` values are not interchangeable.
 - Same OMTF phi scale (processor-local): `reg_stub_phiHw`, `hits_phiHw`, `omtfRefHitPhi`, `omtfPhi` (5400 bins/2π, local frame; add phiZero(proc) to get global bins).
 - Same DT bending scale: `reg_stub_phiBHw`, `hits_phiBHw`.
 - Same eta integer scale: `MuonStubKmtf_eta1/eta2` and `MuonStubTps_eta1/eta2` (LSB ≈ 0.02459).
-- Different `coord1` integer scales: `MuonStubKmtf_coord1` (LSB 2.40e-5 rad) vs `MuonStubTps_coord1` (LSB 6.13e-3 rad).
+- Different `coord1` integer scales: `MuonStubKmtf_coord1` (18-bit LSB 2.40e-5 rad, stored int16 with truncation for sector≥2) vs `MuonStubTps_coord1` (LSB 6.13e-3 rad, fits int16 cleanly).
 - `MuonStub{Kmtf,Tps}_offlineCoord1`: both in radians.
 
 ---
@@ -115,7 +115,7 @@ Contains two trees inside directory `simOmtfPhase2Digis/`.
 | Branch | ROOT type | Description |
 |--------|-----------|-------------|
 | `reg_eventNum` | `UInt_t` | Event number (matches NanoAOD `event` field) |
-| `reg_iProcessor` | `UChar_t` | OMTF processor index 0–11 (120° sector) |
+| `reg_iProcessor` | `UChar_t` | OMTF processor index **0–2** (three 120° sectors per eta side; `omtf_pos` and `omtf_neg` each loop 0–2 independently — `OmtfEmulation.cc` lines 295, 312). This value is passed directly to `getProcessorPhiZero()` |
 | `reg_mtfType` | `Char_t` | Processor type (OMTF=1, BMTF=2, EMTF=3) |
 | `reg_stub_layer` | `vector<signed char>` | Logic layer index 0–17 per stub |
 | `reg_stub_phiHw` | `vector<short>` | Trigger phi of the stub in OMTF hardware bins (5400 bins / 2π), **in the processor's local frame** (phiZero subtracted; see Section A). Same local scale as `hits_phiHw`/`omtfRefHitPhi`. To get global phi add `phiZero(proc) = 1800×proc+225` before converting to radians. Not the same as Nano `omtf_hwPhi` (576-bin global GMT scale) |
@@ -253,7 +253,7 @@ These are the OMTF candidates **after ghost busting**, as sent to the GMT.
 | `MuonStubKmtf_isBarrel` | `Bool_t` | True if DT/RPC barrel |
 | `MuonStubKmtf_isEndcap` | `Bool_t` | True if CSC/RPC endcap |
 | `MuonStubKmtf_bxNum` | `Short_t` | BX offset |
-| `MuonStubKmtf_coord1` | `Short_t` | Global phi integer, **KMTF barrel scale**: LSB = `phiLSB = 2.3968450e-05 rad` (≈ π/131072); `phi_rad = coord1 × 2.3968450e-05`. NOT same scale as TPS `coord1` |
+| `MuonStubKmtf_coord1` | `Short_t` | Global phi integer, **KMTF barrel scale**: LSB = `phiLSB = 2.3968450e-05 rad` (≈ π/131072), 18-bit internal precision. **Warning: stored as int16 in NanoAOD — the upper 2 bits are lost for all sectors ≥1 (sector=1: max normalization0=21845 fits; sector=2: normalization0=43690 overflows int16). The int16 value alone cannot be converted back to global phi. Use `offlineCoord1` (float branch) for phi.** |
 | `MuonStubKmtf_coord2` | `Short_t` | DT phiBend integer (raw hardware units); `offline_coord2 = coord2 × 0.49e-3 rad`; not an absolute phi |
 | `MuonStubKmtf_eta1` | `Short_t` | First eta measurement HW; LSB ≈ 0.02459 (= 7.68334e-04 × 32); NOT 3.0/512 (stale header comment) |
 | `MuonStubKmtf_eta2` | `Short_t` | Second eta measurement HW; same LSB as `eta1` ≈ 0.02459 |
@@ -267,7 +267,7 @@ These are the OMTF candidates **after ghost busting**, as sent to the GMT.
 | `MuonStubKmtf_id` | `Short_t` | Stub ID |
 | `MuonStubKmtf_addr` | `Int_t` | Address |
 | `MuonStubKmtf_kmtf_addr` | `Int_t` | KMTF-specific address |
-| `MuonStubKmtf_offlineCoord1` | `Float_t` | Global phi [rad]: `coord1 × π/131072` — directly comparable to `MuonStubTps_offlineCoord1` |
+| `MuonStubKmtf_offlineCoord1` | `Float_t` | Global phi [rad]: computed from full 18-bit `phi` as `phi × π/131072` before int16 truncation; this is the reliable phi quantity for KMTF barrel stubs |
 | `MuonStubKmtf_offlineCoord2` | `Float_t` | DT phiBend in rad (`coord2 × 0.49e-3`) |
 | `MuonStubKmtf_offlineEta1` | `Float_t` | Physical η (`eta1 × 0.02459`) |
 | `MuonStubKmtf_offlineEta2` | `Float_t` | Physical η (`eta2 × 0.02459`) |
