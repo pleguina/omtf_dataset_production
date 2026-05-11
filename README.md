@@ -131,12 +131,16 @@ configs/          # Full cmsRun configs generated from fragments + cmsDriver
 condor/           # HTCondor submission
   run_job.sh      #   worker script (patches config, runs cmsRun, uploads to EOS)
   full_production.sub  #   submit file for all 48 production jobs
+  G1.sub ... G10_neg.sub    #   per-dataset submit files for G-campaign
+  GMT_overlap_production.sub  #  grouped submit for all 4000 G-campaign jobs
   status.sh       #   quick job monitoring helper
-scripts/          # Helper scripts (CMSSW setup, config generation, validation)
+scripts/          # Helper scripts (CMSSW setup, config generation, submission)
+  audit/          #   Pre-production fragment and generator-level audit scripts
+  omtf_gmt/       #   GMT-branch stub-level and truth-transfer audit scripts
 analysis/         # Post-production analysis scripts and testset plots
-fragments/        # Fragment .py files for all datasets
+fragments/        # Fragment .py files for all datasets (S*, B*, G*)
 logs/             # HTCondor job logs (git-ignored)
-smoke_results/    # Per-dataset smoke-test ROOT files and logs (git-ignored)
+smoke_results/    # Optional local diagnostics and temporary reports (git-ignored)
 ```
 
 For the ROOT tree and branch map produced by the dumper, see [scripts/ROOT_BRANCHES.md](scripts/ROOT_BRANCHES.md).
@@ -163,3 +167,107 @@ Output ROOT files are uploaded to EOS:
 ```
 /eos/user/<initial>/<username>/omtf_hecin_datasets/prod/<DATASET>/omtf_hits_<DATASET>_<ProcId>.root
 ```
+
+---
+
+## GMT-visible-stub campaign (G1-G10)
+
+A second production campaign targeted at the Phase-B GMT-visible-stub branch.
+This campaign is **additive** — it does not replace the existing S/B datasets.
+
+### Motivation
+
+Two problems found in the existing production:
+1. **B2 false second candidate from PU** — coherent KMTF noise fires a second
+   overlap candidate in B2 displaced+PU200 events.
+2. **Out-of-domain barrel tracks** — real KMTF barrel muons (|η| < 0.75) can
+   create stubs that the model incorrectly promotes to overlap candidates.
+3. **Out-of-domain high-eta endcap tracks** — real endcap-like muons
+  (1.30 < |η| < 1.80) can also look signal-like to TPS-driven models but are
+  outside OMTF overlap target acceptance.
+
+### Dataset summary
+
+| Tag | Events | Jobs | PU | Purpose |
+|-----|-------:|-----:|-----|---------|
+| G1  | 300k   | 600  | no  | Clean 1-candidate prompt overlap |
+| G2  | 300k   | 600  | yes | 1-candidate prompt under PU |
+| G3  | 250k   | 500  | no  | Clean 1-candidate displaced overlap |
+| G4  | 300k   | 600  | yes | 1-candidate displaced under PU |
+| G5  | 200k   | 400  | yes | 2 displaced candidates under PU |
+| G6  | 200k   | 400  | yes | 3-candidate prompt under PU |
+| G7  | 150k   | 300  | no  | Hard negative: barrel track, overlap target = 0 |
+| G8  | 300k   | 600  | yes | Hard negative with PU |
+| G9_pos | 75k | 150 | no  | Hard negative: high-eta positive endcap side |
+| G9_neg | 75k | 150 | no  | Hard negative: high-eta negative endcap side |
+| G10_pos | 150k | 300 | yes | High-eta hard negative with PU (positive side) |
+| G10_neg | 150k | 300 | yes | High-eta hard negative with PU (negative side) |
+
+Total: 2,600,000 events / 5,200 Condor jobs at 500 events/job.
+
+Split-side convention for endcap hard negatives:
+- Keep production separated as `G9_pos`, `G9_neg`, `G10_pos`, `G10_neg`.
+- Downstream cache alias expansion should map `G9 -> G9_pos + G9_neg` and
+  `G10 -> G10_pos + G10_neg`.
+
+### Recommended production order
+
+**Wave 1 (highest priority):** G8, G2  
+**Wave 2:** G4, G6  
+**Wave 3:** G1, G3, G5, G7
+
+### Submit
+
+```bash
+# Individual dataset (recommended for priority-order waves)
+condor_submit condor/G10_pos.sub
+condor_submit condor/G10_neg.sub
+
+# All 5200 jobs at once
+condor_submit condor/GMT_overlap_production.sub
+```
+
+---
+
+## DAS Generation (production only)
+
+This repository also supports generation from CMS DAS GEN-SIM-DIGI-RAW-MINIAOD
+inputs for external production samples.
+
+Current DAS sample set:
+
+- minbias
+- displaced_lowpt
+- displaced_midpt
+- dy_prompt
+- llp_addon
+- single_muon_flatpt
+
+Generation scripts (no validation/smoke workflow):
+
+```bash
+scripts/submit_das_validation.sh
+condor/run_das_job.sh
+```
+
+G-campaign generation scripts:
+
+```bash
+scripts/generate_configs.sh
+scripts/create_condor_subs.sh
+```
+
+Full DAS dataset paths and G1-G10 campaign details are maintained in
+`DATASETS_INFO.txt`.
+
+### Fragment safety rules
+
+- Single-muon datasets (G1/G2/G3/G4/G7/G8/G9_pos/G9_neg/G10_pos/G10_neg):
+  exactly **one** entry in `PartID`.
+- Multi-muon datasets (G5: 2 entries, G6: 3 entries): multiple entries are
+  **intentional**.
+- `etaFilter` is defined in G1–G4 and **must** appear in
+  `ProductionFilterSequence`.
+- `AddAntiParticle = False` for all G-campaign fragments.
+
+See `DATASETS_INFO.txt` for full per-dataset specifications.
