@@ -168,6 +168,41 @@ echo ""
 echo "=== Step 3: B4 noise-only config (DIGI-only, reads MinBias GEN-SIM from DBS) ==="
 b4_config
 
+###########################################################################
+# GMT-visible-stub campaign - G1-G10 configs
+###########################################################################
+
+# --- Step 4: GEN,SIM configs for no-PU G datasets ---
+echo ""
+echo "=== Step 4: GEN,SIM configs for G-campaign (no-PU datasets) ==="
+gen_config "G1" "G1_singlePromptOverlap.py"
+gen_config "G3" "G3_singleDisplacedOverlap.py"
+gen_config "G7" "G7_hardNegLowEtaMuon.py"
+gen_config "G9_pos" "G9_pos_hardNegHighEtaMuon.py"
+gen_config "G9_neg" "G9_neg_hardNegHighEtaMuon.py"
+
+# --- Step 5: GEN,SIM configs for PU G datasets (GEN step; DIGI adds PU) ---
+echo ""
+echo "=== Step 5: GEN,SIM configs for G-campaign (PU datasets, GEN step only) ==="
+gen_config "G2" "G2_singlePromptOverlap_PU200.py"
+gen_config "G4" "G4_singleDisplacedOverlap_PU200.py"
+gen_config "G5" "G5_twoDisplacedOverlap_PU200.py"
+gen_config "G6" "G6_triPromptOverlap_PU200.py"
+gen_config "G8" "G8_hardNegLowEtaMuon_PU200.py"
+gen_config "G10_pos" "G10_pos_hardNegHighEtaMuon_PU200.py"
+gen_config "G10_neg" "G10_neg_hardNegHighEtaMuon_PU200.py"
+
+# --- Step 6: DIGI+L1+DIGI2RAW+HLT configs for PU G datasets (adds PU200) ---
+echo ""
+echo "=== Step 6: DIGI+L1+DIGI2RAW+HLT configs for G-campaign PU datasets ==="
+digi_config "G2"
+digi_config "G4"
+digi_config "G5"
+digi_config "G6"
+digi_config "G8"
+digi_config "G10_pos"
+digi_config "G10_neg"
+
 echo ""
 echo "=== All configurations generated in ${CONFDIR} ==="
 ls -la "${CONFDIR}"/*.py
@@ -177,3 +212,12 @@ echo "Configs per dataset:"
 echo "  <DS>_cfg.py    — GEN,SIM  (outputs <DS>.root)"
 echo "  <DS>_DR_cfg.py — DIGI+L1+DIGI2RAW+HLT with PU200 (inputs <DS>.root, outputs <DS>_DR.root)"
 echo "  B4_cfg.py      — DIGI-only, reads MinBias from DBS directly (no GEN,SIM step)"
+echo ""
+echo "G-campaign notes:"
+echo "  No-PU G datasets (G1/G3/G7/G9_pos/G9_neg): only <DS>_cfg.py (GEN,SIM) is needed for production."
+echo "  PU G datasets (G2/G4/G5/G6/G8/G10_pos/G10_neg): run GEN,SIM first (<DS>_cfg.py),"
+echo "    then DIGI+PU200 (<DS>_DR_cfg.py) as a two-step job."
+echo ""
+echo "Fragment audit before production:"
+echo "  python3 scripts/audit/check_fragments_static.py"
+echo "  python3 scripts/audit/audit_gen_particles.py --all  (after test production)"

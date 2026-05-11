@@ -292,3 +292,346 @@ Notes
 - The NanoAOD output contains OMTF candidates, propagated gen muons, and GMT
   stub tables; the omtf_hits output contains the OMTF-region input stub data
   needed for ML training and full replacement studies.
+======================================================================
+GMT-VISIBLE-STUB CAMPAIGN (G1-G10)
+======================================================================
+Additional campaign targeted at the Phase-B GMT-visible-stub branch.
+Does NOT replace existing S/B samples.
+
+Goal: Reconstruct OMTF-overlap-region muon candidates using GMT-visible
+KMTF/TPS-like stub inputs, while suppressing out-of-domain barrel tracks
+and PU backgrounds.
+
+Known issues addressed:
+- B2 false second candidate from PU (addressed by G2/G4/G8)
+- Out-of-domain low-eta tracks firing (addressed by G7/G8)
+- Out-of-domain high-eta endcap tracks firing (addressed by G9/G10)
+- Weak slot-2 efficiency under PU (addressed by G6)
+- Weak displaced PU handling (addressed by G4/G5)
+
+Naming convention:
+- G* = GMT-visible-stub campaign datasets
+- No-PU: G1, G3, G7, G9_pos, G9_neg
+- PU200: G2, G4, G5, G6, G8, G10_pos, G10_neg
+
+Fragment safety rules enforced:
+- Single-muon samples (G1/G2/G3/G4/G7/G8/G9_pos/G9_neg/G10_pos/G10_neg): exactly ONE entry in PartID
+- etaFilter defined iff 0.82 <= |eta| <= 1.24 overlap required
+- etaFilter MUST appear in ProductionFilterSequence if defined
+- AddAntiParticle = False for all G-campaign fragments
+
+Pre-production audit scripts:
+  scripts/audit/check_fragments_static.py   (static fragment check)
+  scripts/audit/audit_gen_particles.py      (gen-level check after test run)
+  scripts/omtf_gmt/audit_domain_mismatch.py (stub-level domain check)
+
+Submit files:
+  condor/G1.sub through condor/G10_neg.sub (individual)
+  condor/GMT_overlap_production.sub        (grouped, all 5200 jobs)
+
+======================================================================
+G1
+----------------------------------------------------------------------
+Name:
+- Single prompt muon, OMTF overlap region, no PU
+
+Physics content:
+- One prompt muon per event
+- No pileup
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 2 to 200 GeV
+- eta range: 0.82 < |eta| < 1.24 (enforced by etaFilter)
+- phi range: full 2pi
+- Particle IDs: single mu (PartID=[-13]), RandomCharge=True -> 50%/50%
+- Displacement: prompt (d0 = 0)
+- Pileup: none
+
+Purpose:
+- Clean 1-candidate prompt overlap reference
+- Single-candidate reconstruction target without noise
+
+Target production size:
+- 300,000 events / 600 jobs at 500 events/job
+
+======================================================================
+G2
+----------------------------------------------------------------------
+Name:
+- Single prompt muon, OMTF overlap region, PU200
+
+Physics content:
+- One prompt muon per event
+- PU200
+
+Generator characteristics:
+- Same gun as G1
+- Pileup: AVE_200_BX_25ns
+
+Purpose:
+- Clean 1-candidate prompt overlap under realistic PU
+- Directly addresses B2 false-candidate-from-PU problem
+- Most important new sample for the GMT branch
+
+Target production size:
+- 300,000 events / 600 jobs at 500 events/job
+
+======================================================================
+G3
+----------------------------------------------------------------------
+Name:
+- Single displaced muon, OMTF overlap region, no PU
+
+Physics content:
+- One displaced muon per event
+- No pileup
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 2 to 200 GeV
+- eta range: 0.82 < |eta| < 1.24 (enforced by etaFilter)
+- phi range: full 2pi
+- Particle IDs: single mu (PartID=[-13]), RandomCharge=True
+- Displacement: flat dxy in [0, 50] cm; MaxLxy = 200 cm
+- Pileup: none
+
+Purpose:
+- Clean 1-candidate displaced overlap reference
+
+Target production size:
+- 250,000 events / 500 jobs at 500 events/job
+
+======================================================================
+G4
+----------------------------------------------------------------------
+Name:
+- Single displaced muon, OMTF overlap region, PU200
+
+Physics content:
+- One displaced muon per event
+- PU200
+
+Generator characteristics:
+- Same gun as G3
+- Pileup: AVE_200_BX_25ns
+
+Purpose:
+- Clean 1-candidate displaced overlap under PU
+- Clean replacement for ambiguous B2 role in GMT-overlap branch
+
+Target production size:
+- 300,000 events / 600 jobs at 500 events/job
+
+======================================================================
+G5
+----------------------------------------------------------------------
+Name:
+- Two displaced muons, OMTF overlap region, PU200
+
+Physics content:
+- Two displaced muons per event (same processor window)
+- PU200
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 2 to 200 GeV
+- eta range: 0.82 to 1.24 (positive overlap, same processor)
+- phi range: -pi/3 to +pi/3 (120-deg window, maximises same-window probability)
+- Particle IDs: two muons (PartID=[-13, 13]), RandomCharge=True (intentional)
+- Displacement: flat dxy in [0, 30] cm per muon; MaxLxy = 200 cm
+- Pileup: AVE_200_BX_25ns
+
+Purpose:
+- 2-candidate displaced topology under PU (slot-0 + slot-1 positive targets)
+- Fills gap left by S5 (no-PU displaced dimuon) and B2 (no multi-candidate)
+
+Target production size:
+- 200,000 events / 400 jobs at 500 events/job
+
+======================================================================
+G6
+----------------------------------------------------------------------
+Name:
+- Three prompt muons, OMTF overlap region, PU200
+
+Physics content:
+- Three prompt muons per event (same processor window)
+- PU200
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 5 to 80 GeV
+- eta range: 0.82 to 1.24 (positive overlap, same processor)
+- phi range: -pi/6 to +pi/6 (60-deg sector, stress-tests slot-2)
+- Particle IDs: three muons (PartID=[-13, 13, -13]), RandomCharge=True (intentional)
+- Displacement: prompt
+- Pileup: AVE_200_BX_25ns
+
+Purpose:
+- 3-candidate prompt topology under PU (slot-2 positive targets)
+- Addresses weak slot-2 efficiency (currently only no-PU S4 available)
+
+Target production size:
+- 200,000 events / 400 jobs at 500 events/job
+
+======================================================================
+G7
+----------------------------------------------------------------------
+Name:
+- Hard negative: barrel muon |eta| < 0.75, no PU
+
+Physics content:
+- One barrel muon per event (outside OMTF-overlap task)
+- No pileup
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 2 to 200 GeV
+- eta range: -0.75 to +0.75 (KMTF barrel, strictly outside OMTF overlap)
+- phi range: full 2pi
+- Particle IDs: single mu (PartID=[-13]), RandomCharge=True
+- Displacement: prompt
+- Pileup: none
+
+Purpose:
+- Hard-negative reference: real KMTF-like barrel track with overlap target = 0
+- Teaches model that a real-looking track outside OMTF overlap should not
+  produce an overlap candidate
+- NOT a replacement for B4 (pure noise); G7 contains real KMTF-like stubs
+
+Target production size:
+- 150,000 events / 300 jobs at 500 events/job
+
+======================================================================
+G8
+----------------------------------------------------------------------
+Name:
+- Hard negative: barrel muon |eta| < 0.75, PU200
+
+Physics content:
+- One barrel muon per event (outside OMTF-overlap task)
+- PU200
+
+Generator characteristics:
+- Same gun as G7
+- Pileup: AVE_200_BX_25ns
+
+Purpose:
+- Hard-negative reference with PU: real low-eta KMTF-like muon plus PU clutter
+- Directly addresses B2 false-candidate problem from coherent KMTF noise + PU
+- Most important new hard-negative dataset for the GMT-visible-stub branch
+
+Target production size:
+- 300,000 events / 600 jobs at 500 events/job
+
+======================================================================
+G9_pos / G9_neg
+----------------------------------------------------------------------
+Name:
+- Hard negative: high-eta endcap-like muon (outside overlap), no PU
+
+Physics content:
+- One prompt muon per event
+- No pileup
+- Positive and negative eta sides are produced as separate datasets
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2
+- Spectrum: flat in 1/pT
+- pT range: 2 to 200 GeV
+- eta range:
+  - G9_pos: 1.30 to 1.80
+  - G9_neg: -1.80 to -1.30
+- phi range: full 2pi
+- Particle IDs: single mu (PartID=[-13]), RandomCharge=True
+- Displacement: prompt
+
+Purpose:
+- Endcap hard-negative reference near but outside OMTF overlap acceptance
+- Teaches model that not every TPS/endcap-like stub pattern is an overlap target
+- Overlap target multiplicity should remain 0
+
+Target production size:
+- G9_pos: 75,000 events / 150 jobs at 500 events/job
+- G9_neg: 75,000 events / 150 jobs at 500 events/job
+
+======================================================================
+G10_pos / G10_neg
+----------------------------------------------------------------------
+Name:
+- Hard negative: high-eta endcap-like muon (outside overlap), PU200
+
+Physics content:
+- One prompt muon per event
+- PU200
+- Positive and negative eta sides are produced as separate datasets
+
+Generator characteristics:
+- Same gun and eta ranges as G9_pos/G9_neg
+- Pileup: AVE_200_BX_25ns
+
+Purpose:
+- Endcap hard-negative reference under realistic occupancy
+- Stress case for TPS-oriented fake promotions outside overlap acceptance
+- Overlap target multiplicity should remain 0
+
+Target production size:
+- G10_pos: 150,000 events / 300 jobs at 500 events/job
+- G10_neg: 150,000 events / 300 jobs at 500 events/job
+
+======================================================================
+TRAINING ROLES (G-campaign)
+======================================================================
+Dataset  Training role
+-------  -------------------------------------------------
+G1/G2    Clean 1-candidate prompt overlap target
+G3/G4    Clean 1-candidate displaced overlap target
+G5       2-candidate displaced PU target
+G6       3-candidate prompt PU target
+G7/G8    Hard-negative no-candidate target
+G9/G10   Endcap hard-negative no-candidate target (split eta sides)
+
+Suggested first training mix:
+  G2 + G4 + G6 + G8 + G10_pos + G10_neg + B4
+
+Full mix (after validation):
+  G1 + G2 + G3 + G4 + G5 + G6 + G7 + G8 + G9_pos + G9_neg + G10_pos + G10_neg + B4
+
+Keep B4 as pure-noise no-candidate reference. G7/G8/G9/G10 are NOT
+replacements for B4; they add hard negatives with real stubs.
+
+======================================================================
+GENERATION-ONLY REFERENCE (DAS + G*)
+======================================================================
+Scope:
+- This section lists only sample definitions and scripts that generate
+  production data.
+- Smoke/validation helper scripts are intentionally excluded.
+
+DAS samples generated in this campaign:
+- minbias:
+  /MinBias_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+- displaced_lowpt:
+  /DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+- displaced_midpt:
+  /DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+- dy_prompt:
+  /DYToLL_M-10To50_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+- llp_addon:
+  /HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+- single_muon_flatpt:
+  /SingleMu_FlatPt-2to100/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD
+
+Scripts used to generate DAS data:
+- scripts/submit_das_validation.sh   (builds per-sample DAS Condor production jobs)
+- condor/run_das_job.sh              (per-job cmsRun production execution)
+
+Scripts used to generate G* data products:
+- scripts/generate_configs.sh        (creates G1-G10 cmsDriver configs)
+- scripts/create_condor_subs.sh      (creates G-campaign Condor submit files)

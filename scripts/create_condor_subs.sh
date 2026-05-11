@@ -6,7 +6,7 @@ set -euo pipefail
 
 BASEDIR="$HOME/omtf_hecin_dataset_production"
 CONDDIR="${BASEDIR}/condor"
-LOGDIR="${BASEDIR}/logs"
+LOGDIR="/eos/user/${USER:0:1}/${USER}/omtf_hecin_datasets/prod/logs"
 
 mkdir -p "${LOGDIR}"
 
