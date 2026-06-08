@@ -1,0 +1,1 @@
+[{"file_size":7781436363878,"max_ldate":1727912313,"median_cdate":1727180717,"median_ldate":1727180717,"nblocks":6,"nevents":146000,"nfiles":146,"nlumis":146,"num_block":6,"num_event":146000,"num_file":146,"num_lumi":146}]

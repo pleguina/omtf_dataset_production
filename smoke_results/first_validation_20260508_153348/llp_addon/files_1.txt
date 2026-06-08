@@ -1,0 +1,1 @@
+/store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo2mu2jets_MH-125_MFF-20_CTau-1300mm_TuneCP5_14TeV_pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/ea73e0d7-2f4f-44e1-8c2a-a23bd454c205.root

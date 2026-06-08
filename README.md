@@ -210,7 +210,85 @@ Split-side convention for endcap hard negatives:
 - Downstream cache alias expansion should map `G9 -> G9_pos + G9_neg` and
   `G10 -> G10_pos + G10_neg`.
 
+---
+
+## Extended G-campaign (G13–G17)
+
+Additional control and signal datasets added to support the displaced-muon
+recovery study. All use 500 events/job and the same CMSSW environment as G1–G10.
+
+| Tag | Events | Jobs | PU200 | Description |
+|---|---|---|---|---|
+| G13_neg | 100k | 200 | no | Prompt single muon, transition region, negative η (−1.6 < η < −1.2) |
+| G13_pos | 100k | 200 | no | Prompt single muon, transition region, positive η (1.2 < η < 1.6) |
+| G14_neg | 100k | 200 | yes | Prompt single muon + PU200, transition region, negative η |
+| G14_pos | 100k | 200 | yes | Prompt single muon + PU200, transition region, positive η |
+| G15_neg | 100k | 200 | no | Prompt single muon, endcap, negative η (−2.4 < η < −1.6) |
+| G15_pos | 100k | 200 | no | Prompt single muon, endcap, positive η (1.6 < η < 2.4) |
+| G16_neg | 100k | 200 | yes | Prompt single muon + PU200, endcap, negative η |
+| G16_pos | 100k | 200 | yes | Prompt single muon + PU200, endcap, positive η |
+| G17 | 150k | 300 | no | Two displaced muons, OMTF overlap (0.82 < |η| < 1.24) |
+
+**Purpose:**
+- G13/G14 (transition guard band): control samples for muons migrating between
+  overlap and endcap regions; needed because displaced tracks may not respect
+  nominal regional boundaries.
+- G15/G16 (endcap control): hard-negative endcap muons that should not fire the
+  overlap displaced trigger.
+- G17 (two displaced): exercises multi-candidate separated vertex topology;
+  extends G5 (which has PU200) with a clean no-PU geometry sample.
+
+---
+
+## C-campaign: controlled pT × |d0| grid (C17–C28)
+
+Controlled binned muon-gun samples in the OMTF overlap region, designed to
+support matched prompt-vs-displaced discrimination studies (WP4 in the displaced
+ML action plan). All samples use the OMTF overlap eta window (0.82 < |η| < 1.24),
+flat 1/pT sampling within each bin, and 500 events/job.
+
+### Prompt control samples (no displacement, PU200)
+
+| Tag | Events | Jobs | pT range | Description |
+|---|---|---|---|---|
+| C17 | 200k | 400 | 10–20 GeV | Prompt overlap muon, PU200 |
+| C18 | 150k | 300 | 20–50 GeV | Prompt overlap muon, PU200 |
+| C19 | 100k | 200 | 50–100 GeV | Prompt overlap muon, PU200 |
+| C20 | 75k  | 150 | 100–200 GeV | Prompt overlap muon, PU200 |
+
+### Displaced signal samples (PU200)
+
+| Tag | Events | Jobs | pT range | |d0| range | Description |
+|---|---|---|---|---|---|
+| C21 | 200k | 400 | 10–20 GeV | 0.2–300 cm | Displaced overlap muon, PU200 |
+| C22 | 150k | 300 | 20–50 GeV | 0.2–300 cm | Displaced overlap muon, PU200 |
+| C23 | 100k | 200 | 50–100 GeV | 0.2–300 cm | Displaced overlap muon, PU200 |
+| C24 | 75k  | 150 | 100–200 GeV | 0.2–300 cm | Displaced overlap muon, PU200 |
+
+### Mild-displaced samples (no PU and PU200)
+
+| Tag | Events | Jobs | pT range | |d0| range | PU | Description |
+|---|---|---|---|---|---|---|
+| C25 | 200k | 400 | 2–5 GeV | 0.05–5 cm | no | Mild displaced, no PU |
+| C26 | 200k | 400 | 5–10 GeV | 0.05–5 cm | no | Mild displaced, no PU |
+| C27 | 200k | 400 | 2–5 GeV | 0.05–5 cm | yes | Mild displaced, PU200 |
+| C28 | 200k | 400 | 5–10 GeV | 0.05–5 cm | yes | Mild displaced, PU200 |
+
+**Why C25/C26 (no PU):** The mild-displaced no-PU samples provide the cleanest
+geometry for the prompt-origin compatibility study (phi0 proxy, curvature spread)
+without PU contamination.
+
+**Key use case:** The primary analysis pairing is:
+```
+prompt low-pT (C17/C18) vs displaced low-pT (C21/C22 or C25/C26)
+same pT bin, same eta bin, same PU condition
+```
+This directly probes whether displaced muons can be separated from prompt low-pT
+muons using trigger-level geometric variables.
+
 ### Recommended production order
+
+**Wave 1 (highest priority):** G8, G2
 
 **Wave 1 (highest priority):** G8, G2  
 **Wave 2:** G4, G6  
@@ -271,3 +349,63 @@ Full DAS dataset paths and G1-G10 campaign details are maintained in
 - `AddAntiParticle = False` for all G-campaign fragments.
 
 See `DATASETS_INFO.txt` for full per-dataset specifications.
+
+---
+
+## Production status (as of 2026-06-08)
+
+EOS base path: `/eos/user/p/pleguina/omtf_hecin_datasets/prod/`
+
+### G-campaign (G1–G17)
+
+| Dataset | Files | Target | Status |
+|---|---|---|---|
+| G1_neg | 300 | 300 | ✅ Complete |
+| G1_pos | 300 | 300 | ✅ Complete |
+| G3_neg | 250 | 250 | ✅ Complete |
+| G3_pos | 250 | 250 | ✅ Complete |
+| G4_neg | 300 | 300 | ✅ Complete |
+| G4_pos | 300 | 300 | ✅ Complete |
+| G5_neg | 200 | 200 | ✅ Complete |
+| G5_pos | 200 | 200 | ✅ Complete |
+| G6_neg | 200 | 200 | ✅ Complete |
+| G6_pos | 200 | 200 | ✅ Complete |
+| G7 | 300 | 300 | ✅ Complete |
+| G8 | 600 | 600 | ✅ Complete |
+| G9_neg | 150 | 150 | ✅ Complete |
+| G9_pos | 150 | 150 | ✅ Complete |
+| G10_neg | 300 | 300 | ✅ Complete |
+| G10_pos | ~297 | 300 | 🔄 Near-complete (sporadic PU200 failures) |
+| G13_neg | 200 | 200 | ✅ Complete |
+| G13_pos | 200 | 200 | ✅ Complete |
+| G14_neg | ~176 | 200 | 🔄 Near-complete (sporadic PU200 failures) |
+| G14_pos | ~180 | 200 | 🔄 Near-complete (sporadic PU200 failures) |
+| G15_neg | 200 | 200 | ✅ Complete |
+| G15_pos | 200 | 200 | ✅ Complete |
+| G16_neg | ~186 | 200 | 🔄 Near-complete (sporadic PU200 failures) |
+| G16_pos | ~168 | 200 | 🔄 Near-complete (sporadic PU200 failures) |
+| G17 | 300 | 300 | ✅ Complete |
+
+Note: G2_neg/G2_pos not resubmitted (kept from prior production run).
+Note: G1/G2/G3/G4/G5/G6 merged `.sub` files are redundant with `_pos` variants (same eta range); only neg/pos splits are used.
+
+### C-campaign (C17–C28)
+
+| Dataset | Files | Target | Status |
+|---|---|---|---|
+| C17_prompt_pt10to20_overlap_PU200 | 400 | 400 | ✅ Complete |
+| C18_prompt_pt20to50_overlap_PU200 | 300 | 300 | ✅ Complete |
+| C19_prompt_pt50to100_overlap_PU200 | 200 | 200 | ✅ Complete |
+| C20_prompt_pt100to200_overlap_PU200 | 150 | 150 | ✅ Complete |
+| C21_disp_pt10to20_overlap_PU200 | 400 | 400 | ✅ Complete |
+| C22_disp_pt20to50_overlap_PU200 | 300 | 300 | ✅ Complete |
+| C23_disp_pt50to100_overlap_PU200 | 200 | 200 | ✅ Complete |
+| C24_disp_pt100to200_overlap_PU200 | 150 | 150 | ✅ Complete |
+| C25_mild_disp_pt2to5_overlap | 400 | 400 | ✅ Complete |
+| C26_mild_disp_pt5to10_overlap | 400 | 400 | ✅ Complete |
+| C27_mild_disp_pt2to5_overlap_PU200 | 400 | 400 | ✅ Complete |
+| C28_mild_disp_pt5to10_overlap_PU200 | 400 | 400 | ✅ Complete |
+
+All C* datasets produced with the corrected `customize_omtf_dumper.py` including
+all 5 primitive digi collections (DTPhiDigi, Ph2DTPhiDigi, Ph2DTThDigi,
+CSCLctDigi, RPCDigi) plus MuonStubKmtf, MuonStubTps tables (135 branches total).

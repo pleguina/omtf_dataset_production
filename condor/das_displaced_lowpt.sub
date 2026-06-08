@@ -1,0 +1,224 @@
+###############################################################################
+# das_displaced_lowpt.sub — HTCondor submit for DAS validation: displaced_lowpt
+# Dataset: /DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+# GT: 140X_mcRun4_realistic_v4
+# Generated: Sun May 10 12:54:41 PM CEST 2026
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_das_job.sh
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/displaced_lowpt_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/displaced_lowpt_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/displaced_lowpt.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 20000000
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+
+arguments = displaced_lowpt 0 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/04a1825f-cac9-4ed6-80b6-ed62e0f5cbd8.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 1 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/04a1825f-cac9-4ed6-80b6-ed62e0f5cbd8.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 2 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/101cb5b2-10fb-403f-8341-39c79e39cd44.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 3 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/101cb5b2-10fb-403f-8341-39c79e39cd44.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 4 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/11f43bf5-cffe-4a78-bfc1-47c3db133c9b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 5 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/11f43bf5-cffe-4a78-bfc1-47c3db133c9b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 6 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/12566971-73fe-424c-930d-6635c4c41399.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 7 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/12566971-73fe-424c-930d-6635c4c41399.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 8 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/152d0bf4-6e92-4aaf-910f-511fd8d93b38.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 9 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/152d0bf4-6e92-4aaf-910f-511fd8d93b38.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 10 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/175bdde2-2dc1-4c42-a1ac-55416e3a3d2f.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 11 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/175bdde2-2dc1-4c42-a1ac-55416e3a3d2f.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 12 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/178021ce-df7b-474f-b16e-8849d44ebbfd.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 13 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/178021ce-df7b-474f-b16e-8849d44ebbfd.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 14 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/18a6d046-5f16-4763-b29e-3d69f7b42936.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 15 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/18a6d046-5f16-4763-b29e-3d69f7b42936.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 16 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/2a5eb1c0-4d83-4b63-9338-333f17cbdb78.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 17 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/2a5eb1c0-4d83-4b63-9338-333f17cbdb78.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 18 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/311f4305-6fa2-47d2-8298-91e88057ce02.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 19 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/311f4305-6fa2-47d2-8298-91e88057ce02.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 20 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/3acd9ce2-a987-4192-9e96-d9050add5eb2.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 21 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/3acd9ce2-a987-4192-9e96-d9050add5eb2.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 22 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/3d9cd2ff-07fd-48ae-b90b-392da0bd2022.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 23 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/3d9cd2ff-07fd-48ae-b90b-392da0bd2022.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 24 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/3ef84278-4d88-4780-a7e7-0121cdecd35f.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 25 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/3ef84278-4d88-4780-a7e7-0121cdecd35f.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 26 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/4286b966-e14e-4655-8b21-94bd4c582797.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 27 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/4286b966-e14e-4655-8b21-94bd4c582797.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 28 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/48617d05-ce2e-4ce6-8534-728da5e9a1fd.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 29 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/48617d05-ce2e-4ce6-8534-728da5e9a1fd.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 30 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/506d4532-d378-456f-bae4-748f7ada77c2.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 31 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/506d4532-d378-456f-bae4-748f7ada77c2.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 32 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/573b3c0e-89aa-4e95-a49f-4bfdc5f49314.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 33 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/573b3c0e-89aa-4e95-a49f-4bfdc5f49314.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 34 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/5e0dd8d0-950a-473e-bc03-3b97658cfcc0.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 35 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/5e0dd8d0-950a-473e-bc03-3b97658cfcc0.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 36 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/64e1c77b-e71f-4e6f-af81-845d250db9f0.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 37 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/64e1c77b-e71f-4e6f-af81-845d250db9f0.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 38 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/65117ee6-b9e2-4779-ae30-4c0b008fd6ab.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 39 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/65117ee6-b9e2-4779-ae30-4c0b008fd6ab.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 40 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/6e1dfda8-971e-44f9-ad05-ccd847b75a51.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 41 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/6e1dfda8-971e-44f9-ad05-ccd847b75a51.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 42 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/7fc36cc9-fb59-49c2-ab45-99571cb4d080.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 43 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/7fc36cc9-fb59-49c2-ab45-99571cb4d080.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 44 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/811f66a4-5d67-4a35-8af3-1202932ee50d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 45 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/811f66a4-5d67-4a35-8af3-1202932ee50d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 46 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/8253bc58-3718-48a7-9cb8-2d54faa2ea84.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 47 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/8253bc58-3718-48a7-9cb8-2d54faa2ea84.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 48 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/8576d35e-af1a-4bef-b46f-9f7e5c786512.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 49 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/8576d35e-af1a-4bef-b46f-9f7e5c786512.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 50 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/97cf240b-514c-4b96-a4b2-5966cae12e92.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 51 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/97cf240b-514c-4b96-a4b2-5966cae12e92.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 52 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/97f4402b-d9ce-4c56-a5ad-1b6f0b7d2744.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 53 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/97f4402b-d9ce-4c56-a5ad-1b6f0b7d2744.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 54 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/a6653bbb-9451-42c2-80a3-d4700e4c6ac8.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 55 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/a6653bbb-9451-42c2-80a3-d4700e4c6ac8.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 56 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/a6903fe5-8959-4d65-94c2-2171532288ca.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 57 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/a6903fe5-8959-4d65-94c2-2171532288ca.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 58 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/adcb2474-b7c8-4ace-8752-33fb95935f2c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 59 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/adcb2474-b7c8-4ace-8752-33fb95935f2c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 60 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/af582f43-e5de-4655-a9eb-210eeca6d1ec.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 61 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/af582f43-e5de-4655-a9eb-210eeca6d1ec.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 62 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/b9aee7fc-980b-4b88-bf8a-127cb5f14005.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 63 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/b9aee7fc-980b-4b88-bf8a-127cb5f14005.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 64 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/bc2dccfd-36e1-421b-b0f2-603927f1e03d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 65 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/bc2dccfd-36e1-421b-b0f2-603927f1e03d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 66 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/bd6263e4-a6ea-4fa5-b59b-20fd4097a942.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 67 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/bd6263e4-a6ea-4fa5-b59b-20fd4097a942.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 68 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/bf1e1858-ef38-48da-8039-a49519e3e847.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 69 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/bf1e1858-ef38-48da-8039-a49519e3e847.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 70 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/c5670523-9501-4509-a85e-4c6fef0e07e7.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 71 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/c5670523-9501-4509-a85e-4c6fef0e07e7.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 72 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/cd80ff46-d362-4551-83fc-b98f789c73b5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 73 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/cd80ff46-d362-4551-83fc-b98f789c73b5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 74 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/d31ec48a-880f-4d62-b7fb-115c5beaf33e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 75 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/d31ec48a-880f-4d62-b7fb-115c5beaf33e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 76 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/d97c4c4a-b1d7-4016-9dd5-dcbbe66ea343.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 77 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/d97c4c4a-b1d7-4016-9dd5-dcbbe66ea343.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 78 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/dec5b56c-f7a0-44a0-abbd-8fbf58ff1351.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 79 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/dec5b56c-f7a0-44a0-abbd-8fbf58ff1351.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 80 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/e1f936bf-54b8-4277-832f-c19764f60f15.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 81 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/e1f936bf-54b8-4277-832f-c19764f60f15.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 82 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/e9845d1b-af91-4bab-b5f9-05c34cd5de4a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 83 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/e9845d1b-af91-4bab-b5f9-05c34cd5de4a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 84 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/ecc49cef-f2db-4f60-96c0-3050e0c632e2.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 85 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/ecc49cef-f2db-4f60-96c0-3050e0c632e2.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 86 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/f3641f89-3265-4d49-baa6-77e97154bf1c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 87 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/f3641f89-3265-4d49-baa6-77e97154bf1c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 88 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/f937d661-c348-4291-8902-f2fb168125b5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 89 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/f937d661-c348-4291-8902-f2fb168125b5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 90 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/fac28499-1e3a-4855-a460-81b35979be79.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 91 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/fac28499-1e3a-4855-a460-81b35979be79.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 92 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/28220000/64ba834a-8020-4a4d-9050-baf341649931.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 93 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/28220000/64ba834a-8020-4a4d-9050-baf341649931.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 94 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/28220000/87b6a817-7147-471c-b9ae-7d372d3a0115.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 95 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/28220000/87b6a817-7147-471c-b9ae-7d372d3a0115.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 96 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/28220000/ae76b0e9-3893-44f5-8d10-03d12007e7de.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 97 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/28220000/ae76b0e9-3893-44f5-8d10-03d12007e7de.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = displaced_lowpt 98 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/28220000/ca69d828-c916-4429-b3d4-da74f5148a1a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = displaced_lowpt 99 /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/28220000/ca69d828-c916-4429-b3d4-da74f5148a1a.root 140X_mcRun4_realistic_v4 500 500
+queue

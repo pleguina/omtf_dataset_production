@@ -1,0 +1,49 @@
+=== LOCAL TEST: G9_neg / ProcId 0 / 1 events ===
+    Scratch: /tmp/pleguina_omtf_localtest_G9_neg_0
+Fri May  8 04:13:48 PM CEST 2026
+Config patched: G9_neg/0, 1 events -> omtf_hits_G9_neg_0_localtest.root, omtf_nano_G9_neg_0_localtest.root
+Starting cmsRun...
+Fri May  8 16:13:50 CEST 2026
+
+**************************************************************
+ Geant4 version Name: geant4-11-02-patch-02 [MT]   (21-June-2024)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+constructing InputMakerPhase2
+ using Phase2 DT trigger primitives
+ CandidateSimMuonMatcher: using muonMatcherFileName /afs/cern.ch/user/p/pleguina/CMSSW_14_2_0_pre2/src/L1Trigger/L1TMuon/data/omtf_config/muonMatcherHists_100files_smoothStdDev_withOvf.root
+ CandidateSimMuonMatcher: candidateSimMuonMatcherType simpleMatching
+ CandidateSimMuonMatcher: matchingType 2
+Begin processing the 1st record. Run 1, Event 1, LumiSection 1 on stream 0 at 08-May-2026 16:15:06.655 CEST
+
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Overall cross-section summary 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Process		xsec_before [pb]		passed	nposw	nnegw	tried	nposw	nnegw 	xsec_match [pb]			accepted [%]	 event_eff [%]
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Total		0.000e+00 +/- 0.000e+00		0	0	0	0	0	0	-0.000e+00 +/- 0.000e+00		-100.0 +/- -100.0	-100.0 +/- -100.0
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Before matching: total cross section = 0.000e+00 +- 0.000e+00 pb
+After matching: total cross section = -0.000e+00 +- 0.000e+00 pb
+Matching efficiency = -1.0 +/- -1.0   [TO BE USED IN MCM]
+
+After filter: final cross section = 0.000e+00 +- 0.000e+00 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 0.000e+00 +- 0.000e+00
+cmsRun finished with exit code 0
+Fri May  8 16:15:16 CEST 2026
+SUCCESS. OMTF output: /tmp/pleguina_omtf_localtest_G9_neg_0/omtf_hits_G9_neg_0_localtest.root
+SUCCESS. Nano output: /tmp/pleguina_omtf_localtest_G9_neg_0/omtf_nano_G9_neg_0_localtest.root
+Log: /tmp/pleguina_omtf_localtest_G9_neg_0/cmsrun_G9_neg_0.log
+-rw-r--r--. 1 pleguina zh 248K May  8 16:15 /tmp/pleguina_omtf_localtest_G9_neg_0/G9_neg_0_localtest.root
+-rw-r--r--. 1 pleguina zh  17K May  8 16:15 /tmp/pleguina_omtf_localtest_G9_neg_0/omtf_hits_G9_neg_0_localtest.root
+-rw-r--r--. 1 pleguina zh 197K May  8 16:15 /tmp/pleguina_omtf_localtest_G9_neg_0/omtf_nano_G9_neg_0_localtest.root

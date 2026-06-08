@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OMTF version="0x0000">
+	<Event iEvent="1">
+		<bx iBx="0"/>
+	</Event>
+</OMTF>

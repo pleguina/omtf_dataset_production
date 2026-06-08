@@ -1,0 +1,154 @@
+###############################################################################
+# C24_disp_pt100to200_overlap_PU200.sub — HTCondor submit for controlled overlap study dataset C24_disp_pt100to200_overlap_PU200
+# Displaced pT 100-200 GeV overlap PU200 — WP5 displaced recovery
+# Target: 75000 events, 500 events/job, 150 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+
+arguments = C24_disp_pt100to200_overlap_PU200 8 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_8.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_8.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 24 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_24.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_24.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 33 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_33.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_33.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 37 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_37.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_37.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 38 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_38.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_38.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 45 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_45.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_45.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 51 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_51.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_51.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 53 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_53.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_53.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 54 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_54.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_54.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 62 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_62.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_62.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 66 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_66.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_66.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 69 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_69.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_69.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 70 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_70.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_70.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 74 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_74.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_74.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 80 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_80.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_80.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 82 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_82.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_82.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 89 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_89.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_89.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 112 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_112.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_112.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 116 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_116.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_116.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 117 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_117.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_117.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 146 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_146.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_146.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+
+arguments = C24_disp_pt100to200_overlap_PU200 148 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_148.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200_148.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C24_disp_pt100to200_overlap_PU200.log
+queue
+

@@ -635,3 +635,261 @@ Scripts used to generate DAS data:
 Scripts used to generate G* data products:
 - scripts/generate_configs.sh        (creates G1-G10 cmsDriver configs)
 - scripts/create_condor_subs.sh      (creates G-campaign Condor submit files)
+
+======================================================================
+DISPLACED-MUON ML STUDY CAMPAIGN (C-series + G13-G17 extensions)
+======================================================================
+This campaign supports the Big Displaced-Muon ML Trigger Study
+(new_datset_reqs.md). The goal is to build a dedicated ML-based
+displaced-muon recovery path for the CMS overlap region.
+
+Central metric:
+  incremental_displaced_recovery = efficiency(OMTF OR ML) - efficiency(OMTF)
+
+All C-series samples use:
+  - Gun: FlatRandomPtGunProducer2
+  - Spectrum: flat in 1/pT
+  - Eta: OMTF overlap 0.82 < |eta| < 1.24 (enforced by etaFilter)
+  - Phi: full 2pi
+  - RandomCharge: True (both charges)
+  - CMSSW: 14.2.0_pre2, Phase2C17I13M9, Extended2026D110, 140X_mcRun4_realistic_v4
+
+C-series already produced (C1-C16):
+  C1-C6:   prompt pT bins (2-5, 5-10, 10-20, 20-50, 50-100, 100-200 GeV), no PU
+  C7-C12:  displaced (|d0| 0.2-50 cm) same pT bins, no PU
+  C13-C14: prompt pT 2-5, 5-10 GeV, PU200
+  C15-C16: displaced pT 2-5, 5-10 GeV, PU200
+
+C-series new additions (C17-C28):
+  C17-C20: prompt pT 10-20, 20-50, 50-100, 100-200 GeV, PU200  (WP5 coverage)
+  C21-C24: displaced pT 10-20, 20-50, 50-100, 100-200 GeV, PU200 (WP5 recovery)
+  C25-C26: mild-displaced (|d0| 0.05-0.2 cm) pT 2-5, 5-10 GeV, no PU  (WP4 ambiguity)
+  C27-C28: mild-displaced (|d0| 0.05-0.2 cm) pT 2-5, 5-10 GeV, PU200  (WP4/WP5 ambiguity)
+
+G-series extensions (G13-G17) — condor .sub files added:
+  G13_pos/neg:  prompt transition guard |eta| 1.2-1.6, no PU
+  G14_pos/neg:  prompt transition guard |eta| 1.2-1.6, PU200
+  G15_pos/neg:  prompt endcap control |eta| 1.6-2.4, no PU
+  G16_pos/neg:  prompt endcap control |eta| 1.6-2.4, PU200
+  G17:          two displaced muons, overlap region, no PU
+
+Datasets with condor .sub missing prior to this campaign:
+  G13_pos, G13_neg, G14_pos, G14_neg, G15_pos, G15_neg,
+  G16_pos, G16_neg, G17
+
+======================================================================
+C17 — Prompt pT 10-20 GeV, overlap, PU200
+----------------------------------------------------------------------
+Name:
+- Single prompt muon, pT 10-20 GeV, OMTF overlap, PU200
+
+Physics content:
+- One prompt muon per event (|d0| < 0.05 cm)
+- Average pileup: 200
+
+Generator characteristics:
+- pT: flat 1/pT, 10-20 GeV
+- eta: 0.82 < |eta| < 1.24 (etaFilter)
+- Displacement: prompt-like (MaxDxy = 0.05 cm)
+
+Purpose:
+- PU200 counterpart to C3
+- Prompt control for displaced model at medium pT under realistic occupancy
+- Part of WP5 input-representation comparison
+
+Target production size:
+- 200,000 events / 400 jobs at 500 events/job
+
+======================================================================
+C18 — Prompt pT 20-50 GeV, overlap, PU200
+----------------------------------------------------------------------
+Same as C17 but pT 20-50 GeV. Counterpart to C4.
+Target production size: 150,000 events / 300 jobs.
+
+======================================================================
+C19 — Prompt pT 50-100 GeV, overlap, PU200
+----------------------------------------------------------------------
+Same as C17 but pT 50-100 GeV. Counterpart to C5.
+Target production size: 100,000 events / 200 jobs.
+
+======================================================================
+C20 — Prompt pT 100-200 GeV, overlap, PU200
+----------------------------------------------------------------------
+Same as C17 but pT 100-200 GeV. Counterpart to C6.
+Target production size: 75,000 events / 150 jobs.
+
+======================================================================
+C21 — Displaced pT 10-20 GeV, overlap, PU200
+----------------------------------------------------------------------
+Name:
+- Single displaced muon, pT 10-20 GeV, OMTF overlap, PU200
+
+Physics content:
+- One displaced muon per event (|d0| 0.2-50 cm)
+- Average pileup: 200
+
+Generator characteristics:
+- pT: flat 1/pT, 10-20 GeV
+- eta: 0.82 < |eta| < 1.24 (etaFilter)
+- Displacement: |d0| 0.2-50 cm, flat
+
+Purpose:
+- PU200 counterpart to C9
+- Key displaced signal for WP5 model comparison
+- Validates displaced recovery at medium pT under realistic occupancy
+
+Target production size:
+- 200,000 events / 400 jobs at 500 events/job
+
+======================================================================
+C22 — Displaced pT 20-50 GeV, overlap, PU200
+----------------------------------------------------------------------
+Same as C21 but pT 20-50 GeV. Counterpart to C10.
+Target production size: 150,000 events / 300 jobs.
+
+======================================================================
+C23 — Displaced pT 50-100 GeV, overlap, PU200
+----------------------------------------------------------------------
+Same as C21 but pT 50-100 GeV. Counterpart to C11.
+Target production size: 100,000 events / 200 jobs.
+
+======================================================================
+C24 — Displaced pT 100-200 GeV, overlap, PU200
+----------------------------------------------------------------------
+Same as C21 but pT 100-200 GeV. Counterpart to C12.
+Target production size: 75,000 events / 150 jobs.
+
+======================================================================
+C25 — Mild-displaced pT 2-5 GeV, overlap, no PU
+----------------------------------------------------------------------
+Name:
+- Single mild-displaced muon, pT 2-5 GeV, OMTF overlap, no PU
+
+Physics content:
+- One muon per event with |d0| in the 0.05-0.2 cm ambiguity zone
+- No pileup
+
+Generator characteristics:
+- pT: flat 1/pT, 2-5 GeV
+- eta: 0.82 < |eta| < 1.24 (etaFilter)
+- Displacement: mild (MinDxy=0.05 cm, MaxDxy=0.2 cm)
+
+Purpose:
+- Critical WP4 ambiguity sample: muons that are mildly off-beam but not
+  clearly displaced. Fills the gap between prompt (|d0|<0.05) and displaced
+  (|d0|>0.2) control samples.
+- Tests whether the displaced model misidentifies mildly off-beam muons.
+- Most dangerous fake source region per new_datset_reqs.md Sec 5.1.
+
+Target production size:
+- 200,000 events / 400 jobs at 500 events/job
+
+======================================================================
+C26 — Mild-displaced pT 5-10 GeV, overlap, no PU
+----------------------------------------------------------------------
+Same as C25 but pT 5-10 GeV. Counterpart to C8 in the mild-displaced d0 range.
+Target production size: 200,000 events / 400 jobs.
+
+======================================================================
+C27 — Mild-displaced pT 2-5 GeV, overlap, PU200
+----------------------------------------------------------------------
+Same as C25 but with PU200. For WP4/WP5 ambiguity zone validation under
+realistic occupancy.
+Target production size: 200,000 events / 400 jobs.
+
+======================================================================
+C28 — Mild-displaced pT 5-10 GeV, overlap, PU200
+----------------------------------------------------------------------
+Same as C26 but with PU200.
+Target production size: 200,000 events / 400 jobs.
+
+======================================================================
+G13 — Prompt muon, eta transition guard (+1.2 to +1.6 / -1.6 to -1.2), no PU
+----------------------------------------------------------------------
+Name:
+- Single prompt muon, eta transition / guard band, no PU (pos/neg split)
+
+Physics content:
+- One prompt muon in the barrel-endcap transition region
+- No pileup
+
+Purpose:
+- Guard-band hard-negative for displacement model
+- Displaced tracks from overlap can migrate into this region
+- Hard-negative: overlap reconstruction target should remain 0
+
+Target production size:
+- G13_pos: 100,000 events / 200 jobs
+- G13_neg: 100,000 events / 200 jobs
+
+======================================================================
+G14 — Prompt muon, eta transition guard, PU200
+----------------------------------------------------------------------
+Same as G13 but with PU200.
+Target production size: 200 jobs per side.
+
+======================================================================
+G15 — Prompt muon, eta endcap control (+1.6 to +2.4 / -2.4 to -1.6), no PU
+----------------------------------------------------------------------
+Name:
+- Single prompt muon, full endcap region, no PU (pos/neg split)
+
+Purpose:
+- Endcap hard-negative for displacement model
+- Model must not fire for prompt endcap muons outside overlap acceptance
+
+Target production size:
+- G15_pos: 100,000 events / 200 jobs
+- G15_neg: 100,000 events / 200 jobs
+
+======================================================================
+G16 — Prompt muon, eta endcap control, PU200
+----------------------------------------------------------------------
+Same as G15 but with PU200. 200 jobs per side.
+
+======================================================================
+G17 — Two displaced muons, OMTF overlap, no PU
+----------------------------------------------------------------------
+Name:
+- Two displaced muons, OMTF overlap region, no PU
+
+Physics content:
+- Two displaced muons per event (both in positive overlap window)
+- No pileup
+
+Generator characteristics:
+- Gun: FlatRandomPtGunProducer2, two independent muons
+- pT: flat 1/pT, 2-200 GeV per muon
+- eta: 0.82-1.24 (positive overlap, etaFilter)
+- phi: -pi/3 to +pi/3 (same processor window)
+- Displacement: flat |d0| 0-30 cm per muon, MaxLxy=200 cm
+
+Purpose:
+- Clean two-displaced-muon PU-free counterpart to G5 (PU200 dimuon displaced)
+- OC cluster separation under pure geometry conditions
+- WP4/WP5 multi-candidate displaced study
+
+Target production size:
+- 150,000 events / 300 jobs at 500 events/job
+
+======================================================================
+C-SERIES TRAINING ROLES
+======================================================================
+Dataset group   Training / validation role
+-----------     -------------------------------------------------------
+C1-C6           Prompt overlap no-PU, 6 pT bins: WP4 feature discrimination
+C7-C12          Displaced overlap no-PU, 6 pT bins: WP4 feature discrimination
+C13-C14         Prompt overlap PU200, low pT: WP5 baseline comparison
+C15-C16         Displaced overlap PU200, low pT: WP5 baseline comparison
+C17-C20         Prompt overlap PU200, mid-high pT: WP5 pT scan
+C21-C24         Displaced overlap PU200, mid-high pT: WP5 displaced recovery
+C25-C26         Mild-displaced overlap no-PU: WP4 ambiguity discrimination
+C27-C28         Mild-displaced overlap PU200: WP4/WP5 ambiguity under occupancy
+
+Key matched comparison pairs for WP4:
+  C1 vs C7  (prompt 2-5 GeV vs displaced 2-5 GeV, same eta, no PU)
+  C2 vs C8  (prompt 5-10 GeV vs displaced 5-10 GeV, same eta, no PU)
+  C1 vs C25 (prompt 2-5 GeV vs mild-displaced 2-5 GeV — ambiguity test)
+  C13 vs C27 (PU200 matched ambiguity, low pT)
+
+======================================================================

@@ -1,0 +1,16 @@
+/TTHto2B_M-125_TuneCP5_14TeV_powheg-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v5-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TTHto2C_M-125_TuneCP5_14TeV_powheg-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v5-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TTTo2L2Nu_TuneCP5_14TeV-powheg-pythia8/Phase2Fall22DRMiniAOD-PU200_125X_mcRun4_realistic_v2-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TTTo2L2Nu_TuneCP5_14TeV-powheg-pythia8/Phase2Spring23DIGIRECOMiniAOD-PU200_Trk1GeV_131X_mcRun4_realistic_v5-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TTTo2L2Nu_TuneCP5_14TeV-powheg-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TTToSemileptonic_TuneCP5_14TeV-powheg-pythia8/Phase2Spring23DIGIRECOMiniAOD-PU200_Trk1GeV_131X_mcRun4_realistic_v5-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TTToSemileptonic_TuneCP5_14TeV-powheg-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD
+/TTToSemiLepton_TuneCP5_14TeV-powheg-pythia8/Phase2Fall22DRMiniAOD-PU200_125X_mcRun4_realistic_v2-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TTToSemiLepton_TuneCP5_14TeV-powheg-pythia8/Phase2Fall22DRMiniAOD-PU200_PUTP_125X_mcRun4_realistic_v2-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TT_TuneCP5_14TeV-powheg-pythia8/Phase2Fall22DRMiniAOD-PU200_125X_mcRun4_realistic_v2_ext1-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TT_TuneCP5_14TeV-powheg-pythia8/Phase2Fall22DRMiniAOD-PU200_PUTP_125X_mcRun4_realistic_v2-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TT_TuneCP5_14TeV-powheg-pythia8/Phase2Spring23DIGIRECOMiniAOD-PU200_131X_mcRun4_realistic_v5-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TT_TuneCP5_14TeV-powheg-pythia8/Phase2Spring23DIGIRECOMiniAOD-PU200_L1TFix_Trk1GeV_131X_mcRun4_realistic_v9-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TT_TuneCP5_14TeV-powheg-pythia8/Phase2Spring23DIGIRECOMiniAOD-PU200_Trk1GeV_131X_mcRun4_realistic_v5-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TT_TuneCP5_14TeV-powheg-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_AllTP_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+/TT_TuneCP5_14TeV-powheg-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD

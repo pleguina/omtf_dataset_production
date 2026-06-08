@@ -1,0 +1,26 @@
+###############################################################################
+# C19_prompt_pt50to100_overlap_PU200.sub — HTCondor submit for controlled overlap study dataset C19_prompt_pt50to100_overlap_PU200
+# Prompt pT 50-100 GeV overlap PU200 — WP5 pT coverage
+# Target: 100000 events, 500 events/job, 200 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = C19_prompt_pt50to100_overlap_PU200 $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C19_prompt_pt50to100_overlap_PU200_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C19_prompt_pt50to100_overlap_PU200_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C19_prompt_pt50to100_overlap_PU200.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue 200

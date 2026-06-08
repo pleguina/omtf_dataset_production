@@ -8,13 +8,9 @@ universe        = vanilla
 executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
 arguments       = B4 $(ProcId) 2000
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B4_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B4_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B4.log
-
-# B4 uses a single DIGI config (no separate GEN config)
-transfer_input_files = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/configs/B4_cfg.py
-should_transfer_files = NO
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4.log
 
 request_cpus    = 1
 request_memory  = 6000

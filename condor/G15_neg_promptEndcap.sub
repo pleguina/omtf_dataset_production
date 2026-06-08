@@ -1,0 +1,26 @@
+###############################################################################
+# G15_neg_promptEndcap.sub — HTCondor submit for dataset G15_neg_promptEndcap
+# Prompt muon, eta -2.4 to -1.6 endcap control, no PU
+# Target: 100000 events, 500 events/job, 200 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = G15_neg_promptEndcap $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G15_neg_promptEndcap_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G15_neg_promptEndcap_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G15_neg_promptEndcap.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue 200

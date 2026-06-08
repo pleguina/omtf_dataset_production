@@ -1,0 +1,664 @@
+###############################################################################
+# das_single_muon_flatpt.sub — HTCondor submit for DAS validation: single_muon_flatpt
+# Dataset: /SingleMu_FlatPt-2to100/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD
+# GT: 140X_mcRun4_realistic_v4
+# Generated: Sun May 10 12:54:55 PM CEST 2026
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_das_job.sh
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/single_muon_flatpt_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/single_muon_flatpt_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/single_muon_flatpt.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 20000000
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+
+arguments = single_muon_flatpt 0 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/0089c8ae-7b77-411a-9afd-3dfda70748d0.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 1 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/0089c8ae-7b77-411a-9afd-3dfda70748d0.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 2 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/00a29498-73e9-46b0-a71a-eb012cd4de9e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 3 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/00a29498-73e9-46b0-a71a-eb012cd4de9e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 4 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/0c1f6e81-138e-4a33-b6ea-9dfb5361280e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 5 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/0c1f6e81-138e-4a33-b6ea-9dfb5361280e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 6 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/0fc4995e-ca2f-4ad5-ae89-85b493d817bc.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 7 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/0fc4995e-ca2f-4ad5-ae89-85b493d817bc.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 8 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/118c5211-73d0-4b2c-bf40-adb63edb0e1a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 9 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/118c5211-73d0-4b2c-bf40-adb63edb0e1a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 10 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/11d9b00f-25f6-4302-bb12-185803b0d0b5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 11 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/11d9b00f-25f6-4302-bb12-185803b0d0b5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 12 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/13bd5403-25a9-42a8-b11d-e49e87eea814.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 13 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/13bd5403-25a9-42a8-b11d-e49e87eea814.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 14 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/15901970-21b4-4de1-91d0-ddeabb1e3d5b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 15 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/15901970-21b4-4de1-91d0-ddeabb1e3d5b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 16 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/19d2460e-77c4-482c-8668-2a4903ee783e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 17 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/19d2460e-77c4-482c-8668-2a4903ee783e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 18 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/1a40fa07-164d-4ef1-a061-a97f5fba011d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 19 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/1a40fa07-164d-4ef1-a061-a97f5fba011d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 20 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/1b16d5ad-e5c4-485d-b6ba-4103432568b2.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 21 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/1b16d5ad-e5c4-485d-b6ba-4103432568b2.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 22 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/1fb6ab85-7f16-4835-a56c-b1d7fc122d02.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 23 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/1fb6ab85-7f16-4835-a56c-b1d7fc122d02.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 24 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/233870d2-4fec-45e1-9150-a7ce01b97312.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 25 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/233870d2-4fec-45e1-9150-a7ce01b97312.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 26 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/233da8de-663b-435a-bd53-a661bede37a9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 27 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/233da8de-663b-435a-bd53-a661bede37a9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 28 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/24013126-47f5-447f-bfd3-1e743db596d0.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 29 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/24013126-47f5-447f-bfd3-1e743db596d0.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 30 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/28a00edd-57f3-4576-8f6b-ac32a4a3c509.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 31 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/28a00edd-57f3-4576-8f6b-ac32a4a3c509.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 32 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/28a97d84-7d42-4e04-a3cb-ac783e8a7004.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 33 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/28a97d84-7d42-4e04-a3cb-ac783e8a7004.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 34 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/2a265d55-d02a-4bfc-92df-22a5d3383dc9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 35 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/2a265d55-d02a-4bfc-92df-22a5d3383dc9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 36 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/2d2ed6dc-5d87-4a76-a6b2-34233e5d3e29.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 37 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/2d2ed6dc-5d87-4a76-a6b2-34233e5d3e29.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 38 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/302af65c-c6e0-4f06-b6a8-98002160bd92.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 39 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/302af65c-c6e0-4f06-b6a8-98002160bd92.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 40 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/30e0c1ad-16ba-4782-8edb-048acb155615.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 41 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/30e0c1ad-16ba-4782-8edb-048acb155615.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 42 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/30e559c5-3de2-4ba4-93ad-af70c9d6baed.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 43 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/30e559c5-3de2-4ba4-93ad-af70c9d6baed.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 44 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/34423b9f-ebcf-42ce-80a0-ee6048c19590.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 45 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/34423b9f-ebcf-42ce-80a0-ee6048c19590.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 46 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/34b573d7-17e3-4741-bfef-ee4530daa94d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 47 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/34b573d7-17e3-4741-bfef-ee4530daa94d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 48 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3607d97e-af06-47e9-b655-421653107424.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 49 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3607d97e-af06-47e9-b655-421653107424.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 50 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/38a73c8f-a8b3-4dbb-a889-5377244e05eb.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 51 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/38a73c8f-a8b3-4dbb-a889-5377244e05eb.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 52 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3a94d68c-1a2f-45c5-9195-b2e813538c8c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 53 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3a94d68c-1a2f-45c5-9195-b2e813538c8c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 54 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3e013678-8bd7-4014-b37b-beb85fc9d829.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 55 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3e013678-8bd7-4014-b37b-beb85fc9d829.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 56 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3f59d2ac-7e73-4870-8e4e-23d963931b9b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 57 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3f59d2ac-7e73-4870-8e4e-23d963931b9b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 58 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3f71d73d-6201-4a6c-ba37-81a7ce81b406.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 59 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3f71d73d-6201-4a6c-ba37-81a7ce81b406.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 60 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3fcd65ae-7d25-4add-aa2c-52133b14ef3c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 61 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/3fcd65ae-7d25-4add-aa2c-52133b14ef3c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 62 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/43b4abd1-4ad3-4609-92a8-09d2593d742d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 63 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/43b4abd1-4ad3-4609-92a8-09d2593d742d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 64 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4701c33d-332b-49e0-91d9-77d72e990bdc.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 65 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4701c33d-332b-49e0-91d9-77d72e990bdc.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 66 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4920df15-b03a-453d-b784-1430b49653be.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 67 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4920df15-b03a-453d-b784-1430b49653be.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 68 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/49524196-87db-4266-95f2-0233d464a043.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 69 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/49524196-87db-4266-95f2-0233d464a043.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 70 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/49ccc257-0425-4c70-9324-cffc9cd97ca4.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 71 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/49ccc257-0425-4c70-9324-cffc9cd97ca4.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 72 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4bb816f0-1a1c-4271-abe3-3e5c9f6d66f1.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 73 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4bb816f0-1a1c-4271-abe3-3e5c9f6d66f1.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 74 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4c0db00c-ef49-4173-8115-74b863823cb1.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 75 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4c0db00c-ef49-4173-8115-74b863823cb1.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 76 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4c43ae00-e328-4213-9e71-0abe316a3713.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 77 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4c43ae00-e328-4213-9e71-0abe316a3713.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 78 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4f1f9b2c-1822-4acc-b335-83d245dd6560.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 79 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4f1f9b2c-1822-4acc-b335-83d245dd6560.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 80 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4fb1df7f-0110-4498-a104-1d660f6f63ec.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 81 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/4fb1df7f-0110-4498-a104-1d660f6f63ec.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 82 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/5325a71a-1569-4807-802f-31a4f5ee75fa.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 83 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/5325a71a-1569-4807-802f-31a4f5ee75fa.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 84 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/5334f8f3-2c11-435e-ae8b-0cc3c884c1e4.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 85 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/5334f8f3-2c11-435e-ae8b-0cc3c884c1e4.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 86 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/5a3eb341-1a9c-4427-87e9-fcf9152e4eb8.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 87 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/5a3eb341-1a9c-4427-87e9-fcf9152e4eb8.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 88 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/6961b3f6-0b9b-4c8f-9b16-9db7c9c24a65.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 89 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/6961b3f6-0b9b-4c8f-9b16-9db7c9c24a65.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 90 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/6f1ea077-5aaa-4255-8d1a-ac453ca0bf76.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 91 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/6f1ea077-5aaa-4255-8d1a-ac453ca0bf76.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 92 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/6f77174e-7a6e-4eed-bb43-7bb71bc1310a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 93 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/6f77174e-7a6e-4eed-bb43-7bb71bc1310a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 94 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/715c43d1-c39f-428a-992f-37b3ac07836e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 95 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/715c43d1-c39f-428a-992f-37b3ac07836e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 96 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/735c6c6e-cdf8-4a7b-a61e-bc5b071ca9e1.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 97 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/735c6c6e-cdf8-4a7b-a61e-bc5b071ca9e1.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 98 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7582ca57-6a2f-482f-9f48-e3f41542649d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 99 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7582ca57-6a2f-482f-9f48-e3f41542649d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 100 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/75a839da-8866-4ab4-8e7f-4af3a579a38c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 101 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/75a839da-8866-4ab4-8e7f-4af3a579a38c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 102 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/78ff6944-1463-479a-8f49-7cdc30680523.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 103 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/78ff6944-1463-479a-8f49-7cdc30680523.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 104 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7a345558-8ef7-42b7-a97e-373b561b31c4.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 105 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7a345558-8ef7-42b7-a97e-373b561b31c4.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 106 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7bf9e370-8fbd-4748-93be-cecb755e4f9b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 107 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7bf9e370-8fbd-4748-93be-cecb755e4f9b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 108 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7dd40764-4975-4211-9c71-5be15fd185ed.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 109 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7dd40764-4975-4211-9c71-5be15fd185ed.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 110 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7ebd8d0c-1042-437d-ac2b-b4371f154453.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 111 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/7ebd8d0c-1042-437d-ac2b-b4371f154453.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 112 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/80dd6269-464d-47fd-a18f-cadbcb596a49.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 113 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/80dd6269-464d-47fd-a18f-cadbcb596a49.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 114 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/817d0478-e546-4976-9431-b44c130c34d8.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 115 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/817d0478-e546-4976-9431-b44c130c34d8.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 116 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8483122a-64a9-4ef2-83be-ed7cedab31ba.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 117 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8483122a-64a9-4ef2-83be-ed7cedab31ba.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 118 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/860fdfc0-0ba4-40fc-82a0-2c900dff20a2.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 119 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/860fdfc0-0ba4-40fc-82a0-2c900dff20a2.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 120 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/879b3f3b-e220-49c5-9a10-c11c30d20d96.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 121 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/879b3f3b-e220-49c5-9a10-c11c30d20d96.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 122 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8a7a22f7-e4e4-4823-bfa5-23be044e7351.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 123 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8a7a22f7-e4e4-4823-bfa5-23be044e7351.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 124 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8a9cf08d-e648-4a96-89fe-2a9feb63c95e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 125 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8a9cf08d-e648-4a96-89fe-2a9feb63c95e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 126 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8be177de-c706-425f-9084-c684c482f509.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 127 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8be177de-c706-425f-9084-c684c482f509.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 128 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8c23a51c-d555-4739-855e-8ac5cbfd5697.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 129 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/8c23a51c-d555-4739-855e-8ac5cbfd5697.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 130 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/95162de6-baa0-472d-8677-bfd203361f8f.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 131 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/95162de6-baa0-472d-8677-bfd203361f8f.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 132 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/95abb938-bb09-4f22-abe6-aa308227fdb0.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 133 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/95abb938-bb09-4f22-abe6-aa308227fdb0.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 134 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/95e533b0-551a-41fc-b1f9-561b67d47f4a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 135 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/95e533b0-551a-41fc-b1f9-561b67d47f4a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 136 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/9f12e7d3-27a6-437e-9d16-1ef989caae20.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 137 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/9f12e7d3-27a6-437e-9d16-1ef989caae20.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 138 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/9f2223be-cb3a-4cf3-a936-1020935f58f2.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 139 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/9f2223be-cb3a-4cf3-a936-1020935f58f2.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 140 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a0a0a186-edf3-4b9b-aba7-83cb5575ec0f.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 141 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a0a0a186-edf3-4b9b-aba7-83cb5575ec0f.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 142 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a612c2aa-2110-4824-a7ac-2cab6b64f174.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 143 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a612c2aa-2110-4824-a7ac-2cab6b64f174.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 144 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a6142319-b274-499c-9f70-ddd16bac9195.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 145 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a6142319-b274-499c-9f70-ddd16bac9195.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 146 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a6706f53-231e-400a-b1a4-c2022be348ac.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 147 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a6706f53-231e-400a-b1a4-c2022be348ac.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 148 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a7a62460-7ace-4fdf-b059-992488c8ed9d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 149 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a7a62460-7ace-4fdf-b059-992488c8ed9d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 150 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a8906d3a-20f1-46b5-b397-42d7995eb03d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 151 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/a8906d3a-20f1-46b5-b397-42d7995eb03d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 152 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/abb24863-397f-4b7b-8e8d-8781c8c2e1f7.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 153 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/abb24863-397f-4b7b-8e8d-8781c8c2e1f7.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 154 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/aeb2e839-9f51-40c9-abca-ffae3b726861.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 155 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/aeb2e839-9f51-40c9-abca-ffae3b726861.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 156 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b0b95f4a-6b50-48b4-b1c9-1231fe221d91.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 157 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b0b95f4a-6b50-48b4-b1c9-1231fe221d91.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 158 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b2019d5c-aa9b-4ab5-a10d-da1cd3e63bab.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 159 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b2019d5c-aa9b-4ab5-a10d-da1cd3e63bab.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 160 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b31e3f3e-c9b5-4d0a-b578-a802cdeb59d4.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 161 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b31e3f3e-c9b5-4d0a-b578-a802cdeb59d4.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 162 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b527b43e-23f2-4058-baae-8617d5a4f3e1.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 163 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b527b43e-23f2-4058-baae-8617d5a4f3e1.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 164 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b5e7a88b-cb01-4382-8710-d000c989d0f6.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 165 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b5e7a88b-cb01-4382-8710-d000c989d0f6.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 166 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b7dc630d-9861-4ecc-b1e8-49fddb5097cf.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 167 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/b7dc630d-9861-4ecc-b1e8-49fddb5097cf.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 168 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/bf0fd781-4674-4176-9f65-57508819ca8f.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 169 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/bf0fd781-4674-4176-9f65-57508819ca8f.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 170 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/c37437d8-15cf-43a9-b43b-cfdc12a3da8d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 171 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/c37437d8-15cf-43a9-b43b-cfdc12a3da8d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 172 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/c6c52b67-95d2-49b2-916e-8aa580170b8d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 173 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/c6c52b67-95d2-49b2-916e-8aa580170b8d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 174 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/cdd25dc3-d1ce-4778-b0e6-93c3df21c2f7.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 175 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/cdd25dc3-d1ce-4778-b0e6-93c3df21c2f7.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 176 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/cf428b7d-c92d-4321-afc9-81170f923d7f.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 177 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/cf428b7d-c92d-4321-afc9-81170f923d7f.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 178 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/d366868e-04f7-433d-97cd-a3148795fbad.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 179 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/d366868e-04f7-433d-97cd-a3148795fbad.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 180 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/d604b808-5ec2-4850-b2bc-306edcadbaa9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 181 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/d604b808-5ec2-4850-b2bc-306edcadbaa9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 182 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/d7447353-a250-4bcb-9bae-47890d8041df.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 183 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/d7447353-a250-4bcb-9bae-47890d8041df.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 184 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/d7d07cba-577a-42b6-9d27-fa0815c14d07.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 185 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/d7d07cba-577a-42b6-9d27-fa0815c14d07.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 186 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/dbbec49c-b081-45a7-8dc2-d15b4243cca6.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 187 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/dbbec49c-b081-45a7-8dc2-d15b4243cca6.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 188 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/df355cc6-6af7-49a2-aac8-ac131927cd71.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 189 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/df355cc6-6af7-49a2-aac8-ac131927cd71.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 190 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/e38a52f5-fe15-4873-ba03-75b0b65322ee.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 191 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/e38a52f5-fe15-4873-ba03-75b0b65322ee.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 192 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/e421d114-4526-46ce-b88f-1b44fd311f33.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 193 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/e421d114-4526-46ce-b88f-1b44fd311f33.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 194 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/e8cbbf69-3fb9-4822-a969-c2a2a2906d4d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 195 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/e8cbbf69-3fb9-4822-a969-c2a2a2906d4d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 196 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/e909bdc1-f7e3-4e61-ad6e-0bd924bbae79.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 197 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/e909bdc1-f7e3-4e61-ad6e-0bd924bbae79.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 198 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/ea41ccad-af85-47f0-89bb-a0d4d9f47faa.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 199 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/ea41ccad-af85-47f0-89bb-a0d4d9f47faa.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 200 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/ecd5d8c7-a672-40d8-8aba-cb628e9e94ec.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 201 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/ecd5d8c7-a672-40d8-8aba-cb628e9e94ec.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 202 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/ed525653-c970-4eb2-b085-1c71b40db7f8.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 203 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/ed525653-c970-4eb2-b085-1c71b40db7f8.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 204 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/ed666651-b5a5-4329-829b-88b25da37c65.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 205 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/ed666651-b5a5-4329-829b-88b25da37c65.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 206 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f139c152-9541-46a2-825d-a098c0b60188.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 207 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f139c152-9541-46a2-825d-a098c0b60188.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 208 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f44217a4-3bd0-42f9-b1e5-4bd99a8df419.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 209 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f44217a4-3bd0-42f9-b1e5-4bd99a8df419.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 210 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f5563a25-b7f4-4b62-889b-c312544c1395.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 211 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f5563a25-b7f4-4b62-889b-c312544c1395.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 212 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f5d91258-0b9d-4190-a47d-8463a888bca9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 213 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f5d91258-0b9d-4190-a47d-8463a888bca9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 214 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f6c7f292-7504-427d-afab-3239af2633fb.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 215 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f6c7f292-7504-427d-afab-3239af2633fb.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 216 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f78636af-d949-43d3-b2bb-9fe2fa047ab3.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 217 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f78636af-d949-43d3-b2bb-9fe2fa047ab3.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 218 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f868fbb3-b198-470e-93e6-9adbe0b2db43.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 219 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f868fbb3-b198-470e-93e6-9adbe0b2db43.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 220 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f876dd24-ca9c-4697-a98f-d5c0bf945614.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 221 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/f876dd24-ca9c-4697-a98f-d5c0bf945614.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 222 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/fb9aafe5-592c-4b26-9b18-5447ec6a2e66.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 223 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/fb9aafe5-592c-4b26-9b18-5447ec6a2e66.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 224 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/fff6e6d6-67e4-4d0a-8544-14a5f0822bb0.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 225 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/fff6e6d6-67e4-4d0a-8544-14a5f0822bb0.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 226 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/040ab579-b663-4c32-bb51-004365518b75.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 227 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/040ab579-b663-4c32-bb51-004365518b75.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 228 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/26398b3c-9838-452d-a83d-e334e4c85135.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 229 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/26398b3c-9838-452d-a83d-e334e4c85135.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 230 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/41ea10ad-0471-4681-8bb1-140d3759674a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 231 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/41ea10ad-0471-4681-8bb1-140d3759674a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 232 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/6258fe60-0ead-4932-9054-c69108f86c40.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 233 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/6258fe60-0ead-4932-9054-c69108f86c40.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 234 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/63653792-241b-4bea-b4df-2c76c8a4e5a5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 235 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/63653792-241b-4bea-b4df-2c76c8a4e5a5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 236 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/664d8a3d-d100-4e07-af2c-462e6068003d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 237 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/664d8a3d-d100-4e07-af2c-462e6068003d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 238 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/6f66fb31-c5d1-414e-896c-49ca730a61d7.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 239 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/6f66fb31-c5d1-414e-896c-49ca730a61d7.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 240 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/8fb2797c-cc8d-49fa-8a7b-ef4748cc1fae.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 241 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/8fb2797c-cc8d-49fa-8a7b-ef4748cc1fae.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 242 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/936dbb7d-ad8f-4135-aea5-61c08235c07e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 243 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/936dbb7d-ad8f-4135-aea5-61c08235c07e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 244 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/96bd963d-b482-420a-8327-092ecd25794d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 245 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/96bd963d-b482-420a-8327-092ecd25794d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 246 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/9785d2c7-0b5c-4dc0-b1a9-5a6903f5774e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 247 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/9785d2c7-0b5c-4dc0-b1a9-5a6903f5774e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 248 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/aae01bbd-96ee-4c38-803e-97c54f0ffcb5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 249 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/aae01bbd-96ee-4c38-803e-97c54f0ffcb5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 250 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/acbb5de6-1947-4941-9e5c-a0da46ce1766.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 251 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/acbb5de6-1947-4941-9e5c-a0da46ce1766.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 252 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/b256129b-3e24-4a05-a340-ebc1a32d9671.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 253 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/b256129b-3e24-4a05-a340-ebc1a32d9671.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 254 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/dfe749df-7cf5-44a3-8e0b-e3842209a062.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 255 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/dfe749df-7cf5-44a3-8e0b-e3842209a062.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 256 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/ebbf2469-79b7-49b1-8301-936f19e2cebb.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 257 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/ebbf2469-79b7-49b1-8301-936f19e2cebb.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 258 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/edbcdb38-284c-419b-97b2-bc17f503add5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 259 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/edbcdb38-284c-419b-97b2-bc17f503add5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 260 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/02399738-c5eb-41b9-ae82-6de8b5a35d3c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 261 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/02399738-c5eb-41b9-ae82-6de8b5a35d3c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 262 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/03324032-c33c-4893-a186-9f0c65b041b6.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 263 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/03324032-c33c-4893-a186-9f0c65b041b6.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 264 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/03cf95e9-32b1-4385-8433-b18d0d53b567.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 265 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/03cf95e9-32b1-4385-8433-b18d0d53b567.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 266 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/043cb064-bbb1-440d-86a3-a46202644059.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 267 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/043cb064-bbb1-440d-86a3-a46202644059.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 268 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0a0b3802-a287-4c38-9321-5ec4d61f3036.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 269 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0a0b3802-a287-4c38-9321-5ec4d61f3036.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 270 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0b84f589-d46f-4d90-81f9-1e6142d46b7c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 271 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0b84f589-d46f-4d90-81f9-1e6142d46b7c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 272 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0e3113fc-5aac-415a-86f3-aa430b42f01a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 273 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0e3113fc-5aac-415a-86f3-aa430b42f01a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 274 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0e3d3afb-5bc9-4506-8d8c-db7e89b5e686.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 275 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0e3d3afb-5bc9-4506-8d8c-db7e89b5e686.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 276 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0ef8d1e7-80e9-40eb-baf3-c2ed5fc5bc5e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 277 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/0ef8d1e7-80e9-40eb-baf3-c2ed5fc5bc5e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 278 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/10777a2d-4d25-408c-8331-d4bf057f33b1.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 279 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/10777a2d-4d25-408c-8331-d4bf057f33b1.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 280 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1316b207-696d-4e49-8cd1-469bbebf5a6d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 281 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1316b207-696d-4e49-8cd1-469bbebf5a6d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 282 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/14278a9d-d403-4d7b-b7e1-276e0430ab74.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 283 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/14278a9d-d403-4d7b-b7e1-276e0430ab74.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 284 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/146892d0-42ac-4c5b-a49b-f19074766416.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 285 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/146892d0-42ac-4c5b-a49b-f19074766416.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 286 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/16af8ef1-33cf-4e41-a7b9-53c32e38305d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 287 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/16af8ef1-33cf-4e41-a7b9-53c32e38305d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 288 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/17c546fe-ba46-4c40-98b0-8552116c7d10.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 289 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/17c546fe-ba46-4c40-98b0-8552116c7d10.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 290 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/17ece13b-7309-42e7-93de-062b567ad317.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 291 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/17ece13b-7309-42e7-93de-062b567ad317.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 292 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/190ab1e0-ac7d-4662-957d-be9526aefae8.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 293 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/190ab1e0-ac7d-4662-957d-be9526aefae8.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 294 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/19aec90f-efc2-4ac8-ad88-5a969b6276b7.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 295 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/19aec90f-efc2-4ac8-ad88-5a969b6276b7.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 296 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1b8e7a4c-3c68-4744-af7b-a1d23bc0bed2.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 297 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1b8e7a4c-3c68-4744-af7b-a1d23bc0bed2.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 298 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1e5dc891-295f-41ae-94f9-8d4b471a4b6e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 299 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1e5dc891-295f-41ae-94f9-8d4b471a4b6e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 300 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1ea2ecea-169f-47c6-8701-0c3760d8781b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 301 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1ea2ecea-169f-47c6-8701-0c3760d8781b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 302 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1f19963c-b9fb-418c-99cb-5dfd3ffdefd6.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 303 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/1f19963c-b9fb-418c-99cb-5dfd3ffdefd6.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 304 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/225dabd7-a34e-4d22-ab6c-a4f38ba48a3d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 305 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/225dabd7-a34e-4d22-ab6c-a4f38ba48a3d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 306 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/23993924-ad83-4a33-ae32-5180d1961780.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 307 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/23993924-ad83-4a33-ae32-5180d1961780.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 308 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/25ef2c29-bd4f-4f89-8a54-468ab5376af6.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 309 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/25ef2c29-bd4f-4f89-8a54-468ab5376af6.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 310 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/26685aff-ca3f-4d1c-9211-091e04626969.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 311 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/26685aff-ca3f-4d1c-9211-091e04626969.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 312 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/2a512b3e-97dc-4d08-a1fe-d2b1d7482933.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 313 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/2a512b3e-97dc-4d08-a1fe-d2b1d7482933.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 314 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/2e568f65-2544-41c9-8e48-ff5ad8ea4b1b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 315 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/2e568f65-2544-41c9-8e48-ff5ad8ea4b1b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 316 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/2f0b7512-e14e-4e24-bd32-d7457b56f958.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 317 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/2f0b7512-e14e-4e24-bd32-d7457b56f958.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = single_muon_flatpt 318 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/31503d47-0f68-4f11-a4a8-279ff8b0f838.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = single_muon_flatpt 319 /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2830000/31503d47-0f68-4f11-a4a8-279ff8b0f838.root 140X_mcRun4_realistic_v4 500 500
+queue

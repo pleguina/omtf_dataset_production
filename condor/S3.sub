@@ -6,9 +6,9 @@ universe        = vanilla
 executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
 arguments       = S3 $(ProcId) 20000
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S3_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S3_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/S3.log
+output          = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/S3_$(ProcId).out
+error           = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/S3_$(ProcId).err
+log             = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/S3.log
 
 transfer_input_files = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/configs/S3_cfg.py
 should_transfer_files = NO

@@ -1,0 +1,344 @@
+###############################################################################
+# das_llp_addon.sub — HTCondor submit for DAS validation: llp_addon
+# Dataset: /HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+# GT: 140X_mcRun4_realistic_v4
+# Generated: Sun May 10 12:54:51 PM CEST 2026
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_das_job.sh
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/llp_addon_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/llp_addon_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/llp_addon.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 20000000
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+
+arguments = llp_addon 0 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/02c86376-b21c-46c1-ab8c-b2c5c82b0594.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 1 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/05b108b0-800c-4408-892b-1a4e78edca3f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 2 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/0696f89a-9c42-4490-b187-6b98504b6bc0.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 3 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/0b442c0a-420e-47f8-8866-65f3346dfd09.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 4 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/0d45ad50-c8c8-45e7-be0b-f29bf1fba446.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 5 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/0d54b391-38b0-4e25-8268-3da84f82b203.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 6 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/0d8071d0-cb38-4740-b78c-7b27657c70f4.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 7 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/10a93085-93ff-42c4-8f7a-7a41192466d1.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 8 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/1231eccf-a050-4729-9bd1-c4cac19a837f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 9 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/147deaab-7578-4ec5-bb81-d3d3f2eef996.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 10 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/15195191-9805-4afb-8d80-2c374b21806d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 11 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/16d89477-f42b-4808-92a4-2351124b00f0.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 12 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/1783bfc1-eb71-4436-a18b-b76b61cbbaf8.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 13 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/185a02f9-4ddd-4b75-8b76-816afdc4a667.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 14 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/1d1244d9-6df0-4624-b7a2-26b10a6c1cd7.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 15 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/210f5242-53e5-4010-8dc5-161c7215e3a9.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 16 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/214224e5-9076-4d1d-9b1c-4907339f7a53.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 17 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/2162c997-5d3f-4846-a4cd-107282dee619.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 18 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/21a39c96-29b3-4974-9214-3817fb93196d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 19 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/23fd7359-83e5-4982-bb6e-521ec4b3cc13.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 20 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/251d3853-9e87-4588-8550-a6c77832811f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 21 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/25409d31-facc-4932-8518-fb6676b32311.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 22 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/25c29b76-5fb0-40cf-b704-d63a433b37f3.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 23 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/26d13588-fc59-4ee9-b2f2-c827760dd995.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 24 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/26db8044-d62e-4f37-94f1-031b7d81f021.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 25 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/2984252a-b47c-4b51-8d6f-b2fb42e0aff1.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 26 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/2b1c73bd-5ff9-49af-854b-50743f81a224.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 27 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/2b9dfa58-78da-4fbb-bd91-a3a9e5144e02.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 28 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/2bd43989-dc2b-456c-a365-9362259542b8.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 29 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/2e32b749-78a3-40e0-ab2d-7ee84eaa7bca.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 30 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/30c5c83b-bd00-4203-af64-4662c7388508.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 31 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/30cb6877-d4a6-4a56-836b-f31ff47b43be.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 32 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/30e6097b-1566-47a6-ba91-7afb7a442a1b.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 33 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/3201c27b-7bf6-4ea8-9c38-72c043def603.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 34 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/32f2a3fb-fb1e-4d3d-a5bd-b92f98e7c44b.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 35 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/3555edc4-8844-454c-af38-a07f500ac28a.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 36 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/35efa9e0-f1d3-48e1-9298-589a05301f00.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 37 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/3a32ea53-5efd-4574-af2f-64a00f97b059.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 38 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/3a698709-c7e4-4365-a2da-38ad5ee88de8.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 39 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/4227dad9-fdff-4a75-906a-535e9238a2ee.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 40 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/42681266-1153-4a50-978f-74238a088c54.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 41 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/42b38835-ac25-4e22-ac46-1052752c8770.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 42 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/45016a6d-2378-4e45-a473-5f85b942180c.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 43 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/45655836-b39c-449c-a0ff-87bd3798c8e3.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 44 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/4bde50b1-b425-422d-a072-d85238ca9481.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 45 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/4e4a9edd-835b-457d-a294-1eeea96b6f6f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 46 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/4eed2bd3-6c5d-4740-af90-e51e657801c3.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 47 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/4ef489ab-e9bf-4168-a7b1-067a32ad7621.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 48 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/51d4f506-8f9e-491f-bb5c-c12d6ce02a28.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 49 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/52d5a8a5-9c75-47d9-bfab-1b3ac46975a9.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 50 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/56221411-0c9f-4013-8efd-bf08f1755208.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 51 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/568c3b86-7709-4f97-9b34-05639d164889.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 52 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/593983f1-a8e6-4c24-8bf0-0901e453ef6b.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 53 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/5b0cac96-1339-438b-96c5-a478920fa19a.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 54 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/5b91bac0-0f30-4e05-bb64-5ea444527f02.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 55 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/5ca4abfd-481e-4464-9afc-cc49b8822e57.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 56 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/673eb0dd-05ce-43f5-8377-5f729e708ef7.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 57 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/68b83d55-eab0-4952-bbe7-5c0b0e712451.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 58 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/68fad310-779f-4f94-8ba2-078fcd0b5bf8.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 59 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/6980f54e-4c0f-461d-a743-e3e95f416dc6.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 60 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/698fb722-739f-448f-9f9d-1a8d6358ef41.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 61 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/6dc48ee2-0595-483b-a368-9ec2b4efbe55.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 62 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/6fae09c5-6dd2-4cd3-a462-15ee3951a1d7.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 63 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/700de1d4-0e48-49df-ab81-0e878043d23c.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 64 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/7131e2c5-0c88-4c1c-9ef6-24693ec10b00.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 65 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/7193bcb3-a7a2-4856-b858-e68f44170d1f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 66 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/72590585-2517-4b9b-8227-185de27fde13.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 67 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/733680cd-42c7-4cbc-970a-a38e3bbeb404.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 68 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/73688182-8ee7-4453-9a67-ebf8908287a7.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 69 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/745fc154-db43-4c2e-bd2d-54bbeb7dd4d9.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 70 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/74f8e033-2c02-4053-8d45-b2677b0f240b.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 71 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/750be856-d1a0-4a7c-a8f5-2360c8c49b6d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 72 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/77542280-cfb5-4e8e-8726-7affbd8f2d35.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 73 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/78864eeb-b9a6-4aa6-bc89-71082eade263.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 74 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/7ad89e87-59df-40a2-861d-c2ea85eff111.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 75 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/7e1416c9-ac70-443e-8d61-9006b1420f1e.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 76 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/7ebef239-fe27-43b2-bba0-6796e74f6c95.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 77 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/80211973-d577-4354-8a6b-e16de7cd3d27.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 78 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/804c1494-5705-4aad-bada-d94000a4dae6.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 79 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/807872dd-31da-46f2-ad6b-a13bfcd23a3d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 80 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/80d32eb9-f843-4a1d-925e-fcbff560eeed.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 81 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/843cb31e-d229-4a5c-ab75-25b38bd1d34f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 82 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/84dc6e31-af30-43d8-a67a-f515531007a9.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 83 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/883cb19b-e23f-49b6-9c88-2a6a140e1c9f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 84 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/88422355-dd41-473d-9f1c-fdf86a6c592a.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 85 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/88803ae4-e565-4330-a3e7-721460a34208.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 86 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/89a428e8-6d33-48cb-9cfa-e97d14478c87.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 87 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/8a3e821a-bf0a-43a0-a5fa-af2e8933c456.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 88 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/8a99f567-48a8-4167-be4d-b02aae65b2f9.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 89 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/8d6b07a7-07e2-4120-990c-035193c72ebd.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 90 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/92347125-4c99-4b4f-87ac-4f122d1414ec.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 91 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/92ddf443-bd16-445d-a951-0440c576434f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 92 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/982ba292-032e-4748-8f54-eac715187707.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 93 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/98889148-c09f-41dc-b9d4-8276a2c08bba.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 94 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/98a0ae68-2898-4aee-b0e3-5d3db2ab004e.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 95 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/9914acc7-3ae6-461f-b58f-cab2e8db0bc9.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 96 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/99bb65ba-127a-44cf-97a8-ac61209ca64e.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 97 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/9a171500-cdc8-4317-a4a8-c50190bb59bc.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 98 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/9b110098-f602-47b0-9251-68de4e3a2622.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 99 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/9b9fbba9-97d9-48a2-808f-404fb2241547.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 100 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/9d013ed8-d319-4bef-b44e-8712ae7d9cc1.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 101 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/9d5280de-5e8f-4fd6-8cb8-4347a8f8feab.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 102 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/9e44284a-4908-422d-9128-cbd7435e07d7.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 103 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/a2c75d9d-7c50-4ccf-b38f-e4438bd3269d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 104 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/a375f5ec-7017-48f5-90c0-e75e6bbc5bcc.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 105 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/a4d11c27-505a-499b-9ad6-46c12b060053.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 106 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/a686ecfd-68df-49ad-8ff3-9d9cf8eba36c.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 107 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/a6dc0ee1-f112-4ebe-8769-b4db71032198.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 108 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/a75ebc54-a951-445e-a8ad-064b38151f7b.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 109 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/aabaf277-5e15-4530-a532-4d674c6fb6d1.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 110 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ab244df2-e9c2-4684-b7a9-730b716bfd13.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 111 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ac60bd72-f782-40b1-b813-b8a46d0f0291.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 112 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ac6bede6-e056-4aed-bfb7-bf360a750ef1.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 113 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/aca79103-adad-4421-bcc4-1f8fb8b04235.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 114 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ae02bf1e-4cd2-477e-a093-b877cc6300d1.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 115 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ae73dd50-2ffb-4442-8467-185ce10fed5e.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 116 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/afaeab8f-4e1c-4338-92cd-b3e844076179.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 117 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/afe8f8ce-02a9-496b-bdb7-f7bb16759090.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 118 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/afefd305-31b6-4397-b610-ef4f630e3b0f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 119 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/b2c16d07-92d2-4907-a194-8877f68bf7aa.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 120 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/b4aabede-dde0-4094-83ff-1fe956d1df61.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 121 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/b563c7b6-0d11-4a0a-8a5f-3be22084e82c.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 122 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/b5f4095a-bbd6-4696-a586-bc8430ed8228.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 123 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/b70efb6c-a0fc-45c7-9fbc-f8fba909e4d2.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 124 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/b8ed53c3-947f-4bb1-ae09-94b545435d09.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 125 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/bad3d2dc-3dd0-40ff-873e-1e3f8f2ee4e2.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 126 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/bb7281cb-9d85-4d4b-a058-aa6b2ff13dc3.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 127 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/be891ca2-5e86-4826-87c4-0db173dba112.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 128 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/c19341a4-fcb3-4b2f-9987-cba555c5285d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 129 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/c419a3c9-0643-4620-9c49-1ea86954a0ee.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 130 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/c6842ffb-ef37-4850-8cf0-1c4219ebae5d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 131 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/c6e3b471-8890-42a4-b0f0-f4bb08713617.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 132 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/c71ccac1-a89d-498c-a21d-719b5810ab28.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 133 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/c8a7eb44-14c8-4a2a-9c24-5cee2fcbf8d1.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 134 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ccf9ed7f-9f50-495f-985c-6c00199dd717.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 135 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ce7fcc0a-2500-4a0c-a383-afdf44b7af3c.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 136 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/cfc1ab7c-912d-4629-ba77-35fef9796b50.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 137 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/d07c1245-63ce-450b-ad16-748e75a831b6.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 138 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/d0c13719-9054-4ae9-b71e-1b579f25819d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 139 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/d11ba1d3-4f22-4777-b605-bc7dcead469a.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 140 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/d3617ec1-cad4-47ba-ba2c-d6de5cdd5a99.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 141 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/d46900d6-c402-4b48-8215-645eeb9757fc.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 142 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/d469ca9e-e2c8-48b1-a2e4-60862980632d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 143 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/d4850596-463c-4684-8b91-bd12c2183c2d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 144 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/d66b70f6-bb68-4e07-9708-b8780a25eaa8.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 145 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/d9d124bd-3e16-45e4-b845-e1f7c7201ecb.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 146 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/da47ec19-573e-49ad-a060-09655007dd98.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 147 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/dcbc2b87-a0f2-4f3b-8a1f-be5de4f29898.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 148 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/df97bb73-1a3f-454e-964b-d2818ebad306.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 149 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/e4c7d2b4-2353-4edd-a003-6c0ab0a0bfb9.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 150 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/e82abd53-846e-4ab9-a6fa-304c8701fc5d.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 151 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/e9b4961e-667a-4009-8015-77beaf7077c1.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 152 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ea99b431-71d9-40b8-b821-1f056f3af492.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 153 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ed37bbba-79a5-40d8-81f3-9a66800351d5.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 154 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ef2ddfdf-b69b-4b0b-ac37-6dfd264d9554.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 155 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/ef523aab-bd42-408c-8988-b5b982c73cdf.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 156 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/f1e2c3c6-6378-4898-9841-d48ac8b17bb5.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 157 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/f3ba49e1-5502-429c-8c7e-ce89b9ad5a1e.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 158 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/f5a0bd8f-bb66-4d9c-9986-67d60ba9c17f.root 140X_mcRun4_realistic_v4 0 302
+queue
+arguments = llp_addon 159 /store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/f7a3c9f6-83e9-4c0a-bedf-2f50508c487d.root 140X_mcRun4_realistic_v4 0 302
+queue
