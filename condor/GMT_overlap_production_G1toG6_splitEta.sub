@@ -1,0 +1,75 @@
+###############################################################################
+# GMT_overlap_production_G1toG6_splitEta.sub
+#
+# New GMT-visible-stub campaign with split eta sides, G1-G6 only (no G7/G8)
+#
+# Total: 1,550,000 events / 3,100 jobs at 500 events/job
+#   G1_pos: 150k -> 300 jobs
+#   G1_neg: 150k -> 300 jobs
+#   G2_pos: 150k -> 300 jobs
+#   G2_neg: 150k -> 300 jobs
+#   G3_pos: 125k -> 250 jobs
+#   G3_neg: 125k -> 250 jobs
+#   G4_pos: 150k -> 300 jobs
+#   G4_neg: 150k -> 300 jobs
+#   G5_pos: 100k -> 200 jobs
+#   G5_neg: 100k -> 200 jobs
+#   G6_pos: 100k -> 200 jobs
+#   G6_neg: 100k -> 200 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = $(Dataset) $(Process) 0 500
+
+output  = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/gmt_splitEta_$(Dataset)_$(Process).out
+error   = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/gmt_splitEta_$(Dataset)_$(Process).err
+log     = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/gmt_overlap_G1toG6_splitEta.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
+# PU200 jobs need longer wall time than no-PU jobs
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+# G1
+Dataset = G1_pos
+queue 300
+Dataset = G1_neg
+queue 300
+
+# G2
+Dataset = G2_pos
+queue 300
+Dataset = G2_neg
+queue 300
+
+# G3
+Dataset = G3_pos
+queue 250
+Dataset = G3_neg
+queue 250
+
+# G4
+Dataset = G4_pos
+queue 300
+Dataset = G4_neg
+queue 300
+
+# G5
+Dataset = G5_pos
+queue 200
+Dataset = G5_neg
+queue 200
+
+# G6
+Dataset = G6_pos
+queue 200
+Dataset = G6_neg
+queue 200

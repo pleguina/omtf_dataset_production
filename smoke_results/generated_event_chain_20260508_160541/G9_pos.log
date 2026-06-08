@@ -1,0 +1,13 @@
+=== LOCAL TEST: G9_pos / ProcId 0 / 2 events ===
+    Scratch: /tmp/pleguina_omtf_localtest_G9_pos_0
+Fri May  8 04:05:51 PM CEST 2026
+Config patched: G9_pos/0, 2 events -> omtf_hits_G9_pos_0_localtest.root, omtf_nano_G9_pos_0_localtest.root
+Starting cmsRun...
+Fri May  8 16:05:52 CEST 2026
+----- Begin Fatal Exception 08-May-2026 16:05:52 CEST-----------------------
+An exception of category 'ConfigFileReadError' occurred while
+   [0] Processing the python configuration file named job_cfg.py
+Exception Message:
+ unknown python problem occurred.
+IndentationError: unexpected indent (job_cfg.py, line 169)
+----- End Fatal Exception -------------------------------------------------

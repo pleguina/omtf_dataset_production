@@ -1,0 +1,362 @@
+###############################################################################
+# G14_pos_promptTransition_PU200_resub3.sub — resubmit 58 missing jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+should_transfer_files = NO
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
++JobFlavour     = "workday"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+arguments = G14_pos_promptTransition_PU200 0 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_0.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_0.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 100 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_100.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_100.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 104 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_104.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_104.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 105 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_105.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_105.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 121 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_121.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_121.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 128 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_128.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_128.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 129 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_129.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_129.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 13 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_13.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_13.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 130 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_130.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_130.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 133 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_133.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_133.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 142 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_142.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_142.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 146 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_146.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_146.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 147 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_147.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_147.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 148 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_148.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_148.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 15 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_15.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_15.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 152 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_152.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_152.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 155 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_155.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_155.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 157 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_157.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_157.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 162 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_162.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_162.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 163 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_163.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_163.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 164 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_164.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_164.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 165 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_165.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_165.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 166 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_166.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_166.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 168 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_168.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_168.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 174 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_174.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_174.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 175 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_175.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_175.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 176 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_176.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_176.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 181 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_181.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_181.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 184 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_184.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_184.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 188 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_188.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_188.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 189 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_189.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_189.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 191 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_191.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_191.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 194 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_194.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_194.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 196 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_196.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_196.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 22 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_22.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_22.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 26 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_26.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_26.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 29 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_29.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_29.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 3 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_3.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_3.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 31 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_31.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_31.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 34 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_34.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_34.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 36 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_36.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_36.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 37 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_37.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_37.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 48 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_48.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_48.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 5 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_5.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_5.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 59 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_59.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_59.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 64 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_64.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_64.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 67 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_67.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_67.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 68 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_68.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_68.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 71 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_71.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_71.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 77 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_77.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_77.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 80 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_80.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_80.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 81 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_81.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_81.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 82 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_82.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_82.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 85 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_85.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_85.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 88 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_88.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_88.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 90 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_90.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_90.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 93 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_93.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_93.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+
+arguments = G14_pos_promptTransition_PU200 99 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_99.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200_99.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G14_pos_promptTransition_PU200.log
+queue
+

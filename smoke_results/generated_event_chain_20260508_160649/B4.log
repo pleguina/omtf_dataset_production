@@ -1,0 +1,31 @@
+=== LOCAL TEST: B4 / ProcId 0 / 2 events ===
+    Scratch: /tmp/pleguina_omtf_localtest_B4_0
+Fri May  8 04:06:49 PM CEST 2026
+Config patched: B4/0, 2 events -> omtf_hits_B4_0_localtest.root, omtf_nano_B4_0_localtest.root
+Starting cmsRun...
+Fri May  8 16:06:50 CEST 2026
+
+**************************************************************
+ Geant4 version Name: geant4-11-02-patch-02 [MT]   (21-June-2024)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+08-May-2026 16:07:25 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/mc/Phase2Spring24GS/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM/140X_mcRun4_realistic_v4-v1/2520001/f89a14cb-9028-4dba-94e3-8222852d7764.root
+08-May-2026 16:07:28 CEST  Successfully opened file root://eoscms.cern.ch//eos/cms/store/mc/Phase2Spring24GS/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM/140X_mcRun4_realistic_v4-v1/2520001/f89a14cb-9028-4dba-94e3-8222852d7764.root
+constructing InputMakerPhase2
+ using Phase2 DT trigger primitives
+ CandidateSimMuonMatcher: using muonMatcherFileName /afs/cern.ch/user/p/pleguina/CMSSW_14_2_0_pre2/src/L1Trigger/L1TMuon/data/omtf_config/muonMatcherHists_100files_smoothStdDev_withOvf.root
+ CandidateSimMuonMatcher: candidateSimMuonMatcherType simpleMatching
+ CandidateSimMuonMatcher: matchingType 2
+Begin processing the 1st record. Run 1, Event 1, LumiSection 1 on stream 0 at 08-May-2026 16:08:53.601 CEST
+08-May-2026 16:08:59 CEST  Closed file root://eoscms.cern.ch//eos/cms/store/mc/Phase2Spring24GS/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM/140X_mcRun4_realistic_v4-v1/2520001/f89a14cb-9028-4dba-94e3-8222852d7764.root
+08-May-2026 16:08:59 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/mc/Phase2Spring24GS/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM/140X_mcRun4_realistic_v4-v1/2520001/7e41bfe6-3602-4fc7-880f-3e1a088fe632.root
+08-May-2026 16:09:02 CEST  Successfully opened file root://eoscms.cern.ch//eos/cms/store/mc/Phase2Spring24GS/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM/140X_mcRun4_realistic_v4-v1/2520001/7e41bfe6-3602-4fc7-880f-3e1a088fe632.root
+%MSG-w XrdAdaptorLvl3:  MixingModule:mix 08-May-2026 16:09:08 CEST  Run: 1 Event: 1
+Deactivating st-096-hh151911.cern.ch from active sources because its quality (270) is higher than 260 and 4 times larger than the other active server st-096-100gb-ip313-4d084.cern.ch (59) 
+%MSG

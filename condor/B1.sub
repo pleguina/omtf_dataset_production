@@ -6,9 +6,9 @@ universe        = vanilla
 executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
 arguments       = B1 $(ProcId) 5000
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B1_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B1_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/B1.log
+output          = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/B1_$(ProcId).out
+error           = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/B1_$(ProcId).err
+log             = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/B1.log
 
 transfer_input_files = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/configs/B1_cfg.py
 should_transfer_files = NO

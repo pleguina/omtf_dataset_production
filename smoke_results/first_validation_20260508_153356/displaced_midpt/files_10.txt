@@ -1,0 +1,10 @@
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/7124daef-bd99-4446-a276-22c9d79db69b.root
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/8c130ddc-b7cb-400a-9408-6a6b29f95fc4.root
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/9433c715-1317-42f3-834a-202cb8ddd603.root
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/83c3e1ae-5053-4710-9449-59004abbd79f.root
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/af98fa05-5bfc-492d-9ee0-f8b55b6fe06d.root
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/71fd2dee-cbcb-407d-b7ab-791fa74e3f63.root
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/0650cbfc-76c3-4990-a8ff-76f8e6524b91.root
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/e3f957b4-9256-4bd9-82ce-0e136c22d5a2.root
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/4fb3277c-18aa-44a5-816e-19fb89fdcbc7.root
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/30000/b3d5d27a-0f91-4112-8a3e-5ea509ec0ee4.root

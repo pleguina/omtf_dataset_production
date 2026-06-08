@@ -17,6 +17,7 @@ CMSSW_DIR="/afs/cern.ch/user/${USER:0:1}/${USER}/${CMSSW_VERSION}"
 CONFDIR="${BASEDIR}/configs"
 
 OMTF_OUTPUT="omtf_hits_${DATASET}_${PROCID}_localtest.root"
+NANO_OUTPUT="omtf_nano_${DATASET}_${PROCID}_localtest.root"
 POOL_OUTFILE="${DATASET}_${PROCID}_localtest.root"
 SEED=$((PROCID * 7919 + 13))
 
@@ -46,6 +47,7 @@ cp "${CONFDIR}/customize_omtf_dumper.py" ./
 export PATCH_NEVENTS="${NEVENTS}"
 export PATCH_POOL_OUTFILE="${POOL_OUTFILE}"
 export PATCH_OMTF_OUTPUT="${OMTF_OUTPUT}"
+export PATCH_NANO_OUTPUT="${NANO_OUTPUT}"
 export PATCH_SEED="${SEED}"
 export PATCH_DATASET="${DATASET}"
 export PATCH_PROCID="${PROCID}"
@@ -56,6 +58,7 @@ import re, os
 nevents = int(os.environ["PATCH_NEVENTS"])
 pool_out = os.environ["PATCH_POOL_OUTFILE"]
 omtf_out = os.environ["PATCH_OMTF_OUTPUT"]
+nano_out = os.environ["PATCH_NANO_OUTPUT"]
 seed = int(os.environ["PATCH_SEED"])
 dataset = os.environ["PATCH_DATASET"]
 procid = os.environ["PATCH_PROCID"]
@@ -90,12 +93,14 @@ if hasattr(process.RandomNumberGeneratorService, 'VtxSmeared'):
 if hasattr(process.RandomNumberGeneratorService, 'g4SimHits'):
     process.RandomNumberGeneratorService.g4SimHits.initialSeed = cms.untracked.uint32({seed + 2000000})
 process.TFileService.fileName = cms.string('{omtf_out}')
+if hasattr(process, 'NANOOMTFoutput'):
+    process.NANOOMTFoutput.fileName = cms.untracked.string('{nano_out}')
 """
 
 with open("job_cfg.py", "w") as f:
     f.write(cfg)
 
-print(f"Config patched: {dataset}/{procid}, {nevents} events -> {omtf_out}")
+print(f"Config patched: {dataset}/{procid}, {nevents} events -> {omtf_out}, {nano_out}")
 PYEOF
 
 # --- 4. Run cmsRun ---
@@ -114,6 +119,18 @@ if [ ${RC} -ne 0 ]; then
     exit ${RC}
 fi
 
-echo "SUCCESS. OMTF output: ${SCRATCH}/${OMTF_OUTPUT}"
+if [ ! -f "${OMTF_OUTPUT}" ]; then
+    echo "ERROR: expected OMTF output not found: ${SCRATCH}/${OMTF_OUTPUT}"
+    exit 1
+fi
+
+if [ -f "${NANO_OUTPUT}" ]; then
+    echo "SUCCESS. OMTF output: ${SCRATCH}/${OMTF_OUTPUT}"
+    echo "SUCCESS. Nano output: ${SCRATCH}/${NANO_OUTPUT}"
+else
+    echo "WARNING: Nano output missing: ${SCRATCH}/${NANO_OUTPUT}"
+    echo "         (check if L1Trigger/L1MuNano is compiled in current CMSSW area)"
+fi
+
 echo "Log: ${SCRATCH}/cmsrun_${DATASET}_${PROCID}.log"
 ls -lh "${SCRATCH}"/*.root 2>/dev/null || true

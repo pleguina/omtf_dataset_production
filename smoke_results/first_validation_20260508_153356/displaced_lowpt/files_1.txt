@@ -1,0 +1,1 @@
+/store/mc/Phase2Fall22DRMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_125X_mcRun4_realistic_v2-v1/40000/044356ed-0fe5-41fa-ac10-4921750376f3.root

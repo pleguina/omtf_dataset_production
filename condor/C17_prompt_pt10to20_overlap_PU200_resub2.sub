@@ -1,0 +1,25 @@
+###############################################################################
+# C17_prompt_pt10to20_overlap_PU200_resub2.sub — resubmit missing jobs
+# 1 proc IDs missing out of 400
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+arguments = C17_prompt_pt10to20_overlap_PU200 164 0 500
+output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C17_prompt_pt10to20_overlap_PU200_164.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C17_prompt_pt10to20_overlap_PU200_164.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C17_prompt_pt10to20_overlap_PU200.log
+queue
+

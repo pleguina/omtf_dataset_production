@@ -17,9 +17,9 @@ universe        = vanilla
 executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
 arguments       = $(Dataset) $(ProcId) $(SkipEvents) $(NumEvents)
 
-output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).out
-error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/full_$(Dataset)_$(ProcId).err
-log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/resubmit_500ev.log
+output  = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/full_$(Dataset)_$(ProcId).out
+error   = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/full_$(Dataset)_$(ProcId).err
+log     = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/resubmit_500ev.log
 
 should_transfer_files = NO
 

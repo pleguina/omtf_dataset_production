@@ -1,0 +1,89 @@
+###############################################################################
+# GMT_overlap_production.sub — GMT-visible-stub campaign, full G1–G8 production
+#
+# Total: 2,000,000 events / 4,000 jobs at 500 events/job
+#   G1: 300k  -> 600 jobs  (single prompt overlap, no PU)
+#   G2: 300k  -> 600 jobs  (single prompt overlap, PU200)
+#   G3: 250k  -> 500 jobs  (single displaced overlap, no PU)
+#   G4: 300k  -> 600 jobs  (single displaced overlap, PU200)
+#   G5: 200k  -> 400 jobs  (two displaced overlap, PU200)
+#   G6: 200k  -> 400 jobs  (three prompt overlap, PU200)
+#   G7: 150k  -> 300 jobs  (hard negative barrel, no PU)
+#   G8: 300k  -> 600 jobs  (hard negative barrel, PU200)
+#
+# PRIORITY ORDER — submit in waves:
+#   Wave 1 (most urgent): G8 + G2
+#   Wave 2:               G4 + G6
+#   Wave 3:               G1 + G3 + G5 + G7
+#
+# BEFORE SUBMITTING:
+#   1. Valid proxy:    voms-proxy-init --voms cms --valid 168:00
+#   2. CMSSW built:    cd CMSSW_14_2_0_pre2/src && scram b -j8
+#   3. Configs ready:  run scripts/generate_configs.sh  (creates G*_cfg.py)
+#   4. Test sample:    run a 100-event test job per new dataset
+#   5. Pass audit:     scripts/audit/check_fragments_static.py
+#                      scripts/audit/audit_gen_particles.py
+#
+# Submit all at once:
+#   condor_submit condor/GMT_overlap_production.sub
+#
+# Submit a single dataset:
+#   condor_submit condor/G2.sub
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = $(Dataset) $(Process) 0 500
+
+output  = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/gmt_$(Dataset)_$(Process).out
+error   = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/gmt_$(Dataset)_$(Process).err
+log     = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/gmt_overlap.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
+# PU200 jobs (G2/G4/G5/G6/G8) need longer wall time than no-PU jobs.
+# Override per-dataset if submitting individually via G*.sub files.
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+# ── Queue all 4000 jobs ──────────────────────────────────────────────────────
+# Each dataset block sets Dataset and queues N jobs; $(Process) provides the
+# per-job index (0-based, used as ProcId in run_job.sh).
+
+# G1: 600 jobs — single prompt overlap, no PU
+Dataset = G1
+queue 600
+
+# G2: 600 jobs — single prompt overlap, PU200
+Dataset = G2
+queue 600
+
+# G3: 500 jobs — single displaced overlap, no PU
+Dataset = G3
+queue 500
+
+# G4: 600 jobs — single displaced overlap, PU200
+Dataset = G4
+queue 600
+
+# G5: 400 jobs — two displaced overlap, PU200
+Dataset = G5
+queue 400
+
+# G6: 400 jobs — three prompt overlap, PU200
+Dataset = G6
+queue 400
+
+# G7: 300 jobs — hard negative barrel, no PU
+Dataset = G7
+queue 300
+
+# G8: 600 jobs — hard negative barrel, PU200
+Dataset = G8
+queue 600

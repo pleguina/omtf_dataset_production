@@ -1,0 +1,21 @@
+=== LOCAL TEST: G10_pos / ProcId 0 / 1 events ===
+    Scratch: /tmp/pleguina_omtf_localtest_G10_pos_0
+Fri May  8 04:15:17 PM CEST 2026
+Config patched: G10_pos/0, 1 events -> omtf_hits_G10_pos_0_localtest.root, omtf_nano_G10_pos_0_localtest.root
+Starting cmsRun...
+Fri May  8 16:15:19 CEST 2026
+
+**************************************************************
+ Geant4 version Name: geant4-11-02-patch-02 [MT]   (21-June-2024)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+08-May-2026 16:15:32 CEST  Initiating request to open file root://eoscms.cern.ch//eos/cms/store/mc/Phase2Spring24GS/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM/140X_mcRun4_realistic_v4-v1/2520001/5b637a2d-9260-4cff-9e4d-df1865ecad26.root
+08-May-2026 16:15:34 CEST  Successfully opened file root://eoscms.cern.ch//eos/cms/store/mc/Phase2Spring24GS/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM/140X_mcRun4_realistic_v4-v1/2520001/5b637a2d-9260-4cff-9e4d-df1865ecad26.root
+constructing InputMakerPhase2
+ using Phase2 DT trigger primitives

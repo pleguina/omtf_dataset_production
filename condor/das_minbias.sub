@@ -1,0 +1,664 @@
+###############################################################################
+# das_minbias.sub — HTCondor submit for DAS validation: minbias
+# Dataset: /MinBias_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD
+# GT: 140X_mcRun4_realistic_v4
+# Generated: Sun May 10 12:54:33 PM CEST 2026
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_das_job.sh
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/minbias_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/minbias_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/minbias.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 20000000
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+
+arguments = minbias 0 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/00a8a3a7-388d-488a-a184-ac1725eacce9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 1 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/00a8a3a7-388d-488a-a184-ac1725eacce9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 2 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/00b27bb8-ea96-43f9-abb7-75f66ee587e9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 3 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/00b27bb8-ea96-43f9-abb7-75f66ee587e9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 4 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0123e1b6-ed4f-4f16-98ea-d94f1b3ceeda.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 5 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0123e1b6-ed4f-4f16-98ea-d94f1b3ceeda.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 6 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/013bc81b-0753-4aad-bef0-9203e50bc707.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 7 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/013bc81b-0753-4aad-bef0-9203e50bc707.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 8 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/01497df6-2ce5-4947-b53e-594113177204.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 9 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/01497df6-2ce5-4947-b53e-594113177204.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 10 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/01514206-feac-4471-a989-9744924079b6.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 11 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/01514206-feac-4471-a989-9744924079b6.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 12 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/017c966e-f551-4220-b559-706a18f8cbe1.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 13 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/017c966e-f551-4220-b559-706a18f8cbe1.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 14 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/018bd0dc-436e-43ea-a1f1-45938b8686b9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 15 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/018bd0dc-436e-43ea-a1f1-45938b8686b9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 16 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/019aa532-f589-4026-8ddf-eadedb1ff894.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 17 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/019aa532-f589-4026-8ddf-eadedb1ff894.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 18 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/029bdbc1-8a5d-4ba0-ac1e-2f8aa19a123a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 19 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/029bdbc1-8a5d-4ba0-ac1e-2f8aa19a123a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 20 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0363cce4-c7a0-4612-8dd7-aa6f31bee898.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 21 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0363cce4-c7a0-4612-8dd7-aa6f31bee898.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 22 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/03663597-9083-49be-8c60-9ba25be25d0b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 23 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/03663597-9083-49be-8c60-9ba25be25d0b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 24 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/037ef58d-0da5-49de-ac34-4a847fe86269.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 25 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/037ef58d-0da5-49de-ac34-4a847fe86269.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 26 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04095ce9-9035-48ef-b9b2-25ddd0aa0578.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 27 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04095ce9-9035-48ef-b9b2-25ddd0aa0578.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 28 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04170736-73c8-4b22-a992-da83bf18dbaa.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 29 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04170736-73c8-4b22-a992-da83bf18dbaa.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 30 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04bdcd1c-cfce-4b84-a7f6-b5c06c7945ac.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 31 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04bdcd1c-cfce-4b84-a7f6-b5c06c7945ac.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 32 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04e91cbf-c29a-4cac-92cb-3f5ccd3cc44a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 33 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04e91cbf-c29a-4cac-92cb-3f5ccd3cc44a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 34 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04f7342e-d899-4f0a-baae-d8ec1df67d4b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 35 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/04f7342e-d899-4f0a-baae-d8ec1df67d4b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 36 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0525ba75-1712-4c23-b77f-ede8c27f5ae0.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 37 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0525ba75-1712-4c23-b77f-ede8c27f5ae0.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 38 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/05433695-3507-4ea5-a24e-02c623750d55.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 39 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/05433695-3507-4ea5-a24e-02c623750d55.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 40 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/056de8d5-2d6c-4907-8071-9ed79e303d05.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 41 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/056de8d5-2d6c-4907-8071-9ed79e303d05.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 42 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/057e02c9-ac7a-43ac-8eb3-d0e0aa296c25.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 43 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/057e02c9-ac7a-43ac-8eb3-d0e0aa296c25.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 44 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0596d0ba-3822-495a-a0e0-de541a270c7c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 45 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0596d0ba-3822-495a-a0e0-de541a270c7c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 46 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/06202504-c6ca-4256-8b30-bc6e7a8d24b3.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 47 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/06202504-c6ca-4256-8b30-bc6e7a8d24b3.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 48 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0628ccb1-fbe7-4993-a055-4c23339f5b9f.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 49 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0628ccb1-fbe7-4993-a055-4c23339f5b9f.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 50 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/063c04ee-758d-4598-9037-eff40390b0d4.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 51 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/063c04ee-758d-4598-9037-eff40390b0d4.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 52 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/067c690d-afa5-4b9f-b0de-50fd40ef67b9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 53 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/067c690d-afa5-4b9f-b0de-50fd40ef67b9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 54 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/06bcc04d-0005-400c-91d8-206787338d09.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 55 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/06bcc04d-0005-400c-91d8-206787338d09.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 56 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/06eff86f-ac27-4168-86e0-2304634906dd.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 57 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/06eff86f-ac27-4168-86e0-2304634906dd.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 58 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0729af61-c2e4-4331-a02f-9ca57c6e1e53.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 59 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0729af61-c2e4-4331-a02f-9ca57c6e1e53.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 60 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/073a85f8-5925-44d6-b370-f5a4e8ef08ed.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 61 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/073a85f8-5925-44d6-b370-f5a4e8ef08ed.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 62 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/080da8de-1187-4ff7-a48c-426876554b10.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 63 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/080da8de-1187-4ff7-a48c-426876554b10.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 64 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/08645b10-3638-467d-8309-e26400d8beef.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 65 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/08645b10-3638-467d-8309-e26400d8beef.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 66 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/087d0ae7-e715-4ff4-802d-6babe0c09a78.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 67 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/087d0ae7-e715-4ff4-802d-6babe0c09a78.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 68 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/087e05eb-81bc-4a6d-9388-6ad06074c428.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 69 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/087e05eb-81bc-4a6d-9388-6ad06074c428.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 70 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/089d37b9-5b4d-4bb0-b0e9-e7a33513f322.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 71 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/089d37b9-5b4d-4bb0-b0e9-e7a33513f322.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 72 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/08b84f52-b52d-461a-a193-b447fadd329e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 73 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/08b84f52-b52d-461a-a193-b447fadd329e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 74 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/08b961fe-1742-4230-a6d8-c3e4291343b5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 75 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/08b961fe-1742-4230-a6d8-c3e4291343b5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 76 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/094ffcba-0a2c-4b78-9891-b8be3a4f439a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 77 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/094ffcba-0a2c-4b78-9891-b8be3a4f439a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 78 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/098eb5da-e917-4cbf-9097-e66d698288a4.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 79 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/098eb5da-e917-4cbf-9097-e66d698288a4.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 80 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/09ae0eed-63f8-4649-8cb5-3f66f7c86e91.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 81 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/09ae0eed-63f8-4649-8cb5-3f66f7c86e91.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 82 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/09ae40b7-1b3e-41ed-93bd-dfaaa45c8931.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 83 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/09ae40b7-1b3e-41ed-93bd-dfaaa45c8931.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 84 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0a478334-ee61-498e-8bd7-f387c9f562ee.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 85 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0a478334-ee61-498e-8bd7-f387c9f562ee.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 86 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0a827663-2a17-4cf0-8e8d-20425cdfdb13.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 87 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0a827663-2a17-4cf0-8e8d-20425cdfdb13.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 88 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0af38462-1ce3-444a-8314-8c67571548bf.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 89 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0af38462-1ce3-444a-8314-8c67571548bf.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 90 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0b0b8707-2768-47cb-a07a-69567ce6f2c0.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 91 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0b0b8707-2768-47cb-a07a-69567ce6f2c0.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 92 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0b1f611b-b2cc-44bb-abb0-fcbd7410ad9a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 93 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0b1f611b-b2cc-44bb-abb0-fcbd7410ad9a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 94 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0b222c98-f1e0-4158-8426-62b040bb109b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 95 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0b222c98-f1e0-4158-8426-62b040bb109b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 96 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0b36ffb2-4808-4910-a783-4e7f4d1235e7.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 97 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0b36ffb2-4808-4910-a783-4e7f4d1235e7.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 98 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0c7dab39-03c9-467b-ad22-7cc03fa5284e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 99 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0c7dab39-03c9-467b-ad22-7cc03fa5284e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 100 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0cd7c30d-45cf-43dd-9b2c-704a8469ed3e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 101 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0cd7c30d-45cf-43dd-9b2c-704a8469ed3e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 102 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0d52b752-e3b7-4892-aad0-cb269e470c7c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 103 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0d52b752-e3b7-4892-aad0-cb269e470c7c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 104 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0df95bfc-5b66-4cb9-aa1f-0d97ad21d2a7.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 105 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0df95bfc-5b66-4cb9-aa1f-0d97ad21d2a7.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 106 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0edd8dad-714f-4e10-b0c1-656afa136b15.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 107 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0edd8dad-714f-4e10-b0c1-656afa136b15.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 108 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0f40318d-b9f6-418d-a7f3-fc03a3907ca5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 109 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0f40318d-b9f6-418d-a7f3-fc03a3907ca5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 110 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0f984aef-52cf-42e0-845f-3d25b4577729.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 111 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0f984aef-52cf-42e0-845f-3d25b4577729.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 112 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0fb67094-972a-4a6b-bc54-830c06b4eee6.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 113 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0fb67094-972a-4a6b-bc54-830c06b4eee6.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 114 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0fe23de5-8d26-4b83-86d2-92aea47fd7c9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 115 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0fe23de5-8d26-4b83-86d2-92aea47fd7c9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 116 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0ff9d5d9-863d-40f0-b9d0-b63e2be35d7c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 117 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/0ff9d5d9-863d-40f0-b9d0-b63e2be35d7c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 118 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/100b6020-85d2-48fe-83a0-0569034eae1f.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 119 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/100b6020-85d2-48fe-83a0-0569034eae1f.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 120 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/108278be-0c6e-4603-bb86-4c44d9bb23d6.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 121 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/108278be-0c6e-4603-bb86-4c44d9bb23d6.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 122 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1109df39-517a-4ff3-b28c-8bd4f7bca749.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 123 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1109df39-517a-4ff3-b28c-8bd4f7bca749.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 124 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1111c369-5b29-4098-8431-26ad7df435cc.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 125 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1111c369-5b29-4098-8431-26ad7df435cc.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 126 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/113ac377-94d3-4534-8236-2c777262b011.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 127 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/113ac377-94d3-4534-8236-2c777262b011.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 128 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/113c3fbc-75cc-4d00-951f-32988c16b48c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 129 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/113c3fbc-75cc-4d00-951f-32988c16b48c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 130 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/114dcf7a-7608-4199-8a8e-0df2457a5bc2.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 131 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/114dcf7a-7608-4199-8a8e-0df2457a5bc2.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 132 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/11c0e6c0-9b3a-4dbf-89c8-9f2264d2f556.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 133 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/11c0e6c0-9b3a-4dbf-89c8-9f2264d2f556.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 134 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/11e6df7d-0950-4732-91e8-3e5043414cfe.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 135 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/11e6df7d-0950-4732-91e8-3e5043414cfe.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 136 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/120577dd-8f72-49b4-a0c5-79d2373b12c9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 137 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/120577dd-8f72-49b4-a0c5-79d2373b12c9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 138 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1256a3c0-44a2-4988-991e-7461e32e4665.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 139 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1256a3c0-44a2-4988-991e-7461e32e4665.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 140 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1291a834-cf5d-48a4-a2a3-f8f6c9887b9b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 141 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1291a834-cf5d-48a4-a2a3-f8f6c9887b9b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 142 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/129ef7eb-c06b-492b-aede-32b8c629ef2c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 143 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/129ef7eb-c06b-492b-aede-32b8c629ef2c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 144 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/12e896a2-29f7-4ace-9fc8-157fa5a5b6eb.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 145 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/12e896a2-29f7-4ace-9fc8-157fa5a5b6eb.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 146 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/12ebc7c7-d537-4e30-ad0d-4c93151170da.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 147 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/12ebc7c7-d537-4e30-ad0d-4c93151170da.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 148 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/13034843-4a9b-437f-896d-e592e27e9c23.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 149 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/13034843-4a9b-437f-896d-e592e27e9c23.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 150 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1311108d-3980-449b-b1ed-67d0ab05a8bf.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 151 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1311108d-3980-449b-b1ed-67d0ab05a8bf.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 152 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/13ce7ab9-24b8-4ec2-8426-e8f441de580d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 153 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/13ce7ab9-24b8-4ec2-8426-e8f441de580d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 154 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1410ef34-cee1-4b26-870d-7ed0bd19da65.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 155 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1410ef34-cee1-4b26-870d-7ed0bd19da65.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 156 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/145b3445-b7cf-4e9c-bc27-4e17e21ea296.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 157 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/145b3445-b7cf-4e9c-bc27-4e17e21ea296.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 158 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/14ba984a-68ae-412a-9f1b-d558ec593045.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 159 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/14ba984a-68ae-412a-9f1b-d558ec593045.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 160 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/158170f0-744c-4169-9128-ceb893a59e08.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 161 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/158170f0-744c-4169-9128-ceb893a59e08.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 162 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15901101-2689-43a8-87d7-cf6662b90b33.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 163 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15901101-2689-43a8-87d7-cf6662b90b33.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 164 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/159c719d-7b22-42d4-90b5-1d71e9666a9b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 165 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/159c719d-7b22-42d4-90b5-1d71e9666a9b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 166 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15a9ad9b-d37b-4751-9bc0-688d89057152.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 167 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15a9ad9b-d37b-4751-9bc0-688d89057152.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 168 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15b9e7c3-d0e8-456d-8148-e3b32a96670d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 169 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15b9e7c3-d0e8-456d-8148-e3b32a96670d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 170 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15caebe9-90d3-44f1-83fb-aa4752e2ea50.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 171 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15caebe9-90d3-44f1-83fb-aa4752e2ea50.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 172 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15ccca18-0078-436f-8993-0b7580fbcdf1.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 173 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/15ccca18-0078-436f-8993-0b7580fbcdf1.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 174 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/16342b90-5c16-468b-b9e1-737871b5c778.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 175 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/16342b90-5c16-468b-b9e1-737871b5c778.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 176 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/163c0c60-f8f5-47a0-8a5d-b36e8cac2c37.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 177 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/163c0c60-f8f5-47a0-8a5d-b36e8cac2c37.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 178 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/17091d9c-a5b7-4db0-a788-45f79ba29262.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 179 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/17091d9c-a5b7-4db0-a788-45f79ba29262.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 180 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1758552c-8b70-4965-a43f-c8e6bafd53fa.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 181 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1758552c-8b70-4965-a43f-c8e6bafd53fa.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 182 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/17847481-4850-4d50-80f4-721e4b7919b1.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 183 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/17847481-4850-4d50-80f4-721e4b7919b1.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 184 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18604a24-373c-4152-aa4b-6e543b632f68.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 185 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18604a24-373c-4152-aa4b-6e543b632f68.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 186 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18908216-5235-46a9-b57b-7f747c093903.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 187 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18908216-5235-46a9-b57b-7f747c093903.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 188 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18addefa-7065-47e5-85c5-2e9722568261.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 189 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18addefa-7065-47e5-85c5-2e9722568261.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 190 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18c78778-e032-4e9a-88c2-ac9a42fcae12.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 191 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18c78778-e032-4e9a-88c2-ac9a42fcae12.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 192 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18cecedb-3733-46e1-8422-5f9837a97b7c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 193 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/18cecedb-3733-46e1-8422-5f9837a97b7c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 194 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/190e3dc8-3977-4e3b-92c7-ed31caf42d6e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 195 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/190e3dc8-3977-4e3b-92c7-ed31caf42d6e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 196 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/192be60f-be0d-49cb-b0c9-4482b51d97fd.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 197 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/192be60f-be0d-49cb-b0c9-4482b51d97fd.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 198 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1961e626-e48d-462e-b7f1-89dcc95832d0.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 199 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1961e626-e48d-462e-b7f1-89dcc95832d0.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 200 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1999c2d6-9956-4395-a353-9eb914288585.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 201 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1999c2d6-9956-4395-a353-9eb914288585.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 202 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/19aa0472-5c14-48d6-82d2-43c5c0cba31e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 203 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/19aa0472-5c14-48d6-82d2-43c5c0cba31e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 204 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1a949c9b-8f32-4dbf-8ae5-751044cef50a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 205 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1a949c9b-8f32-4dbf-8ae5-751044cef50a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 206 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1a9b5c48-8384-4555-b4b3-22be5ea47b87.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 207 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1a9b5c48-8384-4555-b4b3-22be5ea47b87.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 208 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ab1e8f5-3bd4-4680-bc97-12f9546d62c8.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 209 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ab1e8f5-3bd4-4680-bc97-12f9546d62c8.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 210 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ab713a1-730c-4331-aea4-ffce503aa82c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 211 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ab713a1-730c-4331-aea4-ffce503aa82c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 212 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ae3bcd9-21b2-4c66-8829-290c1015c2d1.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 213 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ae3bcd9-21b2-4c66-8829-290c1015c2d1.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 214 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1b66f26a-6a5e-4dcb-a725-e97af924a2b3.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 215 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1b66f26a-6a5e-4dcb-a725-e97af924a2b3.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 216 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1b881c13-8fd8-4e58-838b-dccd84518103.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 217 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1b881c13-8fd8-4e58-838b-dccd84518103.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 218 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1bc34394-4634-47a5-ada4-ff11b8f88176.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 219 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1bc34394-4634-47a5-ada4-ff11b8f88176.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 220 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1bdc776a-f356-4063-a852-eb3134157232.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 221 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1bdc776a-f356-4063-a852-eb3134157232.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 222 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1be44668-a9b5-4994-86ce-228ef9d75d0c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 223 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1be44668-a9b5-4994-86ce-228ef9d75d0c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 224 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1bef0684-6ad7-4cde-9eb7-294f891a131e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 225 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1bef0684-6ad7-4cde-9eb7-294f891a131e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 226 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1c06496d-ffbb-4fe1-b842-a6f7c0c4af43.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 227 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1c06496d-ffbb-4fe1-b842-a6f7c0c4af43.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 228 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1c605b31-0583-4b6d-94c0-0a127f245331.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 229 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1c605b31-0583-4b6d-94c0-0a127f245331.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 230 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ca1f6bb-d297-486c-82c4-8460ef8509e7.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 231 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ca1f6bb-d297-486c-82c4-8460ef8509e7.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 232 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1cdf6a36-ac42-4ef7-9eed-fd1903c03589.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 233 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1cdf6a36-ac42-4ef7-9eed-fd1903c03589.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 234 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ce0677a-2d1f-4c0c-a140-79706928141d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 235 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1ce0677a-2d1f-4c0c-a140-79706928141d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 236 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1d2d4dc2-ed81-4d41-beba-666bc542e0b9.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 237 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1d2d4dc2-ed81-4d41-beba-666bc542e0b9.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 238 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1e3d9786-ac3c-494c-b455-9ae72c164158.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 239 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1e3d9786-ac3c-494c-b455-9ae72c164158.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 240 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1e63354c-75e0-445d-b825-dd922e354e46.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 241 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1e63354c-75e0-445d-b825-dd922e354e46.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 242 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1efa9517-7288-4c59-8218-523a4ce779c5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 243 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1efa9517-7288-4c59-8218-523a4ce779c5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 244 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1fcef08a-a933-4c86-9a86-9e3d87576ecf.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 245 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/1fcef08a-a933-4c86-9a86-9e3d87576ecf.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 246 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2016d150-d1b2-493f-b319-4192ae40f8fe.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 247 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2016d150-d1b2-493f-b319-4192ae40f8fe.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 248 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/204821fc-ab58-493c-bc73-9bc350d183cc.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 249 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/204821fc-ab58-493c-bc73-9bc350d183cc.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 250 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/208da620-1e50-4090-b4d5-2a8db5741073.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 251 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/208da620-1e50-4090-b4d5-2a8db5741073.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 252 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/212bf0c4-2409-407a-a5f7-314fb0a132a5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 253 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/212bf0c4-2409-407a-a5f7-314fb0a132a5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 254 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/218ef406-1822-4d85-85e4-9233ccecc777.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 255 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/218ef406-1822-4d85-85e4-9233ccecc777.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 256 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/21ddcba8-21b1-4bb5-88c3-d82e9077ce6e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 257 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/21ddcba8-21b1-4bb5-88c3-d82e9077ce6e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 258 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/21e5ee59-0dc2-4130-99e6-7807089d3014.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 259 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/21e5ee59-0dc2-4130-99e6-7807089d3014.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 260 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/21f6ec52-4a72-47d8-90d4-252689204a81.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 261 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/21f6ec52-4a72-47d8-90d4-252689204a81.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 262 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2205a002-5145-49b0-8e53-b4a52d24e8af.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 263 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2205a002-5145-49b0-8e53-b4a52d24e8af.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 264 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/22726c8f-d5eb-488b-b652-3c5d65b1ff56.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 265 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/22726c8f-d5eb-488b-b652-3c5d65b1ff56.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 266 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/229deb0d-d32f-4734-8dd3-ed8d1c789f89.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 267 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/229deb0d-d32f-4734-8dd3-ed8d1c789f89.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 268 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/22da5a4b-0873-479a-9d21-ce1821d6590b.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 269 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/22da5a4b-0873-479a-9d21-ce1821d6590b.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 270 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/23552314-0604-4abb-832f-d38dad6d707a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 271 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/23552314-0604-4abb-832f-d38dad6d707a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 272 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/237dfe97-48a9-426d-800e-5950b6d013a7.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 273 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/237dfe97-48a9-426d-800e-5950b6d013a7.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 274 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/23dd2741-6e10-40df-8b2f-f7f0dffceefe.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 275 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/23dd2741-6e10-40df-8b2f-f7f0dffceefe.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 276 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2405cc69-02a7-47e4-9284-360d9879ba05.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 277 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2405cc69-02a7-47e4-9284-360d9879ba05.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 278 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2467a307-0a9a-4427-8501-77e2e721cd2e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 279 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2467a307-0a9a-4427-8501-77e2e721cd2e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 280 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/24b44dc7-902f-4a54-b8b4-39a2e295fb6c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 281 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/24b44dc7-902f-4a54-b8b4-39a2e295fb6c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 282 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/24bacc2b-c548-44f3-82c4-fba16e2d9b5c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 283 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/24bacc2b-c548-44f3-82c4-fba16e2d9b5c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 284 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/24d0d011-ba2c-44c5-897a-f043accf0545.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 285 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/24d0d011-ba2c-44c5-897a-f043accf0545.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 286 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/24f1fc02-93d1-4625-b2c5-1f033753043d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 287 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/24f1fc02-93d1-4625-b2c5-1f033753043d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 288 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/25b3ac68-b88a-42b4-9a23-dd9970ed1b68.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 289 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/25b3ac68-b88a-42b4-9a23-dd9970ed1b68.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 290 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/25c53726-95b9-4b7c-b7e2-522df62871fb.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 291 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/25c53726-95b9-4b7c-b7e2-522df62871fb.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 292 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/260bdbb2-a4f6-472b-a323-869d69d628e5.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 293 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/260bdbb2-a4f6-472b-a323-869d69d628e5.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 294 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2615b7bf-6e53-453b-b0a2-31ab3f30d782.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 295 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/2615b7bf-6e53-453b-b0a2-31ab3f30d782.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 296 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/264d01b4-5535-4cae-a303-c31294488719.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 297 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/264d01b4-5535-4cae-a303-c31294488719.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 298 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/265ddb4a-4a1d-4155-a0ef-5a2e9ec89482.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 299 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/265ddb4a-4a1d-4155-a0ef-5a2e9ec89482.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 300 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/26b40ba8-05d4-4d92-8e8f-daf713fc9723.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 301 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/26b40ba8-05d4-4d92-8e8f-daf713fc9723.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 302 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/272ac81f-e05c-4c0a-a6ca-9017875b485a.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 303 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/272ac81f-e05c-4c0a-a6ca-9017875b485a.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 304 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/272d4fe6-7bd1-4c83-b52f-c31bf345b209.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 305 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/272d4fe6-7bd1-4c83-b52f-c31bf345b209.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 306 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/27699842-89da-4072-80a0-9ef77d3b0630.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 307 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/27699842-89da-4072-80a0-9ef77d3b0630.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 308 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/279cefb4-12d2-4e18-accd-d420b3b0fa0c.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 309 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/279cefb4-12d2-4e18-accd-d420b3b0fa0c.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 310 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/27c82d40-4df7-42e2-adee-6f571dbffe8d.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 311 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/27c82d40-4df7-42e2-adee-6f571dbffe8d.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 312 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/27d2b8dc-c945-40c6-9191-202760c5169e.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 313 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/27d2b8dc-c945-40c6-9191-202760c5169e.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 314 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/28418cd5-042a-4f9f-881d-58af59d40a51.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 315 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/28418cd5-042a-4f9f-881d-58af59d40a51.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 316 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/285bfe12-f1da-46f4-bef7-a7fa3c3804ae.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 317 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/285bfe12-f1da-46f4-bef7-a7fa3c3804ae.root 140X_mcRun4_realistic_v4 500 500
+queue
+arguments = minbias 318 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/289d6df9-12ae-4cec-817a-aa059301c239.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = minbias 319 /store/mc/Phase2Spring24DIGIRECOMiniAOD/MinBias_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU140_Trk1GeV_140X_mcRun4_realistic_v4-v1/120000/289d6df9-12ae-4cec-817a-aa059301c239.root 140X_mcRun4_realistic_v4 500 500
+queue
