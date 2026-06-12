@@ -51,7 +51,7 @@ the generator-level truth.
 
 ## Pileup
 
-Background samples (B1–B3) overlay minimum-bias pileup at **AVE_200_BX_25ns**.
+All PU200 samples overlay minimum-bias pileup at **AVE_200_BX_25ns**.
 
 **Sample used:**
 ```
@@ -83,41 +83,18 @@ for OMTF L1 trigger studies that do not depend on tracker alignment.
 ## Datasets
 
 OMTF acceptance used throughout: **0.82 < |η| < 1.24**.
-All signal samples use flat 1/pT sampling (uniform in 1/pT → unbiased curvature
+All muon-gun samples use flat 1/pT sampling (uniform in 1/pT → unbiased curvature
 coverage, no training-time pT reweighting needed).
 
-### Signal samples (no pileup)
+### B4: noise-only PU200 reference
 
-| Tag | Description | Generator | pT range | Multiplicity / event | Target events |
-|---|---|---|---|---|---|
-| **S1** | Single prompt muon | `FlatRandomOneOverPtGunProducer` | 2–200 GeV | 1 muon | 500 000 |
-| **S2** | Single displaced muon, flat d₀ | `FlatRandomPtGunProducer2` | 2–200 GeV | 1 muon | 500 000 |
-| **S3** | Two prompt muons, same OMTF window | `FlatRandomPtGunProducer2` | 2–100 GeV | 2 muons | 250 000 |
-| **S4** | Three prompt muons, same OMTF window | `FlatRandomPtGunProducer2` | 5–80 GeV | 3 muons | 150 000 |
-| **S5** | Two displaced muons (same event), flat d₀ | `FlatRandomPtGunProducer2` | 2–200 GeV | 2 muons | 150 000 |
+| Tag | Description | Generator | Target events |
+|---|---|---|---|
+| **B4** | Noise-only PU200 — no hard-scatter muon | Neutrino gun (PDG 14) | 200 000 |
 
-**S2 displacement**: d₀ flat uniform in [0, 50] cm, Lxy capped at 200 cm
-(production vertex must be inside MB1 at r ≈ 231 cm for the muon to produce OMTF
-hits).
-
-**S3 / S4 same-window constraint**: both/all muons' φ is restricted to a single
-60°-wide OMTF processor window (φ ∈ [−π/6, +π/6]) to ensure they hit the same
-processor and exercise multi-track disambiguation.
-
-**S5 displacement**: d₀ flat uniform in [0, 30] cm per muon; two independent
-muons per event (unlike S2 which has one); designed to stress Object Condensation
-repulsion loss.
-
-### Background samples (PU 200)
-
-| Tag | Description | Generator | pT range | Multiplicity / event | Target events |
-|---|---|---|---|---|---|
-| **B1** | Single prompt muon + PU200 | `FlatRandomOneOverPtGunProducer` | 2–200 GeV | 1 muon + PU | 200 000 |
-| **B2** | Single displaced muon + PU200, flat d₀ | `FlatRandomPtGunProducer2` | 2–200 GeV | 1 muon + PU | 200 000 |
-| **B3** | Two prompt muons, same window + PU200 | `FlatRandomPtGunProducer2` | 2–100 GeV | 2 muons + PU | 100 000 |
-
-B2 uses the same d₀ range as S2 ([0, 50] cm) to provide a displaced background
-baseline. B3 uses the same same-window φ constraint as S3.
+B4 contains pure pileup occupancy with no signal muon. It is used to set the β
+operating point and noise-rejection threshold. It is the **only** retained legacy
+B-series dataset; B1–B3 have been superseded by the G-campaign samples.
 
 ---
 
@@ -177,9 +154,9 @@ This campaign is **additive** — it does not replace the existing S/B datasets.
 
 ### Motivation
 
-Two problems found in the existing production:
-1. **B2 false second candidate from PU** — coherent KMTF noise fires a second
-   overlap candidate in B2 displaced+PU200 events.
+Two problems found in the early production:
+1. **False second candidate from PU** — coherent KMTF noise fires a second
+   overlap candidate in displaced+PU200 events (previously observed in B2).
 2. **Out-of-domain barrel tracks** — real KMTF barrel muons (|η| < 0.75) can
    create stubs that the model incorrectly promotes to overlap candidates.
 3. **Out-of-domain high-eta endcap tracks** — real endcap-like muons
@@ -307,35 +284,71 @@ condor_submit condor/GMT_overlap_production.sub
 
 ---
 
-## DAS Generation (production only)
+## DAS validation samples
 
-This repository also supports generation from CMS DAS GEN-SIM-DIGI-RAW-MINIAOD
-inputs for external production samples.
+CMS DAS datasets used for external validation of the OMTF/GMT ML trigger.
+All samples are Phase-2 PU200 GEN-SIM-DIGI-RAW or GEN-SIM-DIGI-RAW-MINIAOD.
+Dataset paths were queried on 2026-05-08; check DAS for newer campaigns.
 
-Current DAS sample set:
+### Signal / efficiency
 
-- minbias
-- displaced_lowpt
-- displaced_midpt
-- dy_prompt
-- llp_addon
-- single_muon_flatpt
+| Category | Recommended dataset | Notes |
+|---|---|---|
+| Single muon (gun) | `/SingleMuon_Pt-0To200_Eta-1p4To3p1-gun/Phase2Fall22DRMiniAOD-PU200_125X_mcRun4_realistic_v2-v1/GEN-SIM-DIGI-RAW-MINIAOD` | Phase2Fall22 campaign |
+| Single muon high-pT | `/SingleMuon_Pt-200To500_Eta-1p4To3p1-gun/Phase2Fall22DRMiniAOD-PU200_125X_mcRun4_realistic_v2-v1/GEN-SIM-DIGI-RAW-MINIAOD` | |
+| Displaced muon (low pT) | `/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | Spring24, GT matches production |
+| Displaced muon (mid pT) | `/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | |
+| Displaced muon (high pT) | `/DisplacedMuons_Pt-30To100_Dxy-0To3000-gun/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | |
+| DY→ℓℓ (low mass) | `/DYToLL_M-10To50_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | Spring24 |
+| DY→ℓℓ (Z peak) | `/DYToLL_M-50_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | |
+| tt̄ | `/TTbar_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD` | |
 
-Generation scripts (no validation/smoke workflow):
+### Displaced / LLP
+
+| Category | Recommended dataset | cτ / MFF |
+|---|---|---|
+| H→2LL→4μ | `/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | MFF=12, cτ=900 mm |
+| H→2LL→4μ | `/HTo2LongLivedTo4mu_MH-125_MFF-25_CTau-1500mm_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | MFF=25, cτ=1500 mm |
+| H→2LL→4μ | `/HTo2LongLivedTo4mu_MH-125_MFF-50_CTau-10000mm_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | MFF=50, cτ=10 m |
+| H→2LL→2μ2j | `/HTo2LongLivedTo2mu2jets_MH-125_MFF-20_CTau-1300mm_TuneCP5_14TeV_pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | MFF=20, cτ=1300 mm |
+| H→2LL→2μ2j | `/HTo2LongLivedTo2mu2jets_MH-125_MFF-50_CTau-5000mm_TuneCP5_14TeV_pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD` | MFF=50, cτ=5 m |
+
+### Background / rate proxy
+
+| Category | Recommended dataset | Notes |
+|---|---|---|
+| MinBias | `/MinBias_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200ALCA_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD` | Spring24 |
+| QCD (EM-enriched, 120–170 GeV) | `/QCD_Pt-120To170_EMEnriched_TuneCP5_14TeV-pythia8/Phase2Spring23DIGIRECOMiniAOD-PU200_Trk1GeV_131X_mcRun4_realistic_v5-v1/GEN-SIM-DIGI-RAW-MINIAOD` | representative HT bin |
+
+> **NuGun not found on DAS** for Phase-2 PU200 (2026-05-08 search). Use MinBias
+> or QCD as rate-proxy substitutes until a NuGun Phase-2 dataset is published.
+
+### Query patterns
 
 ```bash
-scripts/submit_das_validation.sh
-condor/run_das_job.sh
+# Reproduce the search
+dasgoclient --query "dataset dataset=/*Displaced*Muon*/*Phase2*PU200*/*"
+dasgoclient --query "dataset dataset=/*LongLived*/*Phase2*PU200*/*"
+dasgoclient --query "dataset dataset=/DYToLL*/*Phase2*PU200*/*"
+dasgoclient --query "dataset dataset=/TT*/*Phase2*PU200*/*"
+dasgoclient --query "dataset dataset=/MinBias*/*Phase2*PU200*/*"
+dasgoclient --query "dataset dataset=/QCD*/*Phase2*PU200*/*"
 ```
 
-G-campaign generation scripts:
+Full search results are archived in `das_validation_sample_search_20260508_150126/`
+(workspace root). See `SEARCH_RESULTS_STATUS.md` in that directory for the query
+status table and first-match examples for all 16 queries run.
+
+### Generation scripts
 
 ```bash
-scripts/generate_configs.sh
-scripts/create_condor_subs.sh
+scripts/submit_das_validation.sh    # submit DAS-based validation jobs
+condor/run_das_job.sh               # worker script for DAS input jobs
+scripts/generate_configs.sh         # generate G-campaign cmsRun configs
+scripts/create_condor_subs.sh       # create Condor submit files
 ```
 
-Full DAS dataset paths and G1-G10 campaign details are maintained in
+Full DAS dataset paths and G1-G10 campaign details are also maintained in
 `DATASETS_INFO.txt`.
 
 ### Fragment safety rules
