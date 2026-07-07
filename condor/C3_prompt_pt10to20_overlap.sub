@@ -1,0 +1,26 @@
+###############################################################################
+# C3_prompt_pt10to20_overlap.sub — HTCondor submit for C-campaign low-pT/no-PU completion
+# Prompt pT 10-20 GeV overlap, no PU
+# Target: 200000 events, 500 events/job, 400 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = C3_prompt_pt10to20_overlap $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C3_prompt_pt10to20_overlap_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C3_prompt_pt10to20_overlap_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C3_prompt_pt10to20_overlap.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue 400

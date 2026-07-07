@@ -1,0 +1,33 @@
+###############################################################################
+# B4_digi.sub — HTCondor submit for B4 (pure noise PU200) with full digi tables
+#
+# B4: no hard-scatter muon; pure AVE_200_BX_25ns MinBias pileup.
+# This version uses the current customize_omtf_dumper.py which produces the
+# full raw-primitive NanoAOD tables (DTPhiDigi, Ph2DTPhiDigi, Ph2DTThDigi,
+# CSCLctDigi, RPCDigi, MuonStubTps, MuonStubKmtf) — identical schema to C1–C28.
+#
+# Target: 200 000 events, 500 events/job, 400 jobs
+# Previous B4.sub had wrong argument count (3 instead of 4) and was never
+# successfully produced on EOS. This replaces it.
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = B4 $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_digi_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_digi_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_digi.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue 400

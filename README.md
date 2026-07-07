@@ -96,6 +96,14 @@ B4 contains pure pileup occupancy with no signal muon. It is used to set the β
 operating point and noise-rejection threshold. It is the **only** retained legacy
 B-series dataset; B1–B3 have been superseded by the G-campaign samples.
 
+> **S1–S5 (legacy):** Datasets S1–S5 (single/multi muon, no PU, broad eta, no
+> OMTF-window restriction) were produced in the early campaign and are retained
+> for reference. They are **deprecated for new training** — use the G and C
+> campaigns instead. S1/S2 are superseded by G1/G3 (overlap-restricted,
+> OMTF-window enforced). S3/S4/S5 are superseded by G5/G6. S-series lacks the
+> eta-window filter and the raw-primitive digi tables present in all G/C nano
+> files.
+
 ---
 
 ## Repository layout
@@ -217,14 +225,69 @@ recovery study. All use 500 events/job and the same CMSSW environment as G1–G1
 
 ---
 
-## C-campaign: controlled pT × |d0| grid (C17–C28)
+## C-campaign: controlled pT × |d0| grid (C1–C28)
 
 Controlled binned muon-gun samples in the OMTF overlap region, designed to
 support matched prompt-vs-displaced discrimination studies (WP4 in the displaced
 ML action plan). All samples use the OMTF overlap eta window (0.82 < |η| < 1.24),
 flat 1/pT sampling within each bin, and 500 events/job.
 
-### Prompt control samples (no displacement, PU200)
+The full C-campaign covers six matched pT bins (2–5, 5–10, 10–20, 20–50,
+50–100, 100–200 GeV) for each of four physics conditions: prompt no-PU,
+displaced no-PU, prompt PU200, and displaced PU200. Mild-displaced samples
+(C25–C28) additionally cover the ambiguous low-|d0| region.
+
+### C1–C6: Prompt control, no PU
+
+| Tag | Events | Jobs | pT range | |d0| | Description |
+|---|---|---|---|---|---|
+| C1 | 200k | 400 | 2–5 GeV | <0.05 cm | Prompt overlap muon, no PU |
+| C2 | 200k | 400 | 5–10 GeV | <0.05 cm | Prompt overlap muon, no PU |
+| C3 | 200k | 400 | 10–20 GeV | <0.05 cm | Prompt overlap muon, no PU |
+| C4 | 150k | 300 | 20–50 GeV | <0.05 cm | Prompt overlap muon, no PU |
+| C5 | 100k | 200 | 50–100 GeV | <0.05 cm | Prompt overlap muon, no PU |
+| C6 | 75k  | 150 | 100–200 GeV | <0.05 cm | Prompt overlap muon, no PU |
+
+### C7–C12: Displaced signal, no PU
+
+| Tag | Events | Jobs | pT range | |d0| range | Description |
+|---|---|---|---|---|---|
+| C7  | 200k | 400 | 2–5 GeV   | 0.2–50 cm | Displaced overlap muon, no PU |
+| C8  | 200k | 400 | 5–10 GeV  | 0.2–50 cm | Displaced overlap muon, no PU |
+| C9  | 200k | 400 | 10–20 GeV | 0.2–50 cm | Displaced overlap muon, no PU |
+| C10 | 150k | 300 | 20–50 GeV | 0.2–50 cm | Displaced overlap muon, no PU |
+| C11 | 100k | 200 | 50–100 GeV | 0.2–50 cm | Displaced overlap muon, no PU |
+| C12 | 75k  | 150 | 100–200 GeV | 0.2–50 cm | Displaced overlap muon, no PU |
+
+### C13–C14: Prompt control, low-pT, PU200
+
+| Tag | Events | Jobs | pT range | |d0| | Description |
+|---|---|---|---|---|---|
+| C13 | 200k | 400 | 2–5 GeV   | <0.05 cm | Prompt overlap muon, PU200 |
+| C14 | 200k | 400 | 5–10 GeV  | <0.05 cm | Prompt overlap muon, PU200 |
+
+### C15–C16: Displaced signal, low-pT, PU200
+
+| Tag | Events | Jobs | pT range | |d0| range | Description |
+|---|---|---|---|---|---|
+| C15 | 200k | 400 | 2–5 GeV   | 0.2–50 cm | Displaced overlap muon, PU200 |
+| C16 | 200k | 400 | 5–10 GeV  | 0.2–50 cm | Displaced overlap muon, PU200 |
+
+**Key matched comparison pairs for WP4 (no-PU, clean geometry):**
+```
+C1 vs C7   (prompt 2-5 GeV vs displaced 2-5 GeV)
+C2 vs C8   (prompt 5-10 GeV vs displaced 5-10 GeV)
+C3 vs C9   (prompt 10-20 GeV vs displaced 10-20 GeV)
+```
+
+**Key matched comparison pairs for WP5 (PU200):**
+```
+C13 vs C15  (prompt 2-5 GeV vs displaced 2-5 GeV, PU200)
+C14 vs C16  (prompt 5-10 GeV vs displaced 5-10 GeV, PU200)
+C17 vs C21  (prompt 10-20 GeV vs displaced 10-20 GeV, PU200)
+```
+
+### C17–C20: Prompt control, mid–high pT, PU200
 
 | Tag | Events | Jobs | pT range | Description |
 |---|---|---|---|---|
@@ -262,6 +325,17 @@ same pT bin, same eta bin, same PU condition
 ```
 This directly probes whether displaced muons can be separated from prompt low-pT
 muons using trigger-level geometric variables.
+
+### Submit C1–C16
+
+```bash
+# Submit all 16 new datasets (C1-C12 no-PU: 3700 jobs; C13-C16 PU200: 1600 jobs)
+condor_submit condor/C1toC12_noPU_production.sub
+condor_submit condor/C13toC16_PU200_production.sub
+
+# Or individually
+condor_submit condor/C1_prompt_pt2to5_overlap.sub   # etc.
+```
 
 ### Recommended production order
 
@@ -365,7 +439,7 @@ See `DATASETS_INFO.txt` for full per-dataset specifications.
 
 ---
 
-## Production status (as of 2026-06-08)
+## Production status (as of 2026-07-06)
 
 EOS base path: `/eos/user/p/pleguina/omtf_hecin_datasets/prod/`
 
@@ -422,3 +496,40 @@ Note: G1/G2/G3/G4/G5/G6 merged `.sub` files are redundant with `_pos` variants (
 All C* datasets produced with the corrected `customize_omtf_dumper.py` including
 all 5 primitive digi collections (DTPhiDigi, Ph2DTPhiDigi, Ph2DTThDigi,
 CSCLctDigi, RPCDigi) plus MuonStubKmtf, MuonStubTps tables (135 branches total).
+
+### C-campaign (C1–C16) — submitted 2026-07-05
+
+Condor clusters: 9295133 (C1–C12 no-PU, 3700 jobs) and 9295134 (C13–C16 PU200, 1600 jobs).
+Same `customize_omtf_dumper.py` as C17–C28 — full digi tables included.
+
+| Dataset | Jobs | Target events | Status |
+|---|---|---|---|
+| C1_prompt_pt2to5_overlap | 400 | 200k | 🔄 In progress |
+| C2_prompt_pt5to10_overlap | 400 | 200k | 🔄 In progress |
+| C3_prompt_pt10to20_overlap | 400 | 200k | 🔄 In progress |
+| C4_prompt_pt20to50_overlap | 300 | 150k | 🔄 In progress |
+| C5_prompt_pt50to100_overlap | 200 | 100k | 🔄 In progress |
+| C6_prompt_pt100to200_overlap | 150 | 75k | 🔄 In progress |
+| C7_disp_pt2to5_overlap | 400 | 200k | 🔄 In progress |
+| C8_disp_pt5to10_overlap | 400 | 200k | 🔄 In progress |
+| C9_disp_pt10to20_overlap | 400 | 200k | 🔄 In progress |
+| C10_disp_pt20to50_overlap | 300 | 150k | 🔄 In progress |
+| C11_disp_pt50to100_overlap | 200 | 100k | 🔄 In progress |
+| C12_disp_pt100to200_overlap | 150 | 75k | 🔄 In progress |
+| C13_prompt_pt2to5_overlap_PU200 | 400 | 200k | 🔄 In progress |
+| C14_prompt_pt5to10_overlap_PU200 | 400 | 200k | 🔄 In progress |
+| C15_disp_pt2to5_overlap_PU200 | 400 | 200k | 🔄 In progress |
+| C16_disp_pt5to10_overlap_PU200 | 400 | 200k | 🔄 In progress |
+
+### B4 (noise-only PU200) — re-submitted 2026-07-06 with full digi tables
+
+Previous `B4.sub` had a bug (3 arguments instead of 4) and never produced EOS
+output. Replaced by `B4_digi.sub`.
+
+| Dataset | Jobs | Target events | Condor cluster | Status |
+|---|---|---|---|---|
+| B4 (pure noise PU200) | 400 | 200k | 9295685 | 🔄 In progress |
+
+> **Note:** B4 output lands in `prod/B4/` (same directory as before).
+> The old empty `B4/` directory on EOS will be populated by this run.
+> Output schema identical to C1–C28: full 5-collection digi tables + stubs + `GenMuon` (neutrino, effectively empty signal truth).
