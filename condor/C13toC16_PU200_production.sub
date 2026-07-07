@@ -1,0 +1,26 @@
+###############################################################################
+# C13toC16_PU200_production.sub — all PU200 C-campaign completion datasets
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/$(DS)_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/$(DS)_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/Cpu_$(DS).log
+should_transfer_files = NO
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
++JobFlavour     = "workday"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+arguments       = $(DS) $(ProcId) 0 500
+
+DS = C13_prompt_pt2to5_overlap_PU200
+queue 400
+DS = C14_prompt_pt5to10_overlap_PU200
+queue 400
+DS = C15_disp_pt2to5_overlap_PU200
+queue 400
+DS = C16_disp_pt5to10_overlap_PU200
+queue 400

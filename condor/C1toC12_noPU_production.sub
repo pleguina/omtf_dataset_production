@@ -1,0 +1,42 @@
+###############################################################################
+# C1toC12_noPU_production.sub — all no-PU C-campaign completion datasets
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/$(DS)_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/$(DS)_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/Cnopu_$(DS).log
+should_transfer_files = NO
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
++JobFlavour     = "workday"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+arguments       = $(DS) $(ProcId) 0 500
+
+DS = C1_prompt_pt2to5_overlap
+queue 400
+DS = C2_prompt_pt5to10_overlap
+queue 400
+DS = C3_prompt_pt10to20_overlap
+queue 400
+DS = C4_prompt_pt20to50_overlap
+queue 300
+DS = C5_prompt_pt50to100_overlap
+queue 200
+DS = C6_prompt_pt100to200_overlap
+queue 150
+DS = C7_disp_pt2to5_overlap
+queue 400
+DS = C8_disp_pt5to10_overlap
+queue 400
+DS = C9_disp_pt10to20_overlap
+queue 400
+DS = C10_disp_pt20to50_overlap
+queue 300
+DS = C11_disp_pt50to100_overlap
+queue 200
+DS = C12_disp_pt100to200_overlap
+queue 150
