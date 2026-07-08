@@ -435,7 +435,7 @@ displaced no-PU, prompt PU200, and displaced PU200. Mild-displaced samples
 
 ### C1–C6: Prompt control, no PU
 
-| Tag | Events | Jobs | pT range | |d0| | Description |
+| Tag | Events | Jobs | pT range | \|d0\| | Description |
 |---|---|---|---|---|---|
 | C1 | 200k | 400 | 2–5 GeV | <0.05 cm | Prompt overlap muon, no PU |
 | C2 | 200k | 400 | 5–10 GeV | <0.05 cm | Prompt overlap muon, no PU |
@@ -457,7 +457,7 @@ displaced no-PU, prompt PU200, and displaced PU200. Mild-displaced samples
 
 ### C13–C14: Prompt control, low-pT, PU200
 
-| Tag | Events | Jobs | pT range | |d0| | Description |
+| Tag | Events | Jobs | pT range | \|d0\| | Description |
 |---|---|---|---|---|---|
 | C13 | 200k | 400 | 2–5 GeV   | <0.05 cm | Prompt overlap muon, PU200 |
 | C14 | 200k | 400 | 5–10 GeV  | <0.05 cm | Prompt overlap muon, PU200 |
