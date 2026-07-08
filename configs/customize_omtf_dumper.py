@@ -104,6 +104,7 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
         OMTFTrackTable,
         genMuonNanoTable,
         genParticlePropagator,
+        genMuonProvenance,
         MuonStubTpsTable,
         MuonStubKmtfTable,
         DTPhiDigiTable,
@@ -111,6 +112,7 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
         Ph2DTThetaDigiTable,
         CSCLCTDigiTable,
         RPCDigiTable,
+        PileupTable,
         p2OmtfNanoTablesTask,
     )
 
@@ -123,6 +125,7 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
 
     # Register table producers on the process
     process.genParticlePropagator  = genParticlePropagator
+    process.genMuonProvenance      = genMuonProvenance
     process.OMTFTrackTable         = OMTFTrackTable
     process.genMuonNanoTable       = genMuonNanoTable
     process.MuonStubTpsTable       = MuonStubTpsTable
@@ -132,11 +135,13 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
     process.Ph2DTThetaDigiTable    = Ph2DTThetaDigiTable
     process.CSCLCTDigiTable        = CSCLCTDigiTable
     process.RPCDigiTable           = RPCDigiTable
+    process.PileupTable            = PileupTable
 
     # Dedicated Path so the producers are scheduled before the output EndPath.
     # Using a cms.Task inside a cms.Path is the standard NanoAOD pattern.
     process.p2OmtfNanoTablesTask = cms.Task(
         process.genParticlePropagator,
+        process.genMuonProvenance,
         process.OMTFTrackTable,
         process.genMuonNanoTable,
         process.MuonStubTpsTable,
@@ -146,6 +151,7 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
         process.Ph2DTThetaDigiTable,
         process.CSCLCTDigiTable,
         process.RPCDigiTable,
+        process.PileupTable,
     )
     process.nanoTablesStep = cms.Path(process.p2OmtfNanoTablesTask)
 

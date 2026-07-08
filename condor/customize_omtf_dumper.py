@@ -83,12 +83,20 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
 
     Produces:
       omtf_nano.root  (NanoAOD TTree format)
-        └── Events/omtf_*     — OMTF track candidates at BX=0
-        └── Events/GenMuon_*  — generator-level stable muons
+        └── Events/omtf_*          — OMTF track candidates at BX=0
+        └── Events/GenMuon_*       — generator-level stable muons
+        └── Events/DTPhiDigi_*     — Run-3 DT phi primitives (phi, phiB)
+        └── Events/Ph2DTPhiDigi_*  — Phase-2 DT phi primitives (phi, phiBend, t0, chi2)
+        └── Events/Ph2DTThDigi_*   — Phase-2 DT theta primitives (z, k, t0, chi2)
+        └── Events/CSCLctDigi_*    — CSC correlated LCTs (slope, bend, keywire, strip)
+        └── Events/RPCDigi_*       — RPC strip digis (strip, bx)
 
     Requires the locally compiled plugin:
       SimpleOMTFTrackCandidateFlatTableProducer
       (package L1Trigger/L1MuNano, BXVectorSimpleFlatTableProducer<l1t::RegionalMuonCand>)
+      DTPhiDigiFlatTableProducer, Ph2DTPhiDigiFlatTableProducer,
+      Ph2DTThetaDigiFlatTableProducer, CSCLCTDigiFlatTableProducer,
+      RPCDigiFlatTableProducer  (all in L1Trigger/L1MuNano)
 
     SimpleGenParticleFlatTableProducer is in the base PhysicsTools/NanoAOD package.
     """
@@ -96,8 +104,15 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
         OMTFTrackTable,
         genMuonNanoTable,
         genParticlePropagator,
+        genMuonProvenance,
         MuonStubTpsTable,
         MuonStubKmtfTable,
+        DTPhiDigiTable,
+        Ph2DTPhiDigiTable,
+        Ph2DTThetaDigiTable,
+        CSCLCTDigiTable,
+        RPCDigiTable,
+        PileupTable,
         p2OmtfNanoTablesTask,
     )
 
@@ -109,20 +124,34 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
     process.load("TrackPropagation.SteppingHelixPropagator.SteppingHelixPropagatorOpposite_cfi")
 
     # Register table producers on the process
-    process.genParticlePropagator = genParticlePropagator
-    process.OMTFTrackTable   = OMTFTrackTable
-    process.genMuonNanoTable = genMuonNanoTable
-    process.MuonStubTpsTable  = MuonStubTpsTable
-    process.MuonStubKmtfTable = MuonStubKmtfTable
+    process.genParticlePropagator  = genParticlePropagator
+    process.genMuonProvenance      = genMuonProvenance
+    process.OMTFTrackTable         = OMTFTrackTable
+    process.genMuonNanoTable       = genMuonNanoTable
+    process.MuonStubTpsTable       = MuonStubTpsTable
+    process.MuonStubKmtfTable      = MuonStubKmtfTable
+    process.DTPhiDigiTable         = DTPhiDigiTable
+    process.Ph2DTPhiDigiTable      = Ph2DTPhiDigiTable
+    process.Ph2DTThetaDigiTable    = Ph2DTThetaDigiTable
+    process.CSCLCTDigiTable        = CSCLCTDigiTable
+    process.RPCDigiTable           = RPCDigiTable
+    process.PileupTable            = PileupTable
 
     # Dedicated Path so the producers are scheduled before the output EndPath.
     # Using a cms.Task inside a cms.Path is the standard NanoAOD pattern.
     process.p2OmtfNanoTablesTask = cms.Task(
         process.genParticlePropagator,
+        process.genMuonProvenance,
         process.OMTFTrackTable,
         process.genMuonNanoTable,
         process.MuonStubTpsTable,
         process.MuonStubKmtfTable,
+        process.DTPhiDigiTable,
+        process.Ph2DTPhiDigiTable,
+        process.Ph2DTThetaDigiTable,
+        process.CSCLCTDigiTable,
+        process.RPCDigiTable,
+        process.PileupTable,
     )
     process.nanoTablesStep = cms.Path(process.p2OmtfNanoTablesTask)
 
@@ -139,6 +168,15 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
             'keep nanoaodFlatTable_*Table_*_*',  # all FlatTable products
         ),
     )
+    # For GEN-level configs (G1-G4) that have an etaFilter in generation_step,
+    # add SelectEvents to prevent the EndPath from running for events that failed the
+    # generation-level filter. In CMSSW 14.x, SelectEvents is checked before prefetch
+    # for output modules, so this avoids a ProductNotFound cascade via on-demand Tasks.
+    if hasattr(process, 'generation_step'):
+        process.NANOOMTFoutput.SelectEvents = cms.untracked.PSet(
+            SelectEvents = cms.vstring('generation_step')
+        )
+
     process.NANOOMTFoutput_step = cms.EndPath(process.NANOOMTFoutput)
 
     # Extend the schedule: producers first, then the output EndPath.

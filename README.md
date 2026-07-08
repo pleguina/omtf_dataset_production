@@ -155,6 +155,143 @@ Output ROOT files are uploaded to EOS:
 
 ---
 
+## Porting to a Fresh CMSSW Release
+
+The production pipeline is designed to be portable across CMSSW releases. To adapt to a new release (e.g., from `CMSSW_14_2_0_pre2` to `CMSSW_15_0_0`):
+
+### Step 1: Create new CMSSW working area
+
+```bash
+# Set up the new release
+export CMSSW_VERSION="CMSSW_15_0_0"  # Update version
+export SCRAM_ARCH="el9_amd64_gcc12"  # Adjust if compiler changes
+
+scram p CMSSW ${CMSSW_VERSION}
+cd ${CMSSW_VERSION}/src
+
+# Clone and rebuild L1Trigger/L1MuNano plugins
+git clone https://github.com/cms-sw/cmssw.git upstream
+# (or check out from your fork with OMTF customizations)
+
+scram b -j 8
+
+# Verify the build
+scram b -j 1 && echo "Build successful"
+```
+
+### Step 2: Update run_job.sh
+
+Edit [condor/run_job.sh](condor/run_job.sh) to point to the new CMSSW version:
+
+```bash
+# Line ~18: Update CMSSW_VERSION
+CMSSW_VERSION="CMSSW_15_0_0"
+
+# Line ~20: Update SCRAM_ARCH if needed (e.g., gcc13 for newer releases)
+# export SCRAM_ARCH="el9_amd64_gcc13"
+```
+
+### Step 3: Regenerate cmsRun configs
+
+The config files in `configs/` must be regenerated to match the new release's physics content, triggers, and geometry:
+
+```bash
+cd scripts
+bash generate_configs.sh
+```
+
+This runs `cmsDriver.py` for each dataset (GEN, DIGI+PU stages) and applies physics
+customizations specific to the new release.
+
+**Key steps in `generate_configs.sh`:**
+- Invokes `cmsDriver.py` with era (`Phase2C17I13M9`), geometry (`Extended2026D110`), 
+  and global tag (`140X_mcRun4_realistic_v4` — **update if needed**)
+- Applies customizations:
+  - Tracker alignment workaround (if still needed in new release)
+  - OMTF dumper wiring (`customize_omtf_dumper.py`)
+- Outputs pairs of configs: `{DATASET}_cfg.py` and `{DATASET}_DR_cfg.py`
+
+### Step 4: Verify geometry and global tag compatibility
+
+**Critical:** Ensure the new release's geometry and global tag are compatible with the 
+pileup sample used for overlay.
+
+```bash
+# Check the pileup sample's production era
+dasgoclient -query "dataset=/MinBias_TuneCP5_14TeV-pythia8/Phase2Spring24GS-140X_mcRun4_realistic_v4-v1/GEN-SIM info"
+
+# Verify the new release can read the sample
+# (check CMSSW release notes for geometry/GT changes)
+```
+
+**Known compatibility issues:**
+- **CMSSW 14.0.6 → 14.2.0_pre2:** Tracker geometry changed (43,708 → 43,600 modules)  
+  → Workaround: Add `--customise_commands 'process.trackerGeometry.applyAlignment=cms.bool(False)'`  
+  (Already included in generate_configs.sh)
+
+- **New geometry/geometry tag:** Update `Extended2026D110` if new release introduces 
+  geometry changes. Update global tag to match pileup sample production.
+
+### Step 5: Update HTCondor submission files
+
+Edit [condor/*.sub](condor/) files if needed:
+
+```bash
+# Line ~9: Ensure run_job.sh path is correct
+executable = $(TOP)/condor/run_job.sh
+
+# Line ~15: Update CMSSW_VERSION (or remove if it's sourced from run_job.sh)
+environment = "CMSSW_VERSION=CMSSW_15_0_0"
+```
+
+Most .sub files source run_job.sh, so updating that script propagates the change automatically.
+
+### Step 6: Test on a single job before full relaunch
+
+```bash
+# Run a quick smoke test on a small dataset
+cd condor
+condor_submit -append 'queue 1' G1_pos.sub  # Single job
+
+# Monitor and check output
+condor_q pleguina
+condor_tail -f 9296651.0  # Replace cluster ID
+
+# Verify new branches are present
+root -l smoke_results/omtf_nano_local.root
+TBrowser b;
+# Navigate to Events tree and confirm new branches (e.g., gen_muon_dz, 
+# pileup_nPU, etc.)
+```
+
+### Step 7: Relaunch full production
+
+Once smoke test passes:
+
+```bash
+cd condor
+for sub in *.sub; do
+  condor_submit "$sub"
+done
+
+# Monitor via scripts/condor_status.sh
+bash scripts/condor_status.sh
+```
+
+---
+
+### Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| `GeometryMismatch` error | Check if release changed tracker geometry. Apply workaround in generate_configs.sh. |
+| `Missing G4SimHits` in TOF branches | Ensure `SimDataFormats/TrackingHit` is available in new release; add input tag defaults. |
+| `NanoAOD producer fails` | Rebuild L1Trigger/L1MuNano plugins; check `customize_omtf_dumper.py` for deprecated producer names. |
+| `xrdcp upload hangs` | Transient EOS issue; run_job.sh retries automatically (max 3 attempts with 5-min cooldown). |
+| `Config generation fails` | Update global tag and era in scripts/generate_configs.sh; verify cmsDriver.py compatibility. |
+
+---
+
 ## GMT-visible-stub campaign (G1-G10)
 
 A second production campaign targeted at the Phase-B GMT-visible-stub branch.
