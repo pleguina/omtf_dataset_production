@@ -1,0 +1,33 @@
+###############################################################################
+# Auto-generated missing-job resubmit for G10_pos
+# Missing ProcIds: 2 out of expected 300
+###############################################################################
+###############################################################################
+# G10_pos.sub - HTCondor submit for GMT-overlap dataset G10_pos
+# single high-eta muon, PU200, positive eta [1.30,1.80] (endcap hard negative)
+# Target: 150,000 events, 500 events/job, 300 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+arguments       = G10_pos $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G10_pos_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G10_pos_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G10_pos.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue ProcId in (
+  194,
+  225
+)
