@@ -446,7 +446,7 @@ displaced no-PU, prompt PU200, and displaced PU200. Mild-displaced samples
 
 ### C7–C12: Displaced signal, no PU
 
-| Tag | Events | Jobs | pT range | |d0| range | Description |
+| Tag | Events | Jobs | pT range | \|d0\| range | Description |
 |---|---|---|---|---|---|
 | C7  | 200k | 400 | 2–5 GeV   | 0.2–50 cm | Displaced overlap muon, no PU |
 | C8  | 200k | 400 | 5–10 GeV  | 0.2–50 cm | Displaced overlap muon, no PU |
@@ -464,7 +464,7 @@ displaced no-PU, prompt PU200, and displaced PU200. Mild-displaced samples
 
 ### C15–C16: Displaced signal, low-pT, PU200
 
-| Tag | Events | Jobs | pT range | |d0| range | Description |
+| Tag | Events | Jobs | pT range | \|d0\| range | Description |
 |---|---|---|---|---|---|
 | C15 | 200k | 400 | 2–5 GeV   | 0.2–50 cm | Displaced overlap muon, PU200 |
 | C16 | 200k | 400 | 5–10 GeV  | 0.2–50 cm | Displaced overlap muon, PU200 |
@@ -494,7 +494,7 @@ C17 vs C21  (prompt 10-20 GeV vs displaced 10-20 GeV, PU200)
 
 ### Displaced signal samples (PU200)
 
-| Tag | Events | Jobs | pT range | |d0| range | Description |
+| Tag | Events | Jobs | pT range | \|d0\| range | Description |
 |---|---|---|---|---|---|
 | C21 | 200k | 400 | 10–20 GeV | 0.2–300 cm | Displaced overlap muon, PU200 |
 | C22 | 150k | 300 | 20–50 GeV | 0.2–300 cm | Displaced overlap muon, PU200 |
@@ -503,7 +503,7 @@ C17 vs C21  (prompt 10-20 GeV vs displaced 10-20 GeV, PU200)
 
 ### Mild-displaced samples (no PU and PU200)
 
-| Tag | Events | Jobs | pT range | |d0| range | PU | Description |
+| Tag | Events | Jobs | pT range | \|d0\| range | PU | Description |
 |---|---|---|---|---|---|---|
 | C25 | 200k | 400 | 2–5 GeV | 0.05–5 cm | no | Mild displaced, no PU |
 | C26 | 200k | 400 | 5–10 GeV | 0.05–5 cm | no | Mild displaced, no PU |
