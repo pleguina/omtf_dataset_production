@@ -179,7 +179,66 @@ scram b -j 8
 scram b -j 1 && echo "Build successful"
 ```
 
-### Step 2: Update run_job.sh
+### Step 2: Dumper and CMSSW-level plugins (critical)
+
+**The ntuple structure and content depend entirely on the dumper module.**
+
+The dumper is a CMSSW plugin (C++ producer) that extracts L1 muon primitives, 
+hits, and truth information from the event and writes them to a ROOT TTree.
+Different dumpers produce different branch structures; the branches you see in 
+the output ROOT files are **defined by the dumper code**, not by the production 
+pipeline.
+
+**Our custom dumper architecture:**
+
+We use a modular dumper system built in [CMSSW_14_2_0_pre2/src/L1Trigger/L1MuNano/plugins/](../CMSSW_14_2_0_pre2/src/L1Trigger/L1MuNano/plugins/):
+
+- `DataROOTDumper2AllInput.cc` — Main dumper; writes L1 hits, stubs, and truth
+- `PrimitiveDigiToFlatTableProducers.cc` — Primitive-level observables (CSC quarter-bits, RPC cluster info, DT timing flags)
+- `PileupInfoFlatTableProducer.cc` — Pileup event-level info (nPU, nTrueInt)
+- `GenMuonProvenanceProducer.cc` — Generator-level muon provenance (parent PDG, decay mode, kinematics)
+
+**At runtime**, [condor/customize_omtf_dumper.py](condor/customize_omtf_dumper.py) 
+is injected into every job via cmsRun to:
+- Load the ntuple producers (registering them in `omtfNanoTableTask`)
+- Wire data flows (reco ↔ L1 ↔ truth matching)
+- Configure output filenames and ROOT event content
+
+**When porting to a new CMSSW release:**
+
+You **must rebuild** the L1Trigger/L1MuNano plugins with the new release to ensure:
+1. Plugin signatures match the new CMSSW API
+2. Input data types (DataFormats) are compatible
+3. Truth-matching handles reference the correct collections
+
+**CMSSW packages to build:**
+
+```bash
+cd CMSSW_15_0_0/src
+scram b L1Trigger/L1MuNano
+scram b L1Trigger/L1TMuonOverlapPhase1
+
+# Verify plugins were built
+ls -la lib/slc*/libL1Trigger*.so | grep -E "MuNano|OverlapPhase1"
+
+# Check if customizer can be imported
+python3 -c "import sys; sys.path.insert(0, '.'); from L1Trigger.L1MuNano.customize_omtf_dumper import customise_omtf_dumper; print('✓ Dumper customizer loaded')"
+```
+
+**If dumper build fails:**
+- Check CMSSW release notes for removed/renamed DataFormats
+- Update `#include` paths in plugin source code
+- Verify `plugins/BuildFile.xml` references match the new release's library names
+- Re-run the build: `scram b -j 8 L1Trigger/L1MuNano`
+
+**If new branches don't appear in output:**
+- Verify `customize_omtf_dumper.py` was copied to `condor/` (run_job.sh sources it)
+- Check job log for dumper producer registration errors
+- Verify `customize_omtf_nano()` is called to set NanoAOD output filename
+
+---
+
+### Step 3: Update run_job.sh
 
 Edit [condor/run_job.sh](condor/run_job.sh) to point to the new CMSSW version:
 
@@ -191,7 +250,7 @@ CMSSW_VERSION="CMSSW_15_0_0"
 # export SCRAM_ARCH="el9_amd64_gcc13"
 ```
 
-### Step 3: Regenerate cmsRun configs
+### Step 4: Regenerate cmsRun configs
 
 The config files in `configs/` must be regenerated to match the new release's physics content, triggers, and geometry:
 
@@ -211,7 +270,7 @@ customizations specific to the new release.
   - OMTF dumper wiring (`customize_omtf_dumper.py`)
 - Outputs pairs of configs: `{DATASET}_cfg.py` and `{DATASET}_DR_cfg.py`
 
-### Step 4: Verify geometry and global tag compatibility
+### Step 5: Verify geometry and global tag compatibility
 
 **Critical:** Ensure the new release's geometry and global tag are compatible with the 
 pileup sample used for overlay.
@@ -232,7 +291,7 @@ dasgoclient -query "dataset=/MinBias_TuneCP5_14TeV-pythia8/Phase2Spring24GS-140X
 - **New geometry/geometry tag:** Update `Extended2026D110` if new release introduces 
   geometry changes. Update global tag to match pileup sample production.
 
-### Step 5: Update HTCondor submission files
+### Step 6: Update HTCondor submission files
 
 Edit [condor/*.sub](condor/) files if needed:
 
@@ -246,7 +305,7 @@ environment = "CMSSW_VERSION=CMSSW_15_0_0"
 
 Most .sub files source run_job.sh, so updating that script propagates the change automatically.
 
-### Step 6: Test on a single job before full relaunch
+### Step 7: Test on a single job before full relaunch
 
 ```bash
 # Run a quick smoke test on a small dataset
@@ -264,7 +323,7 @@ TBrowser b;
 # pileup_nPU, etc.)
 ```
 
-### Step 7: Relaunch full production
+### Step 8: Relaunch full production
 
 Once smoke test passes:
 
