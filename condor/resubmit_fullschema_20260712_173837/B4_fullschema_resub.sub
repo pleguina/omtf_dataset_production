@@ -1,0 +1,171 @@
+###############################################################################
+# B4_digi.sub — HTCondor submit for B4 (pure noise PU200) with full digi tables
+#
+# B4: no hard-scatter muon; pure AVE_200_BX_25ns MinBias pileup.
+# This version uses the current customize_omtf_dumper.py which produces the
+# full raw-primitive NanoAOD tables (DTPhiDigi, Ph2DTPhiDigi, Ph2DTThDigi,
+# CSCLctDigi, RPCDigi, MuonStubTps, MuonStubKmtf) — identical schema to C1–C28.
+#
+# Target: 200 000 events, 500 events/job, 400 jobs
+# Previous B4.sub had wrong argument count (3 instead of 4) and was never
+# successfully produced on EOS. This replaces it.
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
+arguments       = B4 $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/B4_digi_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/B4_digi_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/B4_digi.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue ProcId from (
+7
+9
+10
+11
+12
+13
+14
+15
+16
+17
+19
+20
+21
+22
+23
+24
+26
+27
+28
+29
+30
+31
+32
+33
+34
+36
+38
+40
+45
+47
+48
+51
+55
+56
+57
+58
+60
+61
+73
+75
+76
+94
+96
+97
+100
+101
+102
+106
+107
+108
+109
+110
+111
+112
+113
+114
+136
+137
+153
+155
+156
+157
+158
+159
+160
+161
+165
+175
+178
+179
+181
+182
+183
+186
+189
+192
+198
+200
+203
+204
+205
+208
+210
+211
+213
+214
+216
+217
+218
+220
+221
+222
+223
+224
+227
+265
+269
+275
+277
+279
+282
+283
+285
+286
+293
+295
+296
+297
+302
+306
+307
+314
+316
+319
+322
+327
+330
+340
+341
+342
+345
+348
+361
+362
+369
+372
+374
+376
+377
+378
+380
+381
+382
+383
+384
+385
+396
+)

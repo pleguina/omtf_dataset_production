@@ -2,7 +2,7 @@
 # G10_neg_resub3.sub — resubmit 1 missing jobs
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 should_transfer_files = NO
 request_cpus    = 1
 request_memory  = 4000
@@ -13,8 +13,8 @@ use_x509userproxy = true
 x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
 
 arguments = G10_neg 218 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G10_neg_218.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G10_neg_218.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G10_neg.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G10_neg_218.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G10_neg_218.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G10_neg.log
 queue
 

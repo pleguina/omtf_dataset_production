@@ -16,7 +16,7 @@
 #   B4 is skipped (needs MinBias DBS, no local generation).
 #
 # Usage:
-#   cd ~/omtf_hecin_dataset_production
+#   cd ~/omtf_dataset_production
 #   ./scripts/smoke_test.sh
 #   ./scripts/smoke_test.sh --datasets S1,D1,S2   # subset
 #   ./scripts/smoke_test.sh --skip-cmsrun          # only graph-check existing outputs

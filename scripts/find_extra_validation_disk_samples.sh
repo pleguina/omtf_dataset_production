@@ -3,7 +3,7 @@ set -euo pipefail
 
 # Search extra validation classes and keep candidates with at least one _Disk site.
 
-BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production"
+BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_dataset_production"
 OUTDIR="${BASEDIR}/smoke_results/extra_validation_disk_$(date +%Y%m%d_%H%M%S)"
 REPORT="${OUTDIR}/EXTRA_VALIDATION_DISK_REPORT.md"
 MATCH_MODE="phase2"

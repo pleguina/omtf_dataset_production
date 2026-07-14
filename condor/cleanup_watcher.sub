@@ -1,0 +1,53 @@
+###############################################################################
+# cleanup_watcher.sub — persistent HTCondor job that periodically prunes
+# per-job stdout/stderr logs for already-succeeded production jobs.
+#
+# Why a condor job and not cron: see the header of
+# scripts/cleanup_watcher_loop.sh — personal crontab is disabled for this
+# account on lxplus, and nohup'd background shells don't reliably survive
+# logging back in on a different lxplus node. HTCondor's schedd is the one
+# thing here that keeps running independent of your login session, so this
+# lightweight monitoring job rides on the same infrastructure as the actual
+# production jobs.
+#
+# Submit ONCE, before (or right after) launching a production wave:
+#   condor_submit condor/cleanup_watcher.sub
+#
+# It loops internally (see cleanup_watcher_loop.sh), checking after every
+# pass whether any OTHER job for this user is still queued/running/held
+# (excluding itself via the ClusterId passed in `arguments` below). Once the
+# queue is otherwise empty it runs one final pass and exits on its own — no
+# need to condor_rm it manually at the end of a campaign. A generous
+# iteration safety cap still applies in case condor_q itself is ever broken
+# for a long stretch.
+# Check on it any time with:
+#   condor_q -constraint 'Cmd =?= "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/../scripts/cleanup_watcher_loop.sh"'
+# or simply:
+#   condor_q pleguina
+# and look for the cleanup_watcher_loop.sh entry.
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/scripts/cleanup_watcher_loop.sh
+arguments       = $(ClusterId)
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/cleanup_watcher.out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/cleanup_watcher.err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/cleanup_watcher.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 256
+request_disk    = 500000
+
+# Longest standard CERN JobFlavour so the watcher survives an entire
+# campaign; it self-terminates as soon as the rest of the queue is empty
+# anyway (see above), so this is just an upper bound, not the expected
+# runtime.
++JobFlavour     = "nextweek"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue 1

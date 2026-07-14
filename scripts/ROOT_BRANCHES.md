@@ -148,7 +148,7 @@ All `reg_stub_*` vectors have the same length for a given entry (one element per
 | `muonPropEta` | `Float_t` | Gen-muon η extrapolated from the production vertex to muon station 2, i.e. the angle actually used when comparing to trigger primitives |
 | `muonPropPhi` | `Float_t` | Gen-muon φ extrapolated from the production vertex to muon station 2, i.e. the trigger-facing azimuth at that station |
 | `muonCharge` | `Char_t` | Gen-muon charge (±1) |
-| `muonDxy` | `Float_t` | Gen-muon transverse impact parameter d₀ [cm] with sign convention from the generator / tracking-particle definition |
+| `muonDxy` | `Float_t` | Gen-muon transverse impact parameter d₀ [cm] with sign convention from the generator / tracking-particle definition. When a `TrackingParticle` match is available, this is the exact `TrackingParticle::dxy()` value (always correct). When only a `SimTrack`/`SimVertex` match is available (the usual case in this production, since no full tracking RECO is run), it is computed in `CandidateSimMuonMatcher::MatchingResult`; **fixed 2026-07-10 (commit `ee49740fc54`)** to use the exact helix perigee formula, matching the `GenMuon_dXY` fix in the NanoAOD tree. Files produced before that date store the same straight-line-approximation bug as the old `GenMuon_dXY` (off by several cm for low-pT, large-lXY displaced samples, e.g. C25-C28, G3-G17): recompute using `GenMuon_pt`/`charge`/`phi`/`vx`/`vy` equivalents (`rg = -pt/(0.003*3.811*charge)`; `cx = vx - rg*sin(phi)`, `cy = vy + rg*cos(phi)`; `dXY_true = rg + charge*sqrt(cx^2+cy^2)`) if those quantities were also stored for the same event, otherwise reprocessing is required since the hits tree does not store raw vx/vy/phi/charge per event. |
 | `muonRho` | `Float_t` | Radial distance [cm] of the muon production or decay vertex from the beamline in the transverse plane |
 | `parentPdgId` | `Short_t` | PDG ID of the generator-level mother particle that produced the muon |
 | `vertexEta` | `Float_t` | Pseudorapidity of the production / decay vertex direction as seen from the origin |
@@ -218,7 +218,7 @@ Standard CMS NanoAOD format; main tree: `Events` (one entry per event).
 | `GenMuon_charge` | `Int_t` | ±1 |
 | `GenMuon_pdgId` | `Int_t` | PDG ID (±13 for muons) |
 | `GenMuon_status` | `Int_t` | Pythia8 status code |
-| `GenMuon_dXY` | `Float_t` | Transverse impact parameter d₀ [cm] |
+| `GenMuon_dXY` | `Float_t` | Transverse impact parameter d₀ [cm] — **exact helix perigee value as of the fix landed 2026-07-10 in `omtfNanoTables_cff.py`**. Files produced before that date store a straight-line approximation (`-vx*sin(phi)+vy*cos(phi)`) that is only accurate for high-pT/small-displacement muons; for low-pT, large-`lXY` displaced samples (esp. C25–C28) it can be off by several cm. For those older files, recompute the true d₀ from `GenMuon_pt`, `GenMuon_charge`, `GenMuon_phi`, `GenMuon_vx`, `GenMuon_vy` (all already stored, no reprocessing needed): `rg = -pt/(0.003*3.811*charge)`; `cx = vx - rg*sin(phi)`, `cy = vy + rg*cos(phi)`; `dXY_true = rg + charge*sqrt(cx^2+cy^2)`. |
 | `GenMuon_lXY` | `Float_t` | Transverse decay length [cm] |
 | `GenMuon_vx` | `Float_t` | Production vertex x [cm] |
 | `GenMuon_vy` | `Float_t` | Production vertex y [cm] |

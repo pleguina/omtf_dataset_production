@@ -8,7 +8,7 @@
 ###############################################################################
 set -euo pipefail
 
-BASEDIR="$HOME/omtf_hecin_dataset_production"
+BASEDIR="$HOME/omtf_dataset_production"
 CONFDIR="${BASEDIR}/configs"
 PU_DBS_DATASET="/MinBias_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_AllTP_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD"
 

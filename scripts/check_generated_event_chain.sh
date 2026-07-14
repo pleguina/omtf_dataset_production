@@ -12,7 +12,7 @@ set -euo pipefail
 # - checks Nano tables in omtf_nano_*.root for MuonStubTps/MuonStubKmtf/GenMuon
 # - writes markdown summary report
 
-BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production"
+BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_dataset_production"
 CONFDIR="${BASEDIR}/configs"
 RUN_LOCAL="${BASEDIR}/condor/run_local_test.sh"
 

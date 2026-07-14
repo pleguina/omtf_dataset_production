@@ -3,7 +3,7 @@
 
 CLUSTER=8672065
 TOTAL_JOBS=48
-LOG_FILE="/afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/monitor_${CLUSTER}.log"
+LOG_FILE="/afs/cern.ch/user/p/pleguina/omtf_dataset_production/logs/monitor_${CLUSTER}.log"
 
 > "$LOG_FILE"  # Clear log
 

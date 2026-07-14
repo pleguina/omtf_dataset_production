@@ -11,12 +11,12 @@
 # successfully produced on EOS. This replaces it.
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 arguments       = B4 $(ProcId) 0 500
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_digi_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_digi_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_digi.log
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/B4_digi_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/B4_digi_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/B4_digi.log
 
 should_transfer_files = NO
 

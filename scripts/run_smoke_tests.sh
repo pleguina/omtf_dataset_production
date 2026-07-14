@@ -2,11 +2,11 @@
 # run_smoke_tests.sh — Run 50-event smoke tests for all datasets from configs/
 #
 # Usage (from any directory, after cmsenv):
-#   bash ~/omtf_hecin_dataset_production/scripts/run_smoke_tests.sh
+#   bash ~/omtf_dataset_production/scripts/run_smoke_tests.sh
 #
 set -uo pipefail
 
-BASEDIR="$HOME/omtf_hecin_dataset_production"
+BASEDIR="$HOME/omtf_dataset_production"
 CONFIGS="$BASEDIR/configs"
 OUTDIR="$BASEDIR/smoke_results"
 NEVENTS=10

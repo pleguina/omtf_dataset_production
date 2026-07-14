@@ -4,7 +4,7 @@ set -euo pipefail
 # Build a disk-only first-validation report (1-file smoke targets) without
 # touching the original first_validation report artifacts.
 
-BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production"
+BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_dataset_production"
 OUTDIR="${BASEDIR}/smoke_results/first_validation_disk_$(date +%Y%m%d_%H%M%S)"
 REPORT="${OUTDIR}/FIRST_VALIDATION_DISK_REPORT.md"
 PROBE_XRD=false

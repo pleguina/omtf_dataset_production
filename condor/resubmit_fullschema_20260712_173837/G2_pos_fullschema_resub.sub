@@ -1,0 +1,117 @@
+###############################################################################
+# G2_pos.sub — HTCondor submit for GMT-overlap dataset G2_pos
+# single prompt muon, OMTF overlap, PU200, positive eta [0.82,1.24]
+# Target: 150000 events, 500 events/job, 300 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
+arguments       = G2_pos $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G2_pos_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G2_pos_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G2_pos.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue ProcId from (
+6
+17
+19
+23
+26
+33
+34
+35
+45
+46
+47
+48
+49
+52
+53
+57
+64
+69
+73
+78
+79
+81
+84
+89
+90
+91
+93
+99
+100
+111
+113
+117
+118
+124
+125
+126
+136
+137
+138
+139
+140
+144
+148
+155
+160
+168
+169
+171
+174
+182
+183
+184
+185
+192
+203
+209
+210
+213
+214
+224
+225
+226
+227
+228
+231
+232
+233
+236
+241
+243
+248
+256
+257
+259
+270
+271
+273
+275
+276
+278
+286
+287
+288
+289
+290
+293
+294
+295
+296
+298
+)

@@ -4,9 +4,9 @@
 #                               and regenerate S3, S4, B3 from updated fragments
 #
 # Must be run inside the CMSSW environment:
-#   cd ~/omtf_hecin_dataset_production/CMSSW_14_2_0_pre2/src
+#   cd ~/omtf_dataset_production/CMSSW_14_2_0_pre2/src
 #   cmsenv   (or: eval $(scramv1 runtime -sh))
-#   bash ~/omtf_hecin_dataset_production/scripts/generate_missing_configs.sh
+#   bash ~/omtf_dataset_production/scripts/generate_missing_configs.sh
 #
 # What it does:
 #   1. Copies all updated fragments to the CMSSW GEN package path

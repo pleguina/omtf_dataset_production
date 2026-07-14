@@ -22,7 +22,7 @@ process.maxEvents = cms.untracked.PSet(
 # Input: the local EDM POOL file produced by a previous GEN+SIM+DIGI+L1 run
 process.source = cms.Source("PoolSource",
     fileNames = cms.untracked.vstring(
-        'file:/afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/B1_0.root'
+        'file:/afs/cern.ch/user/p/pleguina/omtf_dataset_production/B1_0.root'
     ),
 )
 

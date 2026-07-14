@@ -3,12 +3,12 @@
 # from cluster 8747842. Missing outputs: B1_2, B1_54, B2_315, B3_156, B3_367, B3_382
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 arguments       = $(Dataset) $(ProcId) $(SkipEvents) $(NumEvents)
 
-output  = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/full_$(Dataset)_$(ProcId).out
-error   = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/full_$(Dataset)_$(ProcId).err
-log     = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/resubmit_xrd_failures.log
+output  = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/full_$(Dataset)_$(ProcId).out
+error   = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/full_$(Dataset)_$(ProcId).err
+log     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/resubmit_xrd_failures.log
 
 should_transfer_files = NO
 

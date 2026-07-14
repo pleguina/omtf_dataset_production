@@ -87,7 +87,7 @@ get_target_events() {
     esac
 }
 
-BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production"
+BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_dataset_production"
 CONDORDIR="${BASEDIR}/condor"
 LOGBASE="${CONDORDIR}/logs"
 

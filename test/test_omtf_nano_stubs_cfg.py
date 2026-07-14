@@ -8,7 +8,7 @@
 # l1tStubsGmt runs as part of SimL1Emulator (phase2_trigger active in Phase2C17I13M9).
 #
 # Usage:
-#   cd omtf_hecin_dataset_production
+#   cd omtf_dataset_production
 #   cmsRun test/test_omtf_nano_stubs_cfg.py
 #   python3 -c "import uproot; t=uproot.open('test/test_omtf_nano_stubs.root:Events'); print([k for k in t.keys() if 'Stub' in k])"
 

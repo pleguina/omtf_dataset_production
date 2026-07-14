@@ -4,12 +4,12 @@
 # Target: 200000 events, 500 events/job, 400 jobs
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 arguments       = C17_prompt_pt10to20_overlap_PU200 $(ProcId) 0 500
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C17_prompt_pt10to20_overlap_PU200_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C17_prompt_pt10to20_overlap_PU200_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C17_prompt_pt10to20_overlap_PU200.log
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C17_prompt_pt10to20_overlap_PU200_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C17_prompt_pt10to20_overlap_PU200_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C17_prompt_pt10to20_overlap_PU200.log
 
 should_transfer_files = NO
 

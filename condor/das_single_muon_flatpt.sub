@@ -5,11 +5,11 @@
 # Generated: Sun May 10 12:54:55 PM CEST 2026
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_das_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_das_job.sh
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/single_muon_flatpt_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/single_muon_flatpt_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/single_muon_flatpt.log
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/single_muon_flatpt_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/single_muon_flatpt_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/single_muon_flatpt.log
 
 should_transfer_files = NO
 

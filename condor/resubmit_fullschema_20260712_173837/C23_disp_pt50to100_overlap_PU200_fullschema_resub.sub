@@ -1,0 +1,57 @@
+###############################################################################
+# C23_disp_pt50to100_overlap_PU200.sub — HTCondor submit for controlled overlap study dataset C23_disp_pt50to100_overlap_PU200
+# Displaced pT 50-100 GeV overlap PU200 — WP5 displaced recovery
+# Target: 100000 events, 500 events/job, 200 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
+arguments       = C23_disp_pt50to100_overlap_PU200 $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C23_disp_pt50to100_overlap_PU200_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C23_disp_pt50to100_overlap_PU200_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C23_disp_pt50to100_overlap_PU200.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue ProcId from (
+5
+14
+22
+26
+31
+32
+34
+41
+47
+49
+75
+78
+83
+86
+91
+93
+102
+109
+112
+135
+137
+142
+145
+154
+155
+163
+165
+168
+170
+183
+)
