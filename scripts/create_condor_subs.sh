@@ -4,7 +4,7 @@
 ###############################################################################
 set -euo pipefail
 
-BASEDIR="$HOME/omtf_hecin_dataset_production"
+BASEDIR="$HOME/omtf_dataset_production"
 CONDDIR="${BASEDIR}/condor"
 LOGDIR="/eos/user/${USER:0:1}/${USER}/omtf_hecin_datasets/prod/logs"
 

@@ -2,7 +2,7 @@
 # using: 
 # Revision: 1.19 
 # Source: /local/reps/CMSSW/CMSSW/Configuration/Applications/python/ConfigBuilder.py,v 
-# with command line options: Configuration/GenProduction/python/OMTF_HECIN/B4_noHardScatter_PU200.py --python_filename /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/configs/B4_cfg.py --eventcontent FEVTSIM --datatier GEN-SIM-DIGI-RAW --conditions 140X_mcRun4_realistic_v4 --geometry Extended2026D110 --era Phase2C17I13M9 --beamspot HLLHC14TeV --step GEN,SIM,DIGI:pdigi_valid,L1 --nThreads 4 --pileup AVE_200_BX_25ns --pileup_input dbs:/MinBias_TuneCP5_14TeV-pythia8/Phase2Spring24GS-140X_mcRun4_realistic_v4-v1/GEN-SIM --fileout file:B1.root --customise_commands process.trackerGeometry.applyAlignment=cms.bool(False) --no_exec -n 100
+# with command line options: Configuration/GenProduction/python/OMTF_HECIN/B4_noHardScatter_PU200.py --python_filename /afs/cern.ch/user/p/pleguina/omtf_dataset_production/configs/B4_cfg.py --eventcontent FEVTSIM --datatier GEN-SIM-DIGI-RAW --conditions 140X_mcRun4_realistic_v4 --geometry Extended2026D110 --era Phase2C17I13M9 --beamspot HLLHC14TeV --step GEN,SIM,DIGI:pdigi_valid,L1 --nThreads 4 --pileup AVE_200_BX_25ns --pileup_input dbs:/MinBias_TuneCP5_14TeV-pythia8/Phase2Spring24GS-140X_mcRun4_realistic_v4-v1/GEN-SIM --fileout file:B1.root --customise_commands process.trackerGeometry.applyAlignment=cms.bool(False) --no_exec -n 100
 import FWCore.ParameterSet.Config as cms
 
 from Configuration.Eras.Era_Phase2C17I13M9_cff import Phase2C17I13M9

@@ -5,11 +5,11 @@
 # Generated: Fri May  8 18:24:36 CEST 2026
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_das_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_das_job.sh
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/minbias_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/minbias_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/minbias_retry.log
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/minbias_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/minbias_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/minbias_retry.log
 
 should_transfer_files = NO
 

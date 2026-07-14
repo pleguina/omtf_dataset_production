@@ -1,0 +1,505 @@
+{
+  "started_at": "2026-07-12T18:00:36.668016",
+  "manifest": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/analysis/full_schema_outdated_manifest_20260712_173837.json",
+  "deleted": {
+    "B4": {
+      "requested": 137,
+      "deleted_nano": 137,
+      "deleted_hits": 137,
+      "missing_hits_before_delete": 0
+    },
+    "C10_disp_pt20to50_overlap": {
+      "requested": 300,
+      "deleted_nano": 300,
+      "deleted_hits": 300,
+      "missing_hits_before_delete": 0
+    },
+    "C11_disp_pt50to100_overlap": {
+      "requested": 200,
+      "deleted_nano": 200,
+      "deleted_hits": 200,
+      "missing_hits_before_delete": 0
+    },
+    "C12_disp_pt100to200_overlap": {
+      "requested": 150,
+      "deleted_nano": 150,
+      "deleted_hits": 150,
+      "missing_hits_before_delete": 0
+    },
+    "C14_prompt_pt5to10_overlap_PU200": {
+      "requested": 400,
+      "deleted_nano": 400,
+      "deleted_hits": 400,
+      "missing_hits_before_delete": 0
+    },
+    "C15_disp_pt2to5_overlap_PU200": {
+      "requested": 400,
+      "deleted_nano": 400,
+      "deleted_hits": 400,
+      "missing_hits_before_delete": 0
+    },
+    "C16_disp_pt5to10_overlap_PU200": {
+      "requested": 400,
+      "deleted_nano": 400,
+      "deleted_hits": 400,
+      "missing_hits_before_delete": 0
+    },
+    "C20_prompt_pt100to200_overlap_PU200": {
+      "requested": 5,
+      "deleted_nano": 5,
+      "deleted_hits": 5,
+      "missing_hits_before_delete": 0
+    },
+    "C21_disp_pt10to20_overlap_PU200": {
+      "requested": 10,
+      "deleted_nano": 10,
+      "deleted_hits": 10,
+      "missing_hits_before_delete": 0
+    },
+    "C22_disp_pt20to50_overlap_PU200": {
+      "requested": 12,
+      "deleted_nano": 12,
+      "deleted_hits": 12,
+      "missing_hits_before_delete": 0
+    },
+    "C23_disp_pt50to100_overlap_PU200": {
+      "requested": 30,
+      "deleted_nano": 30,
+      "deleted_hits": 30,
+      "missing_hits_before_delete": 0
+    },
+    "C24_disp_pt100to200_overlap_PU200": {
+      "requested": 13,
+      "deleted_nano": 13,
+      "deleted_hits": 13,
+      "missing_hits_before_delete": 0
+    },
+    "C27_mild_disp_pt2to5_overlap_PU200": {
+      "requested": 14,
+      "deleted_nano": 14,
+      "deleted_hits": 14,
+      "missing_hits_before_delete": 0
+    },
+    "C28_mild_disp_pt5to10_overlap_PU200": {
+      "requested": 27,
+      "deleted_nano": 27,
+      "deleted_hits": 27,
+      "missing_hits_before_delete": 0
+    },
+    "C2_prompt_pt5to10_overlap": {
+      "requested": 400,
+      "deleted_nano": 400,
+      "deleted_hits": 400,
+      "missing_hits_before_delete": 0
+    },
+    "C3_prompt_pt10to20_overlap": {
+      "requested": 400,
+      "deleted_nano": 400,
+      "deleted_hits": 400,
+      "missing_hits_before_delete": 0
+    },
+    "C4_prompt_pt20to50_overlap": {
+      "requested": 300,
+      "deleted_nano": 300,
+      "deleted_hits": 300,
+      "missing_hits_before_delete": 0
+    },
+    "C5_prompt_pt50to100_overlap": {
+      "requested": 200,
+      "deleted_nano": 200,
+      "deleted_hits": 200,
+      "missing_hits_before_delete": 0
+    },
+    "C6_prompt_pt100to200_overlap": {
+      "requested": 150,
+      "deleted_nano": 150,
+      "deleted_hits": 150,
+      "missing_hits_before_delete": 0
+    },
+    "C7_disp_pt2to5_overlap": {
+      "requested": 400,
+      "deleted_nano": 400,
+      "deleted_hits": 400,
+      "missing_hits_before_delete": 0
+    },
+    "C8_disp_pt5to10_overlap": {
+      "requested": 400,
+      "deleted_nano": 400,
+      "deleted_hits": 400,
+      "missing_hits_before_delete": 0
+    },
+    "C9_disp_pt10to20_overlap": {
+      "requested": 400,
+      "deleted_nano": 400,
+      "deleted_hits": 400,
+      "missing_hits_before_delete": 0
+    },
+    "G14_neg_promptTransition_PU200": {
+      "requested": 64,
+      "deleted_nano": 64,
+      "deleted_hits": 64,
+      "missing_hits_before_delete": 0
+    },
+    "G14_pos_promptTransition_PU200": {
+      "requested": 51,
+      "deleted_nano": 51,
+      "deleted_hits": 51,
+      "missing_hits_before_delete": 0
+    },
+    "G16_neg_promptEndcap_PU200": {
+      "requested": 48,
+      "deleted_nano": 48,
+      "deleted_hits": 48,
+      "missing_hits_before_delete": 0
+    },
+    "G16_pos_promptEndcap_PU200": {
+      "requested": 56,
+      "deleted_nano": 56,
+      "deleted_hits": 56,
+      "missing_hits_before_delete": 0
+    },
+    "G17_twoDisplaced_overlap": {
+      "requested": 300,
+      "deleted_nano": 300,
+      "deleted_hits": 300,
+      "missing_hits_before_delete": 0
+    },
+    "G2_neg": {
+      "requested": 123,
+      "deleted_nano": 123,
+      "deleted_hits": 123,
+      "missing_hits_before_delete": 0
+    },
+    "G2_pos": {
+      "requested": 90,
+      "deleted_nano": 90,
+      "deleted_hits": 90,
+      "missing_hits_before_delete": 0
+    },
+    "G4_neg": {
+      "requested": 1,
+      "deleted_nano": 1,
+      "deleted_hits": 1,
+      "missing_hits_before_delete": 0
+    },
+    "G4_pos": {
+      "requested": 1,
+      "deleted_nano": 1,
+      "deleted_hits": 1,
+      "missing_hits_before_delete": 0
+    },
+    "G7": {
+      "requested": 300,
+      "deleted_nano": 300,
+      "deleted_hits": 300,
+      "missing_hits_before_delete": 0
+    },
+    "G8": {
+      "requested": 600,
+      "deleted_nano": 600,
+      "deleted_hits": 600,
+      "missing_hits_before_delete": 0
+    }
+  },
+  "resubmits": {
+    "B4": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/B4_digi.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/B4_fullschema_resub.sub",
+      "jobs": 137,
+      "cluster": 9299699,
+      "returncode": 0,
+      "stdout": "Submitting job(s).........................................................................................................................................\n137 job(s) submitted to cluster 9299699.",
+      "stderr": ""
+    },
+    "C10_disp_pt20to50_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C10_disp_pt20to50_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C10_disp_pt20to50_overlap_fullschema_resub.sub",
+      "jobs": 300,
+      "cluster": 9299700,
+      "returncode": 0,
+      "stdout": "Submitting job(s)............................................................................................................................................................................................................................................................................................................\n300 job(s) submitted to cluster 9299700.",
+      "stderr": ""
+    },
+    "C11_disp_pt50to100_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C11_disp_pt50to100_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C11_disp_pt50to100_overlap_fullschema_resub.sub",
+      "jobs": 200,
+      "cluster": 9299701,
+      "returncode": 0,
+      "stdout": "Submitting job(s)........................................................................................................................................................................................................\n200 job(s) submitted to cluster 9299701.",
+      "stderr": ""
+    },
+    "C12_disp_pt100to200_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C12_disp_pt100to200_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C12_disp_pt100to200_overlap_fullschema_resub.sub",
+      "jobs": 150,
+      "cluster": 9299702,
+      "returncode": 0,
+      "stdout": "Submitting job(s)......................................................................................................................................................\n150 job(s) submitted to cluster 9299702.",
+      "stderr": ""
+    },
+    "C14_prompt_pt5to10_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C14_prompt_pt5to10_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C14_prompt_pt5to10_overlap_PU200_fullschema_resub.sub",
+      "jobs": 400,
+      "cluster": 9299703,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................................................................................................................................................................................................................................................................................................................................................................................\n400 job(s) submitted to cluster 9299703.",
+      "stderr": ""
+    },
+    "C15_disp_pt2to5_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C15_disp_pt2to5_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C15_disp_pt2to5_overlap_PU200_fullschema_resub.sub",
+      "jobs": 400,
+      "cluster": 9299704,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................................................................................................................................................................................................................................................................................................................................................................................\n400 job(s) submitted to cluster 9299704.",
+      "stderr": ""
+    },
+    "C16_disp_pt5to10_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C16_disp_pt5to10_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C16_disp_pt5to10_overlap_PU200_fullschema_resub.sub",
+      "jobs": 400,
+      "cluster": 9299705,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................................................................................................................................................................................................................................................................................................................................................................................\n400 job(s) submitted to cluster 9299705.",
+      "stderr": ""
+    },
+    "C20_prompt_pt100to200_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C20_prompt_pt100to200_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C20_prompt_pt100to200_overlap_PU200_fullschema_resub.sub",
+      "jobs": 5,
+      "cluster": 9299706,
+      "returncode": 0,
+      "stdout": "Submitting job(s).....\n5 job(s) submitted to cluster 9299706.",
+      "stderr": ""
+    },
+    "C21_disp_pt10to20_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C21_disp_pt10to20_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C21_disp_pt10to20_overlap_PU200_fullschema_resub.sub",
+      "jobs": 10,
+      "cluster": 9299707,
+      "returncode": 0,
+      "stdout": "Submitting job(s)..........\n10 job(s) submitted to cluster 9299707.",
+      "stderr": ""
+    },
+    "C22_disp_pt20to50_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C22_disp_pt20to50_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C22_disp_pt20to50_overlap_PU200_fullschema_resub.sub",
+      "jobs": 12,
+      "cluster": 9299708,
+      "returncode": 0,
+      "stdout": "Submitting job(s)............\n12 job(s) submitted to cluster 9299708.",
+      "stderr": ""
+    },
+    "C23_disp_pt50to100_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C23_disp_pt50to100_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C23_disp_pt50to100_overlap_PU200_fullschema_resub.sub",
+      "jobs": 30,
+      "cluster": 9299709,
+      "returncode": 0,
+      "stdout": "Submitting job(s)..............................\n30 job(s) submitted to cluster 9299709.",
+      "stderr": ""
+    },
+    "C24_disp_pt100to200_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C24_disp_pt100to200_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C24_disp_pt100to200_overlap_PU200_fullschema_resub.sub",
+      "jobs": 13,
+      "cluster": 9299710,
+      "returncode": 0,
+      "stdout": "Submitting job(s).............\n13 job(s) submitted to cluster 9299710.",
+      "stderr": ""
+    },
+    "C27_mild_disp_pt2to5_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C27_mild_disp_pt2to5_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C27_mild_disp_pt2to5_overlap_PU200_fullschema_resub.sub",
+      "jobs": 14,
+      "cluster": 9299711,
+      "returncode": 0,
+      "stdout": "Submitting job(s)..............\n14 job(s) submitted to cluster 9299711.",
+      "stderr": ""
+    },
+    "C28_mild_disp_pt5to10_overlap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C28_mild_disp_pt5to10_overlap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C28_mild_disp_pt5to10_overlap_PU200_fullschema_resub.sub",
+      "jobs": 27,
+      "cluster": 9299712,
+      "returncode": 0,
+      "stdout": "Submitting job(s)...........................\n27 job(s) submitted to cluster 9299712.",
+      "stderr": ""
+    },
+    "C2_prompt_pt5to10_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C2_prompt_pt5to10_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C2_prompt_pt5to10_overlap_fullschema_resub.sub",
+      "jobs": 400,
+      "cluster": 9299713,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................................................................................................................................................................................................................................................................................................................................................................................\n400 job(s) submitted to cluster 9299713.",
+      "stderr": ""
+    },
+    "C3_prompt_pt10to20_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C3_prompt_pt10to20_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C3_prompt_pt10to20_overlap_fullschema_resub.sub",
+      "jobs": 400,
+      "cluster": 9299714,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................................................................................................................................................................................................................................................................................................................................................................................\n400 job(s) submitted to cluster 9299714.",
+      "stderr": ""
+    },
+    "C4_prompt_pt20to50_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C4_prompt_pt20to50_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C4_prompt_pt20to50_overlap_fullschema_resub.sub",
+      "jobs": 300,
+      "cluster": 9299715,
+      "returncode": 0,
+      "stdout": "Submitting job(s)............................................................................................................................................................................................................................................................................................................\n300 job(s) submitted to cluster 9299715.",
+      "stderr": ""
+    },
+    "C5_prompt_pt50to100_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C5_prompt_pt50to100_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C5_prompt_pt50to100_overlap_fullschema_resub.sub",
+      "jobs": 200,
+      "cluster": 9299716,
+      "returncode": 0,
+      "stdout": "Submitting job(s)........................................................................................................................................................................................................\n200 job(s) submitted to cluster 9299716.",
+      "stderr": ""
+    },
+    "C6_prompt_pt100to200_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C6_prompt_pt100to200_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C6_prompt_pt100to200_overlap_fullschema_resub.sub",
+      "jobs": 150,
+      "cluster": 9299717,
+      "returncode": 0,
+      "stdout": "Submitting job(s)......................................................................................................................................................\n150 job(s) submitted to cluster 9299717.",
+      "stderr": ""
+    },
+    "C7_disp_pt2to5_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C7_disp_pt2to5_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C7_disp_pt2to5_overlap_fullschema_resub.sub",
+      "jobs": 400,
+      "cluster": 9299718,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................................................................................................................................................................................................................................................................................................................................................................................\n400 job(s) submitted to cluster 9299718.",
+      "stderr": ""
+    },
+    "C8_disp_pt5to10_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C8_disp_pt5to10_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C8_disp_pt5to10_overlap_fullschema_resub.sub",
+      "jobs": 400,
+      "cluster": 9299719,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................................................................................................................................................................................................................................................................................................................................................................................\n400 job(s) submitted to cluster 9299719.",
+      "stderr": ""
+    },
+    "C9_disp_pt10to20_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/C9_disp_pt10to20_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/C9_disp_pt10to20_overlap_fullschema_resub.sub",
+      "jobs": 400,
+      "cluster": 9299720,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................................................................................................................................................................................................................................................................................................................................................................................\n400 job(s) submitted to cluster 9299720.",
+      "stderr": ""
+    },
+    "G14_neg_promptTransition_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G14_neg_promptTransition_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G14_neg_promptTransition_PU200_fullschema_resub.sub",
+      "jobs": 64,
+      "cluster": 9299721,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................................\n64 job(s) submitted to cluster 9299721.",
+      "stderr": ""
+    },
+    "G14_pos_promptTransition_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G14_pos_promptTransition_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G14_pos_promptTransition_PU200_fullschema_resub.sub",
+      "jobs": 51,
+      "cluster": 9299722,
+      "returncode": 0,
+      "stdout": "Submitting job(s)...................................................\n51 job(s) submitted to cluster 9299722.",
+      "stderr": ""
+    },
+    "G16_neg_promptEndcap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G16_neg_promptEndcap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G16_neg_promptEndcap_PU200_fullschema_resub.sub",
+      "jobs": 48,
+      "cluster": 9299723,
+      "returncode": 0,
+      "stdout": "Submitting job(s)................................................\n48 job(s) submitted to cluster 9299723.",
+      "stderr": ""
+    },
+    "G16_pos_promptEndcap_PU200": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G16_pos_promptEndcap_PU200.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G16_pos_promptEndcap_PU200_fullschema_resub.sub",
+      "jobs": 56,
+      "cluster": 9299724,
+      "returncode": 0,
+      "stdout": "Submitting job(s)........................................................\n56 job(s) submitted to cluster 9299724.",
+      "stderr": ""
+    },
+    "G17_twoDisplaced_overlap": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G17_twoDisplaced_overlap.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G17_twoDisplaced_overlap_fullschema_resub.sub",
+      "jobs": 300,
+      "cluster": 9299725,
+      "returncode": 0,
+      "stdout": "Submitting job(s)............................................................................................................................................................................................................................................................................................................\n300 job(s) submitted to cluster 9299725.",
+      "stderr": ""
+    },
+    "G2_neg": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G2_neg.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G2_neg_fullschema_resub.sub",
+      "jobs": 123,
+      "cluster": 9299726,
+      "returncode": 0,
+      "stdout": "Submitting job(s)...........................................................................................................................\n123 job(s) submitted to cluster 9299726.",
+      "stderr": ""
+    },
+    "G2_pos": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G2_pos.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G2_pos_fullschema_resub.sub",
+      "jobs": 90,
+      "cluster": 9299727,
+      "returncode": 0,
+      "stdout": "Submitting job(s)..........................................................................................\n90 job(s) submitted to cluster 9299727.",
+      "stderr": ""
+    },
+    "G4_neg": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G4_neg.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G4_neg_fullschema_resub.sub",
+      "jobs": 1,
+      "cluster": 9299728,
+      "returncode": 0,
+      "stdout": "Submitting job(s).\n1 job(s) submitted to cluster 9299728.",
+      "stderr": ""
+    },
+    "G4_pos": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G4_pos.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G4_pos_fullschema_resub.sub",
+      "jobs": 1,
+      "cluster": 9299729,
+      "returncode": 0,
+      "stdout": "Submitting job(s).\n1 job(s) submitted to cluster 9299729.",
+      "stderr": ""
+    },
+    "G7": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G7.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G7_fullschema_resub.sub",
+      "jobs": 300,
+      "cluster": 9299730,
+      "returncode": 0,
+      "stdout": "Submitting job(s)............................................................................................................................................................................................................................................................................................................\n300 job(s) submitted to cluster 9299730.",
+      "stderr": ""
+    },
+    "G8": {
+      "template": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/G8.sub",
+      "submit_file": "/afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/resubmit_fullschema_20260712_173837/G8_fullschema_resub.sub",
+      "jobs": 600,
+      "cluster": 9299731,
+      "returncode": 0,
+      "stdout": "Submitting job(s)........................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................\n600 job(s) submitted to cluster 9299731.",
+      "stderr": ""
+    }
+  },
+  "errors": [],
+  "finished_at": "2026-07-12T18:04:51.927215"
+}

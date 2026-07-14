@@ -17,7 +17,7 @@
 ###############################################################################
 set -euo pipefail
 
-BASEDIR="$HOME/omtf_hecin_dataset_production"
+BASEDIR="$HOME/omtf_dataset_production"
 SCRIPTS="${BASEDIR}/scripts"
 DO_SUBMIT=false
 SINGLE_PHASE=0

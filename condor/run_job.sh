@@ -14,7 +14,7 @@ PROCID="${2:?Usage: run_job.sh DATASET PROCID SKIPEVENTS NEVENTS}"
 SKIPEVENTS="${3:?Usage: run_job.sh DATASET PROCID SKIPEVENTS NEVENTS}"
 NEVENTS="${4:?Usage: run_job.sh DATASET PROCID SKIPEVENTS NEVENTS}"
 
-BASEDIR="/afs/cern.ch/user/${USER:0:1}/${USER}/omtf_hecin_dataset_production"
+BASEDIR="/afs/cern.ch/user/${USER:0:1}/${USER}/omtf_dataset_production"
 CMSSW_VERSION="CMSSW_14_2_0_pre2"
 CMSSW_DIR="/afs/cern.ch/user/${USER:0:1}/${USER}/${CMSSW_VERSION}"
 CONFDIR="${BASEDIR}/configs"

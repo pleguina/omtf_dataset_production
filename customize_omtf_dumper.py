@@ -44,6 +44,7 @@ def customise_omtf_dumper(process):
         # Point to sim-truth collections
         process.simOmtfPhase2Digis.simTracksTag = cms.InputTag("g4SimHits")
         process.simOmtfPhase2Digis.simVertexesTag = cms.InputTag("g4SimHits")
+        process.simOmtfPhase2Digis.trackingParticleTag = cms.InputTag("mix", "MergedTrackTruth")
 
         # Digi-sim link collections for per-stub SimTrack truth labeling in
         # OMTFAllInputTree (reg_stub_trackId / reg_stub_ambiguous branches).

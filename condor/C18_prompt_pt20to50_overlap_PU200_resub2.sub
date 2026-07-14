@@ -3,7 +3,7 @@
 # 1 proc IDs missing out of 300
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 
 should_transfer_files = NO
 
@@ -18,8 +18,8 @@ use_x509userproxy = true
 x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
 
 arguments = C18_prompt_pt20to50_overlap_PU200 151 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C18_prompt_pt20to50_overlap_PU200_151.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C18_prompt_pt20to50_overlap_PU200_151.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C18_prompt_pt20to50_overlap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C18_prompt_pt20to50_overlap_PU200_151.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C18_prompt_pt20to50_overlap_PU200_151.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C18_prompt_pt20to50_overlap_PU200.log
 queue
 

@@ -16,7 +16,7 @@ set -euo pipefail
 
 NEVENTS="${1:-20}"
 
-BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production"
+BASEDIR="/afs/cern.ch/user/p/pleguina/omtf_dataset_production"
 CMSSW_DIR="/afs/cern.ch/user/p/pleguina/CMSSW_14_2_0_pre2"
 CONFDIR="${BASEDIR}/configs"
 OUTDIR="${BASEDIR}/smoke_results/das_smoke_$(date +%Y%m%d_%H%M%S)"

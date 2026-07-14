@@ -4,7 +4,7 @@
 # Target: 200000 events, 500 events/job, 400 jobs
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 
 
 should_transfer_files = NO
@@ -21,14 +21,14 @@ x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
 
 
 arguments = C28_mild_disp_pt5to10_overlap_PU200 288 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200_288.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200_288.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200_288.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200_288.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200.log
 queue
 
 arguments = C28_mild_disp_pt5to10_overlap_PU200 384 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200_384.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200_384.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200_384.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200_384.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C28_mild_disp_pt5to10_overlap_PU200.log
 queue
 

@@ -24,7 +24,7 @@ GLOBAL_TAG="${4:?Usage: run_das_job.sh LABEL PROCID INPUT_FILE GLOBAL_TAG SKIP_E
 SKIP_EVENTS="${5:?Usage: run_das_job.sh LABEL PROCID INPUT_FILE GLOBAL_TAG SKIP_EVENTS MAX_EVENTS}"
 MAX_EVENTS="${6:?Usage: run_das_job.sh LABEL PROCID INPUT_FILE GLOBAL_TAG SKIP_EVENTS MAX_EVENTS}"
 
-BASEDIR="/afs/cern.ch/user/${USER:0:1}/${USER}/omtf_hecin_dataset_production"
+BASEDIR="/afs/cern.ch/user/${USER:0:1}/${USER}/omtf_dataset_production"
 CMSSW_DIR="/afs/cern.ch/user/${USER:0:1}/${USER}/CMSSW_14_2_0_pre2"
 CONFDIR="${BASEDIR}/configs"
 EOS_BASE="/eos/user/${USER:0:1}/${USER}/omtf_hecin_datasets/das_validation"

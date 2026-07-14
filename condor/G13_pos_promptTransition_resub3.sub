@@ -2,7 +2,7 @@
 # G13_pos_promptTransition_resub3.sub — resubmit 5 missing jobs
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 should_transfer_files = NO
 request_cpus    = 1
 request_memory  = 4000
@@ -13,32 +13,32 @@ use_x509userproxy = true
 x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
 
 arguments = G13_pos_promptTransition 130 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_130.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_130.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_130.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_130.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition.log
 queue
 
 arguments = G13_pos_promptTransition 161 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_161.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_161.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_161.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_161.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition.log
 queue
 
 arguments = G13_pos_promptTransition 175 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_175.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_175.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_175.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_175.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition.log
 queue
 
 arguments = G13_pos_promptTransition 177 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_177.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_177.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_177.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_177.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition.log
 queue
 
 arguments = G13_pos_promptTransition 179 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_179.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition_179.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G13_pos_promptTransition.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_179.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition_179.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G13_pos_promptTransition.log
 queue
 

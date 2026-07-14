@@ -6,7 +6,7 @@
 ###############################################################################
 set -euo pipefail
 
-BASEDIR="$HOME/omtf_hecin_dataset_production"
+BASEDIR="$HOME/omtf_dataset_production"
 CMSSW_VERSION="CMSSW_14_2_0_pre2"
 CONFDIR="${BASEDIR}/configs"
 TESTDIR="${BASEDIR}/test"

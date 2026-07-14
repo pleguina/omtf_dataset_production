@@ -16,12 +16,12 @@
 #             -format "%s\n" Args | grep omtf
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job_testset.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job_testset.sh
 arguments       = $(Dataset) 0 1000
 
-output  = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/testset_$(Dataset).out
-error   = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/testset_$(Dataset).err
-log     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/logs/testset.log
+output  = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/testset_$(Dataset).out
+error   = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/testset_$(Dataset).err
+log     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/testset.log
 
 # Files live on AFS 
 should_transfer_files = NO

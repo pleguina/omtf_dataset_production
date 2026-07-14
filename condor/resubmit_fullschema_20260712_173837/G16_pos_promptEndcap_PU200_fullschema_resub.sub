@@ -1,0 +1,83 @@
+###############################################################################
+# G16_pos_promptEndcap_PU200.sub — HTCondor submit for dataset G16_pos_promptEndcap_PU200
+# Prompt muon, eta +1.6-2.4 endcap control, PU200
+# Target: 100000 events, 500 events/job, 200 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
+arguments       = G16_pos_promptEndcap_PU200 $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_pos_promptEndcap_PU200_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_pos_promptEndcap_PU200_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_pos_promptEndcap_PU200.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue ProcId from (
+9
+12
+23
+27
+30
+40
+41
+44
+46
+47
+48
+51
+52
+57
+61
+66
+67
+68
+69
+74
+78
+83
+87
+93
+100
+102
+108
+114
+116
+117
+120
+125
+128
+129
+131
+138
+140
+147
+148
+149
+151
+153
+154
+155
+159
+165
+169
+172
+175
+176
+177
+179
+182
+186
+193
+198
+)

@@ -893,3 +893,211 @@ Key matched comparison pairs for WP4:
   C13 vs C27 (PU200 matched ambiguity, low pT)
 
 ======================================================================
+PU200 TRUTH-PERSISTENCE DESIGN NOTE
+======================================================================
+Scope:
+- This note fixes the design for adding pileup-muon truth persistence to
+  OMTFAllInputTree without breaking existing ROOT consumers.
+- The implementation target is additive. Existing branches and old files must
+  remain readable without reinterpretation.
+
+Motivation:
+- Current `reg_stub_trackId` encodes only hard-scatter GenMuon truth:
+  - 0 = no matched truth / noise
+  - 1..K = index in `GenMuon_*`
+- That scheme cannot represent real pileup muons, because `GenMuon_*` is a
+  hard-scatter table and does not cover pileup TrackingParticles.
+- Source inspection already showed that `CandidateSimMuonMatcher.cc` contains a
+  TrackingParticle-based path intended for minbias / pileup use. The missing
+  piece is wiring that truth into `DataROOTDumper2AllInput.cc` persistence.
+
+Branch-level design:
+- Do NOT change the meaning of `reg_stub_trackId`.
+- Add a parallel branch `reg_stub_tpId` with the semantics:
+  - 0 = no matched pileup-muon truth
+  - 1..M = index in a new per-event `TpMuon_*` table
+- Add a new `TpMuon_*` table containing only selected TrackingParticle muons:
+  - `TpMuon_pt`
+  - `TpMuon_eta`
+  - `TpMuon_phi`
+  - `TpMuon_charge`
+  - `TpMuon_dxy`
+  - `TpMuon_lxy`
+  - `TpMuon_eventId`
+  - `TpMuon_bunchCrossing`
+- `TpMuon_eventId` and `TpMuon_bunchCrossing` are mandatory, because they make
+  in-time vs out-of-time pileup truth explicit and support BX-audit closure
+  directly from truth labels.
+
+Selection policy for `TpMuon_*` persistence:
+- Persist only TrackingParticle muons (`|pdgId| == 13`).
+- Apply a low-pT floor tuned for relevance and tuple size control:
+  - baseline request: `pT > 1.5 GeV`
+  - acceptable fallback if configuration simplicity is preferred: `pT > 2 GeV`
+- Restrict acceptance to the overlap task plus guard band:
+  - `|eta| < 1.6`
+- Do not persist all TrackingParticles from PU200 events. The full population is
+  too large and would inflate ntuple size and job memory for little training
+  value.
+
+Mixing / production precondition:
+- The pilot must explicitly verify that the mixing configuration preserves the
+  pileup SimTrack / SimVertex information needed by the TrackingParticle path.
+- With classic mixing from GEN-SIM MinBias this is expected to be configurable,
+  but it is the main silent-failure mode for this feature.
+- A produced `TpMuon_*` table that is consistently empty, or suppressed by an
+  order of magnitude relative to expectation, should be treated as a production
+  misconfiguration first, not as a physics result.
+
+Policy consequence for B4:
+- After this fix, B4 is no longer a monolithic "all-noise" sample at the truth
+  level.
+- B4 becomes a realistic mixture of:
+  - combinatorial / silent occupancy with no true muon,
+  - real prompt pileup muons crossing the OMTF-relevant window,
+  - decay-in-flight pileup muons from pion / kaon parents.
+- Therefore some B4 windows become legitimate positive truth cases for the
+  validity head. This is a physics effect, not a labeling bug.
+- Any downstream training or validation plan that currently assumes "all B4
+  targets must score low" has to be updated after the fix.
+
+Validation consequences:
+- Add a dedicated category for real pileup muons in the truth-accounting and
+  dataset-policy notes:
+  - in-time pileup muon
+  - out-of-time pileup muon
+- The B4 sparsity / flatness gate must be redefined accordingly. Post-fix, a
+  nonzero positive-truth fraction in B4 is expected.
+- The pilot closure should check:
+  - `TpMuon` multiplicity per event / BX after the selection cuts,
+  - in-time vs out-of-time composition from `TpMuon_bunchCrossing`,
+  - displaced / decay-in-flight fraction against minbias expectations,
+  - consistency between `reg_stub_tpId` occupancy and the persisted `TpMuon_*`
+    table.
+
+Pilot acceptance criteria:
+- `TpMuon_*` table present in the pilot ROOTs.
+- `reg_stub_tpId` present and populated where pileup-muon truth exists.
+- No semantic change to old hard-scatter labeling through `reg_stub_trackId`.
+- Observed pileup-muon rate closes at order-of-magnitude level with minbias
+  expectations for the chosen `pT` and `eta` cuts.
+- A near-empty `TpMuon_*` table in B4/G2/G4 should fail the pilot pending a
+  mixing-configuration audit.
+
+KNOWN CAVEAT: `TpMuon_dxy` is NOT the gun's true (curvature-consistent) d0
+======================================================================
+Finding (validated on G4_neg pilot, 2026-07-13):
+- `TpMuon_dxy` is filled from `TrackingParticle::dxy()`, which CMSSW defines as
+  the straight-line quantity `(-vx*py + vy*px) / pt`, i.e. `-vx*sin(phi) +
+  vy*cos(phi)` evaluated at the production vertex.
+- The G-campaign displaced guns (`FlatRandomPtGunProducer2`, `VertexSpectrum =
+  "flatD0"`, e.g. G3/G4: `MinDxy=0`, `MaxDxy=50` cm) do NOT place the vertex
+  with that straight-line formula. They call `newVertexWithD0(...)`, which
+  solves for `(vx, vy)` using the actual helix curvature (gyroradius from
+  `qinvpt` and B field) so that the true closest-approach impact parameter of
+  the curved trajectory equals the flat-in-`[-50,50]` cm target.
+- Consequence: `TpMuon_dxy` (straight-line) systematically overshoots the
+  nominal `[MinDxy, MaxDxy]` window, especially for low-pT muons (dominant in
+  the flat-1/pT spectrum), because the straight-line approximation is only
+  accurate when the track curvature is negligible.
+- Directly observed on a 20-event `G4_neg` local pilot: 4 of 13 hard-scatter
+  signal muons had `|TpMuon_dxy| > 50 cm` (up to ~67 cm), all at pT in the
+  2-9 GeV range.
+
+This is NOT a production bug. `TpMuon_dxy` is the standard CMSSW
+`TrackingParticle::dxy()` convention and is kept as-is for comparability with
+other analyses. The caveat is about interpretation, not correctness of the
+persisted value.
+
+Required actions for anyone consuming `TpMuon_dxy`:
+- Do NOT assume `TpMuon_dxy` is strictly bounded to `[MinDxy, MaxDxy]` for a
+  given dataset. Treat the nominal gun range as a target for the TRUE
+  (curvature-consistent) displacement, not a hard bound on the persisted
+  branch.
+- Any flatness / coverage check on `TpMuon_dxy` (e.g. dataset QA, training
+  target normalization) should either:
+  - bin/condition on `TpMuon_pt` before judging flatness, or
+  - treat overflow beyond `[MinDxy, MaxDxy]` as expected low-pT smearing, not
+    a generation failure.
+- If a strictly curvature-consistent d0 branch is ever needed (e.g. to
+  directly validate gun flatness, or as a cleaner regression target), it is
+  not free: it requires either persisting raw `TpMuon_vx`/`TpMuon_vy` (cheap,
+  unambiguous) and reconstructing the helix-consistent dxy downstream using
+  `TpMuon_charge`, `TpMuon_pt`, `TpMuon_phi` and the known B field, or adding a
+  dedicated in-producer branch (e.g. `TpMuon_dxyHelix`) computed the same way
+  `FlatRandomPtGunProducer2::newVertexWithD0` does internally.
+
+UPDATE (2026-07-13): implemented and validated.
+- `TpMuon_vx` / `TpMuon_vy` (raw production-vertex transverse coords, cm) are
+  now persisted in `OMTFAllInputTree`.
+- `TpMuon_dxyHelix` is now persisted too: the curvature-consistent impact
+  parameter, computed exactly the way
+  `CandidateSimMuonMatcher::MatchingResult`'s SimTrack-path constructor already
+  does for non-PU samples (`rg = -pT/(0.003*B*q)`, `B = 3.811 T`, `center =
+  (vx - rg*sin(phi), vy + rg*cos(phi))`, `dxyHelix = rg + q*|center|`), but
+  applied to the TrackingParticle path used for PU200/minbias-mixed samples
+  (G-series, B4), where `CandidateSimMuonMatcher` itself still only has the
+  naive `trackingParticle.dxy()`.
+- Validated on a 25-event `G4_neg` local pilot (14 hard-scatter signal muons,
+  gun target `MinDxy=0`/`MaxDxy=50` cm):
+  - `TpMuon_dxy` (straight-line): 1/14 muons with `|dxy| > 50` cm (up to 62 cm).
+  - `TpMuon_dxyHelix` (curvature-consistent): 0/14 muons outside `[0,50]` cm
+    (max `|dxyHelix|` = 44.9 cm).
+- `TpMuon_dxyHelix` and `TpMuon_dxy` can differ in sign; this is a convention
+  difference (charge/rotation sign), not an error — compare magnitudes.
+- Both `TpMuon_dxy` (standard CMSSW convention, kept for comparability) and
+  `TpMuon_dxyHelix` (gun-consistent truth) are now available side by side; use
+  `TpMuon_dxyHelix` for any flatness/coverage QA or as a regression target.
+- Separate, NOT fixed here: `CandidateSimMuonMatcher::trackingParticleIsMuonInBx0Displ`
+  (the TP selection filter used for candidate matching, not for `TpMuon_*`
+  persistence) still branches on the naive `trackingParticle.dxy() < 30`
+  threshold. This may bias matching-efficiency studies for low-pT displaced
+  muons the same way; flagged for a future fix, out of scope for this note.
+
+PILEUP CLASSIFICATION IN TpMuon_* TABLES
+----------------------------------------------------------------------
+
+Effective 2026-07-13 production launch:
+- `TpMuon_isPileup` (uint8): 1 if pileup-originated (eventId ≠ 0), 0 if
+  hard-scatter (eventId = 0).
+- `TpMuon_isInTime` (uint8): 1 if in-time bunch crossing (bunchCrossing = 0),
+  0 if out-of-time (bunchCrossing ≠ 0).
+- `TpMuon_originClass` (int8): encoded PU classification:
+  - 0 = hard-scatter, in-time (eventId = 0, bunchCrossing = 0)
+  - 1 = pileup, in-time (eventId > 0, bunchCrossing = 0)
+  - 2 = pileup, out-of-time (eventId > 0, bunchCrossing ≠ 0)
+  - 3 = other/anomalous (rare; used for edge cases)
+- `reg_pu_nTpMuonInTime` (int, scalar, per processor window): count of
+  TrackingParticle muons in the current event/window that are PU in-time
+  (TpMuon_originClass == 1). Useful for occupation studies.
+- `reg_pu_nTpMuonOOT` (int, scalar, per processor window): count of
+  TrackingParticle muons that are PU out-of-time (TpMuon_originClass == 2).
+
+Use these branches for:
+- Analyzing L1 trigger response to different PU categories (in-time vs
+  out-of-time).
+- Validating pileup mixing: histograms of occupancy by BX should match the
+  configured PU spectrum.
+- Tuning OMTF rate and efficiency separately for in-time and OOT PU.
+
+Selective re-production priority after implementation:
+- Tier 1:
+  - B4 (plus planned higher statistics)
+- Tier 2:
+  - G2, G4
+- Tier 3:
+  - G8, G13_pos, G13_neg, G14_pos, G14_neg, G15_pos, G15_neg,
+    G16_pos, G16_neg
+- Tier 4:
+  - C13, C14, C15, C16
+- Tier 5:
+  - remaining PU200 datasets as needed by training or validation closure
+
+Operational summary:
+- Wire the existing TrackingParticle truth path into
+  `DataROOTDumper2AllInput.cc`.
+- Persist a filtered `TpMuon_*` table and additive `reg_stub_tpId` branch.
+- Verify the mixing precondition in the pilot.
+- Validate closure on B4 before broad PU200 re-production.
+
+======================================================================

@@ -31,12 +31,12 @@
 #   condor_submit condor/G2.sub
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 arguments       = $(Dataset) $(Process) 0 500
 
-output  = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/gmt_$(Dataset)_$(Process).out
-error   = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/gmt_$(Dataset)_$(Process).err
-log     = /eos/user/p/pleguina/omtf_hecin_datasets/prod/logs/gmt_overlap.log
+output  = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/gmt_$(Dataset)_$(Process).out
+error   = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/gmt_$(Dataset)_$(Process).err
+log     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/gmt_overlap.log
 
 should_transfer_files = NO
 

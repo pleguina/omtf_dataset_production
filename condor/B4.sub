@@ -5,12 +5,12 @@
 # Target: 200000 events, 2000 events/job, 100 jobs
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 arguments       = B4 $(ProcId) 2000
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/B4.log
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/B4_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/B4_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/B4.log
 
 request_cpus    = 1
 request_memory  = 6000

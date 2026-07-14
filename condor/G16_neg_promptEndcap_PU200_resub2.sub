@@ -3,7 +3,7 @@
 # 87 proc IDs missing out of 200
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 
 should_transfer_files = NO
 
@@ -18,524 +18,524 @@ use_x509userproxy = true
 x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
 
 arguments = G16_neg_promptEndcap_PU200 0 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_0.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_0.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_0.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_0.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 3 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_3.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_3.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_3.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_3.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 4 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_4.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_4.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_4.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_4.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 5 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_5.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_5.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_5.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_5.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 8 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_8.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_8.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_8.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_8.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 9 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_9.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_9.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_9.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_9.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 10 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_10.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_10.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_10.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_10.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 11 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_11.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_11.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_11.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_11.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 14 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_14.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_14.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_14.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_14.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 18 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_18.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_18.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_18.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_18.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 20 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_20.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_20.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_20.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_20.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 22 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_22.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_22.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_22.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_22.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 23 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_23.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_23.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_23.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_23.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 26 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_26.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_26.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_26.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_26.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 27 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_27.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_27.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_27.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_27.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 33 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_33.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_33.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_33.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_33.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 35 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_35.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_35.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_35.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_35.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 36 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_36.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_36.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_36.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_36.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 38 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_38.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_38.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_38.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_38.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 39 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_39.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_39.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_39.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_39.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 41 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_41.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_41.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_41.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_41.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 43 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_43.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_43.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_43.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_43.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 44 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_44.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_44.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_44.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_44.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 45 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_45.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_45.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_45.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_45.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 50 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_50.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_50.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_50.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_50.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 51 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_51.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_51.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_51.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_51.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 52 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_52.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_52.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_52.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_52.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 58 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_58.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_58.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_58.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_58.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 59 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_59.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_59.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_59.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_59.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 60 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_60.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_60.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_60.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_60.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 62 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_62.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_62.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_62.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_62.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 64 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_64.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_64.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_64.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_64.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 66 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_66.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_66.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_66.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_66.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 68 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_68.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_68.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_68.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_68.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 69 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_69.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_69.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_69.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_69.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 71 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_71.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_71.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_71.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_71.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 74 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_74.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_74.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_74.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_74.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 75 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_75.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_75.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_75.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_75.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 76 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_76.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_76.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_76.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_76.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 78 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_78.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_78.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_78.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_78.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 79 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_79.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_79.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_79.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_79.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 81 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_81.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_81.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_81.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_81.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 85 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_85.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_85.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_85.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_85.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 87 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_87.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_87.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_87.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_87.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 95 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_95.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_95.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_95.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_95.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 96 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_96.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_96.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_96.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_96.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 98 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_98.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_98.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_98.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_98.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 99 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_99.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_99.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_99.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_99.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 100 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_100.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_100.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_100.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_100.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 101 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_101.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_101.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_101.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_101.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 102 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_102.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_102.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_102.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_102.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 104 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_104.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_104.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_104.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_104.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 107 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_107.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_107.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_107.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_107.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 108 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_108.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_108.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_108.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_108.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 109 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_109.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_109.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_109.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_109.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 110 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_110.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_110.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_110.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_110.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 112 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_112.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_112.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_112.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_112.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 114 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_114.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_114.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_114.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_114.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 115 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_115.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_115.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_115.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_115.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 116 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_116.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_116.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_116.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_116.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 117 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_117.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_117.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_117.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_117.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 119 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_119.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_119.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_119.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_119.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 120 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_120.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_120.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_120.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_120.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 123 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_123.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_123.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_123.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_123.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 125 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_125.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_125.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_125.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_125.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 126 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_126.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_126.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_126.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_126.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 127 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_127.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_127.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_127.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_127.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 131 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_131.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_131.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_131.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_131.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 132 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_132.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_132.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_132.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_132.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 133 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_133.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_133.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_133.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_133.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 135 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_135.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_135.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_135.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_135.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 138 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_138.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_138.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_138.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_138.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 139 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_139.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_139.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_139.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_139.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 141 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_141.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_141.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_141.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_141.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 143 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_143.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_143.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_143.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_143.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 149 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_149.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_149.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_149.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_149.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 150 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_150.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_150.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_150.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_150.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 151 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_151.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_151.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_151.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_151.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 152 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_152.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_152.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_152.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_152.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 154 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_154.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_154.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_154.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_154.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 155 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_155.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_155.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_155.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_155.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 156 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_156.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_156.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_156.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_156.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 157 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_157.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_157.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_157.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_157.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 170 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_170.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_170.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_170.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_170.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 172 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_172.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_172.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_172.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_172.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 178 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_178.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_178.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_178.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_178.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 
 arguments = G16_neg_promptEndcap_PU200 186 0 500
-output    = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_186.out
-error     = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_186.err
-log       = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
+output    = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_186.out
+error     = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200_186.err
+log       = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G16_neg_promptEndcap_PU200.log
 queue
 

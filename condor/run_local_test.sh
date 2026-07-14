@@ -11,7 +11,7 @@ DATASET="${1:?Usage: run_local_test.sh DATASET [NEVENTS] [PROCID]}"
 NEVENTS="${2:-10}"
 PROCID="${3:-0}"
 
-BASEDIR="/afs/cern.ch/user/${USER:0:1}/${USER}/omtf_hecin_dataset_production"
+BASEDIR="/afs/cern.ch/user/${USER:0:1}/${USER}/omtf_dataset_production"
 CMSSW_VERSION="CMSSW_14_2_0_pre2"
 CMSSW_DIR="/afs/cern.ch/user/${USER:0:1}/${USER}/${CMSSW_VERSION}"
 CONFDIR="${BASEDIR}/configs"

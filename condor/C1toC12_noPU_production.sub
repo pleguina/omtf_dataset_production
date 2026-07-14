@@ -2,10 +2,10 @@
 # C1toC12_noPU_production.sub — all no-PU C-campaign completion datasets
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/$(DS)_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/$(DS)_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/Cnopu_$(DS).log
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/$(DS)_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/$(DS)_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/Cnopu_$(DS).log
 should_transfer_files = NO
 request_cpus    = 1
 request_memory  = 4000

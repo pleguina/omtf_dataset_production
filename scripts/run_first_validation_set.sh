@@ -27,7 +27,7 @@ if ! dasgoclient --query='site dataset=/MinBias_TuneCP5_14TeV-pythia8/Phase2Spri
 fi
 
 STAMP="$(date +%Y%m%d_%H%M%S)"
-OUTBASE="/afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/smoke_results/first_validation_${STAMP}"
+OUTBASE="/afs/cern.ch/user/p/pleguina/omtf_dataset_production/smoke_results/first_validation_${STAMP}"
 mkdir -p "${OUTBASE}"
 
 # Validation order requested by user.

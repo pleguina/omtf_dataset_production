@@ -4,12 +4,12 @@
 # Target: 75000 events, 500 events/job, 150 jobs
 ###############################################################################
 universe        = vanilla
-executable      = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/run_job.sh
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
 arguments       = C12_disp_pt100to200_overlap $(ProcId) 0 500
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C12_disp_pt100to200_overlap_$(ProcId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C12_disp_pt100to200_overlap_$(ProcId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_hecin_dataset_production/condor/logs/C12_disp_pt100to200_overlap.log
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C12_disp_pt100to200_overlap_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C12_disp_pt100to200_overlap_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/C12_disp_pt100to200_overlap.log
 
 should_transfer_files = NO
 

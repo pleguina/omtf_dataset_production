@@ -1,0 +1,28 @@
+###############################################################################
+# G4_pos.sub — HTCondor submit for GMT-overlap dataset G4_pos
+# single displaced muon, OMTF overlap, PU200, positive eta [0.82,1.24]
+# Target: 150000 events, 500 events/job, 300 jobs
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job.sh
+arguments       = G4_pos $(ProcId) 0 500
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G4_pos_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G4_pos_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/G4_pos.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue ProcId from (
+208
+)
