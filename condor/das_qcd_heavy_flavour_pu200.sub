@@ -1,0 +1,31 @@
+###############################################################################
+# das_qcd_heavy_flavour_pu200.sub — HTCondor submit for DAS validation:
+# qcd_heavy_flavour_PU200 (b/c-enriched non-prompt-muon proxy)
+# Dataset: /QCD_Pt-120To170_MuEnrichedPt5_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD
+# GT: 140X_mcRun4_realistic_v4
+# Source file discovered via smoke_results/extra_validation_disk_20260508_165223/qcd_pu200_disk.txt
+# (disk-accessible replica at T1_DE_KIT_Disk as of 2026-05-08; re-verify with
+#  dasgoclient before large-scale submission in case the replica has moved).
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_das_job.sh
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/qcd_heavy_flavour_pu200_$(ProcId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/qcd_heavy_flavour_pu200_$(ProcId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/qcd_heavy_flavour_pu200.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 20000000
+
++JobFlavour     = "tomorrow"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+
+arguments = qcd_heavy_flavour_pu200 0 /store/mc/Phase2Spring24DIGIRECOMiniAOD/QCD_Pt-120To170_MuEnrichedPt5_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/1c630f1b-246a-42a0-bcaa-dc7dc9870720.root 140X_mcRun4_realistic_v4 0 500
+queue
+arguments = qcd_heavy_flavour_pu200 1 /store/mc/Phase2Spring24DIGIRECOMiniAOD/QCD_Pt-120To170_MuEnrichedPt5_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/1c630f1b-246a-42a0-bcaa-dc7dc9870720.root 140X_mcRun4_realistic_v4 500 500
+queue
