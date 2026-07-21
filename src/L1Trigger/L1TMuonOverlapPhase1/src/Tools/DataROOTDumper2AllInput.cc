@@ -1096,7 +1096,17 @@ void DataROOTDumper2AllInput::observeEventEnd(
             signed char propSurfaceCodeSt1 = 0; // 0 = unknown/proxy (see item 7 limitations)
             signed char propSurfaceCodeSt2 = 0;
             auto* m = matcher();
-            if (m != nullptr) {
+            // CandidateSimMuonMatcher only loads its Propagator ESHandle in beginRun() when
+            // configured with candidateSimMuonMatcherType "withPropagator"/"simplePropagation"
+            // (see CandidateSimMuonMatcher::beginRun). In "simpleMatching" mode (the default for
+            // this GEN,SIM,DIGI,L1 dumper workflow -- see customize_omtf_dumper.py -- no
+            // SteppingHelixPropagator ESProducer is loaded), the propagator handle is left
+            // default-constructed/invalid, and calling propagate()/atStation2() on it segfaults.
+            // Only attempt propagation when the matcher was actually configured with a propagator.
+            const bool matcherHasPropagator =
+                m != nullptr && (m->getMatchingType() == CandidateSimMuonMatcher::MatchingType::withPropagator ||
+                                 m->getMatchingType() == CandidateSimMuonMatcher::MatchingType::simplePropagation);
+            if (matcherHasPropagator) {
               // Use the same propagation entry point as CandidateSimMuonMatcher
               // to avoid geometry corner-case crashes on direct station calls.
               const auto tsosSt2 = m->propagate(*tp);
@@ -1116,8 +1126,10 @@ void DataROOTDumper2AllInput::observeEventEnd(
               } else {
                 propFailureCode = 3;  // did not intersect surface / invalid TSOS
               }
-            } else {
+            } else if (m == nullptr) {
               propFailureCode = 1;  // matcher not available (invalid initial state context)
+            } else {
+              propFailureCode = 6;  // matcher configured without a propagator (e.g. simpleMatching)
             }
 
             TpMuon_propEtaSt1.push_back(propEtaSt1);

@@ -77,8 +77,14 @@ void DataROOTDumper2::initializeTTree() {
   rootTree->Branch("omtfRefLayer", &omtfEvent.omtfRefLayer);
   rootTree->Branch("omtfRefHitNum", &omtfEvent.omtfRefHitNum);
   rootTree->Branch("omtfRefHitPhi", &omtfEvent.omtfRefHitPhi);
-  rootTree->Branch("omtfEndcap", &omtfEvent.omtfEndcap);
-  rootTree->Branch("omtfBx", &omtfEvent.omtfBx);
+  // Explicit leaflist ("/B") required here: ROOT's TTree::Branch(name, T*) template overload
+  // does not recognize plain "signed char" as a fundamental type (only "char"/Char_t triggers
+  // its built-in scalar dispatch), so without a leaflist it falls through to object/class-based
+  // branch creation and aborts with "Fatal Root Error: Illegal data type". "B" = 8-bit signed
+  // integer (Char_t), matching the same pattern already used for reg_mtfType/reg_endcap in
+  // DataROOTDumper2AllInput.cc.
+  rootTree->Branch("omtfEndcap", &omtfEvent.omtfEndcap, "omtfEndcap/B");
+  rootTree->Branch("omtfBx", &omtfEvent.omtfBx, "omtfBx/B");
   rootTree->Branch("candidateId", &omtfEvent.candidateId);
 
   rootTree->Branch("omtfFiredLayers", &omtfEvent.omtfFiredLayers);  //<<<<<<<<<<<<<<<<<<<<<<!!!!TODOO

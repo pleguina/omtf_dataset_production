@@ -257,7 +257,9 @@ private:
   // Propagation failure/surface metadata (item 7). Station-1 currently reuses the station-2
   // propagation result as a conservative proxy (kPropagationVersion=1; see .cc for details), so
   // propSurfaceCodeSt1==propSurfaceCodeSt2 today. 0=success,1=invalid initial state,2=propagation
-  // failed,3=did not intersect surface,4=numerical/geometry failure,5=outside supported region.
+  // failed,3=did not intersect surface,4=numerical/geometry failure,5=outside supported region,
+  // 6=matcher configured without a propagator (candidateSimMuonMatcherType=simpleMatching/
+  // collectMuonCands -- no SteppingHelixPropagator ESProducer loaded in this workflow).
   std::vector<signed char> TpMuon_propFailureCode;
   std::vector<signed char> TpMuon_propSurfaceCodeSt1; // 0=unknown/proxy,1=MB-like,2=ME-like
   std::vector<signed char> TpMuon_propSurfaceCodeSt2;
