@@ -1,0 +1,23 @@
+{
+  "status": "pass",
+  "reference_branch": "reg_stub_layer",
+  "rows": 4,
+  "checked_branches": [
+    "reg_stub_phiHw",
+    "reg_stub_phiBHw",
+    "reg_stub_etaHw",
+    "reg_stub_r",
+    "reg_stub_quality",
+    "reg_stub_bx",
+    "reg_stub_sourceBx",
+    "reg_stub_trackId",
+    "reg_stub_tpId",
+    "reg_stub_ambiguous",
+    "reg_stub_primitiveId",
+    "reg_stub_sourceCollection",
+    "reg_stub_sourceDetId",
+    "reg_stub_sourceIndex"
+  ],
+  "missing_branches": [],
+  "length_mismatches": {}
+}

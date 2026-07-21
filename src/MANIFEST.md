@@ -19,6 +19,14 @@ truth for the dumper/producer code — **do not edit the copies inside a live
 - Origin CMSSW area: `CMSSW_14_2_0_pre2` / `el9_amd64_gcc12`, git branch
   `pelayo_dev` (local, as of 2026-07-21; not yet committed/pushed upstream).
 
+## Normative dataset manifest
+
+- Production/audit dataset authorization is now machine-readable in
+  `../dataset_manifest.json` and should be treated as the normative source for:
+  dataset role assignment, fragment/submit mapping, and split-policy constraints.
+- `DATASETS_INFO.txt` remains the human-readable campaign narrative; in any
+  mismatch, `dataset_manifest.json` is authoritative for audit scripts.
+
 ## Package inventory
 
 ### `L1Trigger/L1TMuonOverlapPhase1` — **forked package, vendored in full**

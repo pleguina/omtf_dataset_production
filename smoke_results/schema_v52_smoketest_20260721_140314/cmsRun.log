@@ -1,0 +1,72 @@
+nohup: ignoring input
+
+**************************************************************
+ Geant4 version Name: geant4-11-02-patch-02 [MT]   (21-June-2024)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+constructing InputMakerPhase2
+ using Phase2 DT trigger primitives
+ CandidateSimMuonMatcher: using muonMatcherFileName /afs/cern.ch/user/p/pleguina/CMSSW_14_2_0_pre2/src/L1Trigger/L1TMuon/data/omtf_config/muonMatcherHists_100files_smoothStdDev_withOvf.root
+ CandidateSimMuonMatcher: candidateSimMuonMatcherType simpleMatching
+ CandidateSimMuonMatcher: matchingType 2
+Begin processing the 1st record. Run 1, Event 1, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:00.639 CEST
+Begin processing the 2nd record. Run 1, Event 2, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:12.543 CEST
+
+========================================================================
+  FIXED-POINT EXTRAPOLATION CONFIG (for HLS compatibility)
+========================================================================
+nProcessors    : 3
+nLayers        : 18
+nPhiBins       : 5400 (GP_N_OF_PHI_BINS)
+omtfPhiUnit()  : 0.00116355283466
+dtPhiBUnitsRad(): 1024
+
+ScaleFactor (for layers 1,3,5):
+  Floating-point: 610.03678858
+  Integer (cast): 610
+  Expected Phase-1: ~305,  Phase-2: ~610
+extrapolMultiplier: 512
+========================================================================
+
+Begin processing the 3rd record. Run 1, Event 3, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:14.860 CEST
+Begin processing the 4th record. Run 1, Event 4, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:17.047 CEST
+Begin processing the 5th record. Run 1, Event 5, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:19.553 CEST
+Begin processing the 6th record. Run 1, Event 6, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:21.850 CEST
+Begin processing the 7th record. Run 1, Event 7, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:24.002 CEST
+Begin processing the 8th record. Run 1, Event 8, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:26.260 CEST
+Begin processing the 9th record. Run 1, Event 9, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:28.551 CEST
+Begin processing the 10th record. Run 1, Event 10, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:30.952 CEST
+Begin processing the 11th record. Run 1, Event 11, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:33.233 CEST
+Begin processing the 12th record. Run 1, Event 12, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:35.534 CEST
+Begin processing the 13th record. Run 1, Event 13, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:37.796 CEST
+Begin processing the 14th record. Run 1, Event 14, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:40.110 CEST
+Begin processing the 15th record. Run 1, Event 15, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:42.388 CEST
+Begin processing the 16th record. Run 1, Event 16, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:44.856 CEST
+Begin processing the 17th record. Run 1, Event 17, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:47.171 CEST
+Begin processing the 18th record. Run 1, Event 18, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:49.746 CEST
+Begin processing the 19th record. Run 1, Event 19, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:52.018 CEST
+Begin processing the 20th record. Run 1, Event 20, LumiSection 1 on stream 0 at 21-Jul-2026 14:25:54.299 CEST
+
+------------------------------------
+GenXsecAnalyzer:
+------------------------------------
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Overall cross-section summary 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Process		xsec_before [pb]		passed	nposw	nnegw	tried	nposw	nnegw 	xsec_match [pb]			accepted [%]	 event_eff [%]
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+Total		0.000e+00 +/- 0.000e+00		0	0	0	0	0	0	-0.000e+00 +/- 0.000e+00		-100.0 +/- -100.0	-100.0 +/- -100.0
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Before matching: total cross section = 0.000e+00 +- 0.000e+00 pb
+After matching: total cross section = -0.000e+00 +- 0.000e+00 pb
+Matching efficiency = -1.0 +/- -1.0   [TO BE USED IN MCM]
+
+After filter: final cross section = 0.000e+00 +- 0.000e+00 pb
+After filter: final fraction of events with negative weights = 0.000e+00 +- 0.000e+00
+After filter: final equivalent lumi for 1M events (1/fb) = 0.000e+00 +- 0.000e+00

@@ -1,0 +1,487 @@
+{
+  "manifestVersion": "1.0.0",
+  "generatedAt": "2026-07-21",
+  "campaign": "OMTF displaced-muon lane regeneration",
+  "cmssw": {
+    "version": "CMSSW_14_2_0_pre2",
+    "era": "Phase2C17I13M9",
+    "geometryTag": "Extended2026D110",
+    "globalTag": "140X_mcRun4_realistic_v4"
+  },
+  "schema": {
+    "producerSchemaVersion": 2,
+    "primitiveIdVersion": 2,
+    "truthMatchingVersion": 2,
+    "tpSelectionVersion": 1,
+    "pileupProvenanceVersion": 1,
+    "propagationVersion": 2,
+    "dtT0ConventionVersion": 0,
+    "eventIdConvention": "reg_eventNum64==iEvent.id().event() (exact 64-bit); reg_eventNum is a truncated 32-bit convenience field, NOT the primary key"
+  },
+  "splitPolicy": {
+    "requiresSourceIdentityDisjointness": true,
+    "gunKey": "(dataset, seed-group, file-group)",
+    "puKey": "(dataset, minbiasSourceEventHash)",
+    "physicsMcKey": "(dataset, sourceFile, sourceEvent)"
+  },
+  "authorizedDatasets": [
+    {
+      "name": "C1_prompt_pt2to5_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C1_prompt_pt2to5_overlap.py",
+      "submit": "condor/C1_prompt_pt2to5_overlap.sub"
+    },
+    {
+      "name": "C2_prompt_pt5to10_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C2_prompt_pt5to10_overlap.py",
+      "submit": "condor/C2_prompt_pt5to10_overlap.sub"
+    },
+    {
+      "name": "C3_prompt_pt10to20_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C3_prompt_pt10to20_overlap.py",
+      "submit": "condor/C3_prompt_pt10to20_overlap.sub"
+    },
+    {
+      "name": "C4_prompt_pt20to50_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C4_prompt_pt20to50_overlap.py",
+      "submit": "condor/C4_prompt_pt20to50_overlap.sub"
+    },
+    {
+      "name": "C5_prompt_pt50to100_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C5_prompt_pt50to100_overlap.py",
+      "submit": "condor/C5_prompt_pt50to100_overlap.sub"
+    },
+    {
+      "name": "C6_prompt_pt100to200_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C6_prompt_pt100to200_overlap.py",
+      "submit": "condor/C6_prompt_pt100to200_overlap.sub"
+    },
+    {
+      "name": "C7_disp_pt2to5_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C7_disp_pt2to5_overlap.py",
+      "submit": "condor/C7_disp_pt2to5_overlap.sub"
+    },
+    {
+      "name": "C8_disp_pt5to10_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C8_disp_pt5to10_overlap.py",
+      "submit": "condor/C8_disp_pt5to10_overlap.sub"
+    },
+    {
+      "name": "C9_disp_pt10to20_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C9_disp_pt10to20_overlap.py",
+      "submit": "condor/C9_disp_pt10to20_overlap.sub"
+    },
+    {
+      "name": "C10_disp_pt20to50_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C10_disp_pt20to50_overlap.py",
+      "submit": "condor/C10_disp_pt20to50_overlap.sub"
+    },
+    {
+      "name": "C11_disp_pt50to100_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C11_disp_pt50to100_overlap.py",
+      "submit": "condor/C11_disp_pt50to100_overlap.sub"
+    },
+    {
+      "name": "C12_disp_pt100to200_overlap",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C12_disp_pt100to200_overlap.py",
+      "submit": "condor/C12_disp_pt100to200_overlap.sub"
+    },
+    {
+      "name": "C13_prompt_pt2to5_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C13_prompt_pt2to5_overlap_PU200.py",
+      "submit": "condor/C13_prompt_pt2to5_overlap_PU200.sub"
+    },
+    {
+      "name": "C14_prompt_pt5to10_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C14_prompt_pt5to10_overlap_PU200.py",
+      "submit": "condor/C14_prompt_pt5to10_overlap_PU200.sub"
+    },
+    {
+      "name": "C15_disp_pt2to5_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C15_disp_pt2to5_overlap_PU200.py",
+      "submit": "condor/C15_disp_pt2to5_overlap_PU200.sub"
+    },
+    {
+      "name": "C16_disp_pt5to10_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C16_disp_pt5to10_overlap_PU200.py",
+      "submit": "condor/C16_disp_pt5to10_overlap_PU200.sub"
+    },
+    {
+      "name": "C17_prompt_pt10to20_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C17_prompt_pt10to20_overlap_PU200.py",
+      "submit": "condor/C17_prompt_pt10to20_overlap_PU200.sub"
+    },
+    {
+      "name": "C18_prompt_pt20to50_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C18_prompt_pt20to50_overlap_PU200.py",
+      "submit": "condor/C18_prompt_pt20to50_overlap_PU200.sub"
+    },
+    {
+      "name": "C19_prompt_pt50to100_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C19_prompt_pt50to100_overlap_PU200.py",
+      "submit": "condor/C19_prompt_pt50to100_overlap_PU200.sub"
+    },
+    {
+      "name": "C20_prompt_pt100to200_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C20_prompt_pt100to200_overlap_PU200.py",
+      "submit": "condor/C20_prompt_pt100to200_overlap_PU200.sub"
+    },
+    {
+      "name": "C21_disp_pt10to20_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C21_disp_pt10to20_overlap_PU200.py",
+      "submit": "condor/C21_disp_pt10to20_overlap_PU200.sub"
+    },
+    {
+      "name": "C22_disp_pt20to50_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C22_disp_pt20to50_overlap_PU200.py",
+      "submit": "condor/C22_disp_pt20to50_overlap_PU200.sub"
+    },
+    {
+      "name": "C23_disp_pt50to100_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C23_disp_pt50to100_overlap_PU200.py",
+      "submit": "condor/C23_disp_pt50to100_overlap_PU200.sub"
+    },
+    {
+      "name": "C24_disp_pt100to200_overlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C24_disp_pt100to200_overlap_PU200.py",
+      "submit": "condor/C24_disp_pt100to200_overlap_PU200.sub"
+    },
+    {
+      "name": "C25_mild_disp_pt2to5_overlap",
+      "roles": ["training", "validation", "diagnostic_only"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C25_mild_disp_pt2to5_overlap.py",
+      "submit": "condor/C25_mild_disp_pt2to5_overlap.sub"
+    },
+    {
+      "name": "C26_mild_disp_pt5to10_overlap",
+      "roles": ["training", "validation", "diagnostic_only"],
+      "family": "C",
+      "pileup": "noPU",
+      "fragment": "fragments/C26_mild_disp_pt5to10_overlap.py",
+      "submit": "condor/C26_mild_disp_pt5to10_overlap.sub"
+    },
+    {
+      "name": "C27_mild_disp_pt2to5_overlap_PU200",
+      "roles": ["training", "validation", "diagnostic_only"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C27_mild_disp_pt2to5_overlap_PU200.py",
+      "submit": "condor/C27_mild_disp_pt2to5_overlap_PU200.sub"
+    },
+    {
+      "name": "C28_mild_disp_pt5to10_overlap_PU200",
+      "roles": ["training", "validation", "diagnostic_only"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C28_mild_disp_pt5to10_overlap_PU200.py",
+      "submit": "condor/C28_mild_disp_pt5to10_overlap_PU200.sub"
+    },
+    {
+      "name": "G5_twoDisplacedOverlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G5_twoDisplacedOverlap_PU200.py",
+      "submit": "condor/G5.sub"
+    },
+    {
+      "name": "G6_triPromptOverlap_PU200",
+      "roles": ["training", "validation"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G6_triPromptOverlap_PU200.py",
+      "submit": "condor/G6.sub"
+    },
+    {
+      "name": "G8_hardNegLowEtaMuon_PU200",
+      "roles": ["training", "hard_negative", "validation"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G8_hardNegLowEtaMuon_PU200.py",
+      "submit": "condor/G8.sub"
+    },
+    {
+      "name": "G10_pos_hardNegHighEtaMuon_PU200",
+      "roles": ["validation", "holdout_test", "hard_negative"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G10_pos_hardNegHighEtaMuon_PU200.py",
+      "submit": "condor/G10_pos.sub"
+    },
+    {
+      "name": "G10_neg_hardNegHighEtaMuon_PU200",
+      "roles": ["validation", "holdout_test", "hard_negative"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G10_neg_hardNegHighEtaMuon_PU200.py",
+      "submit": "condor/G10_neg.sub"
+    },
+    {
+      "name": "G13_pos_promptTransition",
+      "roles": ["validation", "hard_negative"],
+      "family": "G",
+      "pileup": "noPU",
+      "fragment": "fragments/G13_pos_promptTransition.py",
+      "submit": "condor/G13_pos_promptTransition.sub"
+    },
+    {
+      "name": "G13_neg_promptTransition",
+      "roles": ["validation", "hard_negative"],
+      "family": "G",
+      "pileup": "noPU",
+      "fragment": "fragments/G13_neg_promptTransition.py",
+      "submit": "condor/G13_neg_promptTransition.sub"
+    },
+    {
+      "name": "G14_pos_promptTransition_PU200",
+      "roles": ["training", "validation", "hard_negative"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G14_pos_promptTransition_PU200.py",
+      "submit": "condor/G14_pos_promptTransition_PU200.sub"
+    },
+    {
+      "name": "G14_neg_promptTransition_PU200",
+      "roles": ["training", "validation", "hard_negative"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G14_neg_promptTransition_PU200.py",
+      "submit": "condor/G14_neg_promptTransition_PU200.sub"
+    },
+    {
+      "name": "G15_pos_promptEndcap",
+      "roles": ["validation", "hard_negative", "holdout_test"],
+      "family": "G",
+      "pileup": "noPU",
+      "fragment": "fragments/G15_pos_promptEndcap.py",
+      "submit": "condor/G15_pos_promptEndcap.sub"
+    },
+    {
+      "name": "G15_neg_promptEndcap",
+      "roles": ["validation", "hard_negative", "holdout_test"],
+      "family": "G",
+      "pileup": "noPU",
+      "fragment": "fragments/G15_neg_promptEndcap.py",
+      "submit": "condor/G15_neg_promptEndcap.sub"
+    },
+    {
+      "name": "G16_pos_promptEndcap_PU200",
+      "roles": ["training", "validation", "hard_negative"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G16_pos_promptEndcap_PU200.py",
+      "submit": "condor/G16_pos_promptEndcap_PU200.sub"
+    },
+    {
+      "name": "G16_neg_promptEndcap_PU200",
+      "roles": ["training", "validation", "hard_negative"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G16_neg_promptEndcap_PU200.py",
+      "submit": "condor/G16_neg_promptEndcap_PU200.sub"
+    },
+    {
+      "name": "G17_twoDisplaced_overlap",
+      "roles": ["training", "validation"],
+      "family": "G",
+      "pileup": "noPU",
+      "fragment": "fragments/G17_twoDisplaced_overlap.py",
+      "submit": "condor/G17_twoDisplaced_overlap.sub"
+    },
+    {
+      "name": "B4",
+      "roles": ["rate", "validation", "training"],
+      "family": "B",
+      "pileup": "PU200",
+      "fragment": "configs/B4_cfg.py",
+      "submit": "condor/B4_digi.sub"
+    },
+    {
+      "name": "S1",
+      "roles": ["historical_excluded"],
+      "family": "S",
+      "pileup": "noPU",
+      "fragment": "fragments/S1_singleMuon_1overPt.py",
+      "submit": "condor/S1.sub"
+    },
+    {
+      "name": "S2",
+      "roles": ["historical_excluded"],
+      "family": "S",
+      "pileup": "noPU",
+      "fragment": "fragments/S2_displacedMuon_flatVertex.py",
+      "submit": "condor/S2.sub"
+    },
+    {
+      "name": "S3",
+      "roles": ["historical_excluded"],
+      "family": "S",
+      "pileup": "noPU",
+      "fragment": "fragments/S3_diMuon_sameSector.py",
+      "submit": "condor/S3.sub"
+    },
+    {
+      "name": "S4",
+      "roles": ["historical_excluded"],
+      "family": "S",
+      "pileup": "noPU",
+      "fragment": "fragments/S4_triMuon_sameSector.py",
+      "submit": "condor/S4.sub"
+    },
+    {
+      "name": "S5",
+      "roles": ["historical_excluded"],
+      "family": "S",
+      "pileup": "noPU",
+      "fragment": "fragments/S5_diMuon_displaced.py",
+      "submit": "condor/S5.sub"
+    },
+    {
+      "name": "B1",
+      "roles": ["historical_excluded"],
+      "family": "B",
+      "pileup": "PU200",
+      "fragment": "fragments/B1_singleMuon_PU200.py",
+      "submit": "condor/B1.sub"
+    },
+    {
+      "name": "B2",
+      "roles": ["historical_excluded"],
+      "family": "B",
+      "pileup": "PU200",
+      "fragment": "fragments/B2_displacedMuon_PU200.py",
+      "submit": "condor/B2.sub"
+    },
+    {
+      "name": "B3",
+      "roles": ["historical_excluded"],
+      "family": "B",
+      "pileup": "PU200",
+      "fragment": "fragments/B3_diMuon_PU200.py",
+      "submit": "condor/B3.sub"
+    },
+    {
+      "name": "dy_prompt",
+      "roles": ["validation"],
+      "family": "DAS",
+      "pileup": "PU200",
+      "fragment": "DAS:/DYToLL_M-10To50_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD",
+      "submit": "condor/das_dy_prompt.sub"
+    },
+    {
+      "name": "single_muon_flatpt",
+      "roles": ["validation"],
+      "family": "DAS",
+      "pileup": "PU200",
+      "fragment": "DAS:/SingleMu_FlatPt-2to100/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD",
+      "submit": "condor/das_single_muon_flatpt.sub"
+    },
+    {
+      "name": "displaced_lowpt",
+      "roles": ["validation"],
+      "family": "DAS",
+      "pileup": "PU200",
+      "fragment": "DAS:/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD",
+      "submit": "condor/das_displaced_lowpt.sub"
+    },
+    {
+      "name": "displaced_midpt",
+      "roles": ["validation"],
+      "family": "DAS",
+      "pileup": "PU200",
+      "fragment": "DAS:/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD",
+      "submit": "condor/das_displaced_midpt.sub"
+    },
+    {
+      "name": "llp_addon",
+      "roles": ["holdout_test", "validation"],
+      "family": "DAS",
+      "pileup": "PU200",
+      "fragment": "DAS:/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/GEN-SIM-DIGI-RAW-MINIAOD",
+      "submit": "condor/das_llp_addon.sub"
+    },
+    {
+      "name": "qcd_heavy_flavour_PU200",
+      "roles": ["validation"],
+      "family": "DAS",
+      "pileup": "PU200",
+      "status": "blocked_pending_das_query",
+      "blockingReason": "No DAS dataset name/fragment has been selected yet for a QCD heavy-flavour (b/c-enriched) non-prompt-muon validation sample; requires a DAS query + qualification pass (see condor/das_*.sub pattern) before it can be authorized.",
+      "fragment": null,
+      "submit": null
+    }
+  ]
+}

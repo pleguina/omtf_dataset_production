@@ -1,0 +1,107 @@
+{
+  "manifest": "dataset_manifest.json",
+  "hits": "smoke_results/schema_v52_smoketest_20260721_140314/omtf_hits_smoketest.root",
+  "nano": "smoke_results/schema_v52_smoketest_20260721_140314/omtf_nano_smoketest.root",
+  "results": {
+    "event_join": {
+      "cmd": [
+        "python3",
+        "scripts/audit/audit_event_join_exact.py",
+        "--hits",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_hits_smoketest.root",
+        "--nano",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_nano_smoketest.root",
+        "--out",
+        "smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/event_join_exact.json"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/event_join_exact.json status=pass\n",
+      "stderr": ""
+    },
+    "truth_unification": {
+      "cmd": [
+        "python3",
+        "scripts/audit/audit_truth_unification.py",
+        "--hits",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_hits_smoketest.root",
+        "--nano",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_nano_smoketest.root",
+        "--out",
+        "smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/truth_unification_matrix.json"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/truth_unification_matrix.json status=pass\n",
+      "stderr": ""
+    },
+    "pu_provenance": {
+      "cmd": [
+        "python3",
+        "scripts/audit/audit_pu_provenance.py",
+        "--hits",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_hits_smoketest.root",
+        "--out",
+        "smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/pu_provenance_structural.json"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/pu_provenance_structural.json status=pass\n",
+      "stderr": ""
+    },
+    "stub_vector_closure": {
+      "cmd": [
+        "python3",
+        "scripts/audit/audit_stub_vector_closure.py",
+        "--hits",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_hits_smoketest.root",
+        "--out",
+        "smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/stub_vector_closure.json"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/stub_vector_closure.json status=pass\n",
+      "stderr": ""
+    },
+    "forbidden_truth_guard": {
+      "cmd": [
+        "python3",
+        "scripts/audit/audit_forbidden_truth_guard.py",
+        "--script",
+        "scripts/make_graphs.py",
+        "--out",
+        "smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/forbidden_truth_guard.json"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/forbidden_truth_guard.json status=pass\n",
+      "stderr": ""
+    },
+    "b4_denominator": {
+      "cmd": [
+        "python3",
+        "scripts/audit/audit_b4_denominator.py",
+        "--hits",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_hits_smoketest.root",
+        "--nano",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_nano_smoketest.root",
+        "--out",
+        "smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/b4_rate_denominator.json"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/b4_rate_denominator.json status=pass\n",
+      "stderr": ""
+    },
+    "v52_schema": {
+      "cmd": [
+        "python3",
+        "scripts/audit/validate_displaced_lane_v52_schema.py",
+        "--hits-file",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_hits_smoketest.root",
+        "--nano-file",
+        "smoke_results/schema_v52_smoketest_20260721_140314/omtf_nano_smoketest.root",
+        "--out",
+        "smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/v52_schema_validation.json"
+      ],
+      "returncode": 0,
+      "stdout": "Wrote validation report to smoke_results/schema_v52_smoketest_20260721_140314/full_campaign_audit/v52_schema_validation.json (overall_status=pass)\nThis script has not been executed against real HTCondor pilot production data as of the session that authored it. A passing JSON report from an ACTUAL run is required before any corresponding requirement in the displaced-lane v5.2 plan can be considered validated.\n",
+      "stderr": ""
+    }
+  },
+  "status": "pass"
+}

@@ -10,6 +10,7 @@ NanoAOD output requires the locally compiled package L1Trigger/L1MuNano
 (SimpleOMTFTrackCandidateFlatTableProducer plugin).
 """
 import FWCore.ParameterSet.Config as cms
+import os
 
 
 def customise_omtf_dumper(process):
@@ -45,6 +46,13 @@ def customise_omtf_dumper(process):
         process.simOmtfPhase2Digis.simTracksTag = cms.InputTag("g4SimHits")
         process.simOmtfPhase2Digis.simVertexesTag = cms.InputTag("g4SimHits")
         process.simOmtfPhase2Digis.trackingParticleTag = cms.InputTag("mix", "MergedTrackTruth")
+        process.simOmtfPhase2Digis.pileupInfoInputTag = cms.InputTag("addPileupInfo")
+
+        # Keep schema metadata self-describing for audit reproducibility.
+        process.simOmtfPhase2Digis.propagationMode = cms.string("disabled_simpleMatching_v1")
+        process.simOmtfPhase2Digis.producerGitCommit = cms.string(
+            os.environ.get("OMTF_PRODUCER_GIT_COMMIT", "UNSET_fill_from_production_manifest")
+        )
 
         # Digi-sim link collections for per-stub SimTrack truth labeling in
         # OMTFAllInputTree (reg_stub_trackId / reg_stub_ambiguous branches).

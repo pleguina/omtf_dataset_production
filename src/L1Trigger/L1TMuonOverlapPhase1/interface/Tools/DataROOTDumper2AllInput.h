@@ -385,6 +385,10 @@ private:
   edm::InputTag genParticleTag_;
   edm::InputTag trackingParticleTag_;
   edm::InputTag pileupInfoTag_;
+  // Frozen producer code revision written to OMTFSchemaMetadata. Set from the optional
+  // "producerGitCommit" PSet parameter, then from OMTF_PRODUCER_GIT_COMMIT env var,
+  // else falls back to an explicit UNSET sentinel.
+  std::string producerGitCommit_ = "UNSET_fill_from_production_manifest";
   // Frozen production propagation mode (item 3); set from the optional "propagationMode" PSet
   // parameter, defaults to kDefaultPropagationMode. Recorded verbatim into OMTFSchemaMetadata so
   // downstream consumers/audits never have to guess which algorithmic mode produced a file.

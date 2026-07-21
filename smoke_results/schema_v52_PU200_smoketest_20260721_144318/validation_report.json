@@ -1,0 +1,94 @@
+{
+  "disclosure": "This script has not been executed against real HTCondor pilot production data as of the session that authored it. A passing JSON report from an ACTUAL run is required before any corresponding requirement in the displaced-lane v5.2 plan can be considered validated.",
+  "sections": {
+    "A_event_identity": {
+      "section": "A. Event identity",
+      "status": "pass",
+      "detail": "eventNum64 present and consistent with legacy eventNum truncation.",
+      "findings": {
+        "legacy_eventNum_matches_truncated_event64": true,
+        "nano_event_dtype_is_64bit": true
+      }
+    },
+    "B_primitive_identity": {
+      "section": "B. Primitive identity",
+      "status": "pass",
+      "detail": "primitiveId is consistent (processor-invariant) for all repeated source-identity keys observed.",
+      "findings": {
+        "n_distinct_source_keys": 1,
+        "n_keys_with_inconsistent_primitiveId": 0,
+        "hits_primitiveId_present": true
+      }
+    },
+    "C_truth_unification": {
+      "section": "C. Truth unification",
+      "status": "pass",
+      "detail": "Truth-unification fields present and internally consistent on the checks performed.",
+      "findings": {
+        "noSelectedMuonReason_distribution": {
+          "6": 1
+        },
+        "trackId0_with_reason0_count": 0,
+        "trackIdPos_with_reasonNonzero_count": 0,
+        "dualIdRelation_distribution": {
+          "0": 1
+        }
+      }
+    },
+    "D_propagation": {
+      "section": "D. Propagation",
+      "status": "warn",
+      "detail": "propSurfaceCodeSt1/2 are all 0 (known limitation: MB1/ME1 vs MB2/ME2 surface distinction is not yet implemented in the propagator, see ROOT_BRANCHES.md limitations).",
+      "findings": {
+        "n_TpMuon_rows": 10,
+        "frac_propOk": 0.0,
+        "propSurfaceCodeSt1_all_proxy_zero": true,
+        "propSurfaceCodeSt2_all_proxy_zero": true
+      }
+    },
+    "E_pileup_provenance": {
+      "section": "E. Pileup provenance",
+      "status": "warn",
+      "detail": "TpMuon_puSourceIdx range reported for manual cross-check; the underlying Mixing convention it assumes is NOT independently validated by this script (needs a known-truth pilot sample with hand-verified PileupSummaryInfo ordering).",
+      "findings": {
+        "occurrenceHash_matches_legacy_hash_events": 1,
+        "occurrenceHash_mismatch_events": 0,
+        "TpMuon_puSourceIdx_min": -1,
+        "TpMuon_puSourceIdx_max": -1,
+        "max_available_src_index_per_event_median": 0.0
+      }
+    },
+    "F_timing": {
+      "section": "F. Timing",
+      "status": "warn",
+      "detail": "t0Valid == (t0 != 0) as expected; NOTE: no calibrated in-time-vs-late threshold is validated (dtT0ConventionVersion=0, see ROOT_BRANCHES.md limitations).",
+      "findings": {
+        "Ph2DTPhiDigi_t0Valid_matches_t0nonzero_mismatches": 0,
+        "Ph2DTPhiDigi_frac_t0Valid": 1.0,
+        "Ph2DTThDigi_t0Valid_matches_t0nonzero_mismatches": 0,
+        "Ph2DTThDigi_frac_t0Valid": 1.0
+      }
+    },
+    "G_storage_duplication": {
+      "section": "G. Storage / duplication",
+      "status": "pass",
+      "detail": "OMTFSchemaMetadata present and event-global TpMuon truth is consistently duplicated across processor-window regions.",
+      "findings": {
+        "schema_metadata": {
+          "producerSchemaVersion": 2,
+          "primitiveIdVersion": 2,
+          "tpSelectionVersion": 1,
+          "truthMatchingVersion": 2,
+          "propagationVersion": 1,
+          "pileupProvenanceVersion": 1,
+          "dtT0ConventionVersion": 0,
+          "eventIdConvention": "reg_eventNum64==iEvent.id().event() (exact 64-bit); reg_eventNum is a truncated 32-bit convenience field, NOT the primary key",
+          "producerGitCommit": "UNSET_fill_from_production_manifest"
+        },
+        "events_with_multiple_regions": 0,
+        "events_with_TpMuon_duplication_mismatch": 0
+      }
+    }
+  },
+  "overall_status": "warn"
+}

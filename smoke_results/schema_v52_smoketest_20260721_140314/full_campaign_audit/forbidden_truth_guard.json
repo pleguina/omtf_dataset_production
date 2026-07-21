@@ -1,0 +1,34 @@
+{
+  "status": "pass",
+  "script": "scripts/make_graphs.py",
+  "feature_vars": [
+    "phi_norm",
+    "phiB_norm",
+    "eta_phys",
+    "qual_norm",
+    "r_norm",
+    "bx_norm"
+  ],
+  "resolved_source_branches": {
+    "phi_norm": [
+      "reg_stub_layer",
+      "reg_stub_phiHw"
+    ],
+    "phiB_norm": [
+      "reg_stub_phiBHw"
+    ],
+    "eta_phys": [
+      "reg_stub_etaHw",
+      "reg_stub_layer"
+    ],
+    "qual_norm": [
+      "reg_stub_layer",
+      "reg_stub_quality"
+    ],
+    "r_norm": [],
+    "bx_norm": [
+      "reg_stub_bx"
+    ]
+  },
+  "forbidden_hits": {}
+}

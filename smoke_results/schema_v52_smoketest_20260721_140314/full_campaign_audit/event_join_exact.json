@@ -1,0 +1,22 @@
+{
+  "inputs": {
+    "hits": "smoke_results/schema_v52_smoketest_20260721_140314/omtf_hits_smoketest.root",
+    "nano": "smoke_results/schema_v52_smoketest_20260721_140314/omtf_nano_smoketest.root"
+  },
+  "status": "pass",
+  "hits_rows": 12,
+  "nano_rows": 20,
+  "hits_unique_keys": 10,
+  "nano_unique_keys": 20,
+  "joined_unique_keys": 10,
+  "hits_join_coverage": 1.0,
+  "nano_join_coverage": 0.5,
+  "duplicate_normalized_event_keys": {
+    "hits": 0,
+    "nano": 0
+  },
+  "legacy_event_adapter": {
+    "reg_eventNum_present": true,
+    "reg_eventNum_vs_truncated_event64_mismatches": 0
+  }
+}

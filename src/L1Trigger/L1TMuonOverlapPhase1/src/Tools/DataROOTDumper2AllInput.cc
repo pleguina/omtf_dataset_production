@@ -37,6 +37,7 @@
 #include "TNamed.h"
 
 #include <cmath>
+#include <cstdlib>
 #include <limits>
 #include <map>
 #include <set>
@@ -98,6 +99,14 @@ DataROOTDumper2AllInput::DataROOTDumper2AllInput(const edm::ParameterSet& edmCfg
     propagationMode_ = edmCfg.exists("propagationMode")
       ? edmCfg.getParameter<std::string>("propagationMode")
       : std::string(kDefaultPropagationMode);
+
+    if (edmCfg.exists("producerGitCommit")) {
+      producerGitCommit_ = edmCfg.getParameter<std::string>("producerGitCommit");
+    } else {
+      const char* envCommit = std::getenv("OMTF_PRODUCER_GIT_COMMIT");
+      if (envCommit && envCommit[0] != '\0')
+        producerGitCommit_ = envCommit;
+    }
 
   // Sim-truth is optional: only enabled when the dtDigiSimLinksInputTag parameter exists
   if (edmCfg.exists("dtDigiSimLinksInputTag")) {
@@ -268,7 +277,7 @@ void DataROOTDumper2AllInput::initializeSchemaMetadataTree() {
   int pileupProvenanceVersion = kPileupProvenanceVersion;
   int dtT0ConventionVersion = kDtT0ConventionVersion;
   std::string eventIdConvention = kEventIdConvention;
-  std::string producerGitCommit = "UNSET_fill_from_production_manifest";  // see item 13 commands
+  std::string producerGitCommit = producerGitCommit_;
   std::string propagationMode = propagationMode_;  // frozen production mode (item 3, propagation smoke audit)
 
   schemaMetadataTree->Branch("producerSchemaVersion", &producerSchemaVersion, "producerSchemaVersion/I");

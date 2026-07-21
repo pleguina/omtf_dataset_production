@@ -1,0 +1,22 @@
+{
+  "inputs": {
+    "hits": "smoke_results/schema_v52_PU200_smoketest_20260721_run4_propagation/omtf_hits_PU200_smoketest.root",
+    "nano": "smoke_results/schema_v52_PU200_smoketest_20260721_run4_propagation/omtf_nano_PU200_smoketest.root"
+  },
+  "status": "pass",
+  "hits_rows": 4,
+  "nano_rows": 3,
+  "hits_unique_keys": 3,
+  "nano_unique_keys": 3,
+  "joined_unique_keys": 3,
+  "hits_join_coverage": 1.0,
+  "nano_join_coverage": 1.0,
+  "duplicate_normalized_event_keys": {
+    "hits": 0,
+    "nano": 0
+  },
+  "legacy_event_adapter": {
+    "reg_eventNum_present": true,
+    "reg_eventNum_vs_truncated_event64_mismatches": 0
+  }
+}

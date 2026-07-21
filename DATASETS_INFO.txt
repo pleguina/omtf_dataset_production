@@ -1048,11 +1048,53 @@ UPDATE (2026-07-13): implemented and validated.
 - Both `TpMuon_dxy` (standard CMSSW convention, kept for comparability) and
   `TpMuon_dxyHelix` (gun-consistent truth) are now available side by side; use
   `TpMuon_dxyHelix` for any flatness/coverage QA or as a regression target.
-- Separate, NOT fixed here: `CandidateSimMuonMatcher::trackingParticleIsMuonInBx0Displ`
-  (the TP selection filter used for candidate matching, not for `TpMuon_*`
-  persistence) still branches on the naive `trackingParticle.dxy() < 30`
-  threshold. This may bias matching-efficiency studies for low-pT displaced
-  muons the same way; flagged for a future fix, out of scope for this note.
+
+CRITICAL BIAS IN DISPLACED-MUON MATCHING: `trackingParticleIsMuonInBx0Displ` dxy cutoff
+-----------------------------------------------------------------------------------------------------
+
+Problem statement (2026-07-14):
+The filter `CandidateSimMuonMatcher::trackingParticleIsMuonInBx0Displ` (used to set
+`hasGenMatch` in OMTFHitsTree) branches on `trackingParticle.dxy() < 30 cm`
+(using **straight-line, not helix-consistent** dxy). For G-series displaced samples
+with target |dxy| ∈ [0, 50] cm, this creates a **systematic bias in efficiency
+measurement**:
+
+  1. True muons with 30 < |dxy| < 50 cm are rejected by the TP selection filter
+  2. OMTF candidates matched to these muons are **not marked with `hasGenMatch=true`**,
+     even if geometrically reconstructed
+  3. Efficiency ε(OMTF) calculated from `hasGenMatch` is **underestimated in the
+     30–50 cm band** (genuine signal region for G3/G4)
+  4. Because the filter uses **straight-line dxy** (not helix-consistent), the bias
+     is **strongest at low pT** (2–10 GeV), where the straight-line approx breaks down
+     most — exactly your critical region
+  5. Consequence: incremental_displaced_recovery = ε(OMTF∨lane) − ε(OMTF) is
+     **overestimated** in the low-pT, high-|dxy| region where the lane argument is
+     strongest
+
+Impact on G-series analysis:
+  - G3_disp_pt2to50 (MinDxy=0, MaxDxy=20): moderate effect, only extreme-dxy tail
+  - G4_disp_pt2to50 (MinDxy=0, MaxDxy=50): **severe**, entire 30–50 cm band affected
+  - Low pT (2–9 GeV): bias concentrated here due to straight-line approximation
+
+Immediate mitigation (for this production cycle, no code changes):
+  - For any displaced-sample efficiency measurement involving |dxy| > ~25 cm:
+    **use geometric matching on OMTFAllInputTree (TpMuon_pt, TpMuon_eta, TpMuon_phi,
+    TpMuon_phi_st1/st2, TpMuon_eta_st1/st2 if propagated to stations) instead of
+    relying on `hasGenMatch`**.
+  - Document clearly in results: "ε(OMTF) for |dxy| > 25 cm computed via geometric
+    matching (Δη, Δφ < threshold to TpMuon_*), not via OMTFHitsTree hasGenMatch field,
+    to avoid bias from the dxy < 30 cm TP selection cutoff."
+  - Validate consistency: compare both methods on 0–30 cm region where both should agree
+  - The geometric approach mirrors what `src/audit/displaced/features.py` already does,
+    so reuse that code path
+
+Real fix (for next CandidateSimMuonMatcher revision):
+  - Change the TP selection threshold from 30 cm to 50 cm (or eliminate it)
+  - Replace `trackingParticle.dxy() < threshold` with **`TpMuon_dxyHelix < threshold`**
+    (if persisted; use helix formula with TpMuon_vx/vy/pt/phi/charge otherwise)
+  - Verify the change does not introduce unacceptable rates in offline analysis
+  - Re-run displaced-sample validation once this fix is deployed
+  - **Priority: High** — this affects all displaced-muon efficiency studies (G-series)
 
 PILEUP CLASSIFICATION IN TpMuon_* TABLES
 ----------------------------------------------------------------------

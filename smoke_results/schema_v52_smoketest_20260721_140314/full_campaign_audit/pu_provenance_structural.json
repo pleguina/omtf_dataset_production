@@ -1,0 +1,10 @@
+{
+  "structural_status": "pass",
+  "semantic_validation_status": "provisional",
+  "missing_branches": [],
+  "status": "pass",
+  "findings": {
+    "rows": 12,
+    "oob_puSourceIdx": 0
+  }
+}
