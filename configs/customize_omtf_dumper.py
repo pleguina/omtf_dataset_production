@@ -54,6 +54,12 @@ def customise_omtf_dumper(process):
         process.simOmtfPhase2Digis.cscStripDigiSimLinksInputTag  = cms.InputTag("simMuonCSCDigis", "MuonCSCStripDigiSimLinks")
         process.simOmtfPhase2Digis.genParticleTag                = cms.InputTag("genParticles")
 
+        # Pileup-provenance source (reg_pu_src_* / TpMuon_puSourceIdx resolution).
+        # Standard PileupSummaryInfo product from the Mixing module (present whenever
+        # PU is mixed in, i.e. any non-empty process.mix.input.fileNames). Omitting this
+        # tag silently disables the whole reg_pu_src_*/puSourceIdx block (it stays -1/empty).
+        process.simOmtfPhase2Digis.pileupInfoInputTag = cms.InputTag("addPileupInfo")
+
     else:
         import sys
         print("WARNING: simOmtfPhase2Digis not found in process — OMTF dumper NOT configured.", file=sys.stderr)
