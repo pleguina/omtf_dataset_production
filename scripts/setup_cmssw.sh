@@ -33,6 +33,15 @@ else
     set +u; eval "$(scramv1 runtime -sh)"; set -u
 fi
 
+# ---------------------------------------------------------------------------
+# Install our custom OMTF producers/dumper: L1Trigger/L1TMuonOverlapPhase1
+# (forked/diverged from stock CMSSW) and L1Trigger/L1MuNano (fully custom).
+# Both are vendored in full in ../src/ (see ../src/MANIFEST.md for the exact
+# file list and schema version) and simply copied on top of this fresh area
+# -- no git-cms tooling required.
+# ---------------------------------------------------------------------------
+bash "${BASEDIR}/scripts/install_producers.sh" "${CMSSW_BASE}"
+
 # Create the generator fragment directory inside CMSSW src
 FRAG_DIR="Configuration/GenProduction/python/OMTF_HECIN"
 mkdir -p "${FRAG_DIR}"

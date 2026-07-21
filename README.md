@@ -109,6 +109,9 @@ B-series dataset; B1–B3 have been superseded by the G-campaign samples.
 ## Repository layout
 
 ```
+src/              # Vendored CMSSW producer/dumper source (see src/MANIFEST.md)
+  L1Trigger/L1TMuonOverlapPhase1/  #   diff-only overlay on the upstream CMSSW package
+  L1Trigger/L1MuNano/              #   fully custom package (not in upstream CMSSW)
 fragments/        # cmsDriver generator fragments (one .py per dataset)
 configs/          # Full cmsRun configs generated from fragments + cmsDriver
   *_cfg.py        #   base configs (patched at runtime by run_job.sh)
@@ -120,6 +123,8 @@ condor/           # HTCondor submission
   GMT_overlap_production.sub  #  grouped submit for all 4000 G-campaign jobs
   status.sh       #   quick job monitoring helper
 scripts/          # Helper scripts (CMSSW setup, config generation, submission)
+  setup_cmssw.sh  #   creates a fresh CMSSW area and installs the src/ producers
+  install_producers.sh  #   installs/refreshes src/ into an existing CMSSW area
   audit/          #   Pre-production fragment and generator-level audit scripts
   omtf_gmt/       #   GMT-branch stub-level and truth-transfer audit scripts
 analysis/         # Post-production analysis scripts and testset plots
@@ -127,6 +132,7 @@ fragments/        # Fragment .py files for all datasets (S*, B*, G*)
 logs/             # HTCondor job logs (git-ignored)
 smoke_results/    # Optional local diagnostics and temporary reports (git-ignored)
 ```
+
 
 For the ROOT tree and branch map produced by the dumper, see [scripts/ROOT_BRANCHES.md](scripts/ROOT_BRANCHES.md).
 
@@ -159,7 +165,16 @@ Output ROOT files are uploaded to EOS:
 
 The production pipeline is designed to be portable across CMSSW releases. To adapt to a new release (e.g., from `CMSSW_14_2_0_pre2` to `CMSSW_15_0_0`):
 
-### Step 1: Create new CMSSW working area
+### Step 1: Create new CMSSW working area and install the producers
+
+All CMSSW-side producer/dumper source code this pipeline depends on is
+**vendored and version-controlled in [src/](src/)** (mirrors the CMSSW package
+layout: `src/L1Trigger/L1TMuonOverlapPhase1/...`, `src/L1Trigger/L1MuNano/...`,
+both vendored **in full** — see [src/MANIFEST.md](src/MANIFEST.md) for why a
+diff-only overlay doesn't work for `L1TMuonOverlapPhase1`, plus the exact
+file-by-file inventory and current `producerSchemaVersion`).
+`scripts/setup_cmssw.sh` installs this tree automatically; you rarely need to
+run the steps below by hand.
 
 ```bash
 # Set up the new release
@@ -168,16 +183,24 @@ export SCRAM_ARCH="el9_amd64_gcc12"  # Adjust if compiler changes
 
 scram p CMSSW ${CMSSW_VERSION}
 cd ${CMSSW_VERSION}/src
+cmsenv
 
-# Clone and rebuild L1Trigger/L1MuNano plugins
-git clone https://github.com/cms-sw/cmssw.git upstream
-# (or check out from your fork with OMTF customizations)
+# Install the vendored producers from this repo (copies the complete
+# L1Trigger/L1TMuonOverlapPhase1 and L1Trigger/L1MuNano package directories
+# on top of this fresh area — no git-cms tooling needed):
+bash /path/to/omtf_dataset_production/scripts/install_producers.sh "${CMSSW_BASE}"
 
 scram b -j 8
 
 # Verify the build
-scram b -j 1 && echo "Build successful"
+scram b -j 1 L1Trigger/L1TMuonOverlapPhase1 L1Trigger/L1MuNano && echo "Build successful"
 ```
+
+This is exactly what `bash scripts/setup_cmssw.sh` does for you (it calls
+`install_producers.sh` before building). Re-running `install_producers.sh`
+against an existing area is safe and is the supported way to pick up further
+producer changes — always edit the files under `src/` in this repo, never the
+live `CMSSW_*/src` copies directly.
 
 ### Step 2: Dumper and CMSSW-level plugins (critical)
 
@@ -191,12 +214,16 @@ pipeline.
 
 **Our custom dumper architecture:**
 
-We use a modular dumper system built in [CMSSW_14_2_0_pre2/src/L1Trigger/L1MuNano/plugins/](../CMSSW_14_2_0_pre2/src/L1Trigger/L1MuNano/plugins/):
+We use a modular dumper system, vendored in this repo under
+[src/L1Trigger/L1MuNano/plugins/](src/L1Trigger/L1MuNano/plugins/) and
+[src/L1Trigger/L1TMuonOverlapPhase1/](src/L1Trigger/L1TMuonOverlapPhase1/)
+(see [src/MANIFEST.md](src/MANIFEST.md) for the full inventory):
 
 - `DataROOTDumper2AllInput.cc` — Main dumper; writes L1 hits, stubs, and truth
+- `DataROOTDumper2.cc` — Per-candidate hits/truth-matched ntuple (`OMTFHitsTree`)
 - `PrimitiveDigiToFlatTableProducers.cc` — Primitive-level observables (CSC quarter-bits, RPC cluster info, DT timing flags)
 - `PileupInfoFlatTableProducer.cc` — Pileup event-level info (nPU, nTrueInt)
-- `GenMuonProvenanceProducer.cc` — Generator-level muon provenance (parent PDG, decay mode, kinematics)
+- `GenMuonProvenanceProducer.cc` — Generator-level muon provenance (parent PDG, decay mode, kinematics, reciprocal TP-muon index)
 
 **At runtime**, [condor/customize_omtf_dumper.py](condor/customize_omtf_dumper.py) 
 is injected into every job via cmsRun to:

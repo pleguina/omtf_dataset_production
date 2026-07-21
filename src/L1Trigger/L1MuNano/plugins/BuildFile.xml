@@ -1,0 +1,13 @@
+<use name="DataFormats/L1TMuon"/>
+<use name="DataFormats/L1TMuonPhase2"/>
+<use name="PhysicsTools/NanoAOD"/>
+<use name="DataFormats/NanoAOD"/>
+<use name="DataFormats/HepMCCandidate"/>
+<use name="MuonAnalysis/MuonAssociators"/>
+<use name="DataFormats/L1DTTrackFinder"/>
+<use name="DataFormats/CSCDigi"/>
+<use name="DataFormats/RPCDigi"/>
+<use name="DataFormats/MuonDetId"/>
+<use name="SimDataFormats/TrackingAnalysis"/>
+<use name="hepmc"/>
+<flags EDM_PLUGIN="1"/>
