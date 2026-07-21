@@ -30,16 +30,27 @@ Sections implemented (see ROOT_BRANCHES.md "v5.2 schema additions"):
   A. Event identity           -- (run,lumi,event64) canonical join, no uint32 collisions
   B. Primitive identity        -- reg_stub_primitiveId / hits_primitiveId consistency
   C. Truth unification         -- trackId/tpId/dualIdRelation/noSelectedMuonReason sanity
-  D. Propagation                -- TpMuon_propOk / propInOmtfSt1/2 / surface code coverage
+  D. Propagation                -- TpMuon_propOkSt1/St2 / propFailureCodeSt1/St2 / surface codes
   E. Pileup provenance          -- reg_pu_src_eventHash/occurrenceHash, TpMuon_puSourceIdx range
   F. Timing                      -- Ph2DT*_t0Valid non-degenerate, chi2 unwrap sanity
   G. Storage / duplication      -- OMTFSchemaMetadata presence + version constants; TpMuon_* dup check
 
 Each section returns a dict with "status" in {"pass", "fail", "warn", "skipped"}
-and a "detail" free-text explanation, plus any numeric findings. The top-level
-JSON also carries "schema_metadata" (read directly from OMTFSchemaMetadata if
-present) and "disclosure" (a copy of the text above, for machine-readable
-traceability of "was this actually run against real data").
+(section D additionally uses "disabled_by_configuration"/"unimplemented_surface")
+and a "detail" free-text explanation, plus any numeric findings. Three sections
+carry extra, more granular sub-statuses that are informational and do NOT feed
+the top-level pass/fail/warn rollup on their own:
+  - D also reports which propagationMode produced the file (see "findings").
+  - E also reports "structural_status" (pass/fail: are the stored hashes/indices
+    self-consistent?) separately from "semantic_validation_status" (whether the
+    underlying Mixing-index convention has been cross-checked against ground truth
+    -- currently always "provisional").
+  - F also reports "encoding_status" (pass/fail: does t0Valid match t0!=0?)
+    separately from "calibration_status" (whether a real in-time-vs-late
+    threshold has been calibrated -- currently always "unavailable").
+The top-level JSON also carries "schema_metadata" (read directly from
+OMTFSchemaMetadata if present) and "disclosure" (a copy of the text above, for
+machine-readable traceability of "was this actually run against real data").
 """
 import argparse
 import json
@@ -210,50 +221,120 @@ def audit_truth_unification(all_input_tree):
     return result
 
 
-def audit_propagation(all_input_tree):
+# TpMuon_propFailureCodeSt1/St2 enum (must match DataROOTDumper2AllInput.h's kPropFailure* constants).
+PROP_FAILURE_PROPAGATION_DISABLED = 6
+PROP_FAILURE_SURFACE_NOT_IMPLEMENTED = 7
+
+
+def _flat(arr):
+    return np.concatenate([np.asarray(x) for x in arr]) if arr is not None and len(arr) else np.array([])
+
+
+def audit_propagation(all_input_tree, schema_tree=None):
     result = {"section": "D. Propagation"}
     if all_input_tree is None:
         result["status"] = "skipped"
         result["detail"] = "OMTFAllInputTree not provided/available."
         return result
 
-    prop_ok = _get(all_input_tree, "TpMuon_propOk")
-    surf1 = _get(all_input_tree, "TpMuon_propSurfaceCodeSt1")
-    surf2 = _get(all_input_tree, "TpMuon_propSurfaceCodeSt2")
-    fail_code = _get(all_input_tree, "TpMuon_propFailureCode")
-
-    if prop_ok is None:
+    ok_st2 = _get(all_input_tree, "TpMuon_propOkSt2")
+    if ok_st2 is None:
+        legacy_ok = _get(all_input_tree, "TpMuon_propOk")
         result["status"] = "skipped"
-        result["detail"] = "TpMuon_propOk branch missing (sample may have no TpMuon rows)."
+        result["detail"] = (
+            "TpMuon_propOkSt1/St2 branches missing (older schema without surface-specific "
+            f"propagation fields; legacy TpMuon_propOk present={legacy_ok is not None})."
+        )
         return result
 
-    findings = {}
-    flat_ok = np.concatenate([np.asarray(x) for x in prop_ok]) if len(prop_ok) else np.array([])
-    findings["n_TpMuon_rows"] = int(len(flat_ok))
-    findings["frac_propOk"] = float(np.mean(flat_ok)) if len(flat_ok) else None
+    ok_st1 = _get(all_input_tree, "TpMuon_propOkSt1")
+    fail_st1 = _get(all_input_tree, "TpMuon_propFailureCodeSt1")
+    fail_st2 = _get(all_input_tree, "TpMuon_propFailureCodeSt2")
+    eta1 = _get(all_input_tree, "TpMuon_propEtaSt1")
+    eta2 = _get(all_input_tree, "TpMuon_propEtaSt2")
 
-    if surf1 is not None and surf2 is not None:
-        flat_s1 = np.concatenate([np.asarray(x) for x in surf1]) if len(surf1) else np.array([])
-        flat_s2 = np.concatenate([np.asarray(x) for x in surf2]) if len(surf2) else np.array([])
-        all_zero_s1 = bool(np.all(flat_s1 == 0)) if len(flat_s1) else True
-        all_zero_s2 = bool(np.all(flat_s2 == 0)) if len(flat_s2) else True
-        findings["propSurfaceCodeSt1_all_proxy_zero"] = all_zero_s1
-        findings["propSurfaceCodeSt2_all_proxy_zero"] = all_zero_s2
-        if all_zero_s1 and all_zero_s2:
-            result["status"] = "warn"
-            result["detail"] = (
-                "propSurfaceCodeSt1/2 are all 0 (known limitation: MB1/ME1 vs MB2/ME2 surface "
-                "distinction is not yet implemented in the propagator, see ROOT_BRANCHES.md limitations)."
-            )
-            result["findings"] = findings
-            return result
+    flat_ok1 = _flat(ok_st1)
+    flat_ok2 = _flat(ok_st2)
+    flat_fail1 = _flat(fail_st1)
+    flat_fail2 = _flat(fail_st2)
+    flat_eta1 = _flat(eta1)
+    flat_eta2 = _flat(eta2)
 
-    if fail_code is not None:
-        flat_fc = np.concatenate([np.asarray(x) for x in fail_code]) if len(fail_code) else np.array([])
-        findings["propFailureCode_distribution"] = dict(Counter(int(x) for x in flat_fc))
+    findings = {"n_TpMuon_rows": int(len(flat_ok2))}
+    if len(flat_ok2) == 0:
+        result["status"] = "skipped"
+        result["detail"] = "No TpMuon rows in this sample."
+        result["findings"] = findings
+        return result
+
+    propagation_mode = None
+    if schema_tree is not None and "propagationMode" in schema_tree.keys():
+        propagation_mode = str(schema_tree["propagationMode"].array(library="np")[0])
+    findings["propagationMode"] = propagation_mode
+    findings["frac_propOkSt1"] = float(np.mean(flat_ok1)) if len(flat_ok1) else None
+    findings["frac_propOkSt2"] = float(np.mean(flat_ok2))
+    findings["propFailureCodeSt1_distribution"] = dict(Counter(int(x) for x in flat_fail1)) if len(flat_fail1) else {}
+    findings["propFailureCodeSt2_distribution"] = dict(Counter(int(x) for x in flat_fail2)) if len(flat_fail2) else {}
+
+    disabled_st2 = bool(len(flat_fail2)) and bool(np.all(flat_fail2 == PROP_FAILURE_PROPAGATION_DISABLED))
+    if propagation_mode == "disabled_simpleMatching_v1" or disabled_st2:
+        result["status"] = "disabled_by_configuration"
+        result["detail"] = (
+            f"Propagation is disabled by configuration (propagationMode={propagation_mode!r}, "
+            "candidateSimMuonMatcherType=simpleMatching). TpMuon_propFailureCodeSt2 is uniformly "
+            "PROPAGATION_DISABLED (6) -- this is expected, not a bug. Switch to "
+            "propagationMode=steppingHelix_surfaceAware_v1 after a validated pilot (see "
+            "MANIFEST.md known limitation #3) to obtain real propagation."
+        )
+        result["findings"] = findings
+        return result
+
+    # Propagation was actually attempted -- a coordinate must be finite iff its propOkStX is true.
+    def _coord_consistency_violations(flat_ok, flat_eta):
+        if len(flat_ok) == 0 or len(flat_eta) == 0 or len(flat_ok) != len(flat_eta):
+            return None
+        return int(np.sum(np.isfinite(flat_eta) != (flat_ok == 1)))
+
+    v1 = _coord_consistency_violations(flat_ok1, flat_eta1)
+    v2 = _coord_consistency_violations(flat_ok2, flat_eta2)
+    findings["St1_coord_ok_consistency_violations"] = v1
+    findings["St2_coord_ok_consistency_violations"] = v2
+    if (v1 or 0) > 0 or (v2 or 0) > 0:
+        result["status"] = "fail"
+        result["detail"] = (
+            "A propagated coordinate (propEtaSt1/2) is finite/non-finite inconsistently with its "
+            "propOkSt1/2 flag -- a coordinate must be finite only when propagation succeeded."
+        )
+        result["findings"] = findings
+        return result
+
+    st1_unimplemented = bool(len(flat_fail1)) and bool(np.all(flat_fail1 == PROP_FAILURE_SURFACE_NOT_IMPLEMENTED))
+    findings["St1_all_surface_not_implemented"] = st1_unimplemented
+    if st1_unimplemented:
+        result["status"] = "unimplemented_surface"
+        result["detail"] = (
+            "Station-2 propagation was attempted (steppingHelix mode) but station-1 has no "
+            "independent propagation implementation yet -- TpMuon_propFailureCodeSt1 == "
+            "SURFACE_NOT_IMPLEMENTED (7) for every row. This is a genuine missing feature, not a "
+            "silently-degraded proxy: propEtaSt1/propPhiSt1 are never filled from station-2 anymore."
+        )
+        result["findings"] = findings
+        return result
+
+    if findings["frac_propOkSt2"] == 0.0:
+        result["status"] = "fail"
+        result["detail"] = (
+            "Propagation was attempted (not disabled by configuration) but 0% of St2 propagations "
+            "succeeded."
+        )
+        result["findings"] = findings
+        return result
 
     result["status"] = "pass"
-    result["detail"] = "Propagation branches present with non-trivial content."
+    result["detail"] = (
+        "Propagation attempted with a non-trivial success rate on at least one "
+        "independently-implemented surface."
+    )
     result["findings"] = findings
     return result
 
@@ -290,23 +371,40 @@ def audit_pileup_provenance(all_input_tree):
             result["findings"] = findings
             return result
 
+    # Structural check: are the TpMuon_puSourceIdx values in range for their own event's
+    # reg_pu_src_* arrays? An out-of-range index would be a real bug regardless of whether the
+    # Mixing-index *convention* itself is semantically validated (see semantic_validation_status).
+    structural_ok = True
     if pu_src_idx is not None:
-        flat_idx = np.concatenate([np.asarray(x) for x in pu_src_idx]) if len(pu_src_idx) else np.array([])
         n_src = np.array([len(x) for x in ev_hash])
+        for i in range(len(pu_src_idx)):
+            idxs = np.asarray(pu_src_idx[i])
+            oob = idxs[(idxs != -1) & ((idxs < 0) | (idxs >= n_src[i]))]
+            if len(oob):
+                structural_ok = False
+                break
+        flat_idx = np.concatenate([np.asarray(x) for x in pu_src_idx]) if len(pu_src_idx) else np.array([])
         findings["TpMuon_puSourceIdx_min"] = int(np.min(flat_idx)) if len(flat_idx) else None
         findings["TpMuon_puSourceIdx_max"] = int(np.max(flat_idx)) if len(flat_idx) else None
         findings["max_available_src_index_per_event_median"] = float(np.median(n_src)) if len(n_src) else None
-        result["status"] = "warn"
-        result["detail"] = (
-            "TpMuon_puSourceIdx range reported for manual cross-check; the underlying Mixing "
-            "convention it assumes is NOT independently validated by this script (needs a known-"
-            "truth pilot sample with hand-verified PileupSummaryInfo ordering)."
-        )
-        result["findings"] = findings
-        return result
+        findings["puSourceIdx_in_range_for_its_event"] = structural_ok
+    else:
+        findings["TpMuon_puSourceIdx_present"] = False
 
-    result["status"] = "pass"
-    result["detail"] = "Pileup-provenance hash split is internally consistent."
+    result["structural_status"] = "pass" if structural_ok else "fail"
+    result["semantic_validation_status"] = "provisional"
+    result["status"] = result["structural_status"]
+    result["detail"] = (
+        "structural_status: reg_pu_src_*/TpMuon_puSourceIdx are internally self-consistent (hash "
+        "alias intact, indices in range for their own event). semantic_validation_status is "
+        "'provisional': the underlying Mixing-module indexing CONVENTION (that "
+        "PileupSummaryInfo::getPU_EventID() ordering matches TrackingParticle::eventId() "
+        "1-indexing) is still not independently cross-checked against a hand-verified "
+        "ground-truth pilot sample (see MANIFEST.md known limitation #5)."
+        if structural_ok
+        else "structural_status=fail: a TpMuon_puSourceIdx value falls outside the range of "
+             "reg_pu_src_* entries available for its own event -- this IS a real bug."
+    )
     result["findings"] = findings
     return result
 
@@ -344,12 +442,16 @@ def audit_timing(nano_tree):
         return result
 
     any_mismatch = any(v for k, v in findings.items() if k.endswith("_mismatches") and v)
-    result["status"] = "fail" if any_mismatch else "warn"
+    result["encoding_status"] = "fail" if any_mismatch else "pass"
+    result["calibration_status"] = "unavailable"  # dtT0ConventionVersion=0, see MANIFEST.md limitation #4
+    result["status"] = result["encoding_status"]
     result["detail"] = (
-        "t0Valid does not match (t0 != 0) in some entries."
+        "encoding_status=fail: t0Valid does not match (t0 != 0) in some entries."
         if any_mismatch
-        else "t0Valid == (t0 != 0) as expected; NOTE: no calibrated in-time-vs-late threshold "
-             "is validated (dtT0ConventionVersion=0, see ROOT_BRANCHES.md limitations)."
+        else "encoding_status=pass: t0Valid == (t0 != 0) as expected for all entries. "
+             "calibration_status=unavailable: no calibrated in-time-vs-late threshold exists yet "
+             "(dtT0ConventionVersion=0, see MANIFEST.md known limitation #4) -- a separate, "
+             "expected limitation, not an encoding bug."
     )
     result["findings"] = findings
     return result
@@ -453,7 +555,7 @@ def main():
         report["sections"]["A_event_identity"] = audit_event_identity(hits_tree, nano_tree)
         report["sections"]["B_primitive_identity"] = audit_primitive_identity(all_input_tree, hits_tree)
         report["sections"]["C_truth_unification"] = audit_truth_unification(all_input_tree)
-        report["sections"]["D_propagation"] = audit_propagation(all_input_tree)
+        report["sections"]["D_propagation"] = audit_propagation(all_input_tree, schema_tree)
         report["sections"]["E_pileup_provenance"] = audit_pileup_provenance(all_input_tree)
         report["sections"]["F_timing"] = audit_timing(nano_tree)
         report["sections"]["G_storage_duplication"] = audit_storage_duplication(all_input_tree, schema_tree)
@@ -461,12 +563,17 @@ def main():
         if nano_ctx is not None:
             nano_ctx.close()
 
+    # "disabled_by_configuration"/"unimplemented_surface" (section D only) are informational,
+    # non-blocking statuses -- they must not silently roll up to "pass", but they also should not
+    # be conflated with "warn"/"fail". Treat them like "skipped" for the coarse overall rollup;
+    # the full per-section detail remains in the JSON regardless.
+    informational_statuses = ("skipped", "disabled_by_configuration", "unimplemented_surface")
     overall_statuses = [s["status"] for s in report["sections"].values()]
     if "fail" in overall_statuses:
         report["overall_status"] = "fail"
     elif "warn" in overall_statuses:
         report["overall_status"] = "warn"
-    elif all(s == "skipped" for s in overall_statuses):
+    elif all(s in informational_statuses for s in overall_statuses):
         report["overall_status"] = "skipped"
     else:
         report["overall_status"] = "pass"

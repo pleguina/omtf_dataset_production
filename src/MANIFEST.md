@@ -87,6 +87,16 @@ with `scram b -j 8 L1Trigger/L1TMuonOverlapPhase1 L1Trigger/L1MuNano`.
 1. No HTCondor pilot job has been run against this exact vendored snapshot —
    only `scram b` compile-verified in the origin CMSSW area.
 2. Pileup source-file identity (fileGuid/LFN) not yet included in provenance hashing.
-3. Propagation surface codes (MB1/ME1 vs MB2/ME2) are still a proxy (always 0).
+3. Station-1 (MB1/ME1) propagation has NO independent implementation
+   (`TpMuon_propFailureCodeSt1` is always `SURFACE_NOT_IMPLEMENTED`/7; `propOkSt1` is always 0;
+   `propEtaSt1`/`propPhiSt1` are always NaN — never proxied from station-2 as of
+   `propagationVersion=2`). Production propagation mode is frozen at
+   `propagationMode=disabled_simpleMatching_v1` (see `customize_omtf_dumper.py`); switching to
+   `steppingHelix_surfaceAware_v1` requires a small GEN,SIM,DIGI,L1 pilot first, verifying:
+   no segfault; required EventSetup records available; nonzero propagation success; finite
+   coordinates; independent St1/St2 results; valid surface codes; hard-scatter GenMuon/TpMuon
+   propagation closure. Even after that pilot, St1 stays `SURFACE_NOT_IMPLEMENTED` until a
+   dedicated MB1/ME1 propagation call is added to `DataROOTDumper2AllInput.cc` (station-1
+   support does not come "for free" from enabling the propagator).
 4. DT `t0Valid` has no calibrated in-time-vs-late threshold (`dtT0ConventionVersion=0`).
 5. `TpMuon_puSourceIdx` convention (Mixing module indexing assumption) unvalidated.

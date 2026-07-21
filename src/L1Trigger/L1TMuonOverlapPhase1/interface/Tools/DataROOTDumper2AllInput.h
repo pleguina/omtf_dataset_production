@@ -146,10 +146,44 @@ private:
   static constexpr int kPrimitiveIdVersion = 2;        // 1 = old hash incl. processor-local input/phiHw (buggy); 2 = source-identity hash
   static constexpr int kTpSelectionVersion = 1;        // TpMuon selection: |pdgId|==13, pT>1.5 GeV, |eta|<1.6
   static constexpr int kTruthMatchingVersion = 2;      // 1 = trackId-only vote map; 2 = (trackId,eventId)-keyed vote map
-  static constexpr int kPropagationVersion = 1;        // TpMuon_prop* : station-2 SteppingHelixPropagator proxy reused for St1
+  static constexpr int kPropagationVersion = 2;        // 2 = surface-specific propOkSt1/2 + propFailureCodeSt1/2, station-2->station-1 proxy REMOVED (propagationMode_ records the algorithmic mode used to fill St2)
   static constexpr int kPileupProvenanceVersion = 1;   // reg_pu_src_* : no source-file identity yet (see item 4 limitations)
   static constexpr int kDtT0ConventionVersion = 0;     // 0 = unvalidated/unset (see Ph2DT*Digi_t0Valid docs)
   static constexpr const char* kEventIdConvention = "reg_eventNum64==iEvent.id().event() (exact 64-bit); reg_eventNum is a truncated 32-bit convenience field, NOT the primary key";
+
+  // TpMuon_propFailureCodeSt1/St2 enum (also used by the deprecated combined TpMuon_propFailureCode,
+  // which always mirrors St2):
+  //   0 = success (independently propagated to this surface, valid TSOS)
+  //   1 = matcher not available (invalid initial context)
+  //   2 = propagation attempted but failed (reserved/generic)
+  //   3 = did not intersect surface / invalid TSOS
+  //   4 = numerical/geometry failure (reserved)
+  //   5 = outside supported region (reserved)
+  //   6 = PROPAGATION_DISABLED: matcher configured without a propagator (candidateSimMuonMatcherType=
+  //       simpleMatching/collectMuonCands, i.e. propagationMode_ == "disabled_simpleMatching_v1")
+  //   7 = SURFACE_NOT_IMPLEMENTED: propagation is otherwise enabled but this specific surface has no
+  //       independent implementation yet (currently always true for St1, see propagate loop in .cc)
+  static constexpr signed char kPropFailureSuccess = 0;
+  static constexpr signed char kPropFailureMatcherUnavailable = 1;
+  static constexpr signed char kPropFailureGeneric = 2;
+  static constexpr signed char kPropFailureDidNotIntersect = 3;
+  static constexpr signed char kPropFailureNumericalGeometry = 4;
+  static constexpr signed char kPropFailureOutsideRegion = 5;
+  static constexpr signed char kPropFailurePropagationDisabled = 6;
+  static constexpr signed char kPropFailureSurfaceNotImplemented = 7;
+
+  // Production propagation mode (item 3, propagation smoke audit): frozen/recorded explicitly so a
+  // full-dataset relaunch never silently mixes modes. Read from the optional "propagationMode"
+  // PSet parameter; defaults to the safe, currently-deployed mode. Valid values:
+  //   "disabled_simpleMatching_v1"      -- candidateSimMuonMatcherType=simpleMatching, no propagator
+  //                                        loaded; all TpMuon_prop* outputs are unavailable sentinels.
+  //   "steppingHelix_surfaceAware_v1"   -- candidateSimMuonMatcherType=withPropagator/simplePropagation
+  //                                        with SteppingHelixPropagator loaded; St2 is independently
+  //                                        propagated (St1 remains SURFACE_NOT_IMPLEMENTED until a
+  //                                        dedicated MB1/ME1 propagation call is added).
+  // Do not enable the latter for a full campaign without first running the pilot checklist in
+  // MANIFEST.md / item 3 of the propagation smoke audit.
+  static constexpr const char* kDefaultPropagationMode = "disabled_simpleMatching_v1";
 
   // --- branches of OMTFAllInputTree ---
   unsigned int   reg_runNum     = 0;
@@ -246,22 +280,39 @@ private:
   // position of this sub-event within its BX in PileupSummaryInfo::getPU_EventID()). -1 = hard-scatter
   // sentinel or convention could not be validated for this row (see pileup provenance audit).
   std::vector<int>          TpMuon_puSourceIdx;
-  // Propagated TP direction labels at MB1 (station 1) and MB2 (station 2).
+  // Propagated TP direction labels at MB1 (station 1) and MB2 (station 2). A coordinate holds a
+  // finite physical value ONLY when its corresponding propOkStX is true; otherwise it is NaN
+  // (check with std::isfinite/np.isfinite, NOT a magic-number sentinel like reg_stub_tof's -999,
+  // since 0 propagations having actually failed is itself meaningful information carried by
+  // propOkStX/propFailureCodeStX). St1 is NEVER derived/copied from St2 as of kPropagationVersion=2
+  // -- the station-2-to-station-1 proxy of kPropagationVersion=1 has been removed.
   std::vector<float>       TpMuon_propEtaSt1;
   std::vector<float>       TpMuon_propPhiSt1;
   std::vector<float>       TpMuon_propEtaSt2;
   std::vector<float>       TpMuon_propPhiSt2;
+  // Per-station propagation-success flags (item 1, propagation smoke audit). Independently
+  // computed per surface; St1 is currently always 0 because no independent station-1 propagation
+  // is implemented yet (see TpMuon_propFailureCodeSt1 == kPropFailureSurfaceNotImplemented).
+  std::vector<uint8_t>     TpMuon_propOkSt1;
+  std::vector<uint8_t>     TpMuon_propOkSt2;
+  // TpMuon_propOk: compatibility summary ONLY. Definition: TpMuon_propOk = TpMuon_propOkSt1 &&
+  // TpMuon_propOkSt2. Do NOT infer individual per-station validity from this combined field --
+  // always use TpMuon_propOkSt1/St2 directly.
   std::vector<uint8_t>     TpMuon_propOk;
   std::vector<uint8_t>     TpMuon_propInOmtfSt1;
   std::vector<uint8_t>     TpMuon_propInOmtfSt2;
-  // Propagation failure/surface metadata (item 7). Station-1 currently reuses the station-2
-  // propagation result as a conservative proxy (kPropagationVersion=1; see .cc for details), so
-  // propSurfaceCodeSt1==propSurfaceCodeSt2 today. 0=success,1=invalid initial state,2=propagation
-  // failed,3=did not intersect surface,4=numerical/geometry failure,5=outside supported region,
-  // 6=matcher configured without a propagator (candidateSimMuonMatcherType=simpleMatching/
-  // collectMuonCands -- no SteppingHelixPropagator ESProducer loaded in this workflow).
+  // TpMuon_propFailureCode: DEPRECATED legacy compatibility field, mirrors
+  // TpMuon_propFailureCodeSt2 (the only station this combined field ever actually represented,
+  // even before the St1/St2 split -- see kPropFailure* enum doc above). Prefer
+  // TpMuon_propFailureCodeSt1/St2 below for new code.
   std::vector<signed char> TpMuon_propFailureCode;
-  std::vector<signed char> TpMuon_propSurfaceCodeSt1; // 0=unknown/proxy,1=MB-like,2=ME-like
+  std::vector<signed char> TpMuon_propFailureCodeSt1;
+  std::vector<signed char> TpMuon_propFailureCodeSt2;
+  // Identifies which physical station surface propOkStX/propEtaStX/propPhiStX refer to; only
+  // meaningful when the corresponding propOkStX is true. 0=unknown/not implemented,1=MB-like,
+  // 2=ME-like. Always 0 whenever the station's failure code is SURFACE_NOT_IMPLEMENTED or
+  // PROPAGATION_DISABLED.
+  std::vector<signed char> TpMuon_propSurfaceCodeSt1;
   std::vector<signed char> TpMuon_propSurfaceCodeSt2;
 
   // Event-level TrackingParticle-muon truth coverage counters (item 9). Computed over the FULL
@@ -334,6 +385,14 @@ private:
   edm::InputTag genParticleTag_;
   edm::InputTag trackingParticleTag_;
   edm::InputTag pileupInfoTag_;
+  // Frozen production propagation mode (item 3); set from the optional "propagationMode" PSet
+  // parameter, defaults to kDefaultPropagationMode. Recorded verbatim into OMTFSchemaMetadata so
+  // downstream consumers/audits never have to guess which algorithmic mode produced a file.
+  std::string propagationMode_ = kDefaultPropagationMode;
+  // Guards a single one-time LogWarning if propagationMode_ claims steppingHelix_surfaceAware_v1
+  // but the matcher was not actually configured with a propagator (or vice versa) -- catches a
+  // misconfiguration where the two settings drift apart.
+  mutable bool loggedPropagationModeMismatch_ = false;
 };
 
 #endif /* L1T_OmtfP1_TOOLS_DATAROOTDUMPER2ALLINPUT_H_ */

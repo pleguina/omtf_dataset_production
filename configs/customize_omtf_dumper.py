@@ -41,6 +41,19 @@ def customise_omtf_dumper(process):
             "L1Trigger/L1TMuon/data/omtf_config/muonMatcherHists_100files_smoothStdDev_withOvf.root"
         )
 
+        # Frozen production propagation mode (propagation smoke audit, item 3). MUST stay in
+        # lockstep with candidateSimMuonMatcherType above -- the producer logs a one-time
+        # LogWarning if they drift apart. "disabled_simpleMatching_v1" is the only mode currently
+        # exercised by this repo: TpMuon_prop*St1/St2 all report "not implemented"/"disabled"
+        # (propOkStX=0, coordinates=NaN) rather than a station-2-proxied value. Do NOT switch to
+        # "steppingHelix_surfaceAware_v1" (which requires candidateSimMuonMatcherType=
+        # "withPropagator"/"simplePropagation" + the SteppingHelixPropagator ESProducer loaded)
+        # for a full-dataset relaunch without first running the pilot checklist in
+        # src/MANIFEST.md (no segfault; EventSetup records available; nonzero propagation
+        # success; finite coordinates; independent St1/St2 results; valid surface codes;
+        # hard-scatter GenMuon/TpMuon propagation closure).
+        process.simOmtfPhase2Digis.propagationMode = cms.string("disabled_simpleMatching_v1")
+
         # Point to sim-truth collections
         process.simOmtfPhase2Digis.simTracksTag = cms.InputTag("g4SimHits")
         process.simOmtfPhase2Digis.simVertexesTag = cms.InputTag("g4SimHits")

@@ -95,6 +95,10 @@ DataROOTDumper2AllInput::DataROOTDumper2AllInput(const edm::ParameterSet& edmCfg
       ? edmCfg.getParameter<edm::InputTag>("pileupInfoInputTag")
       : edm::InputTag();
 
+    propagationMode_ = edmCfg.exists("propagationMode")
+      ? edmCfg.getParameter<std::string>("propagationMode")
+      : std::string(kDefaultPropagationMode);
+
   // Sim-truth is optional: only enabled when the dtDigiSimLinksInputTag parameter exists
   if (edmCfg.exists("dtDigiSimLinksInputTag")) {
     doSimTruth_ = true;
@@ -212,10 +216,14 @@ void DataROOTDumper2AllInput::initializeAllInputTree() {
   allInputTree->Branch("TpMuon_propPhiSt1",    &TpMuon_propPhiSt1);
   allInputTree->Branch("TpMuon_propEtaSt2",    &TpMuon_propEtaSt2);
   allInputTree->Branch("TpMuon_propPhiSt2",    &TpMuon_propPhiSt2);
+  allInputTree->Branch("TpMuon_propOkSt1",     &TpMuon_propOkSt1);
+  allInputTree->Branch("TpMuon_propOkSt2",     &TpMuon_propOkSt2);
   allInputTree->Branch("TpMuon_propOk",        &TpMuon_propOk);
   allInputTree->Branch("TpMuon_propInOmtfSt1", &TpMuon_propInOmtfSt1);
   allInputTree->Branch("TpMuon_propInOmtfSt2", &TpMuon_propInOmtfSt2);
   allInputTree->Branch("TpMuon_propFailureCode",     &TpMuon_propFailureCode);
+  allInputTree->Branch("TpMuon_propFailureCodeSt1",  &TpMuon_propFailureCodeSt1);
+  allInputTree->Branch("TpMuon_propFailureCodeSt2",  &TpMuon_propFailureCodeSt2);
   allInputTree->Branch("TpMuon_propSurfaceCodeSt1",  &TpMuon_propSurfaceCodeSt1);
   allInputTree->Branch("TpMuon_propSurfaceCodeSt2",  &TpMuon_propSurfaceCodeSt2);
 
@@ -261,12 +269,14 @@ void DataROOTDumper2AllInput::initializeSchemaMetadataTree() {
   int dtT0ConventionVersion = kDtT0ConventionVersion;
   std::string eventIdConvention = kEventIdConvention;
   std::string producerGitCommit = "UNSET_fill_from_production_manifest";  // see item 13 commands
+  std::string propagationMode = propagationMode_;  // frozen production mode (item 3, propagation smoke audit)
 
   schemaMetadataTree->Branch("producerSchemaVersion", &producerSchemaVersion, "producerSchemaVersion/I");
   schemaMetadataTree->Branch("primitiveIdVersion", &primitiveIdVersion, "primitiveIdVersion/I");
   schemaMetadataTree->Branch("tpSelectionVersion", &tpSelectionVersion, "tpSelectionVersion/I");
   schemaMetadataTree->Branch("truthMatchingVersion", &truthMatchingVersion, "truthMatchingVersion/I");
   schemaMetadataTree->Branch("propagationVersion", &propagationVersion, "propagationVersion/I");
+  schemaMetadataTree->Branch("propagationMode", &propagationMode);
   schemaMetadataTree->Branch("pileupProvenanceVersion", &pileupProvenanceVersion, "pileupProvenanceVersion/I");
   schemaMetadataTree->Branch("dtT0ConventionVersion", &dtT0ConventionVersion, "dtT0ConventionVersion/I");
   schemaMetadataTree->Branch("eventIdConvention", &eventIdConvention);
@@ -920,10 +930,14 @@ void DataROOTDumper2AllInput::observeEventEnd(
           TpMuon_propPhiSt1.clear();
           TpMuon_propEtaSt2.clear();
           TpMuon_propPhiSt2.clear();
+          TpMuon_propOkSt1.clear();
+          TpMuon_propOkSt2.clear();
           TpMuon_propOk.clear();
           TpMuon_propInOmtfSt1.clear();
           TpMuon_propInOmtfSt2.clear();
           TpMuon_propFailureCode.clear();
+          TpMuon_propFailureCodeSt1.clear();
+          TpMuon_propFailureCodeSt2.clear();
           TpMuon_propSurfaceCodeSt1.clear();
           TpMuon_propSurfaceCodeSt2.clear();
 
@@ -1085,16 +1099,23 @@ void DataROOTDumper2AllInput::observeEventEnd(
             }
             TpMuon_puSourceIdx.push_back(puSourceIdx);
 
-            float propEtaSt1 = -999.f;
-            float propPhiSt1 = -999.f;
-            float propEtaSt2 = -999.f;
-            float propPhiSt2 = -999.f;
-            uint8_t propOk = 0;
-            uint8_t inOmtfSt1 = 0;
+            // Station-1 (MB1/ME1) has no independent propagation implementation yet in this
+            // producer (propagationVersion=2): NEVER derive/copy it from the station-2 result
+            // (that station-2-to-station-1 proxy from propagationVersion=1 has been removed).
+            // It always reports "not implemented", regardless of propagationMode_/matcher config.
+            const float propEtaSt1 = std::numeric_limits<float>::quiet_NaN();
+            const float propPhiSt1 = std::numeric_limits<float>::quiet_NaN();
+            const uint8_t propOkSt1 = 0;
+            const uint8_t inOmtfSt1 = 0;
+            const signed char propSurfaceCodeSt1 = 0;
+            const signed char propFailureCodeSt1 = kPropFailureSurfaceNotImplemented;
+
+            float propEtaSt2 = std::numeric_limits<float>::quiet_NaN();
+            float propPhiSt2 = std::numeric_limits<float>::quiet_NaN();
+            uint8_t propOkSt2 = 0;
             uint8_t inOmtfSt2 = 0;
-            signed char propFailureCode = 2;    // default: propagation failed
-            signed char propSurfaceCodeSt1 = 0; // 0 = unknown/proxy (see item 7 limitations)
-            signed char propSurfaceCodeSt2 = 0;
+            signed char propSurfaceCodeSt2 = 0;  // 0 = unknown (see item 7 limitations); no MB/ME distinction implemented yet
+            signed char propFailureCodeSt2 = kPropFailureGeneric;
             auto* m = matcher();
             // CandidateSimMuonMatcher only loads its Propagator ESHandle in beginRun() when
             // configured with candidateSimMuonMatcherType "withPropagator"/"simplePropagation"
@@ -1106,6 +1127,25 @@ void DataROOTDumper2AllInput::observeEventEnd(
             const bool matcherHasPropagator =
                 m != nullptr && (m->getMatchingType() == CandidateSimMuonMatcher::MatchingType::withPropagator ||
                                  m->getMatchingType() == CandidateSimMuonMatcher::MatchingType::simplePropagation);
+
+            // One-time sanity check (item 3): catch a frozen propagationMode_ that has drifted
+            // out of sync with the matcher's actual configuration (e.g. someone flips
+            // candidateSimMuonMatcherType without updating propagationMode, or vice versa).
+            if (!loggedPropagationModeMismatch_) {
+              const bool claimsEnabled = (propagationMode_ == "steppingHelix_surfaceAware_v1");
+              if (claimsEnabled != matcherHasPropagator) {
+                edm::LogWarning("l1tOmtfEventPrint")
+                    << "DataROOTDumper2AllInput: propagationMode_='" << propagationMode_
+                    << "' (claims propagation " << (claimsEnabled ? "enabled" : "disabled")
+                    << ") does not match the matcher's actual configuration (propagator "
+                    << (matcherHasPropagator ? "loaded" : "not loaded")
+                    << ") -- OMTFSchemaMetadata.propagationMode will not accurately describe this "
+                       "file. Fix the propagationMode PSet parameter to match "
+                       "candidateSimMuonMatcherType.";
+              }
+              loggedPropagationModeMismatch_ = true;
+            }
+
             if (matcherHasPropagator) {
               // Use the same propagation entry point as CandidateSimMuonMatcher
               // to avoid geometry corner-case crashes on direct station calls.
@@ -1114,32 +1154,32 @@ void DataROOTDumper2AllInput::observeEventEnd(
                 propEtaSt2 = tsosSt2.globalPosition().eta();
                 propPhiSt2 = tsosSt2.globalPosition().phi();
                 inOmtfSt2 = (std::abs(propEtaSt2) >= 0.7f && std::abs(propEtaSt2) <= 1.31f) ? 1 : 0;
-                propOk = 1;
-                propFailureCode = 0;
-
-                // Station-1 labels are optional in this path; use station-2 as a conservative
-                // proxy when explicit MB1 propagation is unavailable (propagationVersion=1: both
-                // surface codes are "unknown/proxy" today, NOT a validated MB1-specific surface).
-                propEtaSt1 = propEtaSt2;
-                propPhiSt1 = propPhiSt2;
-                inOmtfSt1 = inOmtfSt2;
+                propOkSt2 = 1;
+                propFailureCodeSt2 = kPropFailureSuccess;
               } else {
-                propFailureCode = 3;  // did not intersect surface / invalid TSOS
+                propFailureCodeSt2 = kPropFailureDidNotIntersect;
               }
             } else if (m == nullptr) {
-              propFailureCode = 1;  // matcher not available (invalid initial state context)
+              propFailureCodeSt2 = kPropFailureMatcherUnavailable;
             } else {
-              propFailureCode = 6;  // matcher configured without a propagator (e.g. simpleMatching)
+              propFailureCodeSt2 = kPropFailurePropagationDisabled;  // e.g. simpleMatching
             }
+
+            const uint8_t propOk = propOkSt1 && propOkSt2;  // compatibility summary only, see header doc
+            const signed char propFailureCode = propFailureCodeSt2;  // deprecated legacy alias
 
             TpMuon_propEtaSt1.push_back(propEtaSt1);
             TpMuon_propPhiSt1.push_back(propPhiSt1);
             TpMuon_propEtaSt2.push_back(propEtaSt2);
             TpMuon_propPhiSt2.push_back(propPhiSt2);
+            TpMuon_propOkSt1.push_back(propOkSt1);
+            TpMuon_propOkSt2.push_back(propOkSt2);
             TpMuon_propOk.push_back(propOk);
             TpMuon_propInOmtfSt1.push_back(inOmtfSt1);
             TpMuon_propInOmtfSt2.push_back(inOmtfSt2);
             TpMuon_propFailureCode.push_back(propFailureCode);
+            TpMuon_propFailureCodeSt1.push_back(propFailureCodeSt1);
+            TpMuon_propFailureCodeSt2.push_back(propFailureCodeSt2);
             TpMuon_propSurfaceCodeSt1.push_back(propSurfaceCodeSt1);
             TpMuon_propSurfaceCodeSt2.push_back(propSurfaceCodeSt2);
 
@@ -1189,10 +1229,14 @@ void DataROOTDumper2AllInput::observeEventEnd(
     TpMuon_propPhiSt1.clear();
     TpMuon_propEtaSt2.clear();
     TpMuon_propPhiSt2.clear();
+    TpMuon_propOkSt1.clear();
+    TpMuon_propOkSt2.clear();
     TpMuon_propOk.clear();
     TpMuon_propInOmtfSt1.clear();
     TpMuon_propInOmtfSt2.clear();
     TpMuon_propFailureCode.clear();
+    TpMuon_propFailureCodeSt1.clear();
+    TpMuon_propFailureCodeSt2.clear();
     TpMuon_propSurfaceCodeSt1.clear();
     TpMuon_propSurfaceCodeSt2.clear();
   }
