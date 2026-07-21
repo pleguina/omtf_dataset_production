@@ -478,8 +478,8 @@
       "roles": ["validation"],
       "family": "DAS",
       "pileup": "PU200",
-      "status": "authorized_pending_smoke_validation",
-      "blockingReason": "Dataset selected from a prior disk-accessible DAS scan (smoke_results/extra_validation_disk_20260508_165223/qcd_pu200_disk.txt): QCD_Pt-120To170_MuEnrichedPt5 is the standard b/c-enriched non-prompt-muon proxy sample. Cannot yet be smoke-audited: the local grid proxy (private/x509_proxy) is expired (voms-proxy-info shows timeleft 0:00:00), so xrootd reads of the DAS file will fail until the proxy is renewed (requires the user's grid certificate passphrase).",
+      "status": "smoke_validation_in_progress",
+      "blockingReason": "Dataset selected from a prior disk-accessible DAS scan (smoke_results/extra_validation_disk_20260508_165223/qcd_pu200_disk.txt): QCD_Pt-120To170_MuEnrichedPt5 is the standard b/c-enriched non-prompt-muon proxy sample. Grid proxy renewed 2026-07-21 (valid ~8 days); local xrootd smoke test launched via scripts/run_das_smoke_test.sh, see smoke_results/das_smoke_*/SUMMARY.jsonl for the pass/fail result once complete.",
       "fragment": "DAS:/QCD_Pt-120To170_MuEnrichedPt5_TuneCP5_14TeV-pythia8/Phase2Spring24DIGIRECOMiniAOD-PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/GEN-SIM-DIGI-RAW-MINIAOD",
       "submit": "condor/das_qcd_heavy_flavour_pu200.sub"
     }

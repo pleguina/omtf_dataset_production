@@ -36,6 +36,7 @@ displaced_midpt|140X_mcRun4_realistic_v4|/store/mc/Phase2Spring24DIGIRECOMiniAOD
 dy_prompt|140X_mcRun4_realistic_v4|/store/mc/Phase2Spring24DIGIRECOMiniAOD/DYToLL_M-10To50_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2560000/5a7d75f3-dcc2-483c-a840-0d66fbd1acbe.root
 llp_addon|140X_mcRun4_realistic_v4|/store/mc/Phase2Spring24DIGIRECOMiniAOD/HTo2LongLivedTo4mu_MH-125_MFF-12_CTau-900mm_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2530000/92ddf443-bd16-445d-a951-0440c576434f.root
 single_muon_flatpt|140X_mcRun4_realistic_v4|/store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/0089c8ae-7b77-411a-9afd-3dfda70748d0.root
+qcd_heavy_flavour_pu200|140X_mcRun4_realistic_v4|/store/mc/Phase2Spring24DIGIRECOMiniAOD/QCD_Pt-120To170_MuEnrichedPt5_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/2820000/1c630f1b-246a-42a0-bcaa-dc7dc9870720.root
 EOF
 )
 
@@ -133,6 +134,32 @@ PYEOF
     echo "| ${label} | ${gt} | ${NEVENTS} | ${STATUS} | ${ALLINTREE} | ${HITSTREE} | ${MUONSTUBS} | ${MUONSTUBK} | ${GENMUON} |" \
         >> "${REPORT}"
 
+    AUDIT_STATUS="skipped_cmsrun_failed"
+    if [[ "${STATUS}" == "OK" && -f "${OUTDIR}/${label}_omtf_hits.root" ]]; then
+        NANO_ARG=()
+        [[ -f "${OUTDIR}/${label}_omtf_nano.root" ]] && NANO_ARG=(--nano "${OUTDIR}/${label}_omtf_nano.root")
+        if python3 "${BASEDIR}/scripts/audit/audit_full_campaign.py" \
+            --manifest "${BASEDIR}/dataset_manifest.json" \
+            --hits "${OUTDIR}/${label}_omtf_hits.root" \
+            "${NANO_ARG[@]}" \
+            --outdir "${OUTDIR}/${label}_full_campaign_audit" \
+            > "${OUTDIR}/${label}_full_campaign_audit.log" 2>&1; then
+            AUDIT_STATUS="pass"
+        else
+            AUDIT_STATUS="fail"
+        fi
+    fi
+    python3 - "${label}" "${STATUS}" "${AUDIT_STATUS}" >> "${OUTDIR}/SUMMARY.jsonl" <<'PYEOF'
+import json, sys, datetime
+label, cmsrun_status, audit_status = sys.argv[1:4]
+print(json.dumps({
+    "name": label,
+    "cmsrun_status": cmsrun_status,
+    "audit_status": audit_status,
+    "timestamp": datetime.datetime.now().isoformat(),
+}))
+PYEOF
+
     cd "${BASEDIR}"
     rm -rf "${SCRATCH}"
 
@@ -140,5 +167,6 @@ done <<< "${SPECS}"
 
 echo ""
 echo "=== DAS smoke test complete ==="
+echo "Per-dataset full_campaign_audit summary: ${OUTDIR}/SUMMARY.jsonl"
 echo "Report : ${REPORT}"
 cat "${REPORT}"
