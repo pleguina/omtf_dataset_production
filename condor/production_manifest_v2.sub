@@ -12984,6 +12984,12 @@ queue Dataset, NEvents from (
 ###############################################################################
 # B-Campaign: zero-bias-equivalent PU200 rate sample (B4 ONLY -- B1-B3 excluded) (1 datasets)
 ###############################################################################
+# B4 reads MinBias PU200 directly from DBS (no GEN/SIM step) and needs more
+# memory/disk than the generic default -- restored from the individually
+# vetted condor/B4.sub (request_memory=6000, request_disk=15000000), which
+# was otherwise silently overridden by this file's generic 4000/5000000.
+request_memory  = 6000
+request_disk    = 15000000
 +JobFlavour     = "workday"
 arguments       = $(Dataset) $(ProcId) 0 $(NEvents)
 output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv2_$(Dataset)_$(ProcId).out

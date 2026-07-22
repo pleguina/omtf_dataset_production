@@ -120,6 +120,14 @@ PYEOF
 # --- 4. Run cmsRun (with retry for transient XRootD/EOS network failures) ---
 # Exit codes 85 (XRootD connection error) and 92 (network unreachable) are
 # transient EOS issues — retry up to 3 times with a 5-minute cooldown.
+# NOTE: cmsRun's console output (framework %MSG warnings, per-event xrootd
+# open/close chatter, etc.) is redirected to a LOCAL scratch file, never to
+# stdout/stderr directly -- those get written straight to AFS by HTCondor
+# (output=/error=) and a single PU200 job's raw console output can be 1-2MB,
+# which multiplied across ~13k jobs would blow the AFS quota. Only a bounded
+# summary (and, on failure, a tail of the real log) is ever emitted here.
+CMSRUN_LOG="${SCRATCH}/cmsrun_console.log"
+
 MAX_ATTEMPTS=3
 ATTEMPT=0
 RC=0
@@ -129,9 +137,14 @@ while true; do
     date
     # Remove any partial output from a previous attempt before retrying
     rm -f "${OMTF_OUTPUT}" "${POOL_OUTFILE}"
-    RC=0; cmsRun job_cfg.py || RC=$?
+    RC=0; cmsRun job_cfg.py > "${CMSRUN_LOG}" 2>&1 || RC=$?
     echo "cmsRun finished with exit code ${RC}"
     date
+    if [ ${RC} -ne 0 ]; then
+        echo "----- last 200 lines of cmsRun console (full log stays on worker scratch only) -----"
+        tail -n 200 "${CMSRUN_LOG}" 2>/dev/null || true
+        echo "----- end of cmsRun console tail -----"
+    fi
     if [ ${RC} -eq 0 ]; then
         break
     fi

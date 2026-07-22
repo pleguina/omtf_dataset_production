@@ -33,8 +33,11 @@ OMTF_OUTPUT="omtf_hits_${LABEL}_${PROCID}.root"
 NANO_OUTPUT="omtf_nano_${LABEL}_${PROCID}.root"
 JOB_LOG="job_log_${LABEL}_${PROCID}.txt"
 
-# Redirect all output to a local log file; upload it to EOS on exit for diagnosis
-exec > >(tee -a "/tmp/${JOB_LOG}") 2>&1
+# Redirect all output to a local log file only (uploaded to EOS on exit for
+# diagnosis below) -- NOT tee'd to actual stdout/stderr, since HTCondor writes
+# those straight to AFS and this console can be verbose; EOS is the intended
+# home for the full log, AFS should only ever see this script's own markers.
+exec > "/tmp/${JOB_LOG}" 2>&1
 
 cleanup() {
     local EXIT_CODE=$?

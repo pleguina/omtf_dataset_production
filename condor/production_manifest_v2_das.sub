@@ -70,8 +70,11 @@ log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/lo
 should_transfer_files = NO
 
 request_cpus    = 1
-request_memory  = 4000
-request_disk    = 5000000
+# DAS jobs re-run L1 emulation over real MiniAOD input read via xrootd; the
+# individually vetted das_*.sub files use 6000MB/20GB, not the local-gun
+# production's 4000MB/5GB default -- restored here.
+request_memory  = 6000
+request_disk    = 20000000
 
 +JobFlavour     = "workday"
 +AccountingGroup = "group_u_CMS.u_zh.users"
