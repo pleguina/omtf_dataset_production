@@ -28,8 +28,16 @@ echo "=== SMOKE CONDOR JOB: ${NAME} (config=${CFGBASE}) NEVENTS=${NEVENTS} ==="
 echo "Host: $(hostname)   Scratch: ${JOBDIR}"
 date
 
+# Pre-create every file/dir listed in the submit file's transfer_output_files
+# so HTCondor's output transfer never fails (goes HELD) regardless of which
+# branch below actually executes (e.g. cmsRun failure).
+mkdir -p "${JOBDIR}/full_campaign_audit"
+touch "${JOBDIR}/run_local_test.log" "${JOBDIR}/full_campaign_audit.log" \
+      "${JOBDIR}/omtf_hits.root" "${JOBDIR}/omtf_nano.root"
+
 # --- 1. Run the small local cmsRun test (its own /tmp scratch, worker-local) ---
-"${BASEDIR}/condor/run_local_test.sh" "${CFGBASE}" "${NEVENTS}" "${PROCID}"
+"${BASEDIR}/condor/run_local_test.sh" "${CFGBASE}" "${NEVENTS}" "${PROCID}" \
+    > "${JOBDIR}/run_local_test.log" 2>&1
 CMSRUN_RC=$?
 echo "run_local_test.sh exit code: ${CMSRUN_RC}"
 
@@ -66,7 +74,7 @@ if [[ ${CMSRUN_RC} -eq 0 && -f "${HITS}" && -f "${NANO}" ]]; then
         AUDIT_STATUS="fail"
     fi
 else
-    echo "cmsRun failed or expected outputs missing -- skipping audit"
+    echo "cmsRun failed or expected outputs missing -- skipping audit" | tee "${JOBDIR}/full_campaign_audit.log"
 fi
 
 rm -rf "${LOCALTEST_SCRATCH}" 2>/dev/null || true
