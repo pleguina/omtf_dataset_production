@@ -48,6 +48,9 @@ cd "${SCRATCH}"
 cp "${CONFDIR}/${DATASET}_cfg.py"        ./job_cfg.py
 cp "${CONFDIR}/customize_omtf_dumper.py" ./
 
+# Record the producer/config commit that generated this file (schema §1 provenance).
+export OMTF_PRODUCER_GIT_COMMIT="$(cd "${BASEDIR}" && git rev-parse HEAD 2>/dev/null || echo unknown)"
+
 # --- 3. Patch config via Python (robust, env-driven) ---
 export PATCH_NEVENTS="${NEVENTS}"
 export PATCH_POOL_OUTFILE="${POOL_OUTFILE}"

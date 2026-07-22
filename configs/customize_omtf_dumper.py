@@ -9,6 +9,8 @@ It is imported at the end of each _cfg.py file.
 NanoAOD output requires the locally compiled package L1Trigger/L1MuNano
 (SimpleOMTFTrackCandidateFlatTableProducer plugin).
 """
+import os
+
 import FWCore.ParameterSet.Config as cms
 
 
@@ -72,6 +74,15 @@ def customise_omtf_dumper(process):
         # PU is mixed in, i.e. any non-empty process.mix.input.fileNames). Omitting this
         # tag silently disables the whole reg_pu_src_*/puSourceIdx block (it stays -1/empty).
         process.simOmtfPhase2Digis.pileupInfoInputTag = cms.InputTag("addPileupInfo")
+
+        # Schema-metadata producer-commit provenance (OMTFSchemaMetadata.producerGitCommit).
+        # Populated from OMTF_PRODUCER_GIT_COMMIT, which the condor launch scripts
+        # (run_job.sh / run_job_prodv2.sh / run_local_test.sh / run_das_job.sh) must export
+        # as `git rev-parse HEAD` before invoking cmsRun. Falls back to the producer's own
+        # documented placeholder if unset (e.g. ad-hoc interactive runs).
+        process.simOmtfPhase2Digis.producerGitCommit = cms.string(
+            os.environ.get("OMTF_PRODUCER_GIT_COMMIT", "UNSET_fill_from_production_manifest")
+        )
 
     else:
         import sys

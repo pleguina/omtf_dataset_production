@@ -11,6 +11,9 @@ import subprocess
 from pathlib import Path
 
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
+
+
 def run(cmd):
     p = subprocess.run(cmd, text=True, capture_output=True)
     return {
@@ -42,7 +45,7 @@ def main():
             "event_join",
             [
                 "python3",
-                "scripts/audit/audit_event_join_exact.py",
+                str(REPO_ROOT / "scripts/audit/audit_event_join_exact.py"),
                 "--hits",
                 args.hits,
                 "--nano",
@@ -55,7 +58,7 @@ def main():
             "truth_unification",
             [
                 "python3",
-                "scripts/audit/audit_truth_unification.py",
+                str(REPO_ROOT / "scripts/audit/audit_truth_unification.py"),
                 "--hits",
                 args.hits,
                 "--nano",
@@ -68,7 +71,7 @@ def main():
             "pu_provenance",
             [
                 "python3",
-                "scripts/audit/audit_pu_provenance.py",
+                str(REPO_ROOT / "scripts/audit/audit_pu_provenance.py"),
                 "--hits",
                 args.hits,
                 "--out",
@@ -79,7 +82,7 @@ def main():
             "stub_vector_closure",
             [
                 "python3",
-                "scripts/audit/audit_stub_vector_closure.py",
+                str(REPO_ROOT / "scripts/audit/audit_stub_vector_closure.py"),
                 "--hits",
                 args.hits,
                 "--out",
@@ -90,9 +93,9 @@ def main():
             "forbidden_truth_guard",
             [
                 "python3",
-                "scripts/audit/audit_forbidden_truth_guard.py",
+                str(REPO_ROOT / "scripts/audit/audit_forbidden_truth_guard.py"),
                 "--script",
-                "scripts/make_graphs.py",
+                str(REPO_ROOT / "scripts/make_graphs.py"),
                 "--out",
                 str(outdir / "forbidden_truth_guard.json"),
             ],
@@ -101,7 +104,7 @@ def main():
             "b4_denominator",
             [
                 "python3",
-                "scripts/audit/audit_b4_denominator.py",
+                str(REPO_ROOT / "scripts/audit/audit_b4_denominator.py"),
                 "--hits",
                 args.hits,
                 "--nano",
@@ -114,7 +117,7 @@ def main():
             "v52_schema",
             [
                 "python3",
-                "scripts/audit/validate_displaced_lane_v52_schema.py",
+                str(REPO_ROOT / "scripts/audit/validate_displaced_lane_v52_schema.py"),
                 "--hits-file",
                 args.hits,
                 "--nano-file",

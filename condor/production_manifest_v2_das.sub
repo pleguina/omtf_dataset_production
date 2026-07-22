@@ -1,0 +1,89 @@
+###############################################################################
+# production_manifest_v2_das.sub — DAS-family production to EOS prodv2
+#
+# Companion to condor/production_manifest_v2.sub (which covers the local
+# gun/fragment-based C/G/B4 datasets). This file covers the manifest's
+# family=="DAS" entries, which re-emulate L1 on externally-produced
+# centrally-managed MiniAOD files read over XRootD (needs a valid grid proxy).
+#
+# INCLUDED (4 of 6 DAS-family manifest entries — confirmed passing the full
+# smoke audit suite on 2026-07-21, see smoke_results/das_smoke_20260721_232613/):
+#   dy_prompt, single_muon_flatpt, displaced_lowpt, displaced_midpt
+#
+# EXCLUDED pending resolution — DO NOT add back without re-running the smoke
+# audit and confirming a pass:
+#   llp_addon               — audit_truth_unification FAILS (dual_conflict=22
+#                              nonzero on the smoke sample). NOTE: this looks
+#                              like a genuine multi-muon-topology limitation of
+#                              audit_truth_unification.py's current hard rule
+#                              (status="fail" iff dual_conflict>0) rather than
+#                              a producer bug — an H->4mu LLP event has several
+#                              genuinely close-by hard-scatter muons, which is
+#                              exactly the "conflicting dual ID" case section 5
+#                              of the pre-production spec says should be MASKED
+#                              from supervision, not used to reject the whole
+#                              dataset. The G5/G6/G17 multi-muon gun datasets
+#                              (queued in production_manifest_v2.sub) have not
+#                              been smoke-tested yet and may trip the same rule
+#                              once they are. Needs a human decision on whether
+#                              to (a) relax the audit's dataset-level pass/fail
+#                              gate for known multi-muon topologies while still
+#                              flagging per-event dual_conflict for masking, or
+#                              (b) keep the hard gate and treat llp_addon as
+#                              holdout-only/unaudited. Not fixed by this change.
+#   qcd_heavy_flavour_pu200  — cmsRun itself fails: XRootD FileOpenError, "No
+#                              servers are available to read the file" (errno
+#                              3011) against the cached file path from the
+#                              disk-accessibility scan. Confirmed AGAIN just
+#                              now: the grid proxy file private/x509_proxy is
+#                              currently MISSING entirely (voms-proxy-info:
+#                              "Couldn't find a valid proxy"), not just expired
+#                              — needs `voms-proxy-init --voms cms --valid
+#                              192:00 -out private/x509_proxy` re-run, and even
+#                              then the specific cached replica may simply be
+#                              gone (would need a fresh dasgoclient site query).
+#
+# SUBMIT (NOT executed by this task -- requires explicit human go-ahead):
+#   condor_submit condor/production_manifest_v2_das.sub
+#
+# MONITOR:
+#   condor_q -format "%s " ClusterId -format "%s " Args | grep prodv2_das
+#   eos ls /eos/user/p/pleguina/omtf_hecin_datasets/prodv2_das/
+#
+# Each DAS entry here processes exactly ONE known input file in full
+# (MAX_EVENTS=-1), matching the scope of scripts/run_das_smoke_test.sh's
+# per-dataset SPECS (a single specific /store/mc/... file, not a full
+# dataset-wide DAS query/multi-file split). If more statistics are needed
+# per DAS dataset later, this must be extended with additional file replicas
+# discovered via a fresh `dasgoclient` query — do not fabricate more jobs
+# against the same single file with different SKIP_EVENTS without first
+# confirming the file actually contains that many events.
+###############################################################################
+
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_das_job_prodv2.sh
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv2_das_$(Label).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv2_das_$(Label).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/production_manifest_v2_das.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
++AccountingGroup = "group_u_CMS.u_zh.users"
+
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+arguments       = $(Label) 0 $(InputFile) 140X_mcRun4_realistic_v4 0 -1
+
+queue Label, InputFile from (
+    dy_prompt /store/mc/Phase2Spring24DIGIRECOMiniAOD/DYToLL_M-10To50_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2560000/5a7d75f3-dcc2-483c-a840-0d66fbd1acbe.root
+    single_muon_flatpt /store/mc/Phase2Spring24DIGIRECOMiniAOD/SingleMu_FlatPt-2to100/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v2/120000/0089c8ae-7b77-411a-9afd-3dfda70748d0.root
+    displaced_lowpt /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-2To10_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/130000/3acd9ce2-a987-4192-9e96-d9050add5eb2.root
+    displaced_midpt /store/mc/Phase2Spring24DIGIRECOMiniAOD/DisplacedMuons_Pt-10To30_Dxy-0To3000-gun/GEN-SIM-DIGI-RAW-MINIAOD/PU200_Trk1GeV_140X_mcRun4_realistic_v4-v1/2810000/4c5da4c2-0307-4e29-b55c-3eb069c98342.root
+)

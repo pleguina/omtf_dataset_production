@@ -71,6 +71,9 @@ cd "${SCRATCH}"
 cp "${CONFDIR}/das_reemul_cfg.py"        ./job_cfg.py
 cp "${CONFDIR}/customize_omtf_dumper.py" ./
 
+# Record the producer/config commit that generated this file (schema §1 provenance).
+export OMTF_PRODUCER_GIT_COMMIT="$(cd "${BASEDIR}" && git rev-parse HEAD 2>/dev/null || echo unknown)"
+
 # --- 3. Export env vars consumed by das_reemul_cfg.py ---
 export DAS_INPUT_FILE="${INPUT_FILE}"
 export DAS_GLOBAL_TAG="${GLOBAL_TAG}"
