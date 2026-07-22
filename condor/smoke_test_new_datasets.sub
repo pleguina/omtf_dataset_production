@@ -1,0 +1,46 @@
+###############################################################################
+# smoke_test_new_datasets.sub — smoke test for the 4 newly created datasets
+# (C29, C30 mild-displaced pT bins; G18_pos/neg low-eta transition guard),
+# run in parallel on the batch pool, same pattern as smoke_test_matrix.sub.
+#
+# Each job:
+#   - runs condor/run_local_test.sh CFGBASE 30 0 on the WORKER node's own
+#     scratch/tmp (not lxplus), avoiding lxplus resource contention
+#   - runs scripts/audit/audit_full_campaign.py on the resulting hits/nano
+#   - writes smoke_result.json + full_campaign_audit/ + logs into its own
+#     initialdir (smoke_results/manifest_smoke/<NAME>/), transferred back via
+#     HTCondor's normal output-sandbox mechanism (should_transfer_files=YES)
+#
+# After all jobs complete, merge smoke_result.json files into
+# smoke_results/manifest_smoke/SUMMARY.jsonl with:
+#   scripts/audit/collect_smoke_condor_results.sh
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_smoke_job.sh
+
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+transfer_output_files   = smoke_result.json,run_local_test.log,full_campaign_audit.log,full_campaign_audit,omtf_hits.root,omtf_nano.root
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+initialdir = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/smoke_results/manifest_smoke/$(NAME)
+arguments  = $(NAME) $(CFGBASE) 30
+output     = condor.out
+error      = condor.err
+log        = condor.log
+
+queue NAME,CFGBASE from (
+  C29_mild_disp_pt10to20_overlap_PU200, C29_mild_disp_pt10to20_overlap_PU200
+  C30_mild_disp_pt20to50_overlap_PU200, C30_mild_disp_pt20to50_overlap_PU200
+  G18_pos_promptTransitionLow_PU200, G18_pos_promptTransitionLow_PU200
+  G18_neg_promptTransitionLow_PU200, G18_neg_promptTransitionLow_PU200
+)

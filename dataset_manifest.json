@@ -250,6 +250,22 @@
       "submit": "condor/C28_mild_disp_pt5to10_overlap_PU200.sub"
     },
     {
+      "name": "C29_mild_disp_pt10to20_overlap_PU200",
+      "roles": ["training", "validation", "diagnostic_only"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C29_mild_disp_pt10to20_overlap_PU200.py",
+      "submit": "condor/C29_mild_disp_pt10to20_overlap_PU200.sub"
+    },
+    {
+      "name": "C30_mild_disp_pt20to50_overlap_PU200",
+      "roles": ["training", "validation", "diagnostic_only"],
+      "family": "C",
+      "pileup": "PU200",
+      "fragment": "fragments/C30_mild_disp_pt20to50_overlap_PU200.py",
+      "submit": "condor/C30_mild_disp_pt20to50_overlap_PU200.sub"
+    },
+    {
       "name": "G5_twoDisplacedOverlap_PU200",
       "roles": ["training", "validation"],
       "family": "G",
@@ -360,6 +376,22 @@
       "pileup": "noPU",
       "fragment": "fragments/G17_twoDisplaced_overlap.py",
       "submit": "condor/G17_twoDisplaced_overlap.sub"
+    },
+    {
+      "name": "G18_pos_promptTransitionLow_PU200",
+      "roles": ["training", "validation", "hard_negative"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G18_pos_promptTransitionLow_PU200.py",
+      "submit": "condor/G18_pos_promptTransitionLow_PU200.sub"
+    },
+    {
+      "name": "G18_neg_promptTransitionLow_PU200",
+      "roles": ["training", "validation", "hard_negative"],
+      "family": "G",
+      "pileup": "PU200",
+      "fragment": "fragments/G18_neg_promptTransitionLow_PU200.py",
+      "submit": "condor/G18_neg_promptTransitionLow_PU200.sub"
     },
     {
       "name": "B4",
