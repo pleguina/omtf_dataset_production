@@ -1,0 +1,63 @@
+###############################################################################
+# smoke_test_matrix.sub — one HTCondor job per remaining manifest smoke test,
+# run in parallel on the batch pool instead of sequentially on lxplus.
+#
+# Covers the 15 manifest-authorized datasets not yet present in
+# smoke_results/manifest_smoke/SUMMARY.jsonl as of 2026-07-22 (all G-family
+# gun datasets except G1-G4/G7/G9/G11/G12, plus B4). NEVENTS=30 per job,
+# matching the local smoke matrix (scripts/audit/run_manifest_smoke_matrix.sh).
+#
+# Each job:
+#   - runs condor/run_local_test.sh CFGBASE 30 0 on the WORKER node's own
+#     scratch/tmp (not lxplus), avoiding lxplus resource contention
+#   - runs scripts/audit/audit_full_campaign.py on the resulting hits/nano
+#   - writes smoke_result.json + full_campaign_audit/ + logs into its own
+#     initialdir (smoke_results/manifest_smoke/<NAME>/), transferred back via
+#     HTCondor's normal output-sandbox mechanism (should_transfer_files=YES)
+#
+# After all jobs complete, merge smoke_result.json files into
+# smoke_results/manifest_smoke/SUMMARY.jsonl with:
+#   scripts/audit/collect_smoke_condor_results.sh
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_smoke_job.sh
+
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+transfer_output_files   = smoke_result.json,run_local_test.log,full_campaign_audit.log,full_campaign_audit,omtf_hits.root,omtf_nano.root
+
+request_cpus    = 1
+request_memory  = 4000
+request_disk    = 5000000
+
++JobFlavour     = "workday"
+
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+# NAME = manifest dataset name; CFGBASE = configs/<CFGBASE>_cfg.py basename
+# (they differ for several G-family entries, e.g. G5_twoDisplacedOverlap_PU200 -> G5)
+initialdir = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/smoke_results/manifest_smoke/$(NAME)
+arguments  = $(NAME) $(CFGBASE) 30
+output     = condor.out
+error      = condor.err
+log        = condor.log
+
+queue NAME,CFGBASE from (
+  G5_twoDisplacedOverlap_PU200, G5
+  G6_triPromptOverlap_PU200, G6
+  G8_hardNegLowEtaMuon_PU200, G8
+  G10_pos_hardNegHighEtaMuon_PU200, G10_pos
+  G10_neg_hardNegHighEtaMuon_PU200, G10_neg
+  G13_pos_promptTransition, G13_pos_promptTransition
+  G13_neg_promptTransition, G13_neg_promptTransition
+  G14_pos_promptTransition_PU200, G14_pos_promptTransition_PU200
+  G14_neg_promptTransition_PU200, G14_neg_promptTransition_PU200
+  G15_pos_promptEndcap, G15_pos_promptEndcap
+  G15_neg_promptEndcap, G15_neg_promptEndcap
+  G16_pos_promptEndcap_PU200, G16_pos_promptEndcap_PU200
+  G16_neg_promptEndcap_PU200, G16_neg_promptEndcap_PU200
+  G17_twoDisplaced_overlap, G17_twoDisplaced_overlap
+  B4, B4
+)
