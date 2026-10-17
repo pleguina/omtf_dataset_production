@@ -107,6 +107,31 @@ def customise_omtf_dumper(process):
         process.simCscTriggerPrimitiveDigis.commonParam.runCCLUT_TMB = cms.bool(True)
         print("customise_omtf_dumper: CSC CCLUT enabled on the TMBs (OMTF_CSC_CCLUT_TMB=1)")
 
+    # ----- 3c. Optional OMTF BX window (multi-BX timing variant, e.g. OMTF_BX_RANGE=-1,1) -----
+    # The default is BX 0 only, as upstream. The GMT stub association stays at BX 0.
+    bx_range = os.environ.get("OMTF_BX_RANGE", "")
+    if bx_range and hasattr(process, 'simOmtfPhase2Digis'):
+        bx_min, bx_max = (int(x) for x in bx_range.split(","))
+        process.simOmtfPhase2Digis.bxMin = cms.int32(bx_min)
+        process.simOmtfPhase2Digis.bxMax = cms.int32(bx_max)
+        print(f"customise_omtf_dumper: OMTF BX window [{bx_min}, {bx_max}] (OMTF_BX_RANGE)")
+
+    # ----- 3d. Second OMTF instance with the NN pT assignment (extra baseline, not upstream default) -----
+    # Upstream does not set neuralNetworkFile, so the official constrained pT is the pattern pT. This clone
+    # runs the same emulator with the NN (lutNN v435, the only weights file available) and no dumpers;
+    # it runs unscheduled, only for its NanoAOD tables omtfCNN / omtfUNN. OMTF_NN_BASELINE=0 disables it.
+    if os.environ.get("OMTF_NN_BASELINE", "1") == "1" and hasattr(process, 'simOmtfPhase2Digis'):
+        nn = process.simOmtfPhase2Digis.clone(
+            neuralNetworkFile = cms.FileInPath("L1Trigger/L1TMuon/data/omtf_config/lutNN_omtfRegression_v435_FP.xml"),
+            dumpHitsToROOT = cms.bool(False),
+            candidateSimMuonMatcher = cms.bool(False),
+        )
+        for flag in ("dumpResultToXML", "dumpDetailedResultToXML", "dumpGPToXML", "dumpDigisToCSV",
+                     "dumpDetailedDebug", "eventCaptureDebug", "dumpKilledOmtfCands"):
+            if hasattr(nn, flag):
+                setattr(nn, flag, cms.bool(False))
+        process.simOmtfPhase2DigisNN = nn
+
     # ----- 4. Disable tracker alignment (DB payload has 43708 modules, -----
     # ----- geometry has 43600 in CMSSW_14_2_0_pre2 — safe for L1 studies) -----
     if hasattr(process, 'trackerGeometry'):
@@ -169,6 +194,14 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
     # Register table producers on the process
     process.genParticlePropagator  = genParticlePropagator
     process.genMuonProvenance      = genMuonProvenance
+    if hasattr(process, 'simOmtfPhase2DigisNN'):
+        from L1Trigger.L1MuNano.omtfNanoTables_cff import _saMuTable
+        saMuonTables = saMuonTables + [
+            _saMuTable(("simOmtfPhase2DigisNN", "constrCands"), "omtfCNN",
+                       "OMTF constrained SAMuons with the NN pT (lutNN v435), not the upstream default"),
+            _saMuTable(("simOmtfPhase2DigisNN", "unconstrCands"), "omtfUNN",
+                       "OMTF unconstrained SAMuons from the NN instance"),
+        ]
     for t in saMuonTables:
         setattr(process, t.name.value() + "Table", t)  # omtfCTable, omtfUTable, gmtSATable, ...
     process.genMuonNanoTable       = genMuonNanoTable
@@ -187,6 +220,7 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
         process.genParticlePropagator,
         process.genMuonProvenance,
         *[getattr(process, t.name.value() + "Table") for t in saMuonTables],
+        *([process.simOmtfPhase2DigisNN] if hasattr(process, 'simOmtfPhase2DigisNN') else []),
         process.genMuonNanoTable,
         process.MuonStubTpsTable,
         process.MuonStubKmtfTable,

@@ -41,15 +41,24 @@ cp "${SRCDIR}/customize_omtf_dumper.py" "${OUTDIR}/"
 #     | sort | awk 'NR%6==1' | head -3000
 if [ ! -s "${PU_LIST}" ]; then echo "ERROR: missing pileup list ${PU_LIST}"; exit 1; fi
 
+# prodv3-only datasets: <name>:<prodv2 config whose cmsDriver command is reused with the fragment swapped>
+EXTRA_DATASETS="D2_llp_overlap_PU200:C22_disp_pt20to50_overlap_PU200"
+
 cd "${OUTDIR}"
-for cfg in "${SRCDIR}"/*_cfg.py; do
-    name="$(basename "${cfg}" _cfg.py)"
+for cfg in "${SRCDIR}"/*_cfg.py ${EXTRA_DATASETS}; do
+    template=""
+    if [[ "${cfg}" == *:* ]]; then
+        template="${cfg#*:}"; name="${cfg%%:*}"; cfg="${SRCDIR}/${template}_cfg.py"
+    else
+        name="$(basename "${cfg}" _cfg.py)"
+    fi
     [ "${name}" = "das_reemul" ] && continue
     if [ $# -gt 0 ]; then
         keep=0; for p in "$@"; do [[ "${name}" == "${p}"* ]] && keep=1; done
         [ ${keep} -eq 1 ] || continue
     fi
     cmdline="$(grep -m1 '^# with command line options:' "${cfg}" | sed 's/^# with command line options: //')"
+    [ -n "${template}" ] && cmdline="${cmdline/OMTF_HECIN\/${template}.py/OMTF_HECIN\/${name}.py}"
     if [ -z "${cmdline}" ]; then echo "SKIP ${name}: no cmsDriver command line"; continue; fi
 
     # Rebuild the argument list with the prodv3 settings.

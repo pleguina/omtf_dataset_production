@@ -1,0 +1,26 @@
+###############################################################################
+# prodv3_das_fall26.sub  --  runbook prodv3 extra samples (Fall26 DY/TT pilots (no PU), one job per file, all events)
+# CMSSW_20_0_0_patch2 + pleguina:wp8-dumper, D127 + Phase2Fall26GS pileup, EOS prodv3/.
+# Job list: prodv3_das_fall26.txt (Label, JobId, InputFile).
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_das_job_prodv3.sh
+arguments       = $(Dataset) $(JobId) $(InputFile) 200X_mcRun4_realistic_v1 0 -1
+environment     = "OMTF_CAMPAIGN_ID=3100"
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv3/$(Dataset)_$(JobId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv3/$(Dataset)_$(JobId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv3/prodv3_das_fall26.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 15000000
+
++JobFlavour     = "workday"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue Dataset, JobId, InputFile from prodv3_das_fall26.txt
