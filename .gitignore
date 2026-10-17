@@ -50,3 +50,10 @@ DATASET_GENERATION_GUIDE.md
 # ─── VOMS proxy ──────────────────────────────────────────────────────────────
 private/
 x509_proxy
+
+# credentials / crash dumps: never commit
+*.cc.krb
+krb5cc*
+pleguina.cc
+condor/pleguina.cc
+core.*
