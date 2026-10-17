@@ -6,8 +6,8 @@ and a NanoAOD-style output (OMTF track table + generator muon table).
 This must be placed in the configs/ directory alongside the cmsDriver configs.
 It is imported at the end of each _cfg.py file.
 
-NanoAOD output requires the locally compiled package L1Trigger/L1MuNano
-(SimpleOMTFTrackCandidateFlatTableProducer plugin).
+NanoAOD output requires the locally compiled package L1Trigger/L1MuNano and
+DPGAnalysis/Phase2L1TNanoAOD (SimpleTriggerL1SAMuonFlatTableProducer plugin).
 """
 import os
 
@@ -33,6 +33,8 @@ def customise_omtf_dumper(process):
     if hasattr(process, 'simOmtfPhase2Digis'):
         # Enable the hit-level ROOT dumper
         process.simOmtfPhase2Digis.dumpHitsToROOT = cms.bool(True)
+        # Also dump the candidates killed by the ghost buster (killed=1, omtfQuality=0)
+        process.simOmtfPhase2Digis.dumpKilledOmtfCands = cms.bool(True)
 
         # Enable candidate-to-simtrack matching for truth labels in OMTFHitsTree.
         # Use simpleMatching: matches on gen-level eta/phi proximity without propagation,
@@ -97,6 +99,14 @@ def customise_omtf_dumper(process):
             'keep *_g4SimHits_*_*',
         )
 
+    # ----- 3b. Optional CSC CCLUT on the TMBs (prodv3 variant, NOT the official config) -----
+    # The Phase-2 era runs the CCLUT only on the OTMBs (ME1/1, ME2/1), so the overlap CSCs (ME1/2,
+    # ME1/3, ME2/2, ME3/2) have no LCT slope. OMTF_CSC_CCLUT_TMB=1 turns it on for those chambers
+    # too; this changes the LCT position OMTF sees, so such files are not an upstream baseline.
+    if os.environ.get("OMTF_CSC_CCLUT_TMB", "0") == "1" and hasattr(process, 'simCscTriggerPrimitiveDigis'):
+        process.simCscTriggerPrimitiveDigis.commonParam.runCCLUT_TMB = cms.bool(True)
+        print("customise_omtf_dumper: CSC CCLUT enabled on the TMBs (OMTF_CSC_CCLUT_TMB=1)")
+
     # ----- 4. Disable tracker alignment (DB payload has 43708 modules, -----
     # ----- geometry has 43600 in CMSSW_14_2_0_pre2 — safe for L1 studies) -----
     if hasattr(process, 'trackerGeometry'):
@@ -114,7 +124,10 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
 
     Produces:
       omtf_nano.root  (NanoAOD TTree format)
-        └── Events/omtf_*          — OMTF track candidates at BX=0
+        └── Events/omtfC_*, omtfU_* — OMTF constrained / unconstrained SAMuons
+        └── Events/gmtFwd*_*       — GMT forward translator (OMTF+EMTF) prompt / displaced
+        └── Events/gmtSA*_*        — GMT standalone prompt / displaced (menu input)
+        └── Events/kmtfDisp_*      — KMTF displaced SAMuons
         └── Events/GenMuon_*       — generator-level stable muons
         └── Events/DTPhiDigi_*     — Run-3 DT phi primitives (phi, phiB)
         └── Events/Ph2DTPhiDigi_*  — Phase-2 DT phi primitives (phi, phiBend, t0, chi2)
@@ -123,8 +136,7 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
         └── Events/RPCDigi_*       — RPC strip digis (strip, bx)
 
     Requires the locally compiled plugin:
-      SimpleOMTFTrackCandidateFlatTableProducer
-      (package L1Trigger/L1MuNano, BXVectorSimpleFlatTableProducer<l1t::RegionalMuonCand>)
+      SimpleTriggerL1SAMuonFlatTableProducer (DPGAnalysis/Phase2L1TNanoAOD)
       DTPhiDigiFlatTableProducer, Ph2DTPhiDigiFlatTableProducer,
       Ph2DTThetaDigiFlatTableProducer, CSCLCTDigiFlatTableProducer,
       RPCDigiFlatTableProducer  (all in L1Trigger/L1MuNano)
@@ -132,7 +144,7 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
     SimpleGenParticleFlatTableProducer is in the base PhysicsTools/NanoAOD package.
     """
     from L1Trigger.L1MuNano.omtfNanoTables_cff import (
-        OMTFTrackTable,
+        saMuonTables,
         genMuonNanoTable,
         genParticlePropagator,
         genMuonProvenance,
@@ -157,7 +169,8 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
     # Register table producers on the process
     process.genParticlePropagator  = genParticlePropagator
     process.genMuonProvenance      = genMuonProvenance
-    process.OMTFTrackTable         = OMTFTrackTable
+    for t in saMuonTables:
+        setattr(process, t.name.value() + "Table", t)  # omtfCTable, omtfUTable, gmtSATable, ...
     process.genMuonNanoTable       = genMuonNanoTable
     process.MuonStubTpsTable       = MuonStubTpsTable
     process.MuonStubKmtfTable      = MuonStubKmtfTable
@@ -173,7 +186,7 @@ def customise_omtf_nano(process, nano_filename="omtf_nano.root"):
     process.p2OmtfNanoTablesTask = cms.Task(
         process.genParticlePropagator,
         process.genMuonProvenance,
-        process.OMTFTrackTable,
+        *[getattr(process, t.name.value() + "Table") for t in saMuonTables],
         process.genMuonNanoTable,
         process.MuonStubTpsTable,
         process.MuonStubKmtfTable,

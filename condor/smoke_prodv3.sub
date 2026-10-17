@@ -1,0 +1,35 @@
+###############################################################################
+# smoke_prodv3.sub
+# prodv3 smoke (runbook section 6.2): 2 jobs x 50 events for C10, C22, C4 and B4,
+# CMSSW_20_0_0_patch2 + new OMTF, D127 + Phase2Fall26GS pileup, written to EOS prodv3_smoke/ (not prodv3/).
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job_prodv3.sh
+arguments       = $(Dataset) $(JobId) 0 50
+environment     = "OMTF_EOS_BASE=/eos/user/p/pleguina/omtf_hecin_datasets/prodv3_smoke OMTF_CAMPAIGN_ID=3001"
+
+output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/smoke_prodv3_$(Dataset)_$(JobId).out
+error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/smoke_prodv3_$(Dataset)_$(JobId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/smoke_prodv3.log
+
+should_transfer_files = NO
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 15000000
+
++JobFlavour     = "workday"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue Dataset, JobId from (
+C10_disp_pt20to50_overlap, 0
+C10_disp_pt20to50_overlap, 1
+C22_disp_pt20to50_overlap_PU200, 0
+C22_disp_pt20to50_overlap_PU200, 1
+C4_prompt_pt20to50_overlap, 0
+C4_prompt_pt20to50_overlap, 1
+B4, 0
+B4, 1
+)

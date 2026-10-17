@@ -5,7 +5,7 @@ pT-binned controlled sample for prompt vs displaced feature discrimination study
 Key properties:
   n muons/event: 1  (charge randomised)
   pT: flat in 1/pT over [10, 20] GeV  (controlled pT bin)
-  eta: 0.82 < |eta| < 1.24  (OMTF overlap acceptance)
+  eta: 0.6 < |eta| < 1.4 at the vertex (overlap selected on GenMuon_etaSt2 in analysis)
   phi: full 2pi
   displacement: displaced (|d0| 0.2–50 cm, flat uniform)
   PU: none
@@ -24,8 +24,8 @@ generator = cms.EDProducer("FlatRandomPtGunProducer2",
         MinDxy         = cms.double(0.2),            # displaced: |d0| >= 0.2 cm
         MaxDxy         = cms.double(50.0),           # flat d0 up to 50 cm
         MaxLxy         = cms.double(200.0),          # keep vertex inside MB1
-        MinEta         = cms.double(-1.24),
-        MaxEta         = cms.double( 1.24),
+        MinEta         = cms.double(-1.4),
+        MaxEta         = cms.double( 1.4),
         MinPhi         = cms.double(-3.14159265359),
         MaxPhi         = cms.double( 3.14159265359),
         PtSpectrum     = cms.string('flatOneOverPt'),
@@ -42,8 +42,9 @@ etaFilter = cms.EDFilter("MCSingleParticleFilter",
     ParticleID  = cms.untracked.vint32(13, -13, 13, -13),
     Status      = cms.untracked.vint32(1, 1, 1, 1),
     MinPt       = cms.untracked.vdouble(0.0, 0.0, 0.0, 0.0),
-    MinEta      = cms.untracked.vdouble(0.82, 0.82, -1.24, -1.24),
-    MaxEta      = cms.untracked.vdouble(1.24, 1.24, -0.82, -0.82),
+    MinEta      = cms.untracked.vdouble(0.6, 0.6, -1.4, -1.4),  # wide: displaced muons reach the
+    # overlap at station 2 from outside 0.82<|eta|<1.24; select on GenMuon_etaSt2 in analysis
+    MaxEta      = cms.untracked.vdouble(1.4, 1.4, -0.6, -0.6),
 )
 
 ProductionFilterSequence = cms.Sequence(generator * etaFilter)
