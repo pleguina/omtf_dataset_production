@@ -1,0 +1,36 @@
+###############################################################################
+# prodv3_P1_nopu.sub  --  runbook section 6.3, P1 go/no-go production (no-PU guns, ~25 min/job)
+# CMSSW_20_0_0_patch2 + pleguina:wp8-dumper, D127 + Phase2Fall26GS pileup, EOS prodv3/.
+# Job lists: prodv3_P1_nopu.txt (Dataset, JobId, NEvents).
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job_prodv3.sh
+arguments       = $(Dataset) $(JobId) 0 5
+environment     = "OMTF_CAMPAIGN_ID=3004 OMTF_EOS_BASE=/eos/user/p/pleguina/omtf_hecin_datasets/prodv3_smoke_afsfix"
+
+output          = $(Dataset)_$(JobId).out
+error           = $(Dataset)_$(JobId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv3/$(ClusterId).log
+
+# Batch rules (CLAUDE.md "protect AFS"): worker scratch is the working area; code comes from an EOS tarball
+# (scripts/build_prodv3_tarball.sh); stdout/stderr go to EOS; ONE small log per cluster on AFS.
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files    = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv3/cmssw_prodv3.tar.gz
+transfer_output_files   = ""
+output_destination      = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv3/$(ClusterId)/
+MY.XRDCP_CREATE_DIR     = True
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 15000000
+
++JobFlavour     = "microcentury"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue Dataset, JobId from (
+B4, 0
+C22_disp_pt20to50_overlap_PU200, 0
+)

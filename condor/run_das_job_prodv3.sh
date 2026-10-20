@@ -24,9 +24,7 @@ GLOBAL_TAG="${4:?Usage: run_das_job_prodv3.sh LABEL PROCID INPUT_FILE GLOBAL_TAG
 SKIP_EVENTS="${5:?Usage: run_das_job_prodv3.sh LABEL PROCID INPUT_FILE GLOBAL_TAG SKIP_EVENTS MAX_EVENTS}"
 MAX_EVENTS="${6:?Usage: run_das_job_prodv3.sh LABEL PROCID INPUT_FILE GLOBAL_TAG SKIP_EVENTS MAX_EVENTS}"
 
-BASEDIR="/afs/cern.ch/user/${USER:0:1}/${USER}/omtf_dataset_production"
-CMSSW_DIR="/afs/cern.ch/user/${USER:0:1}/${USER}/${OMTF_CMSSW_VERSION:-CMSSW_20_0_0_patch2}"
-CONFDIR="${BASEDIR}/configs_prodv3"
+CMSSW_VERSION="${OMTF_CMSSW_VERSION:-CMSSW_20_0_0_patch2}"
 EOS_BASE="${OMTF_EOS_BASE:-/eos/user/${USER:0:1}/${USER}/omtf_hecin_datasets/prodv3_das}"
 
 OMTF_OUTPUT="omtf_hits_${LABEL}_${PROCID}.root"
@@ -47,7 +45,9 @@ cleanup() {
         xrdcp --force "${LOG_SRC}" \
             "root://eosuser.cern.ch/${EOS_BASE}/${LABEL}/logs/${JOB_LOG}" 2>/dev/null || true
     fi
-    rm -rf "${SCRATCH:-/dev/null}" 2>/dev/null || true
+    # Free the big files; keep the rest of the scratch dir (it holds the Kerberos cache HTCondor needs to
+    # finish the transfer to EOS). HTCondor removes the scratch dir itself.
+    rm -rf "${SCRATCH:-/dev/null}/${CMSSW_VERSION}" "${SCRATCH:-/dev/null}"/*.root 2>/dev/null || true
 }
 trap cleanup EXIT
 
@@ -58,26 +58,32 @@ echo "    Skip  : ${SKIP_EVENTS}"
 echo "    Events: ${MAX_EVENTS}"
 date
 
-# --- 1. CMSSW environment ---
+# --- 1. Scratch working directory (local to the worker, never AFS) ---
+SCRATCH="${_CONDOR_SCRATCH_DIR:-$(mktemp -d /tmp/${USER}_omtf_prodv3.XXXXXX)}"
+cd "${SCRATCH}"
+
+# --- 2. Unpack CMSSW area + configs (shipped with transfer_input_files from EOS) ---
+TARBALL="${SCRATCH}/cmssw_prodv3.tar.gz"
+[ -f "${TARBALL}" ] || { echo "ERROR: ${TARBALL} was not transferred"; exit 1; }
+tar -xzf "${TARBALL}" && rm -f "${TARBALL}"
+CMSSW_DIR="${SCRATCH}/${CMSSW_VERSION}"
+CONFDIR="${SCRATCH}/payload/configs_prodv3"
+
+# --- 3. CMSSW environment ---
 set +u
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 set -u
 export SCRAM_ARCH="el9_amd64_gcc13"
 cd "${CMSSW_DIR}/src"
-set +u; eval "$(scramv1 runtime -sh)"; set -u
-
-# --- 2. Scratch working directory ---
-SCRATCH="${_CONDOR_SCRATCH_DIR:-/tmp/${USER}_das_reemul_${LABEL}_${PROCID}}"
-mkdir -p "${SCRATCH}"
+set +u; scramv1 b ProjectRename >/dev/null 2>&1; eval "$(scramv1 runtime -sh)"; set -u
 cd "${SCRATCH}"
 
 cp "${CONFDIR}/das_reemul_cfg.py"        ./job_cfg.py
 cp "${CONFDIR}/customize_omtf_dumper.py" ./
 
-# Record the producer/config commit that generated this file (schema §1 provenance).
-_git_id() { local h; h="$(git -C "$1" rev-parse --short=12 HEAD 2>/dev/null || echo unknown)";
-            [ -n "$(git -C "$1" status --porcelain --untracked-files=no 2>/dev/null)" ] && h="${h}+dirty"; echo "$h"; }
-export OMTF_PRODUCER_GIT_COMMIT="cmssw:$(_git_id "${CMSSW_DIR}/src");prod:$(_git_id "${BASEDIR}")"
+# Producer provenance (CMSSW area + config commits) recorded when the tarball was built.
+# A "+dirty" suffix means the area had uncommitted changes at that time.
+export OMTF_PRODUCER_GIT_COMMIT="$(cat "${SCRATCH}/payload/producer_commit.txt" 2>/dev/null || echo unknown)"
 
 # --- 3. Export env vars consumed by das_reemul_cfg.py ---
 export DAS_INPUT_FILE="${INPUT_FILE}"

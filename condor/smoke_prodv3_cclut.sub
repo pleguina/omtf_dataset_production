@@ -8,11 +8,18 @@ executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/ru
 arguments       = $(Dataset) $(JobId) 0 50
 environment     = "OMTF_EOS_BASE=/eos/user/p/pleguina/omtf_hecin_datasets/prodv3_smoke_cclut OMTF_CAMPAIGN_ID=3002 OMTF_CSC_CCLUT_TMB=1"
 
-output          = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/smoke_prodv3_cclut_$(Dataset)_$(JobId).out
-error           = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/smoke_prodv3_cclut_$(Dataset)_$(JobId).err
-log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/smoke_prodv3_cclut.log
+output          = $(Dataset)_$(JobId).out
+error           = $(Dataset)_$(JobId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv3/$(ClusterId).log
 
-should_transfer_files = NO
+# Batch rules (CLAUDE.md "protect AFS"): worker scratch is the working area; code comes from an EOS tarball
+# (scripts/build_prodv3_tarball.sh); stdout/stderr go to EOS; ONE small log per cluster on AFS.
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files    = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv3/cmssw_prodv3.tar.gz
+transfer_output_files   = ""
+output_destination      = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv3/$(ClusterId)/
+MY.XRDCP_CREATE_DIR     = True
 
 request_cpus    = 1
 request_memory  = 6000

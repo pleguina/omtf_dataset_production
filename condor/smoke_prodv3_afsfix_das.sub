@@ -1,0 +1,35 @@
+###############################################################################
+# prodv3_das_fall26.sub  --  runbook prodv3 extra samples (Fall26 DY/TT pilots (no PU), one job per file, all events)
+# CMSSW_20_0_0_patch2 + pleguina:wp8-dumper, D127 + Phase2Fall26GS pileup, EOS prodv3/.
+# Job list: prodv3_das_fall26.txt (Label, JobId, InputFile).
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_das_job_prodv3.sh
+arguments       = $(Dataset) $(JobId) $(InputFile) 200X_mcRun4_realistic_v1 0 10
+environment     = "OMTF_CAMPAIGN_ID=3005 OMTF_EOS_BASE=/eos/user/p/pleguina/omtf_hecin_datasets/prodv3_smoke_afsfix_das"
+
+output          = $(Dataset)_$(JobId).out
+error           = $(Dataset)_$(JobId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv3/$(ClusterId).log
+
+# Batch rules (CLAUDE.md "protect AFS"): worker scratch is the working area; code comes from an EOS tarball
+# (scripts/build_prodv3_tarball.sh); stdout/stderr go to EOS; ONE small log per cluster on AFS.
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files    = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv3/cmssw_prodv3.tar.gz
+transfer_output_files   = ""
+output_destination      = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv3/$(ClusterId)/
+MY.XRDCP_CREATE_DIR     = True
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 15000000
+
++JobFlavour     = "espresso"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue Dataset, JobId, InputFile from (
+Fall26_DYToLL_M10to50_noPU, 0, /store/mc/Phase2Fall26DIGI/DYToLL_M-10To50_TuneCP5_14TeV-pythia8/GEN-SIM-DIGI-RAW/DIGI_pilot_200X_mcRun4_realistic_v1-v3/2560000/a01895fa-67ee-4f7d-9c71-c68cb648e3c5.root
+)

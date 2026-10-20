@@ -1,0 +1,39 @@
+###############################################################################
+# smoke_prodv4.sub -- prodv4 smoke tests (one small job each), output to EOS prodv4_smoke/
+#   C4 (configs_prodv3, run 3100, campaign 3100): bit-for-bit comparison with prodv3 C4 job 0
+#   T1/T2 (no PU LLP, bin 1): vertex-time A/B (T2 zeroes the decay-vertex time, same seeds)
+#   D3 bins 0-3 (PU200), V1/V4 (very displaced guns), B4 (new pileup subset), C13 (low pT prompt)
+# Same batch rules as prodv3: tarball from EOS, stdout/stderr to EOS, one log per cluster.
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job_prodv4.sh
+arguments       = $(Dataset) $(JobId) 0 $(NEvents)
+environment     = "OMTF_CAMPAIGN_ID=$(Camp) OMTF_CONFIGS_DIR=$(Cfg) OMTF_RUN_NUMBER=$(RunNum) OMTF_SEED_NAME=$(SeedName) OMTF_EOS_BASE=/eos/user/p/pleguina/omtf_hecin_datasets/prodv4_smoke"
+
+output          = $(Dataset)_$(JobId).out
+error           = $(Dataset)_$(JobId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv4/$(ClusterId).log
+
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files    = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv4/cmssw_prodv4.tar.gz
+transfer_output_files   = ""
+output_destination      = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv4/$(ClusterId)/
+MY.XRDCP_CREATE_DIR     = True
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 15000000
+
++JobFlavour     = "workday"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue Dataset, JobId, NEvents, Cfg, Camp, RunNum, SeedName from (
+T1_llp_b1_nopu, 1, 100, configs_prodv4test, 4901, ,
+D3_llp_b0_m15_ct100_PU200, 1, 50, configs_prodv4, 4901, ,
+D3_llp_b1_m50_ct1000_PU200, 1, 50, configs_prodv4, 4901, ,
+D3_llp_b2_m15_ct1000_PU200, 1, 50, configs_prodv4, 4901, ,
+D3_llp_b3_m50_ct100_PU200, 1, 50, configs_prodv4, 4901, ,
+)

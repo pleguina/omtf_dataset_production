@@ -16,10 +16,7 @@ NEVENTS="${4:?Usage: run_job_prodv3.sh DATASET PROCID SKIPEVENTS NEVENTS}"
 # Optional partition namespace (defaults to env OMTF_PARTITION_ID or 0)
 PARTITION_ID="${5:-${OMTF_PARTITION_ID:-0}}"
 
-BASEDIR="/afs/cern.ch/user/${USER:0:1}/${USER}/omtf_dataset_production"
 CMSSW_VERSION="${OMTF_CMSSW_VERSION:-CMSSW_20_0_0_patch2}"
-CMSSW_DIR="/afs/cern.ch/user/${USER:0:1}/${USER}/${CMSSW_VERSION}"
-CONFDIR="${BASEDIR}/configs_prodv3"
 EOS_BASE="${OMTF_EOS_BASE:-/eos/user/${USER:0:1}/${USER}/omtf_hecin_datasets/prodv3}"
 
 OMTF_OUTPUT="omtf_hits_${DATASET}_${PROCID}.root"
@@ -36,28 +33,33 @@ trap 'rm -f "${SCRATCH:-/dev/null}"/*.root "${SCRATCH:-/dev/null}"/*.py 2>/dev/n
 echo "=== OMTF Production v3: ${DATASET} / ProcId ${PROCID} / ${NEVENTS} events (skip=${SKIPEVENTS}) ==="
 date
 
-# --- 1. CMSSW environment ---
+# --- 1. Scratch working directory (local to the worker, never AFS) ---
+SCRATCH="${_CONDOR_SCRATCH_DIR:-$(mktemp -d /tmp/${USER}_omtf_prodv3.XXXXXX)}"
+cd "${SCRATCH}"
+
+# --- 2. Unpack CMSSW area + configs (shipped with transfer_input_files from EOS) ---
+TARBALL="${SCRATCH}/cmssw_prodv3.tar.gz"
+[ -f "${TARBALL}" ] || { echo "ERROR: ${TARBALL} was not transferred"; exit 1; }
+tar -xzf "${TARBALL}" && rm -f "${TARBALL}"
+CMSSW_DIR="${SCRATCH}/${CMSSW_VERSION}"
+CONFDIR="${SCRATCH}/payload/configs_prodv3"
+
+# --- 3. CMSSW environment ---
 set +u
 source /cvmfs/cms.cern.ch/cmsset_default.sh
 set -u
 export SCRAM_ARCH="el9_amd64_gcc13"
 cd "${CMSSW_DIR}/src"
-set +u; eval "$(scramv1 runtime -sh)"; set -u
-
-# --- 2. Scratch working directory ---
-SCRATCH="${_CONDOR_SCRATCH_DIR:-/tmp/${USER}_omtf_prodv3_${DATASET}_${PROCID}}"
-mkdir -p "${SCRATCH}"
+set +u; scramv1 b ProjectRename >/dev/null 2>&1; eval "$(scramv1 runtime -sh)"; set -u
 cd "${SCRATCH}"
 
 # Copy config + customizer
 cp "${CONFDIR}/${DATASET}_cfg.py"        ./job_cfg.py
 cp "${CONFDIR}/customize_omtf_dumper.py" ./
 
-# Record the producer (CMSSW area) and config commits that generated this file (schema §1 provenance).
-# A "+dirty" suffix means the area had uncommitted changes when the job ran.
-_git_id() { local h; h="$(git -C "$1" rev-parse --short=12 HEAD 2>/dev/null || echo unknown)";
-            [ -n "$(git -C "$1" status --porcelain --untracked-files=no 2>/dev/null)" ] && h="${h}+dirty"; echo "$h"; }
-export OMTF_PRODUCER_GIT_COMMIT="cmssw:$(_git_id "${CMSSW_DIR}/src");prod:$(_git_id "${BASEDIR}")"
+# Producer provenance (CMSSW area + config commits) recorded when the tarball was built.
+# A "+dirty" suffix means the area had uncommitted changes at that time.
+export OMTF_PRODUCER_GIT_COMMIT="$(cat "${SCRATCH}/payload/producer_commit.txt" 2>/dev/null || echo unknown)"
 
 # --- 3. Patch config via Python (robust, env-driven) ---
 export PATCH_NEVENTS="${NEVENTS}"
