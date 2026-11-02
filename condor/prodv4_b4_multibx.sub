@@ -1,0 +1,34 @@
+###############################################################################
+# prodv4_b4_multibx.sub -- B4 rate sample with the OMTF BX window [-1, 1] (campaign 4001, like D4), PU200,
+# 2000 x 250 events, EOS prodv4_multibx/B4_multibx/. Rate reference for the D4 multi-BX LLP samples.
+# Job list: prodv4_b4_multibx.txt (jobs 1-1999); prodv4_b4_multibx_test.txt (job 0, single-job test).
+#   condor_submit joblist=prodv4_b4_multibx_test.txt prodv4_b4_multibx.sub
+# Batch rules: tarball from EOS, stdout/stderr to EOS, one log per cluster on AFS.
+###############################################################################
+universe        = vanilla
+executable      = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/run_job_prodv4.sh
+arguments       = $(Dataset) $(JobId) 0 $(NEvents)
+environment     = "OMTF_CAMPAIGN_ID=4001 OMTF_CONFIGS_DIR=configs_prodv4 OMTF_BX_RANGE=-1,1 OMTF_EOS_BASE=/eos/user/p/pleguina/omtf_hecin_datasets/prodv4_multibx"
+
+output          = $(Dataset)_$(JobId).out
+error           = $(Dataset)_$(JobId).err
+log             = /afs/cern.ch/user/p/pleguina/omtf_dataset_production/condor/logs/prodv4/$(ClusterId).log
+
+should_transfer_files   = YES
+when_to_transfer_output = ON_EXIT
+transfer_input_files    = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv4/cmssw_prodv4.tar.gz
+transfer_output_files   = ""
+output_destination      = root://eosuser.cern.ch//eos/user/p/pleguina/condor/omtf_prodv4/$(ClusterId)/
+MY.XRDCP_CREATE_DIR     = True
+
+request_cpus    = 1
+request_memory  = 6000
+request_disk    = 15000000
+
+requirements = (TARGET.Machine =!= "b9p06p9417.cern.ch")
++JobFlavour     = "tomorrow"
++AccountingGroup = "group_u_CMS.u_zh.users"
+use_x509userproxy = true
+x509userproxy    = /afs/cern.ch/user/p/pleguina/private/x509_proxy
+
+queue Dataset, JobId, NEvents from $(joblist)

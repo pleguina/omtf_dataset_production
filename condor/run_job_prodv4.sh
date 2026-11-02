@@ -187,7 +187,7 @@ if hasattr(process, 'source'):
 _job_dataset = {dataset!r}
 _job_procid = {job_id}
 _job_global_id = {partition_id} * 500 + _job_procid
-if _job_dataset == 'B4' and hasattr(process, 'mix') and hasattr(process.mix, 'input') and hasattr(process.mix.input, 'fileNames'):
+if _job_dataset in ('B4', 'B4_multibx') and hasattr(process, 'mix') and hasattr(process.mix, 'input') and hasattr(process.mix.input, 'fileNames'):
     mb = list(process.mix.input.fileNames)
     if len(mb) > 1:
         offset = _job_global_id % len(mb)

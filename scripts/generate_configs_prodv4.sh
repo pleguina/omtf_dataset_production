@@ -118,4 +118,8 @@ for b in 0 1 2 3; do
         sed "s#D3_llp_b${b}_m50_ct1000_PU200#D4_llp_b${b}_m50_ct1000_PU200_multibx#g" "D3_llp_b${b}_m50_ct1000_PU200_cfg.py" > "D4_llp_b${b}_m50_ct1000_PU200_multibx_cfg.py"
     fi
 done
+# Multi-BX rate sample: B4 config under a new dataset name (new run number and seeds; BX window from OMTF_BX_RANGE)
+if [ -f "B4_cfg.py" ]; then
+    sed "s#file:B4.root#file:B4_multibx.root#" "B4_cfg.py" > "B4_multibx_cfg.py"
+fi
 echo "=== prodv4 configs in ${OUTDIR} ==="
